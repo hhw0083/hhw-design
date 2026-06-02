@@ -1,0 +1,28 @@
+{
+  "name": "hhw-uiux-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.5.1",
+  "scripts": {
+    "dev": "NEXT_TEST_WASM=1 NEXT_TEST_WASM_DIR=node_modules/@next/swc-wasm-nodejs next dev --webpack",
+    "build": "NEXT_TEST_WASM=1 NEXT_TEST_WASM_DIR=node_modules/@next/swc-wasm-nodejs next build --webpack",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "lucide-react": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@next/swc-wasm-nodejs": "16.2.6",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "autoprefixer": "latest",
+    "postcss": "latest",
+    "tailwindcss": "3.4.17",
+    "typescript": "latest"
+  }
+}
