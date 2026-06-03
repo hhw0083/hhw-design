@@ -5,19 +5,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#05070a",
-        panel: "#0d1117",
-        line: "#202b37",
-        cyanline: "#67e8f9",
-        mint: "#6ee7b7",
-        brass: "#f5c86a",
-        signal: "#fb7185",
+        ink: "#111827",
+        panel: "#ffffff",
+        canvas: "#f6f7f9",
+        paper: "#ffffff",
+        line: "#e5e7eb",
+        cyanline: "#0f766e",
+        mint: "#047857",
+        brass: "#b45309",
+        signal: "#be123c",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "Inter", "ui-sans-serif", "system-ui"],
       },
       boxShadow: {
-        "panel-glow": "0 28px 80px rgba(0, 0, 0, 0.45)",
+        "panel-glow": "0 24px 70px rgba(15, 23, 42, 0.12)",
+        "portfolio-card": "0 18px 50px rgba(15, 23, 42, 0.08)",
       },
     },
   },

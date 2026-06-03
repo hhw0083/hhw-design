@@ -10,13 +10,14 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@xyflow/react": "^12.11.0",
     "lucide-react": "latest",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
   },
   "devDependencies": {
-    "@next/swc-wasm-nodejs": "16.2.6",
+    "@next/swc-wasm-nodejs": "16.2.7",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
