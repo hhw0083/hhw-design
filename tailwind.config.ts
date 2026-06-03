@@ -17,6 +17,12 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "Inter", "ui-sans-serif", "system-ui"],
+        noto: [
+          "var(--font-noto-sans-tc)",
+          "Noto Sans TC",
+          "ui-sans-serif",
+          "system-ui",
+        ],
       },
       boxShadow: {
         "panel-glow": "0 24px 70px rgba(15, 23, 42, 0.12)",

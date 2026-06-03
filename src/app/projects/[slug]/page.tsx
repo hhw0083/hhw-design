@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { ArrowLeft, CheckCircle2, ExternalLink } from "lucide-react";
+import { EsgCaseStudyPage } from "@/components/EsgCaseStudyPage";
 import { InteractiveSitemap } from "@/components/InteractiveSitemap";
 import { ProjectVisual } from "@/components/ProjectVisual";
 import {
@@ -418,6 +419,18 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   }
 
   const isEsgProject = project.slug === "esg-forest-matching-platform";
+  const heroSummary = isEsgProject
+    ? "本專案協助企業查詢森林與自然碳匯相關 ESG 專案，透過列表、地圖、媒合流程與憑證查詢，降低企業理解與參與 ESG 專案的門檻。"
+    : project.summary;
+  const heroTags = isEsgProject
+    ? [
+        "UI Design",
+        "Design System",
+        "Front-end Layout Support",
+        "Accessibility AA",
+        "ESG Platform",
+      ]
+    : project.tags;
 
   return (
     <main className="min-h-screen bg-canvas pt-16 text-slate-950">
@@ -434,14 +447,26 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           <div className="mt-10 grid gap-10 lg:grid-cols-[0.78fr_1fr] lg:items-end">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-cyanline">
-                {project.eyebrow}
+                {isEsgProject
+                  ? "企業參與森林及自然碳匯 ESG 專案媒合平台"
+                  : project.eyebrow}
               </p>
               <h1 className="mt-4 text-4xl font-semibold leading-tight text-slate-950 md:text-6xl">
                 {project.title}
               </h1>
               <p className="mt-6 text-lg leading-8 text-slate-600">
-                {project.summary}
+                {heroSummary}
               </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {heroTags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm font-medium text-slate-700"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
             <ProjectVisual project={project} />
           </div>
@@ -450,67 +475,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
 
       {isEsgProject ? (
         <>
-          <ProjectInformation project={project} />
-
-          <section className="pb-16 md:pb-24">
-            <div className="mx-auto max-w-7xl space-y-12 px-4 sm:px-6 lg:px-8">
-              <ProcessSection project={project} />
-
-              {hasItems(project.informationArchitecture) ||
-              hasItems(project.sitemap) ? (
-                <CaseStudySection title="Information Architecture / Sitemap">
-                  <div className="space-y-8">
-                    {hasItems(project.informationArchitecture) ? (
-                      <TextList items={project.informationArchitecture ?? []} />
-                    ) : null}
-                    {hasItems(project.sitemap) ? <InteractiveSitemap /> : null}
-                  </div>
-                </CaseStudySection>
-              ) : null}
-
-              {hasItems(project.designTokens) ||
-              hasItems(project.colorSystem) ? (
-                <CaseStudySection title="Design System">
-                  <div className="space-y-8">
-                    {hasItems(project.designTokens) ? (
-                      <DesignTokenGrid sections={project.designTokens ?? []} />
-                    ) : null}
-                    {hasItems(project.colorSystem) ? (
-                      <ColorSystem groups={project.colorSystem ?? []} />
-                    ) : null}
-                  </div>
-                </CaseStudySection>
-              ) : null}
-
-              {hasItems(project.components) ? (
-                <CaseStudySection title="UI Components">
-                  <ComponentLibrary components={project.components ?? []} />
-                </CaseStudySection>
-              ) : null}
-
-              {hasItems(project.screens) ? (
-                <CaseStudySection title="Final Design">
-                  <ScreenSpecs screens={project.screens ?? []} />
-                </CaseStudySection>
-              ) : null}
-
-              <DeliverablesSection project={project} fullWidth />
-
-              {hasItems(project.reflection) ? (
-                <CaseStudySection title="Reflection">
-                  <TextList items={project.reflection ?? []} />
-                </CaseStudySection>
-              ) : null}
-
-              <Link
-                href="/#contact"
-                className="inline-flex h-12 items-center gap-2 rounded-lg bg-cyanline px-5 text-sm font-semibold text-ink transition hover:bg-mint"
-              >
-                Discuss this case
-                <ExternalLink className="size-4" aria-hidden="true" />
-              </Link>
-            </div>
-          </section>
+          <EsgCaseStudyPage project={project} />
         </>
       ) : (
       <section className="py-16 md:py-24">
