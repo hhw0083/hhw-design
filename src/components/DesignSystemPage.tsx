@@ -9,6 +9,7 @@ import {
   Leaf,
   List,
   Map,
+  MapPin,
   Search,
   User,
   X,
@@ -93,8 +94,6 @@ const typeScale = [
   { name: "Label", size: "12px" },
 ];
 
-const spacingScale = ["4px", "8px", "12px", "16px", "24px", "32px", "48px", "64px"];
-
 const navItems = [
   "政策與指引",
   "解決方案",
@@ -102,29 +101,6 @@ const navItems = [
   "ESG 成果展示",
   "Q & A",
   "系統管理",
-];
-
-const footerGroups = [
-  {
-    title: "政策與指引",
-    links: ["ESG 知識", "法規說明", "作業指引"],
-  },
-  {
-    title: "解決方案",
-    links: ["私有林地方案", "公有林地方案", "碳匯方案"],
-  },
-  {
-    title: "媒體中心",
-    links: ["最新消息", "公告", "活動"],
-  },
-  {
-    title: "ESG 成果展示",
-    links: ["專案查詢", "互動地圖", "ESG 憑證"],
-  },
-  {
-    title: "Q & A",
-    links: ["常見問題", "聯絡我們", "意見回饋"],
-  },
 ];
 
 const statusItems = [
@@ -192,28 +168,6 @@ function BoardShell({ children }: { children: ReactNode }) {
   );
 }
 
-function BoardIntro({
-  subtitle,
-  description,
-}: {
-  subtitle: string;
-  description: string;
-}) {
-  return (
-    <aside className="relative flex min-h-[22rem] flex-col rounded-[18px] border border-[#E5E5E5] bg-white p-6 shadow-sm md:p-8">
-      <p className="text-[40px] font-bold leading-none tracking-[-0.02em] text-[#137D6A]">
-        ESG Platform
-      </p>
-      <p className="mt-3 text-2xl font-light text-[#6B7280]">{subtitle}</p>
-      <div className="mt-8 h-1 w-16 rounded-full bg-[#137D6A]" />
-      <p className="mt-8 max-w-xs text-base leading-8 text-[#6B7280]">
-        {description}
-      </p>
-      <LeafMark className="mt-auto size-14" />
-    </aside>
-  );
-}
-
 export function ComponentPanel({
   title,
   number,
@@ -238,15 +192,6 @@ export function ComponentPanel({
       </h3>
       <div className="mt-5">{children}</div>
     </article>
-  );
-}
-
-export function DesignSystemHero() {
-  return (
-    <BoardIntro
-      subtitle="Design System / 設計系統"
-      description="建立清楚、可及且值得信任的 ESG 平台視覺基礎。"
-    />
   );
 }
 
@@ -370,49 +315,14 @@ export function TypographyExampleSection() {
   );
 }
 
-function FoundationNotesSection({ className }: { className?: string }) {
-  return (
-    <ComponentPanel
-      title="Foundation Notes / 設計基礎說明"
-      number="5"
-      className={cx("overflow-hidden", className)}
-    >
-      <div className="relative flex flex-col gap-5 rounded-[16px] bg-gradient-to-r from-[#137D6A]/10 via-white to-[#80CACE]/20 p-5 md:flex-row md:items-center md:justify-between">
-        <div className="absolute inset-y-0 right-0 hidden w-80 opacity-40 md:block">
-          <div className="h-full w-full bg-[radial-gradient(circle_at_20%_30%,rgba(19,125,106,0.14)_0_1px,transparent_1px),radial-gradient(circle_at_62%_58%,rgba(128,202,206,0.18)_0_1px,transparent_1px)] bg-[length:28px_28px]" />
-        </div>
-        <LeafMark className="size-16 shrink-0" />
-        <div className="relative max-w-4xl space-y-2 text-sm leading-7 text-[#212529]">
-          <p>
-            統一核心色彩與字級，支援前台展示頁與管理頁面在不同資訊密度下保持一致。
-          </p>
-          <p>
-            一致的視覺 token 有助於提升可讀性、切版效率與後續維護品質。
-          </p>
-        </div>
-        <div className="relative hidden h-20 w-32 shrink-0 md:block">
-          <div className="absolute bottom-3 left-3 h-10 w-24 rounded-full border-b-2 border-[#8F6B3A]/40" />
-          <Leaf className="absolute right-8 top-2 size-10 rotate-12 text-[#137D6A]" />
-          <Leaf className="absolute right-1 top-7 size-8 rotate-45 text-[#80CACE]" />
-          <Leaf className="absolute right-16 top-8 size-7 -rotate-45 text-[#137D6A]/70" />
-        </div>
-      </div>
-    </ComponentPanel>
-  );
-}
-
 function ColorTypographyBoard() {
   return (
     <BoardShell>
-      <div className="grid gap-2 xl:grid-cols-[20rem_minmax(0,1fr)]">
-        <DesignSystemHero />
-        <div className="grid gap-2 lg:grid-cols-2">
-          <ColorPaletteSection />
-          <UIColorSection />
-          <TypographySection />
-          <TypographyExampleSection />
-          <FoundationNotesSection className="lg:col-span-2" />
-        </div>
+      <div className="grid gap-2 lg:grid-cols-2">
+        <ColorPaletteSection />
+        <UIColorSection />
+        <TypographySection />
+        <TypographyExampleSection />
       </div>
     </BoardShell>
   );
@@ -443,7 +353,11 @@ function LogoMark() {
 
 export function GlobalNavigationShowcase() {
   return (
-    <ComponentPanel title="Global Navigation / 全站導覽" number="1" className="xl:col-span-2">
+    <ComponentPanel
+      title="Navigation / 全站導覽"
+      number="1"
+      className="xl:col-span-2"
+    >
       <div className="space-y-5">
         <LabeledDemo label="Header / 頁首">
           <header className="flex flex-col gap-3 rounded-[12px] border border-[#E5E5E5] bg-white p-3 shadow-[0_10px_28px_rgba(33,37,41,0.08)] md:flex-row md:items-center">
@@ -482,33 +396,6 @@ export function GlobalNavigationShowcase() {
           </nav>
         </LabeledDemo>
 
-        <LabeledDemo label="Footer / 頁尾">
-          <footer className="rounded-[12px] border border-[#E5E5E5] bg-[#FBF9F4] p-5">
-            <div className="grid gap-6 md:grid-cols-[1.2fr_repeat(5,1fr)]">
-              <div className="space-y-3">
-                <LogoMark />
-                <p className="text-xs font-bold text-[#212529]">
-                  Forestry and Nature Conservation Agency
-                </p>
-                <p className="text-xs leading-5 text-[#6B7280]">
-                  100024 Taipei City, Zhongzheng District
-                  <br />
-                  Service Hours: Mon-Fri 09:00-17:00
-                </p>
-              </div>
-              {footerGroups.map((group) => (
-                <div key={group.title}>
-                  <p className="text-xs font-bold text-[#212529]">{group.title}</p>
-                  <ul className="mt-2 space-y-1.5 text-xs text-[#137D6A]">
-                    {group.links.map((link) => (
-                      <li key={link}>{link}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </footer>
-        </LabeledDemo>
       </div>
     </ComponentPanel>
   );
@@ -567,7 +454,11 @@ function SegmentControl({
 
 export function SearchFilterShowcase() {
   return (
-    <ComponentPanel title="Search & Filter / 查詢與篩選" number="2">
+    <ComponentPanel
+      title="Search & Filter / 查詢與篩選"
+      number="2"
+      className="xl:col-span-2"
+    >
       <div className="grid gap-5 md:grid-cols-2">
         <LabeledDemo label="Search Input / 搜尋欄位">
           <DemoInput placeholder="搜尋專案、企業或指標..." />
@@ -640,7 +531,11 @@ export function SearchFilterShowcase() {
 
 export function ButtonsInputsShowcase() {
   return (
-    <ComponentPanel title="Buttons & Inputs / 按鈕與輸入" number="3">
+    <ComponentPanel
+      title="Buttons / 按鈕"
+      number="3"
+      className="xl:col-span-2"
+    >
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <LabeledDemo label="Primary Button / 主要按鈕">
           <button className="h-11 rounded-[8px] bg-[#137D6A] px-6 text-sm font-bold text-white shadow-sm">
@@ -863,50 +758,25 @@ export function DataCardsShowcase() {
               <MetricStrip />
             </LabeledDemo>
           </div>
-          <div className="grid gap-5 lg:grid-cols-[1fr_auto]">
-            <LabeledDemo label="Status Tags / 狀態標籤">
-              <div className="flex flex-wrap gap-2">
-                {statusItems.map((status) => (
-                  <StatusBadge key={status.label} {...status} />
-                ))}
-              </div>
-            </LabeledDemo>
-            <LabeledDemo label="Favorite / 收藏狀態">
-              <div className="flex gap-3">
-                <FavoriteButton />
-                <FavoriteButton active />
-              </div>
-            </LabeledDemo>
-          </div>
+          <LabeledDemo label="Favorite / 收藏狀態">
+            <div className="flex gap-3">
+              <FavoriteButton />
+              <FavoriteButton active />
+            </div>
+          </LabeledDemo>
         </div>
       </div>
     </ComponentPanel>
   );
 }
 
-export function PaginationDemo() {
-  return (
-    <nav className="flex items-center gap-1" aria-label="分頁範例">
-      {["‹", "1", "2", "3", "...", "10", "›"].map((item) => (
-        <button
-          key={item}
-          className={cx(
-            "grid size-8 place-items-center rounded-[6px] border text-xs font-semibold",
-            item === "1"
-              ? "border-[#137D6A] bg-[#137D6A] text-white"
-              : "border-[#E5E5E5] bg-white text-[#6B7280]",
-          )}
-        >
-          {item}
-        </button>
-      ))}
-    </nav>
-  );
-}
-
 export function DataDisplayShowcase() {
   return (
-    <ComponentPanel title="Data Display / 資料呈現" number="5">
+    <ComponentPanel
+      title="Table / 資料表格"
+      number="5"
+      className="xl:col-span-2"
+    >
       <div className="space-y-6">
         <LabeledDemo label="Table / 結果表格">
           <div className="overflow-x-auto rounded-[12px] border border-[#E5E5E5]">
@@ -949,23 +819,50 @@ export function DataDisplayShowcase() {
             </table>
           </div>
         </LabeledDemo>
-        <div className="grid gap-6 md:grid-cols-2">
-          <LabeledDemo label="Pagination / 分頁">
-            <PaginationDemo />
-          </LabeledDemo>
-          <LabeledDemo label="Breadcrumb / 頁面標題">
-            <div>
-              <p className="text-xs font-medium text-[#137D6A]">
-                首頁 <span className="text-[#6B7280]">›</span> ESG 成果展示{" "}
-                <span className="text-[#6B7280]">›</span> 專案查詢
-              </p>
-              <h4 className="mt-2 text-2xl font-bold text-[#212529]">
-                專案查詢
-              </h4>
-              <div className="mt-2 h-0.5 w-12 bg-[#F2B600]" />
-            </div>
-          </LabeledDemo>
-        </div>
+      </div>
+    </ComponentPanel>
+  );
+}
+
+function StatusBadgeShowcase() {
+  return (
+    <ComponentPanel title="Status Badge / 狀態標籤" number="6">
+      <div className="flex min-h-40 flex-wrap content-center gap-3 rounded-[12px] bg-[#FBF9F4] p-5">
+        {statusItems.map((status) => (
+          <StatusBadge key={status.label} {...status} />
+        ))}
+      </div>
+    </ComponentPanel>
+  );
+}
+
+function MapMarkerShowcase() {
+  const markers = [
+    { left: "18%", top: "26%", tone: "#137D6A", label: "12" },
+    { left: "52%", top: "18%", tone: "#F2B600", label: "8" },
+    { left: "68%", top: "58%", tone: "#80CACE", label: "24" },
+    { left: "32%", top: "68%", tone: "#137D6A", label: "5" },
+  ];
+
+  return (
+    <ComponentPanel title="Map Marker / 地圖標記" number="7">
+      <div className="relative min-h-40 overflow-hidden rounded-[12px] border border-[#E5E5E5] bg-[#EDF5F0]">
+        <div className="absolute inset-0 bg-[linear-gradient(32deg,transparent_0_44%,rgba(19,125,106,0.10)_44%_46%,transparent_46%_100%),linear-gradient(118deg,transparent_0_56%,rgba(128,202,206,0.25)_56%_58%,transparent_58%_100%)]" />
+        <div className="absolute inset-0 opacity-50 [background-image:radial-gradient(#80CACE_1px,transparent_1px)] [background-size:18px_18px]" />
+        {markers.map((marker) => (
+          <div
+            key={`${marker.left}-${marker.top}`}
+            className="absolute flex items-center gap-1 rounded-full border-2 border-white px-2.5 py-1.5 text-xs font-bold text-white shadow-lg"
+            style={{
+              left: marker.left,
+              top: marker.top,
+              backgroundColor: marker.tone,
+            }}
+          >
+            <MapPin className="size-3.5" aria-hidden="true" />
+            {marker.label}
+          </div>
+        ))}
       </div>
     </ComponentPanel>
   );
@@ -974,84 +871,20 @@ export function DataDisplayShowcase() {
 export function CoreComponentsSection() {
   return (
     <BoardShell>
-      <div className="grid gap-2 xl:grid-cols-[20rem_minmax(0,1fr)]">
-        <BoardIntro
-          subtitle="Core Components / 核心元件"
-          description="支援一致、可及且值得信任 ESG 體驗的可重複使用元件。"
-        />
-        <div className="grid gap-2 xl:grid-cols-2">
-          <GlobalNavigationShowcase />
-          <SearchFilterShowcase />
-          <ButtonsInputsShowcase />
-          <DataCardsShowcase />
-          <DataDisplayShowcase />
-          <ComponentPanel title="Notes / 元件說明" number="6">
-            <div className="relative flex flex-col gap-5 rounded-[16px] bg-gradient-to-r from-[#137D6A]/10 via-white to-[#80CACE]/20 p-5 md:flex-row md:items-center">
-              <LeafMark className="size-16 shrink-0" />
-              <div className="space-y-2 text-sm leading-7 text-[#212529]">
-                <p>
-                  ESG 平台同時支援前台展示頁與管理頁面。
-                </p>
-                <p>
-                  可重複使用元件協助查詢、列表、地圖與憑證相關頁面維持一致且可信任的操作體驗。
-                </p>
-              </div>
-            </div>
-          </ComponentPanel>
-        </div>
+      <div className="grid gap-3 xl:grid-cols-2">
+        <GlobalNavigationShowcase />
+        <SearchFilterShowcase />
+        <ButtonsInputsShowcase />
+        <DataCardsShowcase />
+        <DataDisplayShowcase />
+        <StatusBadgeShowcase />
+        <MapMarkerShowcase />
       </div>
     </BoardShell>
   );
 }
 
-function TokenSummaryPanel() {
-  return (
-    <div className="grid gap-2 md:grid-cols-3">
-      <div className="rounded-[18px] border border-[#E5E5E5] bg-white p-5 shadow-sm">
-        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#137D6A]">
-          Spacing
-        </p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {spacingScale.map((space) => (
-            <span key={space} className="rounded-full border border-[#E5E5E5] bg-[#FBF9F4] px-3 py-1 text-xs font-semibold text-[#6B7280]">
-              {space}
-            </span>
-          ))}
-        </div>
-      </div>
-      <div className="rounded-[18px] border border-[#E5E5E5] bg-white p-5 shadow-sm">
-        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#137D6A]">
-          Radius
-        </p>
-        <div className="mt-4 flex items-end gap-3">
-          {[
-            ["S", "8px", "rounded-[8px]"],
-            ["M", "12px", "rounded-[12px]"],
-            ["L", "24px", "rounded-[24px]"],
-          ].map(([label, value, radius]) => (
-            <div key={label} className={cx("grid size-16 place-items-center border border-[#D7D7D7] bg-[#FBF9F4] text-xs font-bold text-[#137D6A]", radius)}>
-              {value}
-            </div>
-          ))}
-          <div className="rounded-full border border-[#D7D7D7] bg-[#FBF9F4] px-4 py-3 text-xs font-bold text-[#137D6A]">
-            Pill
-          </div>
-        </div>
-      </div>
-      <div className="rounded-[18px] border border-[#E5E5E5] bg-white p-5 shadow-sm">
-        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#137D6A]">
-          Usage Principle
-        </p>
-        <p className="mt-4 text-sm leading-7 text-[#6B7280]">
-          Use green for trust and completion, aqua for supportive environmental
-          context, yellow for attention, and red only for cancellation or risk.
-        </p>
-      </div>
-    </div>
-  );
-}
-
-export function DesignSystemPage() {
+export function DesignSystemFoundations() {
   return (
     <section
       aria-labelledby="esg-design-system-title"
@@ -1083,7 +916,16 @@ export function DesignSystemPage() {
           </div>
           <ColorTypographyBoard />
         </article>
+      </div>
+    </section>
+  );
+}
 
+export function DesignSystemPage() {
+  return (
+    <section className="space-y-5 font-noto text-[#212529]">
+      <DesignSystemFoundations />
+      <div className="rounded-[24px] bg-[#FBF9F4] p-3 sm:p-4 md:p-5">
         <article className="rounded-[24px] border border-[#E5E5E5] bg-white p-3 shadow-sm md:p-4">
           <div className="mb-4 flex flex-col gap-2 px-2 md:flex-row md:items-end md:justify-between">
             <div>
