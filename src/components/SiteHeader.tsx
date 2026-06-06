@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Mail } from "lucide-react";
 
@@ -17,9 +18,14 @@ export function SiteHeader() {
           className="group flex items-center gap-3 text-sm font-semibold text-slate-950"
           aria-label="HHW portfolio home"
         >
-          <span className="grid size-9 place-items-center rounded-lg border border-slate-200 bg-slate-950 text-white shadow-sm">
-            H
-          </span>
+          <Image
+            src="/images/x-logo-light.svg"
+            alt=""
+            width={36}
+            height={36}
+            priority
+            className="size-9 object-contain"
+          />
           <span className="hidden sm:inline">HHW Portfolio</span>
         </Link>
 

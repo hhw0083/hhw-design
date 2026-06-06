@@ -46,7 +46,13 @@ export type ProjectScreen = {
   userGoal?: string;
 };
 
-export type Project = {
+export type ProjectImageAssets = {
+  coverImage?: string;
+  heroImage?: string;
+  galleryImages?: string[];
+};
+
+export type Project = ProjectImageAssets & {
   slug: string;
   title: string;
   eyebrow: string;
@@ -77,6 +83,30 @@ export type Project = {
   reflection?: string[];
 };
 
+export const projectImageAssets = {
+  "esg-forest-matching-platform": {
+    coverImage: "/projects/esg/cover.webp",
+    heroImage: "/projects/esg/hero.webp",
+    galleryImages: [
+      "/projects/esg/sitemap.webp",
+      "/projects/esg/design-system.webp",
+      "/projects/esg/components.webp",
+      "/projects/esg/final-ui-01.webp",
+      "/projects/esg/final-ui-02.webp",
+    ],
+  },
+  "the-one": {
+    coverImage: "/projects/the-one/cover.webp",
+    heroImage: "/projects/the-one/hero.webp",
+    galleryImages: [],
+  },
+  "tea-space": {
+    coverImage: "/projects/tea-space/cover.webp",
+    heroImage: "/projects/tea-space/hero.webp",
+    galleryImages: [],
+  },
+} satisfies Record<string, ProjectImageAssets>;
+
 export const profile = {
   name: "HHW",
   title: "UI/UX Designer",
@@ -92,6 +122,7 @@ export const profile = {
 export const projects: Project[] = [
   {
     slug: "esg-forest-matching-platform",
+    ...projectImageAssets["esg-forest-matching-platform"],
     title: "ESG 林地媒合平台",
     eyebrow: "ESG Marketplace / Sustainability Platform",
     role:

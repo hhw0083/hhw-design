@@ -1,3 +1,6 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import Image from "next/image";
 import type { CSSProperties } from "react";
 import type { Project } from "@/data/projects";
 
@@ -6,7 +9,47 @@ type ProjectVisualProps = {
   compact?: boolean;
 };
 
+function getExistingImage(
+  project: Project,
+  compact: boolean,
+): string | undefined {
+  const candidates = compact
+    ? [project.coverImage]
+    : [project.heroImage, project.coverImage];
+
+  return candidates.find((imagePath) => {
+    if (!imagePath?.startsWith("/")) {
+      return false;
+    }
+
+    return existsSync(
+      join(process.cwd(), "public", imagePath.replace(/^\/+/, "")),
+    );
+  });
+}
+
 export function ProjectVisual({ project, compact = false }: ProjectVisualProps) {
+  const image = getExistingImage(project, compact);
+
+  if (image) {
+    return (
+      <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-portfolio-card">
+        <Image
+          src={image}
+          alt={`${project.title} ${compact ? "專案封面" : "專案主視覺"}`}
+          fill
+          sizes={
+            compact
+              ? "(min-width: 1024px) 44vw, 100vw"
+              : "(min-width: 1024px) 52vw, 100vw"
+          }
+          priority={!compact}
+          className="object-cover"
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       className="relative overflow-hidden rounded-lg border border-slate-200 bg-white shadow-portfolio-card"

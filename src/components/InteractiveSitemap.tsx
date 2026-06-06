@@ -389,10 +389,15 @@ export function InteractiveSitemap() {
               nodesDraggable={false}
               nodesConnectable={false}
               elementsSelectable
-              panOnDrag
-              zoomOnScroll
+              panOnDrag={false}
+              panOnScroll={false}
+
+              zoomOnScroll={false}
+              zoomOnPinch={false}
+              zoomOnDoubleClick={false}
+
               fitView
-              fitViewOptions={{ padding: isCompact ? 0.05 : 0.2 }}
+              fitViewOptions={{ padding: isCompact ? 0.05 : 0.12 }}
               onInit={(instance) => {
                 window.setTimeout(() => {
                   instance.fitView({ padding: isCompact ? 0.05 : 0.2 });
@@ -408,7 +413,7 @@ export function InteractiveSitemap() {
                 size={1}
                 variant={BackgroundVariant.Dots}
               />
-              <Controls showInteractive={false} />
+
             </ReactFlow>
           </div>
         </div>
