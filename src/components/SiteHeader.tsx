@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowUpRight, Mail, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -13,8 +14,10 @@ const navItems = [
 ];
 
 export function SiteHeader() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const hasElevatedSurface = isScrolled || pathname !== "/";
 
   useEffect(() => {
     const updateHeader = () => setIsScrolled(window.scrollY > 24);
@@ -28,10 +31,10 @@ export function SiteHeader() {
   return (
     <header className="pointer-events-none fixed inset-x-0 top-3 z-50 px-3 sm:px-5">
       <div
-        className={`pointer-events-auto relative mx-auto max-w-7xl overflow-hidden rounded-2xl border backdrop-blur-xl transition duration-300 md:rounded-[32px] ${
-          isScrolled
-            ? "border-white/15 bg-[rgba(6,17,29,0.90)] shadow-[0_16px_50px_rgba(2,8,15,0.24)]"
-            : "border-white/10 bg-[rgba(6,17,29,0.62)] shadow-[0_12px_40px_rgba(2,8,15,0.14)]"
+        className={`pointer-events-auto relative mx-auto max-w-7xl overflow-hidden rounded-2xl border transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 ease-out md:rounded-[32px] ${
+          hasElevatedSurface
+            ? "border-white/[0.12] bg-[rgba(2,6,23,0.68)] shadow-[0_14px_44px_rgba(2,8,15,0.18)] backdrop-blur-[20px]"
+            : "border-white/[0.07] bg-[rgba(2,6,23,0.22)] shadow-none backdrop-blur-md"
         }`}
       >
         <div className="flex h-14 items-center justify-between px-3 sm:px-4">
@@ -41,16 +44,14 @@ export function SiteHeader() {
             aria-label="HHW portfolio home"
             onClick={() => setIsMenuOpen(false)}
           >
-            
-              <Image
-                src="/images/x-logo-light.svg"
-                alt=""
-                width={30}
-                height={30}
-                priority
-                className="size-7 object-contain invert"
-              />
-          
+            <Image
+              src="/images/x-logo-light.svg"
+              alt=""
+              width={30}
+              height={30}
+              priority
+              className="size-7 object-contain invert"
+            />
             <span className="truncate">HHW Portfolio</span>
           </Link>
 
