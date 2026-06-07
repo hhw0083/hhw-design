@@ -886,5 +886,6 @@ export const awards: PortfolioAward[] = [
     year: "2014",
     title: "Red Dot Award 2014 Winner",
     subtitle: "Communication Design",
+    image: "/awards/red-dot-award.svg"
   },
 ];

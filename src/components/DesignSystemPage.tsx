@@ -162,7 +162,7 @@ function LeafMark({ className = "" }: { className?: string }) {
 
 function BoardShell({ children }: { children: ReactNode }) {
   return (
-    <div className="rounded-[24px] border border-[#E5E5E5] bg-[#FBF9F4] p-2 shadow-[0_24px_70px_rgba(33,37,41,0.08)]">
+    <div className="w-full min-w-0 rounded-[24px] border border-[#E5E5E5] bg-[#FBF9F4] p-2 shadow-[0_24px_70px_rgba(33,37,41,0.08)]">
       {children}
     </div>
   );
@@ -182,7 +182,7 @@ export function ComponentPanel({
   return (
     <article
       className={cx(
-        "rounded-[18px] border border-[#E5E5E5] bg-white p-5 shadow-sm md:p-6",
+        "w-full min-w-0 rounded-[18px] border border-[#E5E5E5] bg-white p-5 shadow-sm md:p-6",
         className,
       )}
     >
@@ -190,7 +190,7 @@ export function ComponentPanel({
         {number ? `${number}. ` : ""}
         {title}
       </h3>
-      <div className="mt-5">{children}</div>
+      <div className="mt-5 min-w-0">{children}</div>
     </article>
   );
 }
@@ -336,7 +336,7 @@ function LabeledDemo({
   children: ReactNode;
 }) {
   return (
-    <div>
+    <div className="min-w-0">
       <p className="mb-2 text-xs font-bold text-[#212529]">{label}</p>
       {children}
     </div>
@@ -361,7 +361,7 @@ export function GlobalNavigationShowcase() {
       <div className="space-y-5">
         <LabeledDemo label="Header / 頁首">
           <header className="flex flex-col gap-3 rounded-[12px] border border-[#E5E5E5] bg-white p-3 shadow-[0_10px_28px_rgba(33,37,41,0.08)] md:flex-row md:items-center">
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               <LogoMark />
               <p className="text-lg font-bold text-[#212529]">ESG Platform</p>
             </div>
@@ -433,12 +433,12 @@ function SegmentControl({
   active: string;
 }) {
   return (
-    <div className="inline-grid rounded-[8px] border border-[#D7D7D7] bg-white p-1 sm:auto-cols-fr sm:grid-flow-col">
+    <div className="grid w-full grid-cols-2 rounded-[8px] border border-[#D7D7D7] bg-white p-1">
       {options.map((option) => (
         <button
           key={option.label}
           className={cx(
-            "inline-flex items-center justify-center gap-2 rounded-[6px] px-4 py-2 text-sm font-semibold",
+            "flex min-w-0 items-center justify-center gap-2 rounded-[6px] px-2 py-2 text-sm font-semibold sm:px-4",
             option.label === active
               ? "bg-[#137D6A] text-white"
               : "text-[#6B7280]",
@@ -538,17 +538,17 @@ export function ButtonsInputsShowcase() {
     >
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <LabeledDemo label="Primary Button / 主要按鈕">
-          <button className="h-11 rounded-[8px] bg-[#137D6A] px-6 text-sm font-bold text-white shadow-sm">
+          <button className="h-11 w-full rounded-[8px] bg-[#137D6A] px-6 text-sm font-bold text-white shadow-sm sm:w-auto">
             主要按鈕
           </button>
         </LabeledDemo>
         <LabeledDemo label="Secondary / 次要按鈕">
-          <button className="h-11 rounded-[8px] border border-[#137D6A] bg-white px-6 text-sm font-bold text-[#137D6A]">
+          <button className="h-11 w-full rounded-[8px] border border-[#137D6A] bg-white px-6 text-sm font-bold text-[#137D6A] sm:w-auto">
             次要按鈕
           </button>
         </LabeledDemo>
         <LabeledDemo label="CTA Pill Button / 行動按鈕">
-          <button className="h-11 rounded-full bg-[#F2B600] px-6 text-sm font-bold text-white shadow-sm">
+          <button className="h-11 w-full rounded-full bg-[#F2B600] px-6 text-sm font-bold text-white shadow-sm sm:w-auto">
             立即申請
           </button>
         </LabeledDemo>
@@ -576,7 +576,7 @@ function ForestPreview({ compact = false }: { compact?: boolean }) {
     <div
       className={cx(
         "relative overflow-hidden rounded-[12px] border border-[#E5E5E5] bg-[#80CACE]/30",
-        compact ? "h-20 w-24" : "h-44 w-full",
+        compact ? "h-20 w-full" : "h-44 w-full",
       )}
     >
       <div className="absolute inset-0 bg-[linear-gradient(180deg,#bfe4e4_0%,#dff4ef_34%,#97c988_35%,#6ea768_60%,#4f8d5d_100%)]" />
@@ -626,7 +626,7 @@ function FavoriteButton({ active = false }: { active?: boolean }) {
 
 export function PropertyCard() {
   return (
-    <article className="max-w-[19rem] overflow-hidden rounded-[12px] border border-[#E5E5E5] bg-white shadow-sm">
+    <article className="w-full overflow-hidden rounded-[12px] border border-[#E5E5E5] bg-white shadow-sm xl:max-w-[19rem]">
       <div className="relative">
         <ForestPreview />
         <div className="absolute right-3 top-3">
@@ -662,7 +662,7 @@ export function PropertyCard() {
 
 export function PropertyListItem() {
   return (
-    <article className="grid gap-4 rounded-[12px] border border-[#E5E5E5] bg-white p-3 shadow-sm sm:grid-cols-[9rem_1fr_auto]">
+    <article className="grid w-full min-w-0 gap-4 rounded-[12px] border border-[#E5E5E5] bg-white p-3 shadow-sm sm:grid-cols-[9rem_minmax(0,1fr)_auto]">
       <ForestPreview compact />
       <div className="min-w-0">
         <p className="truncate text-sm font-bold text-[#212529]">
@@ -700,7 +700,7 @@ export function PropertyListItem() {
 
 function CompactMapResultCard() {
   return (
-    <article className="inline-grid max-w-[16rem] grid-cols-[4.5rem_1fr_auto] gap-3 rounded-[12px] border border-[#E5E5E5] bg-white p-3 shadow-sm">
+    <article className="grid w-full min-w-0 grid-cols-[4.5rem_minmax(0,1fr)_2.25rem] gap-3 rounded-[12px] border border-[#E5E5E5] bg-white p-3 shadow-sm sm:max-w-[16rem]">
       <ForestPreview compact />
       <div>
         <p className="text-xs font-bold text-[#212529]">示範林地</p>
@@ -723,7 +723,7 @@ export function MetricStrip() {
   ];
 
   return (
-    <div className="grid rounded-[12px] border border-[#E5E5E5] bg-white shadow-sm md:grid-cols-5">
+    <div className="grid w-full min-w-0 rounded-[12px] border border-[#E5E5E5] bg-white shadow-sm md:grid-cols-5">
       {metrics.map((metric) => (
         <div key={metric.label} className="border-b border-[#E5E5E5] p-4 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0">
           <p className="text-xs text-[#6B7280]">{metric.label}</p>
@@ -742,15 +742,15 @@ export function MetricStrip() {
 export function DataCardsShowcase() {
   return (
     <ComponentPanel title="Data Cards / 資料卡片" number="4" className="xl:col-span-2">
-      <div className="grid gap-6 xl:grid-cols-[18rem_1fr]">
+      <div className="grid min-w-0 gap-6 xl:grid-cols-[18rem_minmax(0,1fr)]">
         <LabeledDemo label="Featured Card / 精選標的卡片">
           <PropertyCard />
         </LabeledDemo>
-        <div className="space-y-5">
+        <div className="min-w-0 space-y-5">
           <LabeledDemo label="List Item / 橫式列表項目">
             <PropertyListItem />
           </LabeledDemo>
-          <div className="grid gap-5 lg:grid-cols-[17rem_1fr]">
+          <div className="grid min-w-0 gap-5 lg:grid-cols-[17rem_minmax(0,1fr)]">
             <LabeledDemo label="Map Result / 地圖結果卡片">
               <CompactMapResultCard />
             </LabeledDemo>
@@ -779,7 +779,7 @@ export function DataDisplayShowcase() {
     >
       <div className="space-y-6">
         <LabeledDemo label="Table / 結果表格">
-          <div className="overflow-x-auto rounded-[12px] border border-[#E5E5E5]">
+          <div className="max-w-full overflow-x-auto rounded-[12px] border border-[#E5E5E5]">
             <table className="min-w-[40rem] w-full border-collapse bg-white text-left text-xs">
               <thead className="bg-[#137D6A]/10 text-[#212529]">
                 <tr>
@@ -871,7 +871,7 @@ function MapMarkerShowcase() {
 export function CoreComponentsSection() {
   return (
     <BoardShell>
-      <div className="grid gap-3 xl:grid-cols-2">
+      <div className="grid w-full min-w-0 gap-3 xl:grid-cols-2">
         <GlobalNavigationShowcase />
         <SearchFilterShowcase />
         <ButtonsInputsShowcase />
