@@ -212,7 +212,7 @@ export function DesignGoalsSection({
                 key={goal.title}
                 className="grid grid-cols-[3rem_minmax(0,1fr)] gap-4 py-5"
               >
-                <div className="grid size-11 place-items-center rounded-lg border border-[color-mix(in_srgb,var(--goal-accent)_22%,white)] bg-[color-mix(in_srgb,var(--goal-accent)_8%,white)] text-[var(--goal-accent)]">
+                <div className="grid size-10 place-items-center rounded-lg border border-[color-mix(in_srgb,var(--goal-accent)_22%,white)] bg-[color-mix(in_srgb,var(--goal-accent)_8%,white)] text-[var(--goal-accent)]">
                   <Icon className="size-5" aria-hidden="true" />
                 </div>
                 <div>

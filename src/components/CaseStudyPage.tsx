@@ -3,14 +3,13 @@ import { join } from "node:path";
 import Image from "next/image";
 import type { ReactNode } from "react";
 import {
+  Accessibility,
   ArrowRight,
-  CheckCircle2,
   Code2,
   Layers3,
   MapPinned,
   Palette,
   RefreshCw,
-  ShieldCheck,
   Sparkles,
 } from "lucide-react";
 import {
@@ -33,7 +32,8 @@ const cardIcons = {
   palette: Palette,
   layers: Layers3,
   code: Code2,
-  accessibility: ShieldCheck,
+  accessibility: Accessibility,
+  "map-pinned": MapPinned,
   refresh: RefreshCw,
   sparkles: Sparkles,
 } satisfies Record<CaseStudyCardIcon, typeof Palette>;
@@ -43,17 +43,23 @@ function TextCard({
   description,
   eyebrow,
   icon,
+  largeIcon = false,
 }: {
   title: string;
   description: string;
   eyebrow?: string;
   icon?: ReactNode;
+  largeIcon?: boolean;
 }) {
   return (
     <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
       <div className="flex items-start gap-3">
         {icon ? (
-          <div className="grid size-10 shrink-0 place-items-center rounded-lg border border-teal-100 bg-teal-50 text-cyanline">
+          <div
+            className={`grid shrink-0 place-items-center rounded-lg border border-teal-100 bg-teal-50 text-cyanline ${
+              largeIcon ? "size-16" : "size-10"
+            }`}
+          >
             {icon}
           </div>
         ) : null}
@@ -75,22 +81,232 @@ function TextCard({
   );
 }
 
-function ScreenMockup({ kind }: { kind: ScreenKind }) {
+function CompactScreenPreview({ kind }: { kind: ScreenKind }) {
+  if (kind === "map") {
+    return (
+      <div className="relative h-full overflow-hidden bg-[#eaf4ef]">
+        <div className="absolute inset-0 bg-[linear-gradient(32deg,transparent_0_44%,rgba(19,125,106,0.14)_44%_46%,transparent_46%_100%),linear-gradient(118deg,transparent_0_56%,rgba(128,202,206,0.28)_56%_58%,transparent_58%_100%)]" />
+        <div className="absolute inset-x-3 top-3 flex h-9 items-center rounded-lg border border-slate-200 bg-white px-3 text-[10px] text-slate-400 shadow-sm">
+          搜尋地區或專案
+        </div>
+        {[
+          ["24%", "32%"],
+          ["58%", "26%"],
+          ["72%", "52%"],
+          ["38%", "66%"],
+          ["66%", "78%"],
+        ].map(([left, top], index) => (
+          <div
+            key={`${left}-${top}`}
+            className="absolute grid size-8 place-items-center rounded-full border-2 border-white bg-cyanline text-[10px] font-semibold text-white shadow-lg"
+            style={{ left, top }}
+          >
+            {index + 2}
+          </div>
+        ))}
+        <div className="absolute inset-x-3 bottom-3 rounded-lg border border-slate-200 bg-white p-3 shadow-sm">
+          <p className="text-[10px] font-semibold text-slate-900">
+            臺灣森林專案分布
+          </p>
+          <div className="mt-2 flex gap-2">
+            <span className="rounded-full bg-teal-50 px-2 py-1 text-[9px] text-cyanline">
+              80 個標的
+            </span>
+            <span className="rounded-full bg-amber-50 px-2 py-1 text-[9px] text-amber-700">
+              12 個媒合中
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (kind === "list") {
+    return (
+      <div className="h-full bg-slate-50 p-3">
+        <div className="flex h-9 items-center rounded-lg border border-slate-200 bg-white px-3 text-[10px] text-slate-400">
+          搜尋 ESG 專案
+        </div>
+        <div className="mt-3 flex gap-1.5">
+          {["地區", "類型", "狀態"].map((filter) => (
+            <span
+              key={filter}
+              className="rounded-full border border-slate-200 bg-white px-2 py-1 text-[9px] text-slate-500"
+            >
+              {filter}
+            </span>
+          ))}
+        </div>
+        <div className="mt-3 space-y-2">
+          {["森林碳匯共創計畫", "原生林復育專案", "友善林地合作方案"].map(
+            (title, index) => (
+              <div
+                key={title}
+                className="grid grid-cols-[4.25rem_1fr] gap-2 rounded-lg border border-slate-200 bg-white p-2 shadow-sm"
+              >
+                <div className="relative overflow-hidden rounded bg-gradient-to-br from-teal-100 to-emerald-300">
+                  <div className="absolute inset-x-0 bottom-0 h-8 bg-emerald-700/25" />
+                </div>
+                <div className="min-w-0">
+                  <p className="truncate text-[10px] font-semibold text-slate-900">
+                    {title}
+                  </p>
+                  <p className="mt-1 text-[9px] text-slate-400">
+                    {index === 1 ? "花蓮縣 · 86 公頃" : "南投縣 · 120 公頃"}
+                  </p>
+                  <div className="mt-2 flex items-center justify-between">
+                    <span className="rounded-full bg-emerald-50 px-1.5 py-0.5 text-[8px] font-medium text-emerald-700">
+                      媒合中
+                    </span>
+                    <span className="text-[8px] font-semibold text-cyanline">
+                      查看詳情
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ),
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  if (kind === "certificate") {
+    return (
+      <div className="h-full bg-white p-3">
+        <div className="rounded-lg bg-teal-50 p-3">
+          <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-cyanline">
+            ESG Certificate
+          </p>
+          <p className="mt-1 text-sm font-semibold text-slate-950">
+            憑證查詢
+          </p>
+          <div className="mt-3 h-9 rounded-lg border border-teal-100 bg-white px-3 py-2 text-[9px] text-slate-400">
+            輸入憑證編號或企業名稱
+          </div>
+        </div>
+        <div className="mt-3 overflow-hidden rounded-lg border border-slate-200">
+          <div className="grid grid-cols-[1.2fr_0.7fr_0.6fr] bg-slate-50 px-2 py-2 text-[8px] font-semibold text-slate-500">
+            <span>憑證編號</span>
+            <span>有效期限</span>
+            <span>狀態</span>
+          </div>
+          {["ESG-2026-018", "ESG-2026-012", "ESG-2025-086"].map(
+            (certificate, index) => (
+              <div
+                key={certificate}
+                className="grid grid-cols-[1.2fr_0.7fr_0.6fr] border-t border-slate-100 px-2 py-3 text-[8px]"
+              >
+                <span className="font-medium text-slate-700">{certificate}</span>
+                <span className="text-slate-400">
+                  {index === 2 ? "2026/12" : "2027/06"}
+                </span>
+                <span className="font-medium text-emerald-700">有效</span>
+              </div>
+            ),
+          )}
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-slate-200 bg-[#f7fbf8] shadow-sm">
-      <div className="absolute inset-x-0 top-0 flex h-10 items-center gap-2 border-b border-slate-200 bg-white px-4">
+    <div className="flex h-full flex-col bg-[#f7fbf8]">
+      <div className="relative bg-gradient-to-br from-teal-800 to-emerald-600 p-4 text-white">
+        <div className="flex items-center justify-between text-[8px]">
+          <span className="font-semibold">ESG Platform</span>
+          <span className="text-white/70">專案 · 成果 · 登入</span>
+        </div>
+        <p className="mt-7 text-lg font-semibold leading-tight">
+          讓永續專案與
+          <br />
+          企業需求相遇
+        </p>
+        <p className="mt-2 text-[9px] leading-4 text-white/70">
+          探索森林與自然碳匯合作機會
+        </p>
+        <div className="mt-4 flex h-9 items-center rounded-lg bg-white px-3 text-[9px] text-slate-400 shadow-sm">
+          搜尋地區、類型或關鍵字
+        </div>
+      </div>
+      <div className="grid grid-cols-4 gap-1.5 p-3">
+        {[
+          ["80", "專案"],
+          ["33", "單位"],
+          ["12", "媒合"],
+          ["8", "企業"],
+        ].map(([value, label]) => (
+          <div
+            key={label}
+            className="rounded-lg border border-slate-200 bg-white p-2 text-center"
+          >
+            <p className="text-sm font-semibold text-cyanline">{value}</p>
+            <p className="mt-0.5 text-[8px] text-slate-400">{label}</p>
+          </div>
+        ))}
+      </div>
+      <div className="grid flex-1 grid-cols-2 gap-2 px-3 pb-3">
+        {["精選林地專案", "自然碳匯計畫"].map((title) => (
+          <div
+            key={title}
+            className="overflow-hidden rounded-lg border border-slate-200 bg-white"
+          >
+            <div className="h-12 bg-gradient-to-br from-teal-100 to-emerald-300" />
+            <div className="p-2">
+              <p className="text-[9px] font-semibold text-slate-800">{title}</p>
+              <p className="mt-1 text-[8px] text-slate-400">媒合中 · 查看詳情</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ScreenMockup({
+  kind,
+  compact = false,
+}: {
+  kind: ScreenKind;
+  compact?: boolean;
+}) {
+  return (
+    <div
+      className={`relative overflow-hidden border border-slate-200 bg-[#f7fbf8] shadow-sm ${
+        compact ? "aspect-[4/5]" : "aspect-[16/10] rounded-lg"
+      }`}
+    >
+      <div
+        className={`absolute inset-x-0 top-0 flex items-center gap-2 border-b border-slate-200 bg-white ${
+          compact ? "h-8 px-3" : "h-10 px-4"
+        }`}
+      >
         <span className="size-2 rounded-full bg-red-300" />
         <span className="size-2 rounded-full bg-amber-300" />
         <span className="size-2 rounded-full bg-emerald-400" />
-        <span className="ml-3 h-3 w-32 rounded-full bg-slate-100" />
+        <span
+          className={`ml-3 rounded-full bg-slate-100 ${
+            compact ? "h-2 w-20" : "h-3 w-32"
+          }`}
+        />
       </div>
-      <div className="absolute inset-x-0 bottom-0 top-10 p-4">
-        {kind === "home" ? <HomePreview /> : null}
-        {kind === "login" ? <LoginPreview /> : null}
-        {kind === "list" ? <ListPreview /> : null}
-        {kind === "map" ? <MapPreview /> : null}
-        {kind === "news" ? <NewsPreview /> : null}
-        {kind === "certificate" ? <CertificatePreview /> : null}
+      <div
+        className={`absolute inset-x-0 bottom-0 ${
+          compact ? "top-8" : "top-10 p-4"
+        }`}
+      >
+        {compact ? (
+          <CompactScreenPreview kind={kind} />
+        ) : (
+          <>
+            {kind === "home" ? <HomePreview /> : null}
+            {kind === "login" ? <LoginPreview /> : null}
+            {kind === "list" ? <ListPreview /> : null}
+            {kind === "map" ? <MapPreview /> : null}
+            {kind === "news" ? <NewsPreview /> : null}
+            {kind === "certificate" ? <CertificatePreview /> : null}
+          </>
+        )}
       </div>
     </div>
   );
@@ -266,28 +482,40 @@ function GalleryVisual({
   image,
   visual,
   title,
+  compact = false,
 }: {
   image?: string;
   visual?: CaseStudyVisualKind;
   title: string;
+  compact?: boolean;
 }) {
   const existingImage = existingPublicImage(image);
 
   if (existingImage) {
     return (
-      <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+      <div
+        className={`relative overflow-hidden border-slate-200 bg-white shadow-sm ${
+          compact
+            ? "aspect-[4/5] border-b"
+            : "aspect-[16/10] rounded-lg border"
+        }`}
+      >
         <Image
           src={existingImage}
           alt={title}
           fill
-          sizes="(min-width: 768px) 50vw, 100vw"
+          sizes={
+            compact
+              ? "(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
+              : "(min-width: 768px) 50vw, 100vw"
+          }
           className="object-cover"
         />
       </div>
     );
   }
 
-  return visual ? <ScreenMockup kind={visual} /> : null;
+  return visual ? <ScreenMockup kind={visual} compact={compact} /> : null;
 }
 
 function CaseStudyBlock({ block }: { block: CaseStudyContentBlock }) {
@@ -331,8 +559,18 @@ function CaseStudyBlock({ block }: { block: CaseStudyContentBlock }) {
                 description={card.description}
                 eyebrow={card.eyebrow}
                 icon={
-                  Icon ? <Icon className="size-5" aria-hidden="true" /> : undefined
+                  Icon ? (
+                    <Icon
+                      className={
+                        card.eyebrow?.startsWith("Challenge")
+                          ? "size-6"
+                          : "size-5"
+                      }
+                      aria-hidden="true"
+                    />
+                  ) : undefined
                 }
+                largeIcon={card.eyebrow?.startsWith("Challenge")}
               />
             );
           })}
@@ -383,30 +621,31 @@ function CaseStudyBlock({ block }: { block: CaseStudyContentBlock }) {
 
     case "feature-gallery":
       return (
-        <div className="grid gap-5">
-          {block.items.map((item, index) => (
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          {block.items.map((item) => (
             <article
               key={item.title}
-              className="grid gap-5 rounded-lg border border-slate-200 bg-white p-5 shadow-sm lg:grid-cols-[0.85fr_1.15fr] lg:items-center"
+              className="flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"
             >
-              <div className={index % 2 ? "lg:order-2" : ""}>
+              <GalleryVisual
+                image={item.image}
+                visual={item.visual}
+                title={item.title}
+                compact
+              />
+              <div className="flex flex-1 flex-col p-5">
                 {item.eyebrow ? (
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyanline">
                     {item.eyebrow}
                   </p>
                 ) : null}
-                <h3 className="mt-3 text-2xl font-semibold text-slate-950">
+                <h3 className="mt-3 text-xl font-semibold text-slate-950">
                   {item.title}
                 </h3>
-                <p className="mt-4 text-sm leading-7 text-slate-600">
+                <p className="mt-3 text-sm leading-7 text-slate-600">
                   {item.description}
                 </p>
               </div>
-              <GalleryVisual
-                image={item.image}
-                visual={item.visual}
-                title={item.title}
-              />
             </article>
           ))}
         </div>
@@ -415,34 +654,8 @@ function CaseStudyBlock({ block }: { block: CaseStudyContentBlock }) {
     case "architecture":
       return (
         <>
-          <div className="grid gap-4 md:grid-cols-3">
-            {block.groups.map((group) => (
-              <article
-                key={group.title}
-                className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm"
-              >
-                <h3 className="text-lg font-semibold text-slate-950">
-                  {group.title}
-                </h3>
-                <ul className="mt-4 space-y-3">
-                  {group.items.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-center gap-3 text-sm text-slate-600"
-                    >
-                      <CheckCircle2
-                        className="size-4 flex-none text-mint"
-                        aria-hidden="true"
-                      />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
           {block.showInteractiveSitemap ? (
-            <div className="mt-5">
+            <div>
               <InteractiveSitemap />
             </div>
           ) : null}

@@ -77,6 +77,7 @@ export type CaseStudyCardIcon =
   | "layers"
   | "code"
   | "accessibility"
+  | "map-pinned"
   | "refresh"
   | "sparkles";
 
@@ -306,24 +307,28 @@ const esgCaseStudySections: CaseStudySection[] = [
             title: "資訊量大，需快速理解",
             description:
               "平台包含多角色、多頁面與多種資料類型，包含專案資訊、查詢條件、地圖資料、ESG 成果與憑證資訊，因此需要建立清楚的資訊層級與瀏覽節奏。",
+            icon: "layers",
           },
           {
             eyebrow: "Challenge 02",
             title: "符合無障礙 AA 規範",
             description:
               "介面設計需兼顧文字可讀性、色彩對比、表單提示、按鈕狀態與操作回饋，讓使用者在不同情境下都能清楚辨識資訊。",
+            icon: "accessibility",
           },
           {
             eyebrow: "Challenge 03",
             title: "專案中途遇到 CI 更新",
             description:
               "專案進行期間品牌視覺進行更新，既有頁面、色彩、元件與視覺資產需要同步調整，也考驗設計系統的延展性與維護效率。",
+            icon: "palette",
           },
           {
             eyebrow: "Challenge 04",
             title: "整合地理圖資查詢",
             description:
               "平台同時支援列表查詢與地圖查詢，因此設計上需要讓搜尋條件、專案資訊與地理位置能夠清楚連動。",
+            icon: "map-pinned",
           },
         ],
       },
@@ -831,37 +836,55 @@ export const projects: Project[] = [
   },
 ];
 
-export const experiences = [
+export type Experience = {
+  period: string;
+  title: string;
+  company: string;
+  summary: string;
+};
+
+export type PortfolioAward = {
+  year: string;
+  title: string;
+  subtitle: string;
+  image?: string;
+};
+
+export const experiences: Experience[] = [
   {
-    period: "2024 - Present",
-    title: "Product Designer",
-    company: "Independent / Contract",
-    description:
-      "與早期產品團隊合作，負責研究、產品策略、設計系統與高保真原型，聚焦 SaaS 與 workflow-heavy tools。",
+    period: "2024 – Present",
+    title: "Senior UI/UX Designer",
+    company: "AscendisTech Pte. Ltd. Taiwan Branch",
+    summary:
+      "與產品、行銷與前端團隊協作，推動平台型專案的使用流程、設計系統與介面優化落地。",
   },
   {
-    period: "2022 - 2024",
+    period: "2019 – 2023",
     title: "UI/UX Designer",
-    company: "Digital Product Studio",
-    description:
-      "參與金融、醫療與企業內部工具設計，建立從 discovery 到 design QA 的跨職能合作流程。",
+    company: "Motivation Software Co., Ltd.",
+    summary:
+      "負責平台介面流程、wireframe 與 prototype 設計，並串接前端協作與多元專案需求落地。",
   },
   {
-    period: "2020 - 2022",
-    title: "Visual Designer",
-    company: "Brand & Web Agency",
-    description:
-      "累積品牌識別、網站介面與視覺系統經驗，將品牌語言轉化為可延展的數位產品介面。",
+    period: "2015 – 2018",
+    title: "Junior UI Designer",
+    company: "IDT, Interactive Digital Technologies Inc.",
+    summary:
+      "參與地理圖資與政府專案介面設計，支援切版、視覺優化與產品維護執行。",
   },
 ];
 
 export const skills = [
-  "UX Research",
   "Interaction Design",
   "Design Systems",
   "Information Architecture",
   "Prototype Testing",
-  "Accessibility",
-  "Product Strategy",
-  "Design QA",
+];
+
+export const awards: PortfolioAward[] = [
+  {
+    year: "2014",
+    title: "Red Dot Award 2014 Winner",
+    subtitle: "Communication Design",
+  },
 ];

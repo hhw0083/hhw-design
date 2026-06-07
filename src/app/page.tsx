@@ -3,16 +3,23 @@ import Link from "next/link";
 import {
   ArrowDown,
   ArrowRight,
+  Box,
+  Braces,
+  Brush,
+  Code2,
   Download,
   ExternalLink,
+  ImageIcon,
   Layers3,
   Mail,
   PenTool,
+  Shapes,
   Workflow,
 } from "lucide-react";
+import { AwardVisual } from "@/components/AwardVisual";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SectionHeading } from "@/components/SectionHeading";
-import { experiences, profile, projects, skills } from "@/data/projects";
+import { awards, experiences, profile, projects, skills } from "@/data/projects";
 
 const strengths = [
   {
@@ -33,6 +40,16 @@ const strengths = [
       "建立 tokens、元件規格與 QA checklist，縮短設計到工程的落差。",
     icon: Layers3,
   },
+];
+
+const heroTools = [
+  { label: "Figma", icon: PenTool },
+  { label: "HTML", icon: Code2 },
+  { label: "CSS / SCSS", icon: Braces },
+  { label: "Photoshop", icon: ImageIcon },
+  { label: "Illustrator", icon: Shapes },
+  { label: "Maya", icon: Box },
+  { label: "ZBrush", icon: Brush },
 ];
 
 export default function Home() {
@@ -77,6 +94,29 @@ export default function Home() {
                 Resume highlights
                 <Download className="size-4" aria-hidden="true" />
               </Link>
+            </div>
+            <div className="mt-7 max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                Tools &amp; Skills
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {heroTools.map((tool) => {
+                  const Icon = tool.icon;
+
+                  return (
+                    <span
+                      key={tool.label}
+                      className="inline-flex h-9 items-center gap-2 rounded-lg border border-slate-200 bg-white/90 px-3 text-xs font-medium text-slate-700 shadow-sm backdrop-blur"
+                    >
+                      <Icon
+                        className="size-4 text-cyanline"
+                        aria-hidden="true"
+                      />
+                      {tool.label}
+                    </span>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
@@ -140,46 +180,99 @@ export default function Home() {
         id="experience"
         className="section-band bg-canvas py-20 md:py-28"
       >
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.72fr_1fr] lg:px-8">
-          <div>
-            <SectionHeading
-              eyebrow="Resume"
-              title="Experience shaped by product teams, systems, and launch pressure."
-            />
-            <div className="mt-8 flex flex-wrap gap-2">
-              {skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 shadow-sm"
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-14 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyanline">
+                Experience
+              </p>
+              <h2 className="mt-4 max-w-xl text-3xl font-semibold leading-tight text-slate-950 md:text-5xl">
+                跨團隊經驗，
+                <span className="block">驅動產品價值與交付品質。</span>
+              </h2>
+
+              <div className="mt-9 flex max-w-xl flex-wrap gap-2">
+                {skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full border border-slate-300 bg-white/70 px-3.5 py-2 text-sm text-slate-700"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              {experiences.map((experience, index) => (
+                <article
+                  key={`${experience.period}-${experience.title}`}
+                  className="grid gap-4 border-b border-slate-200 py-8 first:pt-0 last:border-b-0 last:pb-0 md:grid-cols-[8.5rem_1.25rem_minmax(0,1fr)] md:gap-5 md:py-12 md:first:pt-12 md:last:pb-12 lg:py-14 lg:first:pt-14 lg:last:pb-14"
                 >
-                  {skill}
-                </span>
+                  <p className="flex items-center gap-2 text-sm font-semibold text-slate-800">
+                    <span
+                      className="size-2 rounded-full bg-cyanline md:hidden"
+                      aria-hidden="true"
+                    />
+                    {experience.period}
+                  </p>
+
+                  <div className="relative hidden md:block" aria-hidden="true">
+                    {index < experiences.length - 1 ? (
+                      <span className="absolute bottom-[-2rem] left-1/2 top-2 w-px -translate-x-1/2 bg-slate-200" />
+                    ) : null}
+                    <span className="absolute left-1/2 top-1 size-3 -translate-x-1/2 rounded-full border-[3px] border-canvas bg-cyanline ring-1 ring-slate-300" />
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-semibold text-slate-950 md:text-2xl">
+                      {experience.title}
+                    </h3>
+                    <p className="mt-1.5 text-sm font-medium text-cyanline">
+                      {experience.company}
+                    </p>
+                    <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">
+                      {experience.summary}
+                    </p>
+                  </div>
+                </article>
               ))}
             </div>
           </div>
 
-          <div className="space-y-4">
-            {experiences.map((experience) => (
-              <article
-                key={`${experience.period}-${experience.title}`}
-                className="grid gap-4 rounded-lg border border-slate-200 bg-white p-6 shadow-portfolio-card md:grid-cols-[10rem_1fr]"
-              >
-                <p className="text-sm font-medium text-brass">
-                  {experience.period}
-                </p>
-                <div>
-                  <h3 className="text-xl font-semibold text-slate-950">
-                    {experience.title}
-                  </h3>
-                  <p className="mt-1 text-sm text-cyanline">
-                    {experience.company}
-                  </p>
-                  <p className="mt-4 text-sm leading-7 text-slate-600">
-                    {experience.description}
-                  </p>
-                </div>
-              </article>
-            ))}
+          <div className="mt-20 border-y border-slate-200 py-10 md:mt-4 md:py-12">
+            <div className="grid gap-7 lg:grid-cols-12 lg:items-center lg:gap-8">
+              <p className="text-left text-xl font-semibold text-cyanline md:text-2xl lg:col-span-3">
+                Awards
+              </p>
+
+              <div className="lg:col-span-9 lg:col-start-4">
+                {awards.map((award) => (
+                  <article
+                    key={`${award.year}-${award.title}`}
+                    className="grid gap-5 sm:grid-cols-[8.5rem_minmax(0,1fr)] sm:items-center sm:gap-5"
+                  >
+                    <p className="text-sm font-semibold text-slate-800">
+                      {award.year}
+                    </p>
+                    <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_13.75rem] md:items-center">
+                      <div>
+                        <h3 className="text-lg font-semibold leading-7 text-slate-950 md:text-xl">
+                          {award.title}
+                        </h3>
+                        <p className="mt-1 text-sm text-slate-500">
+                          {award.subtitle}
+                        </p>
+                      </div>
+                      <AwardVisual
+                        image={award.image}
+                        alt={`${award.title} ${award.subtitle}`}
+                      />
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
