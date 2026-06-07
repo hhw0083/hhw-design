@@ -46,6 +46,84 @@ a {
   border-top: 1px solid rgba(15, 23, 42, 0.08);
 }
 
+@keyframes home-loader-brand-reveal {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.94) translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes home-loader-progress {
+  0% {
+    transform: translateX(-105%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes home-loader-scan {
+  0% {
+    opacity: 0;
+    transform: translateY(-7rem);
+  }
+  40% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(7rem);
+  }
+}
+
+.home-loader {
+  opacity: 1;
+  transition: opacity 250ms ease, visibility 250ms ease;
+}
+
+.home-loader--leaving {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.home-loader__brand {
+  animation: home-loader-brand-reveal 520ms cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+.home-loader__progress {
+  animation: home-loader-progress 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.home-loader__scan {
+  animation: home-loader-scan 900ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-loader {
+    transition-duration: 160ms;
+  }
+
+  .home-loader__brand {
+    animation: none;
+  }
+
+  .home-loader__progress {
+    animation: none;
+    transform: none;
+  }
+
+  .home-loader__scan {
+    display: none;
+  }
+}
+
 .react-flow__node {
   border: 0;
   background: transparent;

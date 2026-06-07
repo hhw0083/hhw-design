@@ -852,7 +852,7 @@ export type PortfolioAward = {
 
 export const experiences: Experience[] = [
   {
-    period: "2024 – Present",
+    period: "2024 – 2025",
     title: "Senior UI/UX Designer",
     company: "AscendisTech Pte. Ltd. Taiwan Branch",
     summary:

@@ -12,11 +12,14 @@ import {
   ImageIcon,
   Layers3,
   Mail,
+  MapPin,
   PenTool,
   Shapes,
+  Target,
   Workflow,
 } from "lucide-react";
 import { AwardVisual } from "@/components/AwardVisual";
+import { HomeLoadingScreen } from "@/components/HomeLoadingScreen";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { awards, experiences, profile, projects, skills } from "@/data/projects";
@@ -54,49 +57,52 @@ const heroTools = [
 
 export default function Home() {
   return (
-    <main className="overflow-hidden bg-canvas text-slate-950">
-      <section className="relative min-h-[86svh] overflow-hidden bg-white pt-16">
+    <>
+      <HomeLoadingScreen />
+      <main className="overflow-hidden bg-canvas text-slate-950">
+      <section className="relative min-h-[86svh] overflow-hidden bg-[#04101b] pt-16">
         <Image
-          src="/images/hero-uiux-studio.png"
+          src="/images/hero-uiux-studio.webp"
           alt="UI UX designer workspace with layered interface panels"
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-45"
+          className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#fff_0%,rgba(255,255,255,0.94)_42%,rgba(255,255,255,0.68)_78%,rgba(255,255,255,0.92)_100%)]" />
-        <div className="absolute inset-0 grid-lines opacity-[0.18]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,10,18,0.97)_0%,rgba(3,15,26,0.91)_38%,rgba(3,15,26,0.34)_68%,rgba(2,10,18,0.10)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_36%,rgba(20,184,166,0.12),transparent_26rem),linear-gradient(180deg,rgba(2,8,15,0.03),rgba(2,8,15,0.36))]" />
+        <div className="absolute inset-0 grid-lines opacity-[0.08]" />
 
         <div className="relative mx-auto flex min-h-[calc(86svh-4rem)] max-w-7xl items-center px-4 py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="mb-5 inline-flex rounded-full border border-teal-200 bg-teal-50 px-3 py-1.5 text-sm font-medium text-cyanline">
+            <p className="mb-5 inline-flex rounded-full border border-teal-300/30 bg-teal-300/10 px-3 py-1.5 text-sm font-medium text-teal-200 backdrop-blur">
               {profile.availability}
             </p>
-            <h1 className="max-w-3xl text-5xl font-semibold leading-[1.05] text-slate-950 md:text-7xl">
+            <h1 className="max-w-3xl text-5xl font-semibold leading-[1.05] text-white md:text-7xl">
               {profile.name}
-              <span className="block text-slate-500">{profile.title}</span>
+              <span className="block text-teal-300">{profile.title}</span>
             </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-600 md:text-xl">
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl">
               {profile.intro}
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
                 href="#projects"
-                className="inline-flex h-12 items-center gap-2 rounded-full bg-slate-950 px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-cyanline"
+                className="inline-flex h-12 items-center gap-2 rounded-full bg-cyanline px-5 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(15,118,110,0.28)] transition hover:bg-teal-500"
               >
                 View projects
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
               <Link
                 href="#experience"
-                className="inline-flex h-12 items-center gap-2 rounded-full border border-slate-200 bg-white px-5 text-sm font-semibold text-slate-900 shadow-sm transition hover:border-slate-300 hover:bg-slate-50"
+                className="inline-flex h-12 items-center gap-2 rounded-full border border-white/20 bg-black/20 px-5 text-sm font-semibold text-white shadow-sm backdrop-blur transition hover:border-teal-300/50 hover:bg-white/10"
               >
                 Resume highlights
                 <Download className="size-4" aria-hidden="true" />
               </Link>
             </div>
             <div className="mt-7 max-w-2xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
                 Tools &amp; Skills
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
@@ -106,10 +112,10 @@ export default function Home() {
                   return (
                     <span
                       key={tool.label}
-                      className="inline-flex h-9 items-center gap-2 rounded-lg border border-slate-200 bg-white/90 px-3 text-xs font-medium text-slate-700 shadow-sm backdrop-blur"
+                      className="inline-flex h-9 items-center gap-2 rounded-lg border border-white/10 bg-black/30 px-3 text-xs font-medium text-slate-200 shadow-sm backdrop-blur"
                     >
                       <Icon
-                        className="size-4 text-cyanline"
+                        className="size-4 text-teal-300"
                         aria-hidden="true"
                       />
                       {tool.label}
@@ -124,7 +130,7 @@ export default function Home() {
         <Link
           href="#about"
           aria-label="Scroll to about section"
-          className="absolute bottom-5 left-1/2 grid size-10 -translate-x-1/2 place-items-center rounded-full border border-slate-200 bg-white/85 text-slate-700 shadow-sm backdrop-blur transition hover:border-slate-300 hover:text-slate-950"
+          className="absolute bottom-5 left-1/2 grid size-10 -translate-x-1/2 place-items-center rounded-full border border-white/15 bg-black/30 text-slate-200 shadow-sm backdrop-blur transition hover:border-teal-300/50 hover:bg-white/10 hover:text-white"
         >
           <ArrowDown className="size-4" aria-hidden="true" />
         </Link>
@@ -277,47 +283,84 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="section-band bg-white py-20 md:py-28">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_0.75fr] lg:px-8">
-          <SectionHeading
-            eyebrow="Contact"
-            title="Ready to discuss product design, case studies, or the next role."
-            description="目前開放 UI/UX Designer、Product Designer 與設計系統相關職缺。歡迎來信安排 portfolio review 或面試。"
-          />
-          <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-portfolio-card">
+      <section
+        id="contact"
+        className="section-band relative isolate overflow-hidden bg-[#06111d] py-20 text-white md:py-28"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(circle_at_76%_32%,rgba(20,184,166,0.16),transparent_27rem),radial-gradient(circle_at_12%_88%,rgba(14,116,144,0.12),transparent_24rem),linear-gradient(135deg,#06111d_0%,#081827_55%,#06111d_100%)]"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute -right-[12%] top-[34%] -z-10 h-32 w-[76%] -rotate-[13deg] bg-[linear-gradient(90deg,transparent,rgba(45,212,191,0.08),transparent)] blur-xl"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute -left-[18%] bottom-[4%] -z-10 h-24 w-[62%] rotate-[18deg] bg-[linear-gradient(90deg,transparent,rgba(14,165,233,0.06),transparent)] blur-2xl"
+          aria-hidden="true"
+        />
+
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_0.75fr] lg:items-center lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-300">
+              Contact
+            </p>
+            <h2 className="mt-4 text-3xl font-semibold leading-tight text-white md:text-5xl">
+              Ready to discuss product design, case studies, or the next role.
+            </h2>
+            <p className="mt-5 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">
+              目前開放 UI/UX Designer、Product Designer 與設計系統相關職缺。歡迎來信安排 portfolio review 或面試。
+            </p>
+          </div>
+
+          <div className="rounded-lg border border-white/10 bg-white/[0.06] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl">
             <div className="grid gap-4">
               <Link
                 href={`mailto:${profile.email}`}
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-slate-950 text-sm font-semibold text-white transition hover:bg-cyanline"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-black px-5 text-sm font-semibold text-white transition hover:bg-cyanline"
               >
                 <Mail className="size-4" aria-hidden="true" />
-                {profile.email}
+                <span className="truncate">{profile.email}</span>
               </Link>
               <Link
                 href="https://www.linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white text-sm font-semibold text-slate-900 transition hover:border-slate-300 hover:bg-slate-50"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 text-sm font-semibold text-white transition hover:border-teal-300/30 hover:bg-white/[0.08]"
               >
                 LinkedIn
                 <ExternalLink className="size-4" aria-hidden="true" />
               </Link>
             </div>
-            <div className="mt-6 grid grid-cols-2 gap-3 text-sm">
-              <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
-                <p className="text-slate-500">Location</p>
-                <p className="mt-2 font-semibold text-slate-950">
-                  {profile.location}
-                </p>
+
+            <div className="mt-6 grid gap-3 text-sm sm:grid-cols-2">
+              <div className="flex min-h-24 items-center gap-4 rounded-lg border border-white/10 bg-black/10 p-4">
+                <MapPin
+                  className="size-6 shrink-0 text-teal-300"
+                  aria-hidden="true"
+                />
+                <div>
+                  <p className="text-slate-400">Location</p>
+                  <p className="mt-1 font-semibold text-white">
+                    {profile.location}
+                  </p>
+                </div>
               </div>
-              <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
-                <p className="text-slate-500">Focus</p>
-                <p className="mt-2 font-semibold text-slate-950">SaaS / Fintech</p>
+              <div className="flex min-h-24 items-center gap-4 rounded-lg border border-white/10 bg-black/10 p-4">
+                <Target
+                  className="size-6 shrink-0 text-teal-300"
+                  aria-hidden="true"
+                />
+                <div>
+                  <p className="text-slate-400">Focus</p>
+                  <p className="mt-1 font-semibold text-white">SaaS / Fintech</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   );
 }
