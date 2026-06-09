@@ -391,7 +391,7 @@ export function InteractiveSitemap() {
               elementsSelectable
               panOnDrag={false}
               panOnScroll={false}
-
+              preventScrolling={false}
               zoomOnScroll={false}
               zoomOnPinch={false}
               zoomOnDoubleClick={false}
