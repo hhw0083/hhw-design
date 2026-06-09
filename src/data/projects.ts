@@ -57,6 +57,16 @@ export type CaseStudySectionType =
   | "challenge"
   | "goals"
   | "key-screens"
+  | "dashboard-design"
+  | "key-improvements"
+  | "theme-system"
+  | "feature-extension"
+  | "wireframe-prototype"
+  | "component-extension"
+  | "visual-direction"
+  | "shopping-experience"
+  | "checkout-experience"
+  | "frontend-layout"
   | "information-architecture"
   | "user-flow"
   | "design-system"
@@ -70,7 +80,41 @@ export type CaseStudyVisualKind =
   | "list"
   | "map"
   | "news"
-  | "certificate";
+  | "certificate"
+  | "tcb-hero"
+  | "tcb-dashboard-light"
+  | "tcb-dashboard-dark"
+  | "tcb-vm-list"
+  | "tcb-vm-detail"
+  | "tcb-deploy-flow"
+  | "tcb-announcement"
+  | "tcb-theme-system"
+  | "tcb-design-system"
+  | "tcb-ui-components"
+  | "tcb-final-light"
+  | "tcb-final-dark"
+  | "rmic-hero"
+  | "rmic-platform-overview"
+  | "rmic-map-system"
+  | "rmic-case-list"
+  | "rmic-feature-extension"
+  | "rmic-wireframe"
+  | "rmic-prototype"
+  | "rmic-component-extension"
+  | "rmic-final-ui-01"
+  | "rmic-final-ui-02"
+  | "jule-hero"
+  | "jule-homepage"
+  | "jule-visual-direction"
+  | "jule-product-list"
+  | "jule-product-detail"
+  | "jule-cart"
+  | "jule-checkout"
+  | "jule-rewards-coupons"
+  | "jule-mobile-rwd"
+  | "jule-bootstrap-layout"
+  | "jule-final-ui-01"
+  | "jule-final-ui-02";
 
 export type CaseStudyCardIcon =
   | "palette"
@@ -79,7 +123,13 @@ export type CaseStudyCardIcon =
   | "accessibility"
   | "map-pinned"
   | "refresh"
-  | "sparkles";
+  | "sparkles"
+  | "gauge"
+  | "monitor"
+  | "moon"
+  | "workflow"
+  | "bell"
+  | "server";
 
 export type CaseStudyCard = {
   title: string;
@@ -124,6 +174,7 @@ export type CaseStudyContentBlock =
       type: "design-goals";
       goals: DesignGoal[];
       previewImage?: string;
+      previewVisual?: CaseStudyVisualKind;
     }
   | {
       type: "feature-gallery";
@@ -149,6 +200,11 @@ export type CaseStudyContentBlock =
       items: CaseStudyGalleryItem[];
     }
   | {
+      type: "visual-showcase";
+      layout?: "hero-grid" | "two-column" | "single";
+      items: CaseStudyGalleryItem[];
+    }
+  | {
       type: "tags";
       items: string[];
     }
@@ -170,6 +226,7 @@ export type CaseStudySection = {
 
 export type Project = ProjectImageAssets & {
   slug: string;
+  visualFallback?: CaseStudyVisualKind;
   title: string;
   eyebrow: string;
   role: string;
@@ -210,6 +267,55 @@ export const projectImageAssets = {
       "/projects/esg/components.webp",
       "/projects/esg/final-ui-01.webp",
       "/projects/esg/final-ui-02.webp",
+    ],
+  },
+  tcb: {
+    coverImage: "/projects/tcb/cover.webp",
+    heroImage: "/projects/tcb/hero.webp",
+    galleryImages: [
+      "/projects/tcb/dashboard-light.webp",
+      "/projects/tcb/dashboard-dark.webp",
+      "/projects/tcb/vm-list.webp",
+      "/projects/tcb/vm-detail.webp",
+      "/projects/tcb/deploy-flow.webp",
+      "/projects/tcb/announcement.webp",
+      "/projects/tcb/theme-system.webp",
+      "/projects/tcb/design-system.webp",
+      "/projects/tcb/ui-components.webp",
+      "/projects/tcb/final-light.webp",
+      "/projects/tcb/final-dark.webp",
+    ],
+  },
+  rmic: {
+    coverImage: "/projects/rmic/cover.webp",
+    heroImage: "/projects/rmic/hero.webp",
+    galleryImages: [
+      "/projects/rmic/platform-overview.webp",
+      "/projects/rmic/map-system.webp",
+      "/projects/rmic/case-list.webp",
+      "/projects/rmic/feature-extension.webp",
+      "/projects/rmic/wireframe.webp",
+      "/projects/rmic/prototype.webp",
+      "/projects/rmic/component-extension.webp",
+      "/projects/rmic/final-ui-01.webp",
+      "/projects/rmic/final-ui-02.webp",
+    ],
+  },
+  "jule-ecommerce": {
+    coverImage: "/projects/jule-ecommerce/cover.webp",
+    heroImage: "/projects/jule-ecommerce/hero.webp",
+    galleryImages: [
+      "/projects/jule-ecommerce/homepage.webp",
+      "/projects/jule-ecommerce/visual-direction.webp",
+      "/projects/jule-ecommerce/product-list.webp",
+      "/projects/jule-ecommerce/product-detail.webp",
+      "/projects/jule-ecommerce/cart.webp",
+      "/projects/jule-ecommerce/checkout.webp",
+      "/projects/jule-ecommerce/rewards-coupons.webp",
+      "/projects/jule-ecommerce/mobile-rwd.webp",
+      "/projects/jule-ecommerce/bootstrap-layout.webp",
+      "/projects/jule-ecommerce/final-ui-01.webp",
+      "/projects/jule-ecommerce/final-ui-02.webp",
     ],
   },
 } satisfies Record<string, ProjectImageAssets>;
@@ -582,6 +688,921 @@ const esgCaseStudySections: CaseStudySection[] = [
   },
 ];
 
+const tcbCaseStudySections: CaseStudySection[] = [
+  {
+    number: "01",
+    title: "Project Overview",
+    subtitle: "專案概覽",
+    type: "overview",
+    description:
+      "本專案針對既有虛擬機管理平台進行介面與功能體驗優化，重點包含 Dashboard 設計、公告功能整合、Light / Dark Theme 雙主題、Design System 建立，以及虛擬機部署流程優化。",
+    contentBlocks: [
+      {
+        type: "facts",
+        items: [
+          { label: "Project", value: "TCB 虛擬機管理平台" },
+          { label: "Role", value: "UI/UX Designer" },
+          { label: "Platform", value: "Enterprise Admin Platform" },
+          { label: "Focus", value: "Dashboard · Theme · Workflow" },
+        ],
+      },
+      {
+        type: "cards",
+        columns: 3,
+        items: [
+          {
+            title: "Dashboard 與資訊層級",
+            description:
+              "重新整理平台首頁的資訊優先順序，讓資源、公告與虛擬機狀態更容易被快速判讀。",
+            icon: "gauge",
+          },
+          {
+            title: "雙主題與品牌融合",
+            description:
+              "延伸合作金庫品牌識別，建立兼顧金融穩定感與科技產品感的 Light / Dark Theme。",
+            icon: "moon",
+          },
+          {
+            title: "流程與系統一致性",
+            description:
+              "優化部署設定步驟，並統一表格、表單、狀態與操作元件，降低模組間的視覺落差。",
+            icon: "workflow",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "02",
+    title: "The Challenge",
+    subtitle: "設計挑戰",
+    type: "challenge",
+    description:
+      "在既有功能與工程架構限制下，重新建立資訊層級、視覺一致性與長時間管理情境下的操作舒適度。",
+    contentBlocks: [
+      {
+        type: "cards",
+        columns: 2,
+        items: [
+          {
+            eyebrow: "Challenge 01",
+            title: "資訊層級不夠清楚",
+            description:
+              "Dashboard 資訊需要重新整理，協助使用者快速掌握系統狀態。",
+            icon: "layers",
+          },
+          {
+            eyebrow: "Challenge 02",
+            title: "既有介面偏工程導向",
+            description:
+              "功能完整但視覺與操作層級較分散，需要提升產品感與一致性。",
+            icon: "monitor",
+          },
+          {
+            eyebrow: "Challenge 03",
+            title: "長時間使用可讀性",
+            description:
+              "平台屬於管理工具，需要支援亮色與暗色主題，降低長時間操作負擔。",
+            icon: "moon",
+          },
+          {
+            eyebrow: "Challenge 04",
+            title: "部署流程理解成本高",
+            description:
+              "虛擬機部署涉及多項設定，需要重新整理步驟與欄位關係。",
+            icon: "workflow",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "03",
+    title: "Design Goals",
+    subtitle: "設計目標",
+    type: "goals",
+    description:
+      "從管理者日常查看狀態與執行任務的情境出發，建立清楚、穩定且能長時間使用的產品體驗。",
+    contentBlocks: [
+      {
+        type: "design-goals",
+        previewImage: "/projects/tcb/dashboard-light.webp",
+        previewVisual: "tcb-dashboard-light",
+        goals: [
+          {
+            title: "清楚掌握狀態",
+            description:
+              "讓使用者進入平台後，能快速理解資源、公告與虛擬機狀態。",
+            icon: "navigation",
+          },
+          {
+            title: "建立品牌一致性",
+            description:
+              "融合合作金庫既有視覺，建立穩定且現代的後台產品體驗。",
+            icon: "layers",
+          },
+          {
+            title: "降低操作成本",
+            description:
+              "重新整理部署流程與元件狀態，讓操作路徑更清楚。",
+            icon: "check",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "04",
+    title: "Dashboard Design",
+    subtitle: "Dashboard 設計",
+    type: "dashboard-design",
+    description:
+      "Dashboard 被重新設計為平台的資訊總覽入口，整合虛擬機狀態、系統公告與關鍵資源資訊，讓使用者在進入平台後能快速掌握目前系統狀況。",
+    contentBlocks: [
+      {
+        type: "visual-showcase",
+        layout: "hero-grid",
+        items: [
+          {
+            title: "Light Theme Dashboard",
+            description:
+              "以明亮表面與清楚的資訊分區呈現資源用量、虛擬機狀態與常用操作。",
+            image: "/projects/tcb/dashboard-light.webp",
+            visual: "tcb-dashboard-light",
+          },
+          {
+            title: "Dark Theme Dashboard",
+            description:
+              "透過深藍黑背景、低透明卡片與細邊框，維持長時間監控情境的閱讀舒適度。",
+            image: "/projects/tcb/dashboard-dark.webp",
+            visual: "tcb-dashboard-dark",
+          },
+          {
+            title: "公告中心",
+            description:
+              "將優先層級、日期與已讀狀態整合進公告卡片，提升重要訊息的辨識效率。",
+            image: "/projects/tcb/announcement.webp",
+            visual: "tcb-announcement",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "05",
+    title: "Key Improvements",
+    subtitle: "關鍵優化",
+    type: "key-improvements",
+    description:
+      "優化範圍聚焦日常管理中最常被使用的資訊入口、部署任務與跨模組元件，讓既有功能更容易理解與操作。",
+    contentBlocks: [
+      {
+        type: "cards",
+        columns: 2,
+        items: [
+          {
+            eyebrow: "01",
+            title: "Dashboard 資訊重整",
+            description:
+              "重新整理首頁資訊優先順序，讓資源狀態、公告與虛擬機狀態更容易被判讀。",
+            icon: "gauge",
+          },
+          {
+            eyebrow: "02",
+            title: "公告功能整合",
+            description:
+              "將公告整合進平台介面，讓重要訊息能在管理情境中被快速查看。",
+            icon: "bell",
+          },
+          {
+            eyebrow: "03",
+            title: "虛擬機部署流程優化",
+            description:
+              "重新整理部署設定欄位與步驟，引導使用者更清楚完成建立流程。",
+            icon: "workflow",
+          },
+          {
+            eyebrow: "04",
+            title: "狀態與操作元件統一",
+            description:
+              "統一表格、狀態標籤、按鈕與表單樣式，降低不同模組之間的視覺落差。",
+            icon: "server",
+          },
+        ],
+      },
+      {
+        type: "visual-showcase",
+        layout: "hero-grid",
+        items: [
+          {
+            title: "虛擬機部署流程",
+            description:
+              "以 stepper、設定群組與即時摘要協助使用者理解建立進度。",
+            image: "/projects/tcb/deploy-flow.webp",
+            visual: "tcb-deploy-flow",
+          },
+          {
+            title: "公告功能",
+            description:
+              "依訊息重要性與閱讀狀態建立更清楚的公告層級。",
+            image: "/projects/tcb/announcement.webp",
+            visual: "tcb-announcement",
+          },
+          {
+            title: "虛擬機列表",
+            description:
+              "統一狀態、資源資訊與操作入口，提升大量資料的掃讀效率。",
+            image: "/projects/tcb/vm-list.webp",
+            visual: "tcb-vm-list",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "06",
+    title: "Theme & Design System",
+    subtitle: "雙主題與設計系統",
+    type: "theme-system",
+    description:
+      "Dark Theme 不只是將介面反白，而是重新處理背景層級、卡片透明度、文字對比與狀態色，確保在長時間使用下仍維持可讀性。",
+    contentBlocks: [
+      {
+        type: "visual-showcase",
+        layout: "two-column",
+        items: [
+          {
+            title: "Light / Dark Theme",
+            description:
+              "以相同資訊架構對照兩種主題的背景層級、卡片透明度與文字對比。",
+            image: "/projects/tcb/theme-system.webp",
+            visual: "tcb-theme-system",
+          },
+          {
+            title: "Design System",
+            description:
+              "整理合作金庫品牌色延伸、字級、間距、狀態色與互動元件狀態。",
+            image: "/projects/tcb/design-system.webp",
+            visual: "tcb-design-system",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "07",
+    title: "UI Components",
+    subtitle: "介面元件",
+    type: "ui-components",
+    description:
+      "元件庫涵蓋 Button、Input、Select、Table、Status Badge、Dashboard Card、Announcement Card、Modal、Stepper、Theme Switch 與 VM Status。",
+    contentBlocks: [
+      {
+        type: "visual-showcase",
+        layout: "single",
+        items: [
+          {
+            title: "TCB Core Components",
+            description:
+              "以一致的狀態、間距與互動規則，支援 Dashboard、虛擬機管理與部署任務。",
+            image: "/projects/tcb/ui-components.webp",
+            visual: "tcb-ui-components",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "08",
+    title: "Final Design & Reflection",
+    subtitle: "最終介面與反思",
+    type: "reflection",
+    description:
+      "這次專案讓我更明確理解到，後台系統的優化不只是視覺翻新，而是需要在既有功能限制下，重新建立資訊層級、操作節奏與設計規範。尤其在亮暗主題與金融品牌視覺的整合上，需要同時兼顧品牌識別、可讀性與系統延展性。",
+    contentBlocks: [
+      {
+        type: "gallery",
+        items: [
+          {
+            title: "Final Dashboard / Light",
+            description:
+              "明亮模式強調資訊掃讀、狀態辨識與日常管理效率。",
+            image: "/projects/tcb/final-light.webp",
+            visual: "tcb-final-light",
+          },
+          {
+            title: "Final Dashboard / Dark",
+            description:
+              "暗色模式以玻璃霧化層級與低刺激對比支援長時間使用。",
+            image: "/projects/tcb/final-dark.webp",
+            visual: "tcb-final-dark",
+          },
+          {
+            title: "Dashboard Overview / Light",
+            description:
+              "整合系統資源、公告與虛擬機狀態的亮色資訊總覽。",
+            image: "/projects/tcb/dashboard-light.webp",
+            visual: "tcb-dashboard-light",
+          },
+          {
+            title: "Dashboard Overview / Dark",
+            description:
+              "維持相同資訊架構，在暗色環境中重新校準表面與狀態對比。",
+            image: "/projects/tcb/dashboard-dark.webp",
+            visual: "tcb-dashboard-dark",
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const rmicCaseStudySections: CaseStudySection[] = [
+  {
+    number: "01",
+    title: "Project Overview",
+    subtitle: "專案概覽",
+    type: "overview",
+    description:
+      "RMIC 桃園市道管資訊中心系統用於道路挖掘、施工案件與相關申請流程管理，平台整合案件進度、表單資料與地圖圖資，支援跨部門在審核、追蹤與道路管理上的協作需求。本次專案是在既有平台架構下進行功能擴充，透過 Wireframe 與 Prototype 協助需求單位與開發團隊確認新增功能的操作邏輯。",
+    contentBlocks: [
+      {
+        type: "facts",
+        items: [
+          { label: "Project", value: "RMIC 桃園市道管資訊中心系統" },
+          { label: "Role", value: "UI/UX Designer" },
+          { label: "Platform", value: "Government · Map-based System" },
+          { label: "Focus", value: "Wireframe · Prototype · Feature Extension" },
+        ],
+      },
+      {
+        type: "cards",
+        columns: 3,
+        items: [
+          {
+            title: "市政案件管理",
+            description:
+              "整合道路挖掘、施工申請、案件狀態與跨單位待辦，支援日常審核與追蹤。",
+            icon: "layers",
+          },
+          {
+            title: "地圖圖資整合",
+            description:
+              "讓案件位置、道路圖層與申請資料在同一管理情境中被查詢與比對。",
+            icon: "map-pinned",
+          },
+          {
+            title: "既有功能擴充",
+            description:
+              "以既有流程與元件為基礎新增功能，避免破壞原有操作習慣與開發架構。",
+            icon: "workflow",
+          },
+        ],
+      },
+      {
+        type: "visual-showcase",
+        layout: "two-column",
+        items: [
+          {
+            title: "平台總覽",
+            description:
+              "以案件數據、地圖、流程狀態與待辦任務呈現道路管理工作的全貌。",
+            image: "/projects/rmic/platform-overview.webp",
+            visual: "rmic-platform-overview",
+          },
+          {
+            title: "地圖圖資系統",
+            description:
+              "結合道路圖層、案件標記與篩選工具，協助承辦人掌握施工位置與案件關係。",
+            image: "/projects/rmic/map-system.webp",
+            visual: "rmic-map-system",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "02",
+    title: "The Challenge",
+    subtitle: "設計挑戰",
+    type: "challenge",
+    description:
+      "功能擴充需要同時回應既有系統限制、跨部門需求、地圖與案件資料關係，以及平台元件一致性。",
+    contentBlocks: [
+      {
+        type: "cards",
+        columns: 2,
+        items: [
+          {
+            eyebrow: "Challenge 01",
+            title: "既有系統限制",
+            description:
+              "新增功能必須符合原有流程、資料結構與開發架構，不能獨立重做。",
+            icon: "layers",
+          },
+          {
+            eyebrow: "Challenge 02",
+            title: "跨部門需求對齊",
+            description:
+              "道路管理涉及多個單位與角色，需要在開發前釐清需求與操作邏輯。",
+            icon: "workflow",
+          },
+          {
+            eyebrow: "Challenge 03",
+            title: "案件與地圖資料整合",
+            description:
+              "功能需與案件資料、申請流程與地圖圖資連動，資訊關係較複雜。",
+            icon: "map-pinned",
+          },
+          {
+            eyebrow: "Challenge 04",
+            title: "元件一致性維護",
+            description:
+              "新增介面需沿用既有元件與互動模式，避免造成平台體驗斷裂。",
+            icon: "refresh",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "03",
+    title: "Design Goals",
+    subtitle: "設計目標",
+    type: "goals",
+    description:
+      "以低成本原型先消除需求與操作邏輯的不確定性，再將確認後的功能穩定整合回既有平台。",
+    contentBlocks: [
+      {
+        type: "design-goals",
+        previewImage: "/projects/rmic/wireframe.webp",
+        previewVisual: "rmic-wireframe",
+        goals: [
+          {
+            title: "降低需求落差",
+            description:
+              "透過 Wireframe 與需求單位快速確認流程與欄位邏輯。",
+            icon: "navigation",
+          },
+          {
+            title: "確認操作可行性",
+            description:
+              "以 Prototype 驗證使用路徑，讓功能邏輯在開發前被清楚確認。",
+            icon: "check",
+          },
+          {
+            title: "維持系統一致性",
+            description:
+              "以既有元件與平台規範延伸新功能，降低開發與維護成本。",
+            icon: "layers",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "04",
+    title: "Feature Extension",
+    subtitle: "功能擴充設計",
+    type: "feature-extension",
+    description:
+      "本次設計聚焦在既有平台中的新增功能模組。設計過程先盤點原有頁面、欄位與操作邏輯，再依需求補足新增功能的入口、表單狀態與操作回饋，確保功能能自然整合至既有案件管理流程中。",
+    contentBlocks: [
+      {
+        type: "visual-showcase",
+        layout: "hero-grid",
+        items: [
+          {
+            title: "新增功能模組",
+            description:
+              "整合新增入口、表單欄位、狀態切換與操作回饋，維持既有案件流程的連續性。",
+            image: "/projects/rmic/feature-extension.webp",
+            visual: "rmic-feature-extension",
+          },
+          {
+            title: "案件列表",
+            description:
+              "將案件狀態、申請類型、承辦單位與常用操作整理為可快速掃讀的資料表格。",
+            image: "/projects/rmic/case-list.webp",
+            visual: "rmic-case-list",
+          },
+          {
+            title: "地圖與案件連動",
+            description:
+              "透過地圖標記、圖層與篩選條件，連結施工位置與案件資料。",
+            image: "/projects/rmic/map-system.webp",
+            visual: "rmic-map-system",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "05",
+    title: "Wireframe & Prototype",
+    subtitle: "線框稿與原型驗證",
+    type: "wireframe-prototype",
+    description:
+      "在進入視覺與開發前，先以 Wireframe 建立低成本溝通稿，協助需求單位確認功能範圍、欄位順序與操作路徑。後續再透過 Prototype 模擬實際操作情境，確認流程是否符合使用者任務與系統邏輯。",
+    contentBlocks: [
+      {
+        type: "visual-showcase",
+        layout: "two-column",
+        items: [
+          {
+            title: "Wireframe Screens",
+            description:
+              "以低彩度線框稿確認頁面框架、表單欄位、狀態與主要操作位置。",
+            image: "/projects/rmic/wireframe.webp",
+            visual: "rmic-wireframe",
+          },
+          {
+            title: "Prototype Validation",
+            description:
+              "以多畫面點擊路徑模擬彈窗、表單、狀態切換與確認頁，驗證完整操作邏輯。",
+            image: "/projects/rmic/prototype.webp",
+            visual: "rmic-prototype",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "06",
+    title: "Component Extension",
+    subtitle: "既有元件延伸",
+    type: "component-extension",
+    description:
+      "由於系統已有既定介面規範，本次新增功能並未重新建立設計語言，而是以既有元件為基礎延伸頁面、表單、按鈕、表格與狀態提示，讓新功能在視覺與操作上能與原平台保持一致。",
+    contentBlocks: [
+      {
+        type: "visual-showcase",
+        layout: "single",
+        items: [
+          {
+            title: "RMIC Component Extension",
+            description:
+              "展示 Table、Form、Button、Status Badge、Modal、Map Marker、Tabs、Filter、Search 與 Pagination。",
+            image: "/projects/rmic/component-extension.webp",
+            visual: "rmic-component-extension",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "07",
+    title: "Final Design & Reflection",
+    subtitle: "最終設計與反思",
+    type: "reflection",
+    description:
+      "這次專案讓我更明確理解到，既有系統的功能擴充不只是新增畫面，而是在既有流程、元件與開發限制下，找到最穩定的整合方式。透過 Wireframe 與 Prototype 先行驗證，可以有效降低需求落差，也讓設計更容易被需求單位與開發團隊理解。",
+    contentBlocks: [
+      {
+        type: "gallery",
+        items: [
+          {
+            title: "案件管理介面",
+            description:
+              "將新增功能整合至既有案件管理情境，維持資料層級與操作模式的一致性。",
+            image: "/projects/rmic/final-ui-01.webp",
+            visual: "rmic-final-ui-01",
+          },
+          {
+            title: "地圖圖資介面",
+            description:
+              "透過地圖圖層、案件標記與資訊面板呈現道路施工案件的空間關係。",
+            image: "/projects/rmic/final-ui-02.webp",
+            visual: "rmic-final-ui-02",
+          },
+          {
+            title: "地圖系統",
+            description:
+              "整合篩選、圖層控制與案件資訊，支援道路管理與案件追蹤。",
+            image: "/projects/rmic/map-system.webp",
+            visual: "rmic-map-system",
+          },
+          {
+            title: "功能擴充頁",
+            description:
+              "以既有元件與流程規範承接新增功能，降低使用與開發端的轉換成本。",
+            image: "/projects/rmic/feature-extension.webp",
+            visual: "rmic-feature-extension",
+          },
+        ],
+      },
+    ],
+  },
+];
+
+const juleCaseStudySections: CaseStudySection[] = [
+  {
+    number: "01",
+    title: "Project Overview",
+    subtitle: "專案概覽",
+    type: "overview",
+    description:
+      "聚樂電商以「歡樂、活潑」作為品牌核心，本專案延續其品牌精神，設計網站主視覺與 UI 介面，並依照團購與電商購物情境，重新規劃瀏覽、選購、結帳與優惠折抵流程，提升整體購買體驗。",
+    contentBlocks: [
+      {
+        type: "facts",
+        items: [
+          { label: "Project", value: "聚樂電商" },
+          { label: "Role", value: "UI/UX · Visual · Front-end Layout" },
+          { label: "Platform", value: "Responsive E-commerce" },
+          { label: "Framework", value: "Bootstrap 5" },
+        ],
+      },
+      {
+        type: "cards",
+        columns: 3,
+        items: [
+          {
+            title: "品牌視覺延伸",
+            description:
+              "延續歡樂、活潑的品牌精神，建立主視覺、活動標籤與商品展示語言。",
+            icon: "palette",
+          },
+          {
+            title: "團購購物體驗",
+            description:
+              "依照團購情境整理商品探索、規格選擇、購物車與結帳路徑。",
+            icon: "workflow",
+          },
+          {
+            title: "設計落地",
+            description:
+              "使用 Bootstrap 5 進行 RWD 切版，讓視覺稿能轉化為可維護的前端結構。",
+            icon: "code",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "02",
+    title: "The Challenge",
+    subtitle: "設計挑戰",
+    type: "challenge",
+    description:
+      "設計需要同時維持品牌的活潑辨識度、商品資訊的清楚度，以及多種折扣機制下的結帳透明度。",
+    contentBlocks: [
+      {
+        type: "cards",
+        columns: 2,
+        items: [
+          {
+            eyebrow: "Challenge 01",
+            title: "品牌感與購物效率平衡",
+            description:
+              "介面需要延續歡樂活潑的品牌個性，同時維持清楚的商品瀏覽與購買效率。",
+            icon: "palette",
+          },
+          {
+            eyebrow: "Challenge 02",
+            title: "團購情境資訊較多",
+            description:
+              "商品、活動、價格與購買條件需要被清楚呈現，避免使用者在選購時產生理解成本。",
+            icon: "layers",
+          },
+          {
+            eyebrow: "Challenge 03",
+            title: "優惠機制需清楚整合",
+            description:
+              "回饋點數與折價券折扣需要自然納入結帳流程，讓使用者理解套用狀態與最終金額。",
+            icon: "workflow",
+          },
+          {
+            eyebrow: "Challenge 04",
+            title: "RWD 與前端實作一致性",
+            description:
+              "頁面需使用 Bootstrap 5 進行切版，並在桌機與行動裝置上維持一致的瀏覽與操作體驗。",
+            icon: "code",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "03",
+    title: "Design Goals",
+    subtitle: "設計目標",
+    type: "goals",
+    description:
+      "以品牌感吸引瀏覽，以清楚資訊協助選購，再以透明優惠與結帳回饋促成購買。",
+    contentBlocks: [
+      {
+        type: "design-goals",
+        previewImage: "/projects/jule-ecommerce/homepage.webp",
+        previewVisual: "jule-homepage",
+        goals: [
+          {
+            title: "延續品牌活潑感",
+            description:
+              "以明亮、親和且具活動感的視覺語言，建立符合品牌精神的電商介面。",
+            icon: "layers",
+          },
+          {
+            title: "提升商品瀏覽效率",
+            description:
+              "讓商品列表、詳情與活動資訊更容易閱讀與比較。",
+            icon: "navigation",
+          },
+          {
+            title: "清楚呈現優惠折抵",
+            description:
+              "將點數、折價券與金額明細整合至購物與結帳流程。",
+            icon: "check",
+          },
+          {
+            title: "落實 RWD 切版",
+            description:
+              "透過 Bootstrap 5 建立可響應、可維護的前端頁面。",
+            icon: "navigation",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "04",
+    title: "Visual Direction",
+    subtitle: "視覺方向",
+    type: "visual-direction",
+    description:
+      "視覺設計延續聚樂「歡樂、活潑」的品牌精神，透過明亮色彩、圓角元素、活動感 Banner 與親和的商品卡片設計，建立更具吸引力的電商首頁與商品瀏覽體驗。",
+    contentBlocks: [
+      {
+        type: "visual-showcase",
+        layout: "hero-grid",
+        items: [
+          {
+            title: "Homepage Visual",
+            description:
+              "整合主視覺 Banner、團購活動、熱門商品與購物 CTA，建立品牌第一印象。",
+            image: "/projects/jule-ecommerce/homepage.webp",
+            visual: "jule-homepage",
+          },
+          {
+            title: "Visual Direction",
+            description:
+              "整理品牌色彩、促銷標籤、圓潤卡片、商品攝影框架與文字層級。",
+            image: "/projects/jule-ecommerce/visual-direction.webp",
+            visual: "jule-visual-direction",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "05",
+    title: "Shopping Flow",
+    subtitle: "購物流程設計",
+    type: "shopping-experience",
+    description:
+      "購物流程依照團購與一般電商情境進行整理，讓使用者能從商品瀏覽、商品詳情、加入購物車到結帳確認，逐步完成購買任務。",
+    contentBlocks: [
+      {
+        type: "visual-showcase",
+        layout: "two-column",
+        items: [
+          {
+            title: "Product List",
+            description:
+              "以活動標籤、價格、銷售進度與快速操作提升團購商品的掃讀效率。",
+            image: "/projects/jule-ecommerce/product-list.webp",
+            visual: "jule-product-list",
+          },
+          {
+            title: "Product Detail",
+            description:
+              "整合商品圖、規格選擇、數量、活動倒數與購買 CTA。",
+            image: "/projects/jule-ecommerce/product-detail.webp",
+            visual: "jule-product-detail",
+          },
+          {
+            title: "Shopping Cart",
+            description:
+              "集中管理商品規格、數量、小計、優惠提示與前往結帳操作。",
+            image: "/projects/jule-ecommerce/cart.webp",
+            visual: "jule-cart",
+          },
+          {
+            title: "Checkout",
+            description:
+              "將收件資料、付款方式、訂單明細與總金額整理為清楚的確認階段。",
+            image: "/projects/jule-ecommerce/checkout.webp",
+            visual: "jule-checkout",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "06",
+    title: "Rewards & Coupons",
+    subtitle: "點數與折價券流程",
+    type: "checkout-experience",
+    description:
+      "購物流程中整合回饋點數與折價券折扣，讓使用者能在結帳時清楚查看可使用優惠、折抵金額與最終付款金額，降低優惠規則造成的理解成本。",
+    contentBlocks: [
+      {
+        type: "visual-showcase",
+        layout: "hero-grid",
+        items: [
+          {
+            title: "Rewards & Coupons",
+            description:
+              "呈現可用點數、折價券選擇、折扣套用狀態與不可使用提示。",
+            image: "/projects/jule-ecommerce/rewards-coupons.webp",
+            visual: "jule-rewards-coupons",
+          },
+          {
+            title: "Checkout Summary",
+            description:
+              "同步更新金額明細、優惠折抵與最終付款金額。",
+            image: "/projects/jule-ecommerce/checkout.webp",
+            visual: "jule-checkout",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "07",
+    title: "RWD & Bootstrap Layout",
+    subtitle: "RWD 與 Bootstrap 5 切版",
+    type: "frontend-layout",
+    description:
+      "本專案使用 Bootstrap 5 進行頁面切版，依照桌機與行動裝置購物情境調整商品列表、購物車與結帳頁面排列，確保介面在不同螢幕尺寸下仍維持清楚的閱讀與操作體驗。",
+    contentBlocks: [
+      {
+        type: "visual-showcase",
+        layout: "two-column",
+        items: [
+          {
+            title: "Bootstrap 5 Layout",
+            description:
+              "以 container、grid、utility 與元件結構支援設計稿落地與後續維護。",
+            image: "/projects/jule-ecommerce/bootstrap-layout.webp",
+            visual: "jule-bootstrap-layout",
+          },
+          {
+            title: "Mobile Shopping Flow",
+            description:
+              "展示手機版商品瀏覽、詳情、購物車與結帳內容的響應式排列。",
+            image: "/projects/jule-ecommerce/mobile-rwd.webp",
+            visual: "jule-mobile-rwd",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    number: "08",
+    title: "Final Design & Reflection",
+    subtitle: "最終設計與反思",
+    type: "reflection",
+    description:
+      "這次專案讓我更明確理解到，電商設計不只是建立吸引人的視覺畫面，也需要讓購物流程、優惠規則與付款資訊被清楚理解。尤其在導入回饋點數與折價券折扣後，介面需要在品牌活潑感與資訊清楚度之間取得平衡，才能讓使用者更安心地完成購買。",
+    contentBlocks: [
+      {
+        type: "gallery",
+        items: [
+          {
+            title: "Homepage & Campaign",
+            description:
+              "以主視覺、團購活動與熱門商品建立活潑且具導購力的首頁。",
+            image: "/projects/jule-ecommerce/final-ui-01.webp",
+            visual: "jule-final-ui-01",
+          },
+          {
+            title: "Shopping & Checkout",
+            description:
+              "將商品選購、優惠折抵與付款摘要整合為清楚的購物體驗。",
+            image: "/projects/jule-ecommerce/final-ui-02.webp",
+            visual: "jule-final-ui-02",
+          },
+          {
+            title: "Product Discovery",
+            description:
+              "透過商品分類、活動標籤與商品卡片支援快速比較。",
+            image: "/projects/jule-ecommerce/product-list.webp",
+            visual: "jule-product-list",
+          },
+          {
+            title: "Checkout Experience",
+            description:
+              "清楚呈現回饋點數、折價券、運費與最終付款金額。",
+            image: "/projects/jule-ecommerce/checkout.webp",
+            visual: "jule-checkout",
+          },
+        ],
+      },
+    ],
+  },
+];
+
 export const profile = {
   name: "HHW",
   title: "UI/UX Designer",
@@ -832,6 +1853,170 @@ export const projects: Project[] = [
       "ESG 產品的介面不只要好看，更重要的是建立信任。設計上必須把資料來源、估算狀態、認證進度與風險揭露放在使用者做決策的位置。",
       "雙邊 marketplace 容易只偏向需求方搜尋效率，但供給方資料結構也會直接影響媒合品質。這次 IA 的關鍵是讓林地資料能被一致比較，同時保留各專案的特殊價值。",
       "下一步會優先補上媒合後的 collaboration flow，包括文件交換、補件提醒、合約前評估與年度 impact report 產出。",
+    ],
+  },
+  {
+    slug: "tcb",
+    ...projectImageAssets.tcb,
+    visualFallback: "tcb-hero",
+    caseStudySections: tcbCaseStudySections,
+    title: "TCB 虛擬機管理平台",
+    eyebrow: "虛擬機管理平台的功能與視覺優化",
+    role:
+      "UI/UX Designer，負責 Dashboard 資訊層級、Light / Dark Theme、Design System、公告功能與虛擬機部署流程優化。",
+    year: "2026",
+    duration: "Platform optimization",
+    summary:
+      "本專案針對既有的虛擬機管理平台進行功能與視覺優化，重新梳理 Dashboard 資訊呈現、公告功能、虛擬機部署流程與系統介面一致性，並導入 Light / Dark Theme 亮色／暗色主題切換，提升長時間管理情境下的可讀性與操作體驗。",
+    challenge:
+      "既有平台功能完整，但資訊層級與元件狀態較分散。使用者需要在高資訊密度與長時間操作情境中快速掌握系統狀態，也需要更清楚地完成虛擬機部署設定。",
+    outcome:
+      "延續合作金庫品牌識別，融合金融產業的穩定感與科技後台產品的現代感，透過雙主題、玻璃霧化表面與一致的元件規範，建立更具產品感與辨識度的管理系統。",
+    metrics: [
+      { label: "Themes", value: "2" },
+      { label: "Core areas", value: "4" },
+      { label: "Sections", value: "8" },
+    ],
+    tags: [
+      "UI/UX Design",
+      "Dashboard Design",
+      "Light / Dark Theme",
+      "Design System",
+      "Enterprise Platform",
+      "Workflow Optimization",
+    ],
+    tools: ["Figma", "Design System", "Prototype", "UI Specification"],
+    process: [
+      "優化虛擬機管理平台整體視覺與介面層級，重新安排 Dashboard 的關鍵資訊。",
+      "融合合作金庫品牌視覺，建立 Light / Dark Theme 與可延伸的元件規範。",
+      "整合公告功能並優化虛擬機部署流程，降低設定與操作理解成本。",
+    ],
+    deliverables: [
+      "Dashboard design",
+      "Light / Dark theme",
+      "Deployment workflow",
+      "Announcement experience",
+      "Design system",
+      "UI component library",
+    ],
+    theme: {
+      primary: "#0f7b68",
+      secondary: "#0b5f55",
+      accent: "#2cc7ad",
+    },
+    reflection: [
+      "後台系統的優化不只是視覺翻新，而是需要在既有功能限制下重新建立資訊層級、操作節奏與設計規範。",
+      "亮暗主題需要分別處理表面層級、文字對比、玻璃透明度與狀態色，而不是單純反轉顏色。",
+      "金融品牌識別與科技產品感可以透過穩定的主色、清楚的狀態設計與克制的玻璃霧化效果取得平衡。",
+    ],
+  },
+  {
+    slug: "rmic",
+    ...projectImageAssets.rmic,
+    visualFallback: "rmic-hero",
+    caseStudySections: rmicCaseStudySections,
+    title: "RMIC 桃園市道管資訊中心系統",
+    eyebrow: "既有平台的功能擴充設計",
+    role:
+      "UI/UX Designer，負責新增功能流程梳理、Wireframe、Prototype、既有元件延伸，以及需求單位、PM 與開發端的功能邏輯對齊。",
+    year: "2026",
+    duration: "Feature extension",
+    summary:
+      "RMIC 桃園市道管資訊中心系統用於道路挖掘、施工案件與相關申請流程的管理，平台整合案件進度、表單資料與地圖圖資，支援跨部門在道路管理、審核與案件追蹤上的協作需求。",
+    challenge:
+      "新增功能必須整合既有案件流程、表單模組、地圖圖資與開發架構，同時讓多個需求單位在開發前對操作邏輯與範圍形成共同理解。",
+    outcome:
+      "透過 Wireframe 快速對齊欄位與狀態，再以 Prototype 驗證實際操作路徑，並使用既有平台元件延伸功能介面，降低需求、設計與開發之間的落差。",
+    metrics: [
+      { label: "Core methods", value: "2" },
+      { label: "Focus areas", value: "4" },
+      { label: "Sections", value: "7" },
+    ],
+    tags: [
+      "UI/UX Design",
+      "Wireframe",
+      "Prototype",
+      "Feature Extension",
+      "Government Platform",
+      "Map-based System",
+    ],
+    tools: ["Figma", "Wireframe", "Prototype", "UI Specification"],
+    process: [
+      "依據需求單位提出的功能需求，梳理新增功能的操作流程、欄位、狀態與介面結構。",
+      "使用 Wireframe 快速對齊功能範圍，再以 Prototype 驗證使用情境與操作路徑。",
+      "以既有平台元件與視覺規範延伸新介面，協助 PM 與開發端確認實作範圍。",
+    ],
+    deliverables: [
+      "Feature flow definition",
+      "Wireframe",
+      "Interactive prototype",
+      "Component extension",
+      "Map-based UI",
+      "Final interface",
+    ],
+    theme: {
+      primary: "#147d84",
+      secondary: "#2c6f9e",
+      accent: "#49a6a3",
+    },
+    reflection: [
+      "既有系統的功能擴充需要先理解限制，再找到最穩定的整合方式，而不是從視覺表面重新開始。",
+      "Wireframe 與 Prototype 能在開發前暴露欄位、狀態與流程上的模糊處，降低跨部門需求落差。",
+      "沿用既有元件與互動模式，能讓新增功能更容易被使用者理解，也能降低後續開發與維護成本。",
+    ],
+  },
+  {
+    slug: "jule-ecommerce",
+    ...projectImageAssets["jule-ecommerce"],
+    visualFallback: "jule-hero",
+    caseStudySections: juleCaseStudySections,
+    title: "聚樂電商",
+    eyebrow: "活潑品牌電商的視覺設計與購物流程優化",
+    role:
+      "UI/UX Designer / Visual Designer / Front-end Layout，負責網站主視覺、購物流程、優惠折抵體驗與 Bootstrap 5 RWD 切版。",
+    year: "2026",
+    duration: "E-commerce design",
+    summary:
+      "延續「歡樂、活潑」的品牌精神，設計網站主視覺與 UI 介面，並規劃符合團購情境的購物流程，提升整體瀏覽與購買體驗。",
+    challenge:
+      "需要在活潑促銷視覺、高密度商品資訊與團購情境之間建立清楚層級，並讓回饋點數、折價券與最終付款金額在結帳時容易理解。",
+    outcome:
+      "完成品牌主視覺、商品瀏覽、購物車、結帳與優惠折抵流程，並以 Bootstrap 5 建立可開發、可維護且支援多裝置的響應式版型。",
+    metrics: [
+      { label: "Core flows", value: "4" },
+      { label: "Discount types", value: "2" },
+      { label: "Sections", value: "8" },
+    ],
+    tags: [
+      "UI/UX Design",
+      "Visual Design",
+      "E-commerce Design",
+      "Shopping Flow",
+      "Bootstrap 5 Layout",
+    ],
+    tools: ["Figma", "Photoshop", "Illustrator", "Bootstrap 5"],
+    process: [
+      "設計網站主視覺與商品展示介面，延伸歡樂、活潑的品牌視覺語言。",
+      "規劃商品瀏覽、購物車、回饋點數、折價券與結帳流程。",
+      "使用 Bootstrap 5 進行 RWD 頁面切版，協助設計落實為可維護的前端版型。",
+    ],
+    deliverables: [
+      "Visual direction",
+      "Responsive homepage",
+      "Product browsing",
+      "Cart and checkout flow",
+      "Rewards and coupons",
+      "Bootstrap 5 layout",
+    ],
+    theme: {
+      primary: "#f06449",
+      secondary: "#ffbe3d",
+      accent: "#7257d9",
+    },
+    reflection: [
+      "品牌視覺需要一路延伸到商品卡片、優惠提示與結帳回饋，才能形成完整一致的購物體驗。",
+      "點數與折價券機制若缺乏即時金額回饋，容易增加使用者在付款前的不確定感。",
+      "實際參與 Bootstrap 5 切版，有助於在設計階段更早考量 breakpoint、內容優先順序與元件維護性。",
     ],
   },
 ];

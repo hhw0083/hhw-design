@@ -2,6 +2,10 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import {
+  CaseStudyVisualFallback,
+  type CaseStudyFallbackKind,
+} from "@/components/case-study/CaseStudyVisualFallback";
 import type { Project } from "@/data/projects";
 
 type ProjectVisualProps = {
@@ -45,6 +49,20 @@ export function ProjectVisual({ project, compact = false }: ProjectVisualProps) 
           }
           priority={!compact}
           className="object-cover"
+        />
+      </div>
+    );
+  }
+
+  if (
+    project.visualFallback?.startsWith("tcb-") ||
+    project.visualFallback?.startsWith("rmic-") ||
+    project.visualFallback?.startsWith("jule-")
+  ) {
+    return (
+      <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-portfolio-card">
+        <CaseStudyVisualFallback
+          kind={project.visualFallback as CaseStudyFallbackKind}
         />
       </div>
     );

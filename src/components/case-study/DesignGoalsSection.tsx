@@ -11,7 +11,15 @@ import {
 } from "lucide-react";
 import type { CSSProperties } from "react";
 import { CaseStudySectionLayout } from "./CaseStudySectionLayout";
-import type { DesignGoal, DesignGoalIcon } from "@/data/projects";
+import {
+  CaseStudyVisualFallback,
+  type CaseStudyFallbackKind,
+} from "./CaseStudyVisualFallback";
+import type {
+  CaseStudyVisualKind,
+  DesignGoal,
+  DesignGoalIcon,
+} from "@/data/projects";
 
 export type DesignGoalsSectionProps = {
   sectionNumber: string;
@@ -20,6 +28,7 @@ export type DesignGoalsSectionProps = {
   description: string;
   goals: DesignGoal[];
   previewImage?: string;
+  previewVisual?: CaseStudyVisualKind;
   accentColor?: string;
   secondaryColor?: string;
 };
@@ -182,6 +191,7 @@ export function DesignGoalsSection({
   description,
   goals,
   previewImage,
+  previewVisual,
   accentColor = "#137D6A",
   secondaryColor = "#80CACE",
 }: DesignGoalsSectionProps) {
@@ -237,6 +247,14 @@ export function DesignGoalsSection({
             fill
             sizes="(min-width: 1024px) 75vw, 100vw"
             className="object-cover"
+          />
+        </div>
+      ) : previewVisual?.startsWith("tcb-") ||
+        previewVisual?.startsWith("rmic-") ||
+        previewVisual?.startsWith("jule-") ? (
+        <div className="aspect-[16/10] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_28px_70px_rgba(15,23,42,0.12)]">
+          <CaseStudyVisualFallback
+            kind={previewVisual as CaseStudyFallbackKind}
           />
         </div>
       ) : (

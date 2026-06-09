@@ -5,12 +5,18 @@ import type { ReactNode } from "react";
 import {
   Accessibility,
   ArrowRight,
+  Bell,
   Code2,
+  Gauge,
   Layers3,
   MapPinned,
+  MonitorCog,
+  Moon,
   Palette,
   RefreshCw,
+  Server,
   Sparkles,
+  Workflow,
 } from "lucide-react";
 import {
   CoreComponentsSection,
@@ -19,6 +25,10 @@ import {
 import { InteractiveSitemap } from "@/components/InteractiveSitemap";
 import { DesignGoalsSection } from "@/components/case-study/DesignGoalsSection";
 import { CaseStudySectionLayout } from "@/components/case-study/CaseStudySectionLayout";
+import {
+  CaseStudyVisualFallback,
+  type CaseStudyFallbackKind,
+} from "@/components/case-study/CaseStudyVisualFallback";
 import type {
   CaseStudyCardIcon,
   CaseStudyContentBlock,
@@ -36,7 +46,23 @@ const cardIcons = {
   "map-pinned": MapPinned,
   refresh: RefreshCw,
   sparkles: Sparkles,
+  gauge: Gauge,
+  monitor: MonitorCog,
+  moon: Moon,
+  workflow: Workflow,
+  bell: Bell,
+  server: Server,
 } satisfies Record<CaseStudyCardIcon, typeof Palette>;
+
+function isProjectFallbackVisual(
+  visual?: CaseStudyVisualKind,
+): visual is CaseStudyFallbackKind {
+  return Boolean(
+    visual?.startsWith("tcb-") ||
+      visual?.startsWith("rmic-") ||
+      visual?.startsWith("jule-"),
+  );
+}
 
 function TextCard({
   title,
@@ -515,6 +541,20 @@ function GalleryVisual({
     );
   }
 
+  if (isProjectFallbackVisual(visual)) {
+    return (
+      <div
+        className={`overflow-hidden border-slate-200 bg-white shadow-sm ${
+          compact
+            ? "aspect-[4/5] border-b"
+            : "aspect-[16/10] rounded-lg border"
+        }`}
+      >
+        <CaseStudyVisualFallback kind={visual} />
+      </div>
+    );
+  }
+
   return visual ? <ScreenMockup kind={visual} compact={compact} /> : null;
 }
 
@@ -722,6 +762,39 @@ function CaseStudyBlock({ block }: { block: CaseStudyContentBlock }) {
         </div>
       );
 
+    case "visual-showcase": {
+      const isHeroGrid = block.layout === "hero-grid";
+      const columnClass =
+        block.layout === "single" ? "grid-cols-1" : "md:grid-cols-2";
+
+      return (
+        <div className={`grid gap-5 ${columnClass}`}>
+          {block.items.map((item, index) => (
+            <article
+              key={item.title}
+              className={`overflow-hidden rounded-lg border border-slate-200 bg-white p-3 shadow-sm sm:p-4 ${
+                isHeroGrid && index === 0 ? "md:col-span-2" : ""
+              }`}
+            >
+              <GalleryVisual
+                image={item.image}
+                visual={item.visual}
+                title={item.title}
+              />
+              <div className="px-1 pb-1 pt-4">
+                <h3 className="text-lg font-semibold text-slate-950">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-7 text-slate-600">
+                  {item.description}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      );
+    }
+
     case "tags":
       return (
         <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
@@ -784,6 +857,7 @@ export function CaseStudyPage({ project }: { project: Project }) {
               description={section.description}
               goals={designGoals.goals}
               previewImage={designGoals.previewImage}
+              previewVisual={designGoals.previewVisual}
               accentColor={project.theme.primary}
               secondaryColor={project.theme.secondary}
             />
