@@ -13,7 +13,7 @@ type ProjectVisualProps = {
   compact?: boolean;
 };
 
-function getExistingImage(
+function getExistingProjectImage(
   project: Project,
   compact: boolean,
 ): string | undefined {
@@ -33,11 +33,20 @@ function getExistingImage(
 }
 
 export function ProjectVisual({ project, compact = false }: ProjectVisualProps) {
-  const image = getExistingImage(project, compact);
+  const image = getExistingProjectImage(project, compact);
+  const imageRole = compact
+    ? "cover"
+    : image === project.heroImage
+      ? "hero"
+      : "cover-fallback";
 
   if (image) {
     return (
-      <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-portfolio-card">
+      <div
+        key={`${project.slug}-${imageRole}-${image}`}
+        className="relative aspect-[16/10] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-portfolio-card"
+        data-project-image={`${project.slug}:${imageRole}`}
+      >
         <Image
           src={image}
           alt={`${project.title} ${compact ? "專案封面" : "專案主視覺"}`}
