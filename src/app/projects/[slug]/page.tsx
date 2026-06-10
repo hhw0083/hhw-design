@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { CaseStudyPage } from "@/components/CaseStudyPage";
+import { ProjectNavigation } from "@/components/ProjectNavigation";
 import { ProjectVisual } from "@/components/ProjectVisual";
 import { projects } from "@/data/projects";
 
@@ -48,6 +49,11 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
     notFound();
   }
 
+  const projectIndex = projects.findIndex((item) => item.slug === project.slug);
+  const previousProject =
+    projects[(projectIndex - 1 + projects.length) % projects.length];
+  const nextProject = projects[(projectIndex + 1) % projects.length];
+
   return (
     <main className="min-h-screen bg-canvas pt-16 text-slate-950">
       <section className="grid-lines border-b border-slate-200 bg-white py-12 md:py-16">
@@ -91,15 +97,12 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
 
       <CaseStudyPage project={project} />
 
-      <section className="border-t border-slate-200 bg-white py-16">
-        <div className="mx-auto flex max-w-7xl justify-center px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/#contact"
-            className="inline-flex h-12 items-center gap-2 rounded-lg bg-cyanline px-5 text-sm font-semibold text-white transition hover:bg-mint"
-          >
-            Discuss this case
-            <ExternalLink className="size-4" aria-hidden="true" />
-          </Link>
+      <section className="border-t border-slate-200 bg-slate-50 py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ProjectNavigation
+            previousProject={previousProject}
+            nextProject={nextProject}
+          />
         </div>
       </section>
     </main>

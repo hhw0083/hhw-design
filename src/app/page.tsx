@@ -143,21 +143,24 @@ export default function Home() {
             title="以使用者任務為核心，讓複雜產品變得可靠、清楚、可交付。"
             description={profile.bio}
           />
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4">
             {strengths.map((item) => {
               const Icon = item.icon;
               return (
                 <article
                   key={item.title}
-                  className="rounded-lg border border-slate-200 bg-white p-6 shadow-portfolio-card"
+                  className="min-w-0 rounded-lg border border-slate-200 bg-white p-3 shadow-portfolio-card sm:p-4 md:p-6"
                 >
-                  <div className="mb-5 grid size-11 place-items-center rounded-lg border border-teal-100 bg-teal-50 text-cyanline">
-                    <Icon className="size-5" aria-hidden="true" />
+                  <div className="mb-3 grid size-10 place-items-center rounded-lg border border-teal-100 bg-teal-50 text-cyanline md:mb-5 md:size-11">
+                    <Icon
+                      className="size-[18px] md:size-5"
+                      aria-hidden="true"
+                    />
                   </div>
-                  <h3 className="text-base font-semibold text-slate-950">
+                  <h3 className="break-words text-xs font-semibold leading-5 text-slate-950 sm:text-sm md:text-base">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
+                  <p className="mt-2 break-words text-[10px] leading-[1.65] text-slate-600 sm:text-xs md:mt-3 md:text-sm md:leading-7">
                     {item.description}
                   </p>
                 </article>
