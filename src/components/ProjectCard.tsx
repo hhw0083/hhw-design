@@ -14,9 +14,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
       aria-label={`查看 ${project.title} 專案`}
       className="group mb-8 block rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-cyanline focus-visible:ring-offset-4"
     >
-      <article className="grid gap-7 rounded-lg border border-slate-200 bg-white p-4 shadow-portfolio-card transition duration-300 group-hover:-translate-y-1 group-hover:border-slate-300 group-hover:shadow-[0_28px_70px_rgba(15,23,42,0.12)] md:p-6 lg:grid-cols-[0.95fr_1fr] lg:gap-10">
+      <article className="grid transform-gpu gap-7 rounded-lg border border-slate-200 bg-white p-4 shadow-portfolio-card [backface-visibility:hidden] will-change-transform transition-[transform,border-color,box-shadow] duration-300 ease-out motion-safe:group-hover:-translate-y-1 group-hover:border-slate-300 group-hover:shadow-[0_28px_70px_rgba(15,23,42,0.12)] motion-reduce:transition-none md:p-6 lg:grid-cols-[0.95fr_1fr] lg:gap-10">
         <ProjectVisual project={project} compact />
-        <div className="flex flex-col justify-between gap-8">
+        <div className="min-w-0 flex flex-col justify-between gap-8">
           <div>
             <p className="text-sm font-medium text-cyanline">
               {project.eyebrow}
@@ -53,7 +53,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 </div>
               ))}
             </div>
-            <span className="inline-flex h-11 items-center gap-2 rounded-full bg-slate-950 px-4 text-sm font-semibold text-white transition group-hover:bg-cyanline">
+            <span className="inline-flex h-11 items-center gap-2 rounded-full bg-slate-950 px-4 text-sm font-semibold text-white transition-colors duration-300 ease-out group-hover:bg-cyanline motion-reduce:transition-none">
               View case
               <ArrowUpRight className="size-4" aria-hidden="true" />
             </span>

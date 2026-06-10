@@ -57,7 +57,11 @@ export function ProjectVisual({ project, compact = false }: ProjectVisualProps) 
               : "(min-width: 1024px) 52vw, 100vw"
           }
           priority={!compact}
-          className="object-cover"
+          className={
+            compact
+              ? "object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.015] motion-reduce:transition-none"
+              : "object-cover"
+          }
         />
       </div>
     );
