@@ -337,7 +337,7 @@ const esgCaseStudySections: CaseStudySection[] = [
     subtitle: "專案概覽",
     type: "overview",
     description:
-      "ESG 林地媒合平台整合政策資訊、林地標的、媒合流程、地圖查詢、成果展示與憑證查詢，讓企業在資訊量較大的情況下，仍能快速理解平台功能並找到合適的合作機會。",
+      "ESG 林地媒合平台整合政策資訊、林地標的、媒合流程、地圖查詢、成果展示與憑證查詢，讓使用者在資訊量較大的情況下，仍能快速理解平台功能並找到合適的合作機會。",
     contentBlocks: [
       {
         type: "facts",
@@ -355,12 +355,12 @@ const esgCaseStudySections: CaseStudySection[] = [
           {
             title: "平台定位",
             description:
-              "協助企業探索森林與自然碳匯相關 ESG 專案，建立企業與專案標的之間的媒合入口。",
+              "協助使用者探索森林與自然碳匯相關 ESG 專案，建立使用者與專案標的之間的媒合入口。",
           },
           {
             title: "使用情境",
             description:
-              "企業可透過條件篩選、列表查詢與地圖查詢，理解不同專案的位置、類型與合作資訊。",
+              "使用者可透過條件篩選、列表查詢與地圖查詢，理解不同專案的位置、類型與合作資訊。",
           },
           {
             title: "設計目標",
@@ -456,7 +456,7 @@ const esgCaseStudySections: CaseStudySection[] = [
     subtitle: "設計目標",
     type: "goals",
     description:
-      "從企業查找專案的決策路徑出發，建立可掃讀、可比較且能延伸到管理情境的產品體驗。",
+      "從使用者查找專案的決策路徑出發，建立可掃讀、可比較且能延伸到管理情境的產品體驗。",
     contentBlocks: [
       {
         type: "design-goals",
@@ -486,11 +486,33 @@ const esgCaseStudySections: CaseStudySection[] = [
   },
   {
     number: "04",
+    title: "User Flow",
+    subtitle: "使用流程",
+    type: "user-flow",
+    description:
+      "流程聚焦使用者如何從進入平台、探索標的、提出媒合，到最後查看成果與憑證。",
+    contentBlocks: [
+      {
+        type: "flow",
+        items: [
+          "使用者進入平台",
+          "選擇查詢方式",
+          "使用條件篩選或地圖查詢",
+          "查看專案資訊",
+          "收藏或申請媒合",
+          "查看 ESG 成果",
+          "查詢 ESG 憑證",
+        ],
+      },
+    ],
+  },
+  {
+    number: "05",
     title: "Key Screens",
     subtitle: "核心畫面",
     type: "key-screens",
     description:
-      "以搜尋、地圖、成果與憑證四個高價值情境，建立企業從探索到驗證的主要操作路徑。",
+      "以搜尋、地圖、成果與憑證四個高價值情境，建立使用者從探索到驗證的主要操作路徑。",
     contentBlocks: [
       {
         type: "feature-gallery",
@@ -520,7 +542,7 @@ const esgCaseStudySections: CaseStudySection[] = [
             eyebrow: "Feature 04",
             title: "ESG 憑證查詢",
             description:
-              "提供企業查詢憑證編號、發放日期、有效期限、狀態與相關詳細資料的入口。",
+              "提供使用者查詢憑證編號、發放日期、有效期限、狀態與相關詳細資料的入口。",
             visual: "certificate",
           },
         ],
@@ -528,7 +550,7 @@ const esgCaseStudySections: CaseStudySection[] = [
     ],
   },
   {
-    number: "05",
+    number: "06",
     title: "Information Architecture",
     subtitle: "資訊架構",
     type: "information-architecture",
@@ -545,7 +567,7 @@ const esgCaseStudySections: CaseStudySection[] = [
               "政策說明",
               "專案方法介紹",
               "媒合流程介紹",
-              "企業 ESG 成果展示",
+              "使用者 ESG 成果展示",
               "Q&A",
             ],
           },
@@ -573,28 +595,6 @@ const esgCaseStudySections: CaseStudySection[] = [
     ],
   },
   {
-    number: "06",
-    title: "User Flow",
-    subtitle: "使用流程",
-    type: "user-flow",
-    description:
-      "流程聚焦企業使用者如何從進入平台、探索標的、提出媒合，到最後查看成果與憑證。",
-    contentBlocks: [
-      {
-        type: "flow",
-        items: [
-          "企業進入平台",
-          "選擇查詢方式",
-          "使用條件篩選或地圖查詢",
-          "查看專案資訊",
-          "收藏或申請媒合",
-          "查看 ESG 成果",
-          "查詢 ESG 憑證",
-        ],
-      },
-    ],
-  },
-  {
     number: "07",
     title: "Design System",
     subtitle: "設計系統",
@@ -617,7 +617,7 @@ const esgCaseStudySections: CaseStudySection[] = [
     subtitle: "最終介面",
     type: "final-design",
     description:
-      "最終介面涵蓋企業從公開資訊、身分登入、物件探索到會員通知與憑證查詢的完整體驗。",
+      "最終介面涵蓋使用者從公開資訊、身分登入、物件探索到會員通知與憑證查詢的完整體驗。",
     contentBlocks: [
       {
         type: "gallery",
@@ -625,13 +625,13 @@ const esgCaseStudySections: CaseStudySection[] = [
           {
             title: "首頁 / ESG 成果展示",
             description:
-              "整合 ESG 專案摘要、精選內容與成果入口，讓企業快速理解平台價值。",
+              "整合 ESG 專案摘要、精選內容與成果入口，讓使用者快速理解平台價值。",
             visual: "home",
           },
           {
             title: "登入身分選擇",
             description:
-              "依照企業、管理者與一般使用者角色，建立清楚的進入路徑。",
+              "依照使用者、管理者與一般使用者角色，建立清楚的進入路徑。",
             visual: "login",
           },
           {
@@ -1632,18 +1632,18 @@ export const projects: Project[] = [
     caseStudySections: esgCaseStudySections,
     title: "ESG 林地媒合平台",
     subtitle: "ESG Matching Platform",
-    eyebrow: "企業參與森林及自然碳匯 ESG 專案媒合平台",
+    eyebrow: "使用者參與森林及自然碳匯 ESG 專案媒合平台",
     description:
-      "協助企業查詢森林與自然碳匯相關 ESG 專案，整合列表、地圖與媒合流程，提升查詢效率與合作透明度。",
+      "協助使用者查詢森林與自然碳匯相關 ESG 專案，整合列表、地圖與媒合流程，提升查詢效率與合作透明度。",
     role: "UI/UX Design / Visual Design",
     scope: "平台 / 會員中心 / 地圖 / 專案詳情 / CMS",
     timeline: "6 月",
     year: "2026",
     duration: "6 months",
     summary:
-      "本專案協助企業查詢森林與自然碳匯相關 ESG 專案，透過列表、地圖、媒合流程與憑證查詢，降低企業理解與參與 ESG 專案的門檻。",
+      "本專案協助使用者查詢森林與自然碳匯相關 ESG 專案，透過列表、地圖、媒合流程與憑證查詢，降低使用者理解與參與 ESG 專案的門檻。",
     challenge:
-      "ESG 林地合作牽涉企業永續目標、地主資料、林地條件、專案認證、風險揭露與後續追蹤。若資訊架構不清楚，企業難以判斷可信度，供給方也難以有效呈現專案價值。",
+      "ESG 林地合作牽涉使用者永續目標、地主資料、林地條件、專案認證、風險揭露與後續追蹤。若資訊架構不清楚，使用者難以判斷可信度，供給方也難以有效呈現專案價值。",
     outcome:
       "建立以需求篩選、林地卡片、專案詳情、媒合詢問與 ESG impact tracking 為核心的服務流程，並整理出可擴充的設計 tokens、色彩系統與元件庫。",
     metrics: [
@@ -1660,7 +1660,7 @@ export const projects: Project[] = [
     ],
     tools: ["Figma", "FigJam", "Notion", "Design Tokens"],
     process: [
-      "定義企業端與林地方的雙邊需求，拆解搜尋、比較、詢問與追蹤四個主要任務。",
+      "定義使用者端與林地方的雙邊需求，拆解搜尋、比較、詢問與追蹤四個主要任務。",
       "建立資訊架構與 sitemap，讓林地資料、合作條件、永續成果與信任訊號有一致呈現方式。",
       "設計 token、色彩與元件規格，讓平台可支援不同林地類型、狀態與 ESG 指標擴充。",
     ],
@@ -1676,25 +1676,25 @@ export const projects: Project[] = [
       accent: "#b45309",
     },
     overview: [
-      "此專案聚焦在企業 ESG 需求方與林地專案供給方之間的信任建立。平台需要同時呈現林地基本資料、專案可行性、合作條件、永續成果與聯繫流程。",
-      "產品定位不是單純列表型 marketplace，而是支援企業做初步 ESG due diligence 的媒合工作台。使用者需要快速篩選，也需要在深入閱讀時看見足夠的風險與效益資訊。",
-      "設計目標是降低企業從瀏覽林地、比較方案、送出媒合需求到後續追蹤 impact 的認知成本。",
+      "此專案聚焦在使用者 ESG 需求方與林地專案供給方之間的信任建立。平台需要同時呈現林地基本資料、專案可行性、合作條件、永續成果與聯繫流程。",
+      "產品定位不是單純列表型 marketplace，而是支援使用者做初步 ESG due diligence 的媒合工作台。使用者需要快速篩選，也需要在深入閱讀時看見足夠的風險與效益資訊。",
+      "設計目標是降低使用者從瀏覽林地、比較方案、送出媒合需求到後續追蹤 impact 的認知成本。",
     ],
     problemStatements: [
-      "企業使用者需要在有限時間內判斷林地專案是否符合 ESG 目標、地理條件、合作預算與認證要求，但現有資訊常分散在簡報、表格與人工往返訊息中。",
+      "使用者需要在有限時間內判斷林地專案是否符合 ESG 目標、地理條件、合作預算與認證要求，但現有資訊常分散在簡報、表格與人工往返訊息中。",
       "林地供給方需要以可信、可比較、可維護的方式展示專案，但不同林地資料欄位不一致，容易讓需求方無法橫向比較。",
-      "媒合流程若缺少清楚狀態與下一步提示，企業端會不知道詢問是否送出、資料是否足夠、後續會由誰聯繫。",
+      "媒合流程若缺少清楚狀態與下一步提示，使用者端會不知道詢問是否送出、資料是否足夠、後續會由誰聯繫。",
     ],
     informationArchitecture: [
-      "首頁以企業需求導向入口為主，提供 ESG 目標、地區、合作方式與林地類型的快速篩選。",
+      "首頁以使用者需求導向入口為主，提供 ESG 目標、地區、合作方式與林地類型的快速篩選。",
       "林地列表以可比較卡片呈現核心資料，包括地區、面積、碳匯潛力、認證狀態、合作模式與風險標籤。",
       "林地詳情頁分為 Overview、Impact、Land Profile、Certification、Partnership Terms、Timeline 與 Contact CTA。",
-      "企業會員區保留已收藏林地、媒合詢問紀錄、文件上傳、專案追蹤與 impact reports。",
+      "使用者會員區保留已收藏林地、媒合詢問紀錄、文件上傳、專案追蹤與 impact reports。",
     ],
     sitemap: [
       {
         label: "Home",
-        description: "企業 ESG 需求入口、推薦林地與平台價值摘要。",
+        description: "使用者 ESG 需求入口、推薦林地與平台價值摘要。",
         children: [
           { label: "Hero Search", description: "以 ESG 目標與地區開始搜尋。" },
           {
@@ -1730,7 +1730,7 @@ export const projects: Project[] = [
       },
       {
         label: "Company Workspace",
-        description: "企業端媒合管理與專案追蹤。",
+        description: "使用者端媒合管理與專案追蹤。",
         children: [
           { label: "Inquiry Status" },
           { label: "Document Upload" },
@@ -1813,7 +1813,7 @@ export const projects: Project[] = [
       },
       {
         name: "ESG Filter Panel",
-        purpose: "讓企業以地區、林地類型、合作模式、認證狀態與 impact 指標縮小搜尋範圍。",
+        purpose: "讓使用者以地區、林地類型、合作模式、認證狀態與 impact 指標縮小搜尋範圍。",
         anatomy: ["Filter group", "Checkbox", "Range input", "Selected chips", "Reset action"],
         states: ["Collapsed", "Expanded", "Selected", "Empty results"],
         usageGuidelines: [
@@ -1828,16 +1828,16 @@ export const projects: Project[] = [
         states: ["Verified", "Estimated", "Pending review"],
         usageGuidelines: [
           "估算值必須標示資料來源與信心水準。",
-          "單位需固定格式，降低企業比較時的認知成本。",
+          "單位需固定格式，降低使用者比較時的認知成本。",
         ],
       },
       {
         name: "Matching Inquiry Form",
-        purpose: "收集企業媒合需求，並讓供給方理解合作條件。",
+        purpose: "收集使用者媒合需求，並讓供給方理解合作條件。",
         anatomy: ["Company profile", "ESG goal", "Budget range", "Timeline", "Message", "Submit CTA"],
         states: ["Draft", "Validation error", "Submitted", "Follow-up required"],
         usageGuidelines: [
-          "送出前顯示摘要，避免企業提交不完整需求。",
+          "送出前顯示摘要，避免使用者提交不完整需求。",
           "成功狀態需明確告知後續聯繫窗口與預估回覆時間。",
         ],
       },
@@ -1845,14 +1845,14 @@ export const projects: Project[] = [
     screens: [
       {
         name: "Marketplace Search",
-        purpose: "讓企業從 ESG 目標與林地條件開始探索。",
+        purpose: "讓使用者從 ESG 目標與林地條件開始探索。",
         userGoal: "快速縮小候選林地，找到值得深入評估的專案。",
         keyElements: ["Search bar", "Filter panel", "Forest project cards", "Compare shortcut"],
       },
       {
         name: "Forest Detail",
         purpose: "提供單一林地完整資訊與信任依據。",
-        userGoal: "判斷專案是否符合企業合作與報告需求。",
+        userGoal: "判斷專案是否符合使用者合作與報告需求。",
         keyElements: ["Impact summary", "Land profile", "Certification section", "Inquiry CTA"],
       },
       {
