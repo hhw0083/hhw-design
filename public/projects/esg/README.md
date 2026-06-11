@@ -11,6 +11,10 @@ Reserved filenames:
 - `components.webp`: component showcase board
 - `final-ui-01.webp`: final UI gallery image
 - `final-ui-02.webp`: final UI gallery image
+- `final-ui-03.webp`: final UI gallery image
+- `final-ui-04.webp`: final UI gallery image
+- `final-ui-05.webp`: final UI gallery image
+- `final-ui-06.webp`: final UI gallery image
 
 Image paths are managed in `src/data/projects.ts`. Missing image files are
 intentional until final assets are exported.

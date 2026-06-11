@@ -17,5 +17,7 @@
 - `bootstrap-layout.webp`
 - `final-ui-01.webp`
 - `final-ui-02.webp`
+- `final-ui-03.webp`
+- `final-ui-04.webp`
 
 建議匯出為 WebP，使用 sRGB 色彩空間，並依原始畫面比例保留足夠解析度。

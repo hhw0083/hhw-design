@@ -16,6 +16,8 @@ Reserved filenames:
 - `component-extension.webp`: existing component extension board
 - `final-ui-01.webp`: final case management interface
 - `final-ui-02.webp`: final map-based interface
+- `final-ui-03.webp`: final map system interface
+- `final-ui-04.webp`: final feature extension interface
 
 Image paths are managed in `src/data/projects.ts`. Until a reserved image is
 added, the case study renders the corresponding Tailwind fallback visual.

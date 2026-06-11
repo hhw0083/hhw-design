@@ -16,8 +16,10 @@ Reserved filenames:
 - `theme-system.webp`: light and dark theme comparison
 - `design-system.webp`: design system foundations
 - `ui-components.webp`: component showcase
-- `final-light.webp`: final light theme presentation
-- `final-dark.webp`: final dark theme presentation
+- `final-ui-01.webp`: final light theme presentation
+- `final-ui-02.webp`: final dark theme presentation
+- `final-ui-03.webp`: light dashboard overview
+- `final-ui-04.webp`: dark dashboard overview
 
 Image paths are managed in `src/data/projects.ts`. Until a reserved image is
 added, the case study renders the corresponding Tailwind fallback visual.

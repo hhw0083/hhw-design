@@ -274,6 +274,10 @@ export const projectImageAssets = {
       "/projects/esg/components.webp",
       "/projects/esg/final-ui-01.webp",
       "/projects/esg/final-ui-02.webp",
+      "/projects/esg/final-ui-03.webp",
+      "/projects/esg/final-ui-04.webp",
+      "/projects/esg/final-ui-05.webp",
+      "/projects/esg/final-ui-06.webp",
     ],
   },
   tcb: {
@@ -290,8 +294,10 @@ export const projectImageAssets = {
       "/projects/tcb/theme-system.webp",
       "/projects/tcb/design-system.webp",
       "/projects/tcb/ui-components.webp",
-      "/projects/tcb/final-light.webp",
-      "/projects/tcb/final-dark.webp",
+      "/projects/tcb/final-ui-01.webp",
+      "/projects/tcb/final-ui-02.webp",
+      "/projects/tcb/final-ui-03.webp",
+      "/projects/tcb/final-ui-04.webp",
     ],
   },
   rmic: {
@@ -308,6 +314,8 @@ export const projectImageAssets = {
       "/projects/rmic/component-extension.webp",
       "/projects/rmic/final-ui-01.webp",
       "/projects/rmic/final-ui-02.webp",
+      "/projects/rmic/final-ui-03.webp",
+      "/projects/rmic/final-ui-04.webp",
     ],
   },
   "jule-ecommerce": {
@@ -326,6 +334,8 @@ export const projectImageAssets = {
       "/projects/jule-ecommerce/bootstrap-layout.webp",
       "/projects/jule-ecommerce/final-ui-01.webp",
       "/projects/jule-ecommerce/final-ui-02.webp",
+      "/projects/jule-ecommerce/final-ui-03.webp",
+      "/projects/jule-ecommerce/final-ui-04.webp",
     ],
   },
 } satisfies Record<string, ProjectImageAssets>;
@@ -626,36 +636,42 @@ const esgCaseStudySections: CaseStudySection[] = [
             title: "首頁 / ESG 成果展示",
             description:
               "整合 ESG 專案摘要、精選內容與成果入口，讓使用者快速理解平台價值。",
+            image: "/projects/esg/final-ui-01.webp",
             visual: "home",
           },
           {
             title: "登入身分選擇",
             description:
               "依照使用者、管理者與一般使用者角色，建立清楚的進入路徑。",
+            image: "/projects/esg/final-ui-02.webp",
             visual: "login",
           },
           {
             title: "物件列表查詢",
             description:
               "透過列表卡片、篩選條件與排序，協助使用者比較不同 ESG 專案。",
+            image: "/projects/esg/final-ui-03.webp",
             visual: "list",
           },
           {
             title: "物件地圖查詢",
             description:
               "以地理位置補足專案查詢脈絡，讓使用者理解區域與專案分布。",
+            image: "/projects/esg/final-ui-04.webp",
             visual: "map",
           },
           {
             title: "個人最新消息",
             description:
               "集中呈現申請進度、平台通知與後續行動，降低使用者追蹤成本。",
+            image: "/projects/esg/final-ui-05.webp",
             visual: "news",
           },
           {
             title: "ESG 憑證查詢",
             description:
               "提供憑證編號、狀態與有效期限查詢，提升專案成果的可信度。",
+            image: "/projects/esg/final-ui-06.webp",
             visual: "certificate",
           },
         ],
@@ -997,28 +1013,28 @@ const tcbCaseStudySections: CaseStudySection[] = [
             title: "Final Dashboard / Light",
             description:
               "明亮模式強調資訊掃讀、狀態辨識與日常管理效率。",
-            image: "/projects/tcb/final-light.webp",
+            image: "/projects/tcb/final-ui-01.webp",
             visual: "tcb-final-light",
           },
           {
             title: "Final Dashboard / Dark",
             description:
               "暗色模式以玻璃霧化層級與低刺激對比支援長時間使用。",
-            image: "/projects/tcb/final-dark.webp",
+            image: "/projects/tcb/final-ui-02.webp",
             visual: "tcb-final-dark",
           },
           {
             title: "Dashboard Overview / Light",
             description:
               "整合系統資源、公告與虛擬機狀態的亮色資訊總覽。",
-            image: "/projects/tcb/dashboard-light.webp",
+            image: "/projects/tcb/final-ui-03.webp",
             visual: "tcb-dashboard-light",
           },
           {
             title: "Dashboard Overview / Dark",
             description:
               "維持相同資訊架構，在暗色環境中重新校準表面與狀態對比。",
-            image: "/projects/tcb/dashboard-dark.webp",
+            image: "/projects/tcb/final-ui-04.webp",
             visual: "tcb-dashboard-dark",
           },
         ],
@@ -1289,14 +1305,14 @@ const rmicCaseStudySections: CaseStudySection[] = [
             title: "地圖系統",
             description:
               "整合篩選、圖層控制與案件資訊，支援道路管理與案件追蹤。",
-            image: "/projects/rmic/map-system.webp",
+            image: "/projects/rmic/final-ui-03.webp",
             visual: "rmic-map-system",
           },
           {
             title: "功能擴充頁",
             description:
               "以既有元件與流程規範承接新增功能，降低使用與開發端的轉換成本。",
-            image: "/projects/rmic/feature-extension.webp",
+            image: "/projects/rmic/final-ui-04.webp",
             visual: "rmic-feature-extension",
           },
         ],
@@ -1597,14 +1613,14 @@ const juleCaseStudySections: CaseStudySection[] = [
             title: "Product Discovery",
             description:
               "透過商品分類、活動標籤與商品卡片支援快速比較。",
-            image: "/projects/jule-ecommerce/product-list.webp",
+            image: "/projects/jule-ecommerce/final-ui-03.webp",
             visual: "jule-product-list",
           },
           {
             title: "Checkout Experience",
             description:
               "清楚呈現回饋點數、折價券、運費與最終付款金額。",
-            image: "/projects/jule-ecommerce/checkout.webp",
+            image: "/projects/jule-ecommerce/final-ui-04.webp",
             visual: "jule-checkout",
           },
         ],
