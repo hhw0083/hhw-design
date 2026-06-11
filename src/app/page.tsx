@@ -22,6 +22,11 @@ import {
 } from "lucide-react";
 import { AwardVisual } from "@/components/AwardVisual";
 import { HomeLoadingScreen } from "@/components/HomeLoadingScreen";
+import {
+  MotionReveal,
+  MotionSection,
+} from "@/components/motion/MotionReveal";
+import { ParallaxLayer } from "@/components/motion/ParallaxLayer";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { awards, experiences, profile, projects, skills } from "@/data/projects";
@@ -73,81 +78,107 @@ export default function Home() {
       <HomeLoadingScreen />
       <main className="overflow-hidden bg-canvas text-slate-950">
       <section className="relative min-h-[86svh] overflow-hidden bg-[#04101b] pt-16">
-        <Image
-          src={homeHeroImage}
-          alt="UI UX designer workspace with layered interface panels"
-          fill
-          priority
-          sizes="100vw"
-          className={`object-cover object-center ${
-            hasMobileHeroImage ? "hidden sm:block" : ""
-          }`}
-        />
-        {hasMobileHeroImage ? (
+        <ParallaxLayer
+          className="absolute -inset-y-8 inset-x-0"
+          speed={0.045}
+          maxOffset={28}
+        >
           <Image
-            src={homeHeroMobileImage}
+            src={homeHeroImage}
             alt="UI UX designer workspace with layered interface panels"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center sm:hidden"
+            className={`object-cover object-center ${
+              hasMobileHeroImage ? "hidden sm:block" : ""
+            }`}
           />
-        ) : null}
+          {hasMobileHeroImage ? (
+            <Image
+              src={homeHeroMobileImage}
+              alt="UI UX designer workspace with layered interface panels"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center sm:hidden"
+            />
+          ) : null}
+        </ParallaxLayer>
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,10,18,0.97)_0%,rgba(3,15,26,0.91)_38%,rgba(3,15,26,0.34)_68%,rgba(2,10,18,0.10)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_36%,rgba(20,184,166,0.12),transparent_26rem),linear-gradient(180deg,rgba(2,8,15,0.03),rgba(2,8,15,0.36))]" />
-        <div className="absolute inset-0 grid-lines opacity-[0.08]" />
+        <ParallaxLayer
+          className="absolute -inset-6"
+          speed={-0.025}
+          maxOffset={16}
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_36%,rgba(20,184,166,0.12),transparent_26rem),linear-gradient(180deg,rgba(2,8,15,0.03),rgba(2,8,15,0.36))]" />
+          <div className="absolute inset-0 grid-lines opacity-[0.08]" />
+        </ParallaxLayer>
 
         <div className="relative mx-auto flex min-h-[calc(86svh-4rem)] max-w-7xl items-center px-4 py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="mb-5 inline-flex rounded-full border border-teal-300/30 bg-teal-300/10 px-3 py-1.5 text-sm font-medium text-teal-200 backdrop-blur">
-              {profile.availability}
-            </p>
-            <h1 className="max-w-3xl text-5xl font-semibold leading-[1.05] text-white md:text-7xl">
-              {profile.name}
-              <span className="block text-teal-300">{profile.title}</span>
-            </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl">
-              {profile.intro}
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Link
-                href="#projects"
-                className="inline-flex h-12 items-center gap-2 rounded-full bg-cyanline px-5 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(15,118,110,0.28)] transition hover:bg-teal-500"
-              >
-                View projects
-                <ArrowRight className="size-4" aria-hidden="true" />
-              </Link>
-              <Link
-                href="#experience"
-                className="inline-flex h-12 items-center gap-2 rounded-full border border-white/20 bg-black/20 px-5 text-sm font-semibold text-white shadow-sm backdrop-blur transition hover:border-teal-300/50 hover:bg-white/10"
-              >
-                Resume highlights
-                <Download className="size-4" aria-hidden="true" />
-              </Link>
-            </div>
-            <div className="mt-7 max-w-2xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
-                Tools &amp; Skills
+            <MotionReveal
+              delay={20}
+              distance={14}
+              waitForHomeReady
+            >
+              <p className="mb-5 inline-flex rounded-full border border-teal-300/30 bg-teal-300/10 px-3 py-1.5 text-sm font-medium text-teal-200 backdrop-blur">
+                {profile.availability}
               </p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {heroTools.map((tool) => {
-                  const Icon = tool.icon;
-
-                  return (
-                    <span
-                      key={tool.label}
-                      className="inline-flex h-9 items-center gap-2 rounded-lg border border-white/10 bg-black/30 px-3 text-xs font-medium text-slate-200 shadow-sm backdrop-blur"
-                    >
-                      <Icon
-                        className="size-4 text-teal-300"
-                        aria-hidden="true"
-                      />
-                      {tool.label}
-                    </span>
-                  );
-                })}
+            </MotionReveal>
+            <MotionReveal delay={90} distance={18} waitForHomeReady>
+              <h1 className="max-w-3xl text-5xl font-semibold leading-[1.05] text-white md:text-7xl">
+                {profile.name}
+                <span className="block text-teal-300">{profile.title}</span>
+              </h1>
+            </MotionReveal>
+            <MotionReveal delay={160} distance={18} waitForHomeReady>
+              <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl">
+                {profile.intro}
+              </p>
+            </MotionReveal>
+            <MotionReveal delay={230} distance={16} waitForHomeReady>
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Link
+                  href="#projects"
+                  className="inline-flex h-12 items-center gap-2 rounded-full bg-cyanline px-5 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(15,118,110,0.28)] transition hover:bg-teal-500"
+                >
+                  View projects
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </Link>
+                <Link
+                  href="#experience"
+                  className="inline-flex h-12 items-center gap-2 rounded-full border border-white/20 bg-black/20 px-5 text-sm font-semibold text-white shadow-sm backdrop-blur transition hover:border-teal-300/50 hover:bg-white/10"
+                >
+                  Resume highlights
+                  <Download className="size-4" aria-hidden="true" />
+                </Link>
               </div>
-            </div>
+            </MotionReveal>
+            <MotionReveal delay={300} distance={14} waitForHomeReady>
+              <div className="mt-7 max-w-2xl">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+                  Tools &amp; Skills
+                </p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {heroTools.map((tool) => {
+                    const Icon = tool.icon;
+
+                    return (
+                      <span
+                        key={tool.label}
+                        className="inline-flex h-9 items-center gap-2 rounded-lg border border-white/10 bg-black/30 px-3 text-xs font-medium text-slate-200 shadow-sm backdrop-blur"
+                      >
+                        <Icon
+                          className="size-4 text-teal-300"
+                          aria-hidden="true"
+                        />
+                        {tool.label}
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+            </MotionReveal>
           </div>
         </div>
 
@@ -161,7 +192,7 @@ export default function Home() {
       </section>
 
       <section id="about" className="section-band bg-canvas py-20 md:py-28">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.8fr_1fr] lg:px-8">
+        <MotionSection className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.8fr_1fr] lg:px-8">
           <SectionHeading
             eyebrow="About"
             title="以使用者任務為核心，讓複雜產品變得可靠、清楚、可交付。"
@@ -191,19 +222,27 @@ export default function Home() {
               );
             })}
           </div>
-        </div>
+        </MotionSection>
       </section>
 
       <section id="projects" className="section-band bg-white py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            eyebrow="Selected Work"
-            title="Projects built around measurable product outcomes."
-            description="每個 case study 都整理了問題、流程、交付項目與結果，方便招募方快速看見設計判斷與落地能力。"
-          />
+          <MotionReveal>
+            <SectionHeading
+              eyebrow="Selected Work"
+              title="Projects built around measurable product outcomes."
+              description="每個 case study 都整理了問題、流程、交付項目與結果，方便招募方快速看見設計判斷與落地能力。"
+            />
+          </MotionReveal>
           <div className="mt-10">
-            {projects.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
+            {projects.map((project, index) => (
+              <MotionReveal
+                key={project.slug}
+                delay={Math.min(index * 60, 180)}
+                distance={20}
+              >
+                <ProjectCard project={project} />
+              </MotionReveal>
             ))}
           </div>
         </div>
@@ -213,7 +252,7 @@ export default function Home() {
         id="experience"
         className="section-band bg-canvas py-20 md:py-28"
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <MotionSection className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-14 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyanline">
@@ -307,7 +346,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
+        </MotionSection>
       </section>
 
       <section
@@ -327,7 +366,7 @@ export default function Home() {
           aria-hidden="true"
         />
 
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_0.75fr] lg:items-center lg:px-8">
+        <MotionSection className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_0.75fr] lg:items-center lg:px-8">
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-300">
               Contact
@@ -385,7 +424,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
+        </MotionSection>
       </section>
       </main>
     </>

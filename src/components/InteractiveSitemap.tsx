@@ -378,6 +378,7 @@ export function InteractiveSitemap() {
         <div
           className="h-[420px] overflow-hidden rounded-lg border border-slate-200 bg-[#fbfbfc] lg:h-full lg:min-h-[760px]"
           data-ia-edge-count={esgSitemapEdges.length}
+          data-lenis-prevent
         >
           <div ref={canvasRef} className="relative h-full w-full">
             <ReactFlow

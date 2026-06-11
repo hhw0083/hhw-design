@@ -10,6 +10,7 @@ import {
   Search,
 } from "lucide-react";
 import type { CSSProperties } from "react";
+import { ParallaxLayer } from "@/components/motion/ParallaxLayer";
 import { CaseStudySectionLayout } from "./CaseStudySectionLayout";
 import {
   CaseStudyVisualFallback,
@@ -241,13 +242,19 @@ export function DesignGoalsSection({
     >
       {image ? (
         <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-[0_28px_70px_rgba(15,23,42,0.12)]">
-          <Image
-            src={image}
-            alt={`${title}成果示意圖`}
-            fill
-            sizes="(min-width: 1024px) 75vw, 100vw"
-            className="object-cover"
-          />
+          <ParallaxLayer
+            className="absolute -inset-y-4 inset-x-0"
+            speed={0.025}
+            maxOffset={14}
+          >
+            <Image
+              src={image}
+              alt={`${title}成果示意圖`}
+              fill
+              sizes="(min-width: 1024px) 75vw, 100vw"
+              className="object-cover"
+            />
+          </ParallaxLayer>
         </div>
       ) : previewVisual?.startsWith("tcb-") ||
         previewVisual?.startsWith("rmic-") ||

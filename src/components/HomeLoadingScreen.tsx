@@ -11,11 +11,14 @@ export function HomeLoadingScreen() {
 
   useEffect(() => {
     if (window.sessionStorage.getItem(LOADING_SESSION_KEY)) {
+      document.documentElement.dataset.homeReady = "true";
       setIsVisible(false);
+      window.dispatchEvent(new Event("hhw:home-ready"));
       return;
     }
 
     window.sessionStorage.setItem(LOADING_SESSION_KEY, "true");
+    document.documentElement.dataset.homeReady = "false";
 
     const originalOverflow = document.body.style.overflow;
     const prefersReducedMotion = window.matchMedia(
@@ -31,6 +34,8 @@ export function HomeLoadingScreen() {
     const removeTimer = window.setTimeout(() => {
       setIsVisible(false);
       document.body.style.overflow = originalOverflow;
+      document.documentElement.dataset.homeReady = "true";
+      window.dispatchEvent(new Event("hhw:home-ready"));
     }, prefersReducedMotion ? 520 : 1320);
 
     return () => {

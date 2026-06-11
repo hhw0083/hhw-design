@@ -23,6 +23,7 @@ import {
   DesignSystemFoundations,
 } from "@/components/DesignSystemPage";
 import { InteractiveSitemap } from "@/components/InteractiveSitemap";
+import { ParallaxLayer } from "@/components/motion/ParallaxLayer";
 import { DesignGoalsSection } from "@/components/case-study/DesignGoalsSection";
 import { CaseStudySectionLayout } from "@/components/case-study/CaseStudySectionLayout";
 import {
@@ -526,17 +527,29 @@ function GalleryVisual({
             : "aspect-[16/10] rounded-lg border"
         }`}
       >
-        <Image
-          src={existingImage}
-          alt={title}
-          fill
-          sizes={
-            compact
-              ? "(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
-              : "(min-width: 768px) 50vw, 100vw"
-          }
-          className="object-cover"
-        />
+        {compact ? (
+          <Image
+            src={existingImage}
+            alt={title}
+            fill
+            sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
+            className="object-cover"
+          />
+        ) : (
+          <ParallaxLayer
+            className="absolute -inset-y-4 inset-x-0"
+            speed={0.025}
+            maxOffset={14}
+          >
+            <Image
+              src={existingImage}
+              alt={title}
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </ParallaxLayer>
+        )}
       </div>
     );
   }
@@ -817,13 +830,19 @@ function CaseStudyBlock({ block }: { block: CaseStudyContentBlock }) {
       return image ? (
         <figure>
           <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-            <Image
-              src={image}
-              alt={block.alt}
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
+            <ParallaxLayer
+              className="absolute -inset-y-4 inset-x-0"
+              speed={0.025}
+              maxOffset={14}
+            >
+              <Image
+                src={image}
+                alt={block.alt}
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </ParallaxLayer>
           </div>
           {block.caption ? (
             <figcaption className="mt-3 text-sm leading-6 text-slate-500">
