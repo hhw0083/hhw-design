@@ -106,8 +106,8 @@ export function ProjectHero({ project }: ProjectHeroProps) {
           />
         ) : null}
       </div>
-      <div className="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(180deg,rgba(250,251,252,0.98)_0%,rgba(250,251,252,0.92)_48%,rgba(245,247,249,0.45)_100%)] md:bg-[linear-gradient(90deg,rgba(250,251,252,0.99)_0%,rgba(250,251,252,0.95)_34%,rgba(250,251,252,0.68)_48%,rgba(245,247,249,0.24)_60%,transparent_72%)]" />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(244,246,248,0.06)_62%,rgba(244,245,246,0.42)_100%)] md:bg-[linear-gradient(90deg,rgba(255,255,255,0.14)_0%,rgba(244,246,248,0.05)_48%,transparent_66%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(135deg,rgba(250,251,252,0.98)_0%,rgba(250,251,252,0.92)_48%,rgba(245,247,249,0.45)_100%)] md:bg-[linear-gradient(90deg,rgba(250,251,252,1)_0%,rgba(250,251,252,0.99)_32%,rgba(250,251,252,0.96)_44%,rgba(250,251,252,0.82)_52%,rgba(250,251,252,0.56)_61%,rgba(245,247,249,0.28)_69%,rgba(245,247,249,0.10)_76%,transparent_84%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(244,246,248,0.06)_62%,rgba(244,245,246,0.42)_100%)] md:bg-[linear-gradient(90deg,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0.15)_44%,rgba(248,250,252,0.08)_60%,rgba(248,250,252,0.03)_72%,transparent_82%)]" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-[3.5rem_minmax(0,1fr)_auto] items-center gap-3 md:grid-cols-[6rem_minmax(0,1fr)_auto] md:gap-6">
