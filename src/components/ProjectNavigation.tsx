@@ -28,7 +28,7 @@ function ProjectNavigationCard({
     >
       <article className="h-full overflow-hidden rounded-lg border border-slate-200 bg-white shadow-portfolio-card transition duration-300 group-hover:-translate-y-1 group-hover:border-cyanline/35 group-hover:shadow-[0_24px_60px_rgba(15,23,42,0.12)]">
         <div className="p-2.5 sm:p-3 md:p-4">
-          <ProjectVisual project={project} />
+          <ProjectVisual project={project} compact />
         </div>
 
         <div

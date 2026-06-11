@@ -49,6 +49,7 @@ export type ProjectScreen = {
 export type ProjectImageAssets = {
   coverImage?: string;
   heroImage?: string;
+  heroMobileImage?: string;
   galleryImages?: string[];
 };
 
@@ -265,6 +266,7 @@ export const projectImageAssets = {
   "esg-forest-matching-platform": {
     coverImage: "/projects/esg/cover.webp",
     heroImage: "/projects/esg/hero.webp",
+    heroMobileImage: "/projects/esg/hero-mobile.webp",
     galleryImages: [
       "/projects/esg/sitemap.webp",
       "/projects/esg/design-system.webp",
@@ -276,6 +278,7 @@ export const projectImageAssets = {
   tcb: {
     coverImage: "/projects/tcb/cover.webp",
     heroImage: "/projects/tcb/hero.webp",
+    heroMobileImage: "/projects/tcb/hero-mobile.webp",
     galleryImages: [
       "/projects/tcb/dashboard-light.webp",
       "/projects/tcb/dashboard-dark.webp",
@@ -293,6 +296,7 @@ export const projectImageAssets = {
   rmic: {
     coverImage: "/projects/rmic/cover.webp",
     heroImage: "/projects/rmic/hero.webp",
+    heroMobileImage: "/projects/rmic/hero-mobile.webp",
     galleryImages: [
       "/projects/rmic/platform-overview.webp",
       "/projects/rmic/map-system.webp",
@@ -308,6 +312,7 @@ export const projectImageAssets = {
   "jule-ecommerce": {
     coverImage: "/projects/jule-ecommerce/cover.webp",
     heroImage: "/projects/jule-ecommerce/hero.webp",
+    heroMobileImage: "/projects/jule-ecommerce/hero-mobile.webp",
     galleryImages: [
       "/projects/jule-ecommerce/homepage.webp",
       "/projects/jule-ecommerce/visual-direction.webp",
@@ -454,7 +459,7 @@ const esgCaseStudySections: CaseStudySection[] = [
     contentBlocks: [
       {
         type: "design-goals",
-        previewImage: "/projects/esg/hero.webp",
+        previewImage: "/projects/esg/design-goals.webp",
         goals: [
           {
             title: "清晰瀏覽",
@@ -790,7 +795,7 @@ const tcbCaseStudySections: CaseStudySection[] = [
     contentBlocks: [
       {
         type: "design-goals",
-        previewImage: "/projects/tcb/dashboard-light.webp",
+        previewImage: "/projects/tcb/design-goals.webp",
         previewVisual: "tcb-dashboard-light",
         goals: [
           {
@@ -1139,7 +1144,7 @@ const rmicCaseStudySections: CaseStudySection[] = [
     contentBlocks: [
       {
         type: "design-goals",
-        previewImage: "/projects/rmic/wireframe.webp",
+        previewImage: "/projects/rmic/design-goals.webp",
         previewVisual: "rmic-wireframe",
         goals: [
           {
@@ -1397,7 +1402,7 @@ const juleCaseStudySections: CaseStudySection[] = [
     contentBlocks: [
       {
         type: "design-goals",
-        previewImage: "/projects/jule-ecommerce/homepage.webp",
+        previewImage: "/projects/jule-ecommerce/design-goals.webp",
         previewVisual: "jule-homepage",
         goals: [
           {

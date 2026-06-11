@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -56,19 +58,41 @@ const heroTools = [
 ];
 
 export default function Home() {
+  const homeHeroImage = "/images/hero-uiux-studio.webp";
+  const homeHeroMobileImage = "/images/hero-uiux-studio-mobile.webp";
+  const hasMobileHeroImage = existsSync(
+    join(
+      process.cwd(),
+      "public",
+      homeHeroMobileImage.replace(/^\/+/, ""),
+    ),
+  );
+
   return (
     <>
       <HomeLoadingScreen />
       <main className="overflow-hidden bg-canvas text-slate-950">
       <section className="relative min-h-[86svh] overflow-hidden bg-[#04101b] pt-16">
         <Image
-          src="/images/hero-uiux-studio.webp"
+          src={homeHeroImage}
           alt="UI UX designer workspace with layered interface panels"
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className={`object-cover object-center ${
+            hasMobileHeroImage ? "hidden sm:block" : ""
+          }`}
         />
+        {hasMobileHeroImage ? (
+          <Image
+            src={homeHeroMobileImage}
+            alt="UI UX designer workspace with layered interface panels"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center sm:hidden"
+          />
+        ) : null}
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,10,18,0.97)_0%,rgba(3,15,26,0.91)_38%,rgba(3,15,26,0.34)_68%,rgba(2,10,18,0.10)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_36%,rgba(20,184,166,0.12),transparent_26rem),linear-gradient(180deg,rgba(2,8,15,0.03),rgba(2,8,15,0.36))]" />
         <div className="absolute inset-0 grid-lines opacity-[0.08]" />

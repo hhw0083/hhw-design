@@ -1,4 +1,7 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import type { CSSProperties, ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -28,7 +31,23 @@ const metaDividerClasses = [
   "border-t border-slate-200/70 md:border-l lg:border-t-0",
 ];
 
+function getExistingPublicImage(imagePath?: string): string | undefined {
+  if (!imagePath?.startsWith("/")) {
+    return undefined;
+  }
+
+  return existsSync(
+    join(process.cwd(), "public", imagePath.replace(/^\/+/, "")),
+  )
+    ? imagePath
+    : undefined;
+}
+
 export function ProjectHero({ project }: ProjectHeroProps) {
+  const desktopHeroImage =
+    getExistingPublicImage(project.heroImage) ??
+    getExistingPublicImage(project.coverImage);
+
   const metaItems: {
     label: keyof typeof metaIcons;
     content: ReactNode;
@@ -71,10 +90,22 @@ export function ProjectHero({ project }: ProjectHeroProps) {
         } as CSSProperties
       }
     >
-      <div className="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(135deg,#FFFFFF_0%,#F5F6F7_48%,#E9EBEE_100%)]" />
-      <div className="pointer-events-none absolute -right-40 -top-44 -z-10 size-[40rem] rounded-full bg-white/90 blur-[150px]" />
-      <div className="pointer-events-none absolute -bottom-48 left-[26%] -z-10 h-80 w-[48rem] rounded-full bg-slate-300/30 blur-[150px]" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 -z-10 w-[46%] bg-[linear-gradient(135deg,rgba(255,255,255,0),rgba(15,23,42,0.045))]" />
+      <div className="pointer-events-none absolute inset-0 -z-30 bg-[linear-gradient(135deg,#FFFFFF_0%,#F5F6F7_48%,#E9EBEE_100%)]">
+        <div className="absolute bottom-[8%] right-[4%] hidden h-[68%] w-[58%] rounded-[2.5rem] bg-slate-950/20 blur-3xl md:block" />
+        {desktopHeroImage ? (
+          <Image
+            src={desktopHeroImage}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="hidden object-cover object-[72%_center] drop-shadow-[0_30px_42px_rgba(15,23,42,0.28)] md:block"
+            aria-hidden="true"
+          />
+        ) : null}
+      </div>
+      <div className="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(180deg,rgba(250,251,252,0.98)_0%,rgba(250,251,252,0.92)_48%,rgba(245,247,249,0.45)_100%)] md:bg-[linear-gradient(90deg,rgba(250,251,252,0.99)_0%,rgba(250,251,252,0.94)_37%,rgba(250,251,252,0.52)_58%,rgba(245,247,249,0.10)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(255,255,255,0.16)_0%,rgba(244,246,248,0.06)_62%,rgba(244,245,246,0.42)_100%)] md:bg-[linear-gradient(180deg,rgba(255,255,255,0.32)_0%,rgba(244,246,248,0.20)_62%,rgba(244,245,246,0.92)_100%)]" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-[3.5rem_minmax(0,1fr)_auto] items-center gap-3 md:grid-cols-[6rem_minmax(0,1fr)_auto] md:gap-6">
@@ -100,8 +131,8 @@ export function ProjectHero({ project }: ProjectHeroProps) {
           </Link>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
-          <div className="lg:col-span-6">
+        <div className="mt-12 md:min-h-[34rem] lg:flex lg:min-h-[38rem] lg:items-center">
+          <div className="max-w-2xl lg:w-1/2">
             <h1 className="text-4xl font-semibold leading-[1.12] text-slate-950 sm:text-5xl lg:text-[3.5rem]">
               {project.title}
             </h1>
@@ -124,11 +155,8 @@ export function ProjectHero({ project }: ProjectHeroProps) {
             </div>
           </div>
 
-          <div className="relative lg:col-span-6">
-            <div className="pointer-events-none absolute inset-10 rounded-full bg-slate-500/10 blur-[80px]" />
-            <div className="relative">
-              <ProjectVisual project={project} />
-            </div>
+          <div className="mt-8 md:hidden">
+            <ProjectVisual project={project} />
           </div>
         </div>
 
