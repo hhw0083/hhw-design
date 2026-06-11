@@ -157,64 +157,64 @@ export type CaseStudyGalleryItem = {
 
 export type CaseStudyContentBlock =
   | {
-      type: "facts";
-      items: { label: string; value: string }[];
-    }
+    type: "facts";
+    items: { label: string; value: string }[];
+  }
   | {
-      type: "cards";
-      columns?: 2 | 3 | 5;
-      items: CaseStudyCard[];
-    }
+    type: "cards";
+    columns?: 2 | 3 | 5;
+    items: CaseStudyCard[];
+  }
   | {
-      type: "comparison";
-      sourceTitle: string;
-      targetTitle: string;
-      items: { source: string; target: string }[];
-    }
+    type: "comparison";
+    sourceTitle: string;
+    targetTitle: string;
+    items: { source: string; target: string }[];
+  }
   | {
-      type: "design-goals";
-      goals: DesignGoal[];
-      previewImage?: string;
-      previewVisual?: CaseStudyVisualKind;
-    }
+    type: "design-goals";
+    goals: DesignGoal[];
+    previewImage?: string;
+    previewVisual?: CaseStudyVisualKind;
+  }
   | {
-      type: "feature-gallery";
-      items: CaseStudyGalleryItem[];
-    }
+    type: "feature-gallery";
+    items: CaseStudyGalleryItem[];
+  }
   | {
-      type: "architecture";
-      groups: { title: string; items: string[] }[];
-      showInteractiveSitemap?: boolean;
-    }
+    type: "architecture";
+    groups: { title: string; items: string[] }[];
+    showInteractiveSitemap?: boolean;
+  }
   | {
-      type: "flow";
-      items: string[];
-    }
+    type: "flow";
+    items: string[];
+  }
   | {
-      type: "design-system";
-    }
+    type: "design-system";
+  }
   | {
-      type: "ui-components";
-    }
+    type: "ui-components";
+  }
   | {
-      type: "gallery";
-      items: CaseStudyGalleryItem[];
-    }
+    type: "gallery";
+    items: CaseStudyGalleryItem[];
+  }
   | {
-      type: "visual-showcase";
-      layout?: "hero-grid" | "two-column" | "single";
-      items: CaseStudyGalleryItem[];
-    }
+    type: "visual-showcase";
+    layout?: "hero-grid" | "two-column" | "single";
+    items: CaseStudyGalleryItem[];
+  }
   | {
-      type: "tags";
-      items: string[];
-    }
+    type: "tags";
+    items: string[];
+  }
   | {
-      type: "image";
-      src: string;
-      alt: string;
-      caption?: string;
-    };
+    type: "image";
+    src: string;
+    alt: string;
+    caption?: string;
+  };
 
 export type CaseStudySection = {
   number: string;
@@ -227,6 +227,7 @@ export type CaseStudySection = {
 
 export type Project = ProjectImageAssets & {
   slug: string;
+  figmaPrototypeUrl?: string;
   visualFallback?: CaseStudyVisualKind;
   title: string;
   subtitle: string;
@@ -1636,9 +1637,9 @@ export const projects: Project[] = [
       "協助企業查詢森林與自然碳匯相關 ESG 專案，整合列表、地圖與媒合流程，提升查詢效率與合作透明度。",
     role: "UI/UX Design / Visual Design",
     scope: "平台 / 會員中心 / 地圖 / 專案詳情 / CMS",
-    timeline: "6 週",
+    timeline: "6 月",
     year: "2026",
-    duration: "6 weeks",
+    duration: "6 months",
     summary:
       "本專案協助企業查詢森林與自然碳匯相關 ESG 專案，透過列表、地圖、媒合流程與憑證查詢，降低企業理解與參與 ESG 專案的門檻。",
     challenge:
@@ -1879,9 +1880,9 @@ export const projects: Project[] = [
       "針對既有虛擬機管理平台重新整理 Dashboard、公告與部署流程，並導入 Light / Dark Theme，提升長時間管理情境的可讀性與操作效率。",
     role: "UI/UX Design / Design System",
     scope: "Dashboard / 虛擬機部署 / 公告 / 雙主題",
-    timeline: "Project-based",
+    timeline: "3 月",
     year: "2026",
-    duration: "Platform optimization",
+    duration: "3 months",
     summary:
       "本專案針對既有的虛擬機管理平台進行功能與視覺優化，重新梳理 Dashboard 資訊呈現、公告功能、虛擬機部署流程與系統介面一致性，並導入 Light / Dark Theme 亮色／暗色主題切換，提升長時間管理情境下的可讀性與操作體驗。",
     challenge:
@@ -1927,6 +1928,8 @@ export const projects: Project[] = [
   {
     slug: "rmic",
     ...projectImageAssets.rmic,
+    figmaPrototypeUrl:
+      "https://www.figma.com/proto/HhzIYp8NJMg2UkxtKaGqnj/-M--RMIC-%E6%A1%83%E5%9C%92%E5%B8%82%E9%81%93%E7%AE%A1%E8%B3%87%E8%A8%8A%E4%B8%AD%E5%BF%83%E7%B3%BB%E7%B5%B1-Final?node-id=85-1113&p=f&viewport=301%2C157%2C0.06&t=qTctTlCG2VODrGFh-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=85%3A1113&page-id=85%3A1083",
     visualFallback: "rmic-hero",
     caseStudySections: rmicCaseStudySections,
     title: "RMIC 桃園市道管資訊中心系統",
@@ -1936,9 +1939,9 @@ export const projects: Project[] = [
       "在既有道路管理平台架構下擴充案件與地圖功能，透過 Wireframe 與 Prototype 對齊跨部門需求，降低開發前的流程與操作落差。",
     role: "UI/UX Design / Prototyping",
     scope: "案件管理 / 地圖圖資 / 表單 / 功能擴充",
-    timeline: "Project-based",
+    timeline: "1 月",
     year: "2026",
-    duration: "Feature extension",
+    duration: "1 months",
     summary:
       "RMIC 桃園市道管資訊中心系統用於道路挖掘、施工案件與相關申請流程的管理，平台整合案件進度、表單資料與地圖圖資，支援跨部門在道路管理、審核與案件追蹤上的協作需求。",
     challenge:
