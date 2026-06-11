@@ -837,9 +837,14 @@ function CaseStudyBlock({ block }: { block: CaseStudyContentBlock }) {
 }
 
 export function CaseStudyPage({ project }: { project: Project }) {
+  const contentSections = project.caseStudySections.filter(
+    (section) => section.type !== "overview",
+  );
+
   return (
     <div>
-      {project.caseStudySections.map((section, index) => {
+      {contentSections.map((section) => {
+        const originalIndex = project.caseStudySections.indexOf(section);
         const designGoals =
           section.type === "goals"
             ? section.contentBlocks.find(
@@ -871,7 +876,7 @@ export function CaseStudyPage({ project }: { project: Project }) {
             eyebrow={section.title}
             title={section.subtitle}
             description={section.description}
-            background={index % 2 === 0 ? "canvas" : "white"}
+            background={originalIndex % 2 === 0 ? "canvas" : "white"}
             layout={section.type === "user-flow" ? "narrative" : "showcase"}
             accentColor={project.theme.primary}
           >

@@ -11,6 +11,7 @@ import type { Project } from "@/data/projects";
 type ProjectVisualProps = {
   project: Project;
   compact?: boolean;
+  variant?: "light" | "dark";
 };
 
 function getExistingProjectImage(
@@ -32,7 +33,11 @@ function getExistingProjectImage(
   });
 }
 
-export function ProjectVisual({ project, compact = false }: ProjectVisualProps) {
+export function ProjectVisual({
+  project,
+  compact = false,
+  variant = "light",
+}: ProjectVisualProps) {
   const image = getExistingProjectImage(project, compact);
   const imageRole = compact
     ? "cover"
@@ -44,7 +49,11 @@ export function ProjectVisual({ project, compact = false }: ProjectVisualProps) 
     return (
       <div
         key={`${project.slug}-${imageRole}-${image}`}
-        className="relative aspect-[16/10] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-portfolio-card"
+        className={`relative aspect-[16/10] overflow-hidden rounded-lg border ${
+          variant === "dark"
+            ? "border-white/10 bg-slate-950 shadow-[0_28px_80px_rgba(0,0,0,0.42)]"
+            : "border-slate-200 bg-white shadow-portfolio-card"
+        }`}
         data-project-image={`${project.slug}:${imageRole}`}
       >
         <Image
@@ -73,7 +82,13 @@ export function ProjectVisual({ project, compact = false }: ProjectVisualProps) 
     project.visualFallback?.startsWith("jule-")
   ) {
     return (
-      <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-portfolio-card">
+      <div
+        className={`relative aspect-[16/10] overflow-hidden rounded-lg border ${
+          variant === "dark"
+            ? "border-white/10 bg-slate-950 shadow-[0_28px_80px_rgba(0,0,0,0.42)]"
+            : "border-slate-200 bg-white shadow-portfolio-card"
+        }`}
+      >
         <CaseStudyVisualFallback
           kind={project.visualFallback as CaseStudyFallbackKind}
         />

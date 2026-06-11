@@ -41,13 +41,13 @@ export function CaseStudySectionLayout({
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-12 lg:items-start lg:gap-12 lg:px-8">
         {layout === "narrative" ? (
           <header className="lg:col-span-3">
-            <p className="text-5xl font-semibold leading-none text-[var(--case-study-accent)] md:text-7xl">
+            <p className="text-4xl font-semibold leading-none text-[var(--case-study-accent)] md:text-6xl">
               {sectionNumber}
             </p>
-            <p className="mt-8 text-sm font-semibold uppercase tracking-[0.18em] text-[var(--case-study-accent)]">
+            <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--case-study-accent)]">
               {eyebrow}
             </p>
-            <h2 className="mt-3 text-3xl font-semibold leading-tight text-slate-950 md:text-5xl">
+            <h2 className="mt-2 text-2xl font-semibold leading-tight text-slate-950 md:text-4xl">
               {title}
             </h2>
             {description ? (
@@ -58,15 +58,15 @@ export function CaseStudySectionLayout({
             {introChildren}
           </header>
         ) : (
-          <header className="grid gap-5 border-b border-slate-200 pb-8 md:grid-cols-[8rem_minmax(0,1fr)] md:gap-10 md:pb-10 lg:col-span-12">
-            <p className="text-5xl font-semibold leading-none text-[var(--case-study-accent)] md:text-7xl">
+          <header className="grid grid-cols-[3.5rem_minmax(0,1fr)] gap-3 border-b border-slate-200 pb-8 md:grid-cols-[6rem_minmax(0,1fr)] md:gap-6 md:pb-10 lg:col-span-12">
+            <p className="text-4xl font-semibold leading-none text-[var(--case-study-accent)] md:text-6xl">
               {sectionNumber}
             </p>
             <div className="max-w-4xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--case-study-accent)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--case-study-accent)]">
                 {eyebrow}
               </p>
-              <h2 className="mt-3 text-3xl font-semibold leading-tight text-slate-950 md:text-5xl">
+              <h2 className="mt-2 text-2xl font-semibold leading-tight text-slate-950 md:text-4xl">
                 {title}
               </h2>
               {description ? (

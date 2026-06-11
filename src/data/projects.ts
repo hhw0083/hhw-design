@@ -228,8 +228,12 @@ export type Project = ProjectImageAssets & {
   slug: string;
   visualFallback?: CaseStudyVisualKind;
   title: string;
+  subtitle: string;
   eyebrow: string;
+  description: string;
   role: string;
+  scope: string;
+  timeline: string;
   year: string;
   duration: string;
   summary: string;
@@ -1621,9 +1625,13 @@ export const projects: Project[] = [
     ...projectImageAssets["esg-forest-matching-platform"],
     caseStudySections: esgCaseStudySections,
     title: "ESG 林地媒合平台",
+    subtitle: "ESG Matching Platform",
     eyebrow: "企業參與森林及自然碳匯 ESG 專案媒合平台",
-    role:
-      "UI/UX Designer，負責產品資訊架構、媒合流程、設計系統規格與高保真介面設計。",
+    description:
+      "協助企業查詢森林與自然碳匯相關 ESG 專案，整合列表、地圖與媒合流程，提升查詢效率與合作透明度。",
+    role: "UI/UX Design / Visual Design",
+    scope: "平台 / 會員中心 / 地圖 / 專案詳情 / CMS",
+    timeline: "6 週",
     year: "2026",
     duration: "6 weeks",
     summary:
@@ -1638,11 +1646,11 @@ export const projects: Project[] = [
       { label: "Components", value: "12" },
     ],
     tags: [
-      "UI Design",
+      "Web Platform",
+      "UI/UX Design",
       "Design System",
-      "Front-end Layout Support",
-      "Accessibility AA",
-      "ESG Platform",
+      "Front-end Support",
+      "Accessibility",
     ],
     tools: ["Figma", "FigJam", "Notion", "Design Tokens"],
     process: [
@@ -1651,11 +1659,10 @@ export const projects: Project[] = [
       "設計 token、色彩與元件規格，讓平台可支援不同林地類型、狀態與 ESG 指標擴充。",
     ],
     deliverables: [
-      "Project overview",
-      "Information architecture",
-      "Sitemap",
-      "Design token system",
-      "Component library spec",
+      "設計系統",
+      "前端支援",
+      "無障礙",
+      "視覺更新",
     ],
     theme: {
       primary: "#0f766e",
@@ -1861,9 +1868,13 @@ export const projects: Project[] = [
     visualFallback: "tcb-hero",
     caseStudySections: tcbCaseStudySections,
     title: "TCB 虛擬機管理平台",
+    subtitle: "Virtual Machine Management Platform",
     eyebrow: "虛擬機管理平台的功能與視覺優化",
-    role:
-      "UI/UX Designer，負責 Dashboard 資訊層級、Light / Dark Theme、Design System、公告功能與虛擬機部署流程優化。",
+    description:
+      "針對既有虛擬機管理平台重新整理 Dashboard、公告與部署流程，並導入 Light / Dark Theme，提升長時間管理情境的可讀性與操作效率。",
+    role: "UI/UX Design / Design System",
+    scope: "Dashboard / 虛擬機部署 / 公告 / 雙主題",
+    timeline: "Project-based",
     year: "2026",
     duration: "Platform optimization",
     summary:
@@ -1892,12 +1903,10 @@ export const projects: Project[] = [
       "整合公告功能並優化虛擬機部署流程，降低設定與操作理解成本。",
     ],
     deliverables: [
-      "Dashboard design",
-      "Light / Dark theme",
-      "Deployment workflow",
-      "Announcement experience",
-      "Design system",
-      "UI component library",
+      "Dashboard",
+      "Design System",
+      "Light / Dark Theme",
+      "Deployment Flow",
     ],
     theme: {
       primary: "#0f7b68",
@@ -1916,9 +1925,13 @@ export const projects: Project[] = [
     visualFallback: "rmic-hero",
     caseStudySections: rmicCaseStudySections,
     title: "RMIC 桃園市道管資訊中心系統",
+    subtitle: "Road Management Information Center",
     eyebrow: "既有平台的功能擴充設計",
-    role:
-      "UI/UX Designer，負責新增功能流程梳理、Wireframe、Prototype、既有元件延伸，以及需求單位、PM 與開發端的功能邏輯對齊。",
+    description:
+      "在既有道路管理平台架構下擴充案件與地圖功能，透過 Wireframe 與 Prototype 對齊跨部門需求，降低開發前的流程與操作落差。",
+    role: "UI/UX Design / Prototyping",
+    scope: "案件管理 / 地圖圖資 / 表單 / 功能擴充",
+    timeline: "Project-based",
     year: "2026",
     duration: "Feature extension",
     summary:
@@ -1947,12 +1960,10 @@ export const projects: Project[] = [
       "以既有平台元件與視覺規範延伸新介面，協助 PM 與開發端確認實作範圍。",
     ],
     deliverables: [
-      "Feature flow definition",
       "Wireframe",
-      "Interactive prototype",
-      "Component extension",
-      "Map-based UI",
-      "Final interface",
+      "Prototype",
+      "Component Extension",
+      "Final UI",
     ],
     theme: {
       primary: "#147d84",
@@ -1971,9 +1982,13 @@ export const projects: Project[] = [
     visualFallback: "jule-hero",
     caseStudySections: juleCaseStudySections,
     title: "聚樂電商",
+    subtitle: "Group-buying E-commerce Experience",
     eyebrow: "活潑品牌電商的視覺設計與購物流程優化",
-    role:
-      "UI/UX Designer / Visual Designer / Front-end Layout，負責網站主視覺、購物流程、優惠折抵體驗與 Bootstrap 5 RWD 切版。",
+    description:
+      "延續歡樂活潑的品牌精神，整合商品瀏覽、購物車、優惠折抵與結帳流程，建立清楚且具導購力的響應式電商體驗。",
+    role: "UI/UX Design / Visual Design / Front-end Layout",
+    scope: "首頁 / 商品頁 / 購物車 / 結帳",
+    timeline: "Project-based",
     year: "2026",
     duration: "E-commerce design",
     summary:
@@ -2001,12 +2016,10 @@ export const projects: Project[] = [
       "使用 Bootstrap 5 進行 RWD 頁面切版，協助設計落實為可維護的前端版型。",
     ],
     deliverables: [
-      "Visual direction",
-      "Responsive homepage",
-      "Product browsing",
-      "Cart and checkout flow",
-      "Rewards and coupons",
-      "Bootstrap 5 layout",
+      "Visual Design",
+      "Shopping Flow",
+      "RWD",
+      "Bootstrap 5 Layout",
     ],
     theme: {
       primary: "#f06449",
