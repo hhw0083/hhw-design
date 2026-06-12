@@ -182,10 +182,15 @@ export type CaseStudyContentBlock =
     items: CaseStudyGalleryItem[];
   }
   | {
-    type: "architecture";
-    groups: { title: string; items: string[] }[];
-    showInteractiveSitemap?: boolean;
-  }
+      type: "architecture";
+      groups: { title: string; items: string[] }[];
+      showInteractiveSitemap?: boolean;
+    }
+  | {
+      type: "sitemap-tree";
+      root: string;
+      items: string[];
+    }
   | {
     type: "flow";
     items: string[];
@@ -839,6 +844,29 @@ const tcbCaseStudySections: CaseStudySection[] = [
   },
   {
     number: "04",
+    title: "Sitemap",
+    subtitle: "平台架構",
+    type: "information-architecture",
+    description:
+      "將虛擬機管理平台整理為七個平行主模組，協助團隊清楚理解功能邊界與系統導覽層級。",
+    contentBlocks: [
+      {
+        type: "sitemap-tree",
+        root: "虛擬機管理",
+        items: [
+          "Dashboard",
+          "電子表單管理",
+          "雲服務管理",
+          "權限管理",
+          "系統管理",
+          "報表管理",
+          "使用者功能",
+        ],
+      },
+    ],
+  },
+  {
+    number: "05",
     title: "Dashboard Design",
     subtitle: "Dashboard 設計",
     type: "dashboard-design",
@@ -875,7 +903,7 @@ const tcbCaseStudySections: CaseStudySection[] = [
     ],
   },
   {
-    number: "05",
+    number: "06",
     title: "Key Improvements",
     subtitle: "關鍵優化",
     type: "key-improvements",
@@ -976,7 +1004,7 @@ const tcbCaseStudySections: CaseStudySection[] = [
   //   ],
   // },
   {
-    number: "06",
+    number: "07",
     title: "UI Components",
     subtitle: "介面元件",
     type: "ui-components",
@@ -999,7 +1027,7 @@ const tcbCaseStudySections: CaseStudySection[] = [
     ],
   },
   {
-    number: "07",
+    number: "08",
     title: "Final Design & Reflection",
     subtitle: "最終介面與反思",
     type: "reflection",
@@ -1189,45 +1217,45 @@ const rmicCaseStudySections: CaseStudySection[] = [
       },
     ],
   },
+  // {
+  //   number: "04",
+  //   title: "Feature Extension",
+  //   subtitle: "功能擴充設計",
+  //   type: "feature-extension",
+  //   description:
+  //     "本次設計聚焦在既有平台中的新增功能模組。設計過程先盤點原有頁面、欄位與操作邏輯，再依需求補足新增功能的入口、表單狀態與操作回饋，確保功能能自然整合至既有案件管理流程中。",
+  //   contentBlocks: [
+  //     {
+  //       type: "visual-showcase",
+  //       layout: "hero-grid",
+  //       items: [
+  //         {
+  //           title: "新增功能模組",
+  //           description:
+  //             "整合新增入口、表單欄位、狀態切換與操作回饋，維持既有案件流程的連續性。",
+  //           image: "/projects/rmic/feature-extension.webp",
+  //           visual: "rmic-feature-extension",
+  //         },
+  //         // {
+  //         //   title: "案件列表",
+  //         //   description:
+  //         //     "將案件狀態、申請類型、承辦單位與常用操作整理為可快速掃讀的資料表格。",
+  //         //   image: "/projects/rmic/case-list.webp",
+  //         //   visual: "rmic-case-list",
+  //         // },
+  //         // {
+  //         //   title: "地圖與案件連動",
+  //         //   description:
+  //         //     "透過地圖標記、圖層與篩選條件，連結施工位置與案件資料。",
+  //         //   image: "/projects/rmic/map-system.webp",
+  //         //   visual: "rmic-map-system",
+  //         // },
+  //       ],
+  //     },
+  //   ],
+  // },
   {
     number: "04",
-    title: "Feature Extension",
-    subtitle: "功能擴充設計",
-    type: "feature-extension",
-    description:
-      "本次設計聚焦在既有平台中的新增功能模組。設計過程先盤點原有頁面、欄位與操作邏輯，再依需求補足新增功能的入口、表單狀態與操作回饋，確保功能能自然整合至既有案件管理流程中。",
-    contentBlocks: [
-      {
-        type: "visual-showcase",
-        layout: "hero-grid",
-        items: [
-          {
-            title: "新增功能模組",
-            description:
-              "整合新增入口、表單欄位、狀態切換與操作回饋，維持既有案件流程的連續性。",
-            image: "/projects/rmic/feature-extension.webp",
-            visual: "rmic-feature-extension",
-          },
-          // {
-          //   title: "案件列表",
-          //   description:
-          //     "將案件狀態、申請類型、承辦單位與常用操作整理為可快速掃讀的資料表格。",
-          //   image: "/projects/rmic/case-list.webp",
-          //   visual: "rmic-case-list",
-          // },
-          // {
-          //   title: "地圖與案件連動",
-          //   description:
-          //     "透過地圖標記、圖層與篩選條件，連結施工位置與案件資料。",
-          //   image: "/projects/rmic/map-system.webp",
-          //   visual: "rmic-map-system",
-          // },
-        ],
-      },
-    ],
-  },
-  {
-    number: "05",
     title: "Wireframe & Prototype",
     subtitle: "線框稿與原型驗證",
     type: "wireframe-prototype",
@@ -1257,7 +1285,7 @@ const rmicCaseStudySections: CaseStudySection[] = [
     ],
   },
   {
-    number: "06",
+    number: "05",
     title: "Component Extension",
     subtitle: "既有元件延伸",
     type: "component-extension",
@@ -1280,7 +1308,7 @@ const rmicCaseStudySections: CaseStudySection[] = [
     ],
   },
   {
-    number: "07",
+    number: "06",
     title: "Final Design & Reflection",
     subtitle: "最終設計與反思",
     type: "reflection",
