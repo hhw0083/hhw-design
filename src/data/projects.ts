@@ -927,56 +927,56 @@ const tcbCaseStudySections: CaseStudySection[] = [
             image: "/projects/tcb/deploy-flow.webp",
             visual: "tcb-deploy-flow",
           },
-          {
-            title: "公告功能",
-            description:
-              "依訊息重要性與閱讀狀態建立更清楚的公告層級。",
-            image: "/projects/tcb/announcement.webp",
-            visual: "tcb-announcement",
-          },
-          {
-            title: "虛擬機列表",
-            description:
-              "統一狀態、資源資訊與操作入口，提升大量資料的掃讀效率。",
-            image: "/projects/tcb/vm-list.webp",
-            visual: "tcb-vm-list",
-          },
+          // {
+          //   title: "公告功能",
+          //   description:
+          //     "依訊息重要性與閱讀狀態建立更清楚的公告層級。",
+          //   image: "/projects/tcb/announcement.webp",
+          //   visual: "tcb-announcement",
+          // },
+          // {
+          //   title: "虛擬機列表",
+          //   description:
+          //     "統一狀態、資源資訊與操作入口，提升大量資料的掃讀效率。",
+          //   image: "/projects/tcb/vm-list.webp",
+          //   visual: "tcb-vm-list",
+          // },
         ],
       },
     ],
   },
+  // {
+  //   number: "06",
+  //   title: "Theme & Design System",
+  //   subtitle: "雙主題與設計系統",
+  //   type: "theme-system",
+  //   description:
+  //     "Dark Theme 不只是將介面反白，而是重新處理背景層級、卡片透明度、文字對比與狀態色，確保在長時間使用下仍維持可讀性。",
+  //   contentBlocks: [
+  //     {
+  //       type: "visual-showcase",
+  //       layout: "two-column",
+  //       items: [
+  //         {
+  //           title: "Light / Dark Theme",
+  //           description:
+  //             "以相同資訊架構對照兩種主題的背景層級、卡片透明度與文字對比。",
+  //           image: "/projects/tcb/theme-system.webp",
+  //           visual: "tcb-theme-system",
+  //         },
+  //         {
+  //           title: "Design System",
+  //           description:
+  //             "整理合作金庫品牌色延伸、字級、間距、狀態色與互動元件狀態。",
+  //           image: "/projects/tcb/design-system.webp",
+  //           visual: "tcb-design-system",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
   {
     number: "06",
-    title: "Theme & Design System",
-    subtitle: "雙主題與設計系統",
-    type: "theme-system",
-    description:
-      "Dark Theme 不只是將介面反白，而是重新處理背景層級、卡片透明度、文字對比與狀態色，確保在長時間使用下仍維持可讀性。",
-    contentBlocks: [
-      {
-        type: "visual-showcase",
-        layout: "two-column",
-        items: [
-          {
-            title: "Light / Dark Theme",
-            description:
-              "以相同資訊架構對照兩種主題的背景層級、卡片透明度與文字對比。",
-            image: "/projects/tcb/theme-system.webp",
-            visual: "tcb-theme-system",
-          },
-          {
-            title: "Design System",
-            description:
-              "整理合作金庫品牌色延伸、字級、間距、狀態色與互動元件狀態。",
-            image: "/projects/tcb/design-system.webp",
-            visual: "tcb-design-system",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    number: "07",
     title: "UI Components",
     subtitle: "介面元件",
     type: "ui-components",
@@ -999,7 +999,7 @@ const tcbCaseStudySections: CaseStudySection[] = [
     ],
   },
   {
-    number: "08",
+    number: "07",
     title: "Final Design & Reflection",
     subtitle: "最終介面與反思",
     type: "reflection",
@@ -1013,30 +1013,33 @@ const tcbCaseStudySections: CaseStudySection[] = [
             title: "Final Dashboard / Light",
             description:
               "明亮模式強調資訊掃讀、狀態辨識與日常管理效率。",
-            image: "/projects/tcb/final-ui-01.webp",
+            image: "/projects/tcb/final-ui-03.webp",
             visual: "tcb-final-light",
+          },
+
+          {
+            title: "Dashboard Overview / Light",
+            description:
+              "整合系統資源、公告與虛擬機狀態的亮色資訊總覽。",
+            image: "/projects/tcb/final-ui-04.webp",
+            visual: "tcb-dashboard-light",
           },
           {
             title: "Final Dashboard / Dark",
             description:
               "暗色模式以玻璃霧化層級與低刺激對比支援長時間使用。",
-            image: "/projects/tcb/final-ui-02.webp",
+            image: "/projects/tcb/final-ui-01.webp",
             visual: "tcb-final-dark",
-          },
-          {
-            title: "Dashboard Overview / Light",
-            description:
-              "整合系統資源、公告與虛擬機狀態的亮色資訊總覽。",
-            image: "/projects/tcb/final-ui-03.webp",
-            visual: "tcb-dashboard-light",
           },
           {
             title: "Dashboard Overview / Dark",
             description:
               "維持相同資訊架構，在暗色環境中重新校準表面與狀態對比。",
-            image: "/projects/tcb/final-ui-04.webp",
+            image: "/projects/tcb/final-ui-02.webp",
             visual: "tcb-dashboard-dark",
           },
+
+
         ],
       },
     ],
