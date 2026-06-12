@@ -375,7 +375,7 @@ export default function Home() {
               Ready to discuss product design, case studies, or the next role.
             </h2>
             <p className="mt-5 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">
-              目前開放 UI/UX Designer、Product Designer 與設計系統相關職缺。歡迎來信安排 portfolio review 或面試。
+              積極尋求 UI/UX Designer、Product Designer 與設計系統相關工作。歡迎來信安排 portfolio review 或面試。
             </p>
           </div>
 

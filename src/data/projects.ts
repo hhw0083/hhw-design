@@ -886,29 +886,29 @@ const tcbCaseStudySections: CaseStudySection[] = [
         type: "cards",
         columns: 2,
         items: [
+          // {
+          //   eyebrow: "01",
+          //   title: "Dashboard 資訊重整",
+          //   description:
+          //     "重新整理首頁資訊優先順序，讓資源狀態、公告與虛擬機狀態更容易被判讀。",
+          //   icon: "gauge",
+          // },
+          // {
+          //   eyebrow: "02",
+          //   title: "公告功能整合",
+          //   description:
+          //     "將公告整合進平台介面，讓重要訊息能在管理情境中被快速查看。",
+          //   icon: "bell",
+          // },
           {
             eyebrow: "01",
-            title: "Dashboard 資訊重整",
-            description:
-              "重新整理首頁資訊優先順序，讓資源狀態、公告與虛擬機狀態更容易被判讀。",
-            icon: "gauge",
-          },
-          {
-            eyebrow: "02",
-            title: "公告功能整合",
-            description:
-              "將公告整合進平台介面，讓重要訊息能在管理情境中被快速查看。",
-            icon: "bell",
-          },
-          {
-            eyebrow: "03",
             title: "虛擬機部署流程優化",
             description:
               "重新整理部署設定欄位與步驟，引導使用者更清楚完成建立流程。",
             icon: "workflow",
           },
           {
-            eyebrow: "04",
+            eyebrow: "02",
             title: "狀態與操作元件統一",
             description:
               "統一表格、狀態標籤、按鈕與表單樣式，降低不同模組之間的視覺落差。",
@@ -1641,7 +1641,7 @@ export const profile = {
   intro:
     "我把複雜產品拆成清楚的使用者任務、可驗證的介面流程，以及能讓工程團隊順利落地的設計系統。",
   bio:
-    "專注於 B2B SaaS、金融科技與資料密集型產品。擅長從研究、資訊架構、互動原型到 UI system handoff，讓產品在商業目標與使用者體驗之間取得精準平衡。",
+    "專注於研究、資訊架構、互動原型到 Design System ，讓產品在商業目標與使用者體驗之間取得精準平衡。",
 };
 
 export const projects: Project[] = [

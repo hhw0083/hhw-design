@@ -219,7 +219,7 @@ function DetailPanel({ node }: { node: Node<EsgSitemapNodeData> }) {
         </div>
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyanline">
+          {/* <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyanline">
             涉及元件
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -231,7 +231,7 @@ function DetailPanel({ node }: { node: Node<EsgSitemapNodeData> }) {
                 {component}
               </span>
             ))}
-          </div>
+          </div> */}
         </div>
 
         <div className="rounded-lg border border-slate-200 bg-slate-50 p-4">
