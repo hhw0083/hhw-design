@@ -661,9 +661,9 @@ const esgCaseStudySections: CaseStudySection[] = [
             visual: "map",
           },
           {
-            title: "個人最新消息",
+            title: "地理圖資系統與平台後台設計",
             description:
-              "集中呈現申請進度、平台通知與後續行動，降低使用者追蹤成本。",
+              "地圖圖資系統視覺設計及與平台後台操作流程。",
             image: "/projects/esg/final-ui-05.webp",
             visual: "news",
           },
