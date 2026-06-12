@@ -864,9 +864,9 @@ const tcbCaseStudySections: CaseStudySection[] = [
             visual: "tcb-dashboard-dark",
           },
           {
-            title: "公告中心",
+            title: "優化登入頁面並整合公告",
             description:
-              "將優先層級、日期與已讀狀態整合進公告卡片，提升重要訊息的辨識效率。",
+              "優化登入視覺，並將公告整合進登入卡片，提升重要訊息的辨識效率。",
             image: "/projects/tcb/announcement.webp",
             visual: "tcb-announcement",
           },
@@ -1208,20 +1208,20 @@ const rmicCaseStudySections: CaseStudySection[] = [
             image: "/projects/rmic/feature-extension.webp",
             visual: "rmic-feature-extension",
           },
-          {
-            title: "案件列表",
-            description:
-              "將案件狀態、申請類型、承辦單位與常用操作整理為可快速掃讀的資料表格。",
-            image: "/projects/rmic/case-list.webp",
-            visual: "rmic-case-list",
-          },
-          {
-            title: "地圖與案件連動",
-            description:
-              "透過地圖標記、圖層與篩選條件，連結施工位置與案件資料。",
-            image: "/projects/rmic/map-system.webp",
-            visual: "rmic-map-system",
-          },
+          // {
+          //   title: "案件列表",
+          //   description:
+          //     "將案件狀態、申請類型、承辦單位與常用操作整理為可快速掃讀的資料表格。",
+          //   image: "/projects/rmic/case-list.webp",
+          //   visual: "rmic-case-list",
+          // },
+          // {
+          //   title: "地圖與案件連動",
+          //   description:
+          //     "透過地圖標記、圖層與篩選條件，連結施工位置與案件資料。",
+          //   image: "/projects/rmic/map-system.webp",
+          //   visual: "rmic-map-system",
+          // },
         ],
       },
     ],
