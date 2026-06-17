@@ -232,6 +232,7 @@ export type CaseStudySection = {
 
 export type Project = ProjectImageAssets & {
   slug: string;
+  isHidden?: boolean;
   figmaPrototypeUrl?: string;
   visualFallback?: CaseStudyVisualKind;
   title: string;
@@ -2033,6 +2034,7 @@ export const projects: Project[] = [
   },
   {
     slug: "jule-ecommerce",
+    isHidden: true,
     ...projectImageAssets["jule-ecommerce"],
     visualFallback: "jule-hero",
     caseStudySections: juleCaseStudySections,
@@ -2088,6 +2090,8 @@ export const projects: Project[] = [
     ],
   },
 ];
+
+export const visibleProjects = projects.filter((project) => !project.isHidden);
 
 export type Experience = {
   period: string;

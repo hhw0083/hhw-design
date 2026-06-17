@@ -88,7 +88,9 @@ export function CaseStudySectionLayout({
           delay={90}
           distance={28}
           className={`min-w-0 space-y-6 md:space-y-8 ${
-            layout === "narrative" ? "lg:col-span-9" : "lg:col-span-12"
+            layout === "narrative"
+              ? "lg:col-span-9 lg:pt-3"
+              : "lg:col-span-12"
           }`}
         >
           {children}

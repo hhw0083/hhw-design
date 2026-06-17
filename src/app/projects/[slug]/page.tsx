@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { CaseStudyPage } from "@/components/CaseStudyPage";
 import { ProjectNavigation } from "@/components/ProjectNavigation";
 import { ProjectHero } from "@/components/case-study/ProjectHero";
-import { projects } from "@/data/projects";
+import { visibleProjects } from "@/data/projects";
 
 type ProjectPageProps = {
   params: Promise<{
@@ -12,11 +12,11 @@ type ProjectPageProps = {
 };
 
 function getProject(slug: string) {
-  return projects.find((project) => project.slug === slug);
+  return visibleProjects.find((project) => project.slug === slug);
 }
 
 export function generateStaticParams() {
-  return projects.map((project) => ({
+  return visibleProjects.map((project) => ({
     slug: project.slug,
   }));
 }
@@ -47,10 +47,15 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
     notFound();
   }
 
-  const projectIndex = projects.findIndex((item) => item.slug === project.slug);
+  const projectIndex = visibleProjects.findIndex(
+    (item) => item.slug === project.slug,
+  );
   const previousProject =
-    projects[(projectIndex - 1 + projects.length) % projects.length];
-  const nextProject = projects[(projectIndex + 1) % projects.length];
+    visibleProjects[
+      (projectIndex - 1 + visibleProjects.length) % visibleProjects.length
+    ];
+  const nextProject =
+    visibleProjects[(projectIndex + 1) % visibleProjects.length];
 
   return (
     <main className="min-h-screen bg-canvas text-slate-950">

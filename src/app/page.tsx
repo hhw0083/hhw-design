@@ -29,7 +29,13 @@ import {
 import { ParallaxLayer } from "@/components/motion/ParallaxLayer";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SectionHeading } from "@/components/SectionHeading";
-import { awards, experiences, profile, projects, skills } from "@/data/projects";
+import {
+  awards,
+  experiences,
+  profile,
+  skills,
+  visibleProjects,
+} from "@/data/projects";
 
 const strengths = [
   {
@@ -235,7 +241,7 @@ export default function Home() {
             />
           </MotionReveal>
           <div className="mt-10">
-            {projects.map((project, index) => (
+            {visibleProjects.map((project, index) => (
               <MotionReveal
                 key={project.slug}
                 delay={Math.min(index * 60, 180)}

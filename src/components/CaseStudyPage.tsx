@@ -26,6 +26,7 @@ import { InteractiveSitemap } from "@/components/InteractiveSitemap";
 import { ParallaxLayer } from "@/components/motion/ParallaxLayer";
 import { DesignGoalsSection } from "@/components/case-study/DesignGoalsSection";
 import { CaseStudySectionLayout } from "@/components/case-study/CaseStudySectionLayout";
+import { FinalDesignGallery } from "@/components/case-study/FinalDesignGallery";
 import { InteractivePrototypeSection } from "@/components/case-study/InteractivePrototypeSection";
 import {
   CaseStudyVisualFallback,
@@ -763,10 +764,10 @@ function CaseStudyBlock({ block }: { block: CaseStudyContentBlock }) {
     case "flow":
       return (
         <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-7">
+          <div className="grid items-stretch gap-3 md:grid-cols-2 xl:grid-cols-7">
             {block.items.map((step, index) => (
               <div key={step} className="relative">
-                <div className="flex h-full min-h-24 flex-col rounded-lg border border-slate-200 bg-slate-50 p-4">
+                <div className="flex h-full min-h-32 flex-col justify-center rounded-lg border border-slate-200 bg-slate-50 p-4 xl:min-h-36">
                   <span className="text-xs font-semibold text-cyanline">
                     {String(index + 1).padStart(2, "0")}
                   </span>
@@ -798,26 +799,14 @@ function CaseStudyBlock({ block }: { block: CaseStudyContentBlock }) {
 
     case "gallery":
       return (
-        <div className="grid gap-5 md:grid-cols-2">
-          {block.items.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm"
-            >
-              <GalleryVisual
-                image={item.image}
-                visual={item.visual}
-                title={item.title}
-              />
-              <h3 className="mt-4 text-lg font-semibold text-slate-950">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-sm leading-7 text-slate-600">
-                {item.description}
-              </p>
-            </article>
-          ))}
-        </div>
+        <FinalDesignGallery
+          items={block.items.map((item) => ({
+            title: item.title,
+            description: item.description,
+            image: existingPublicImage(item.image),
+            visual: item.visual,
+          }))}
+        />
       );
 
     case "visual-showcase": {

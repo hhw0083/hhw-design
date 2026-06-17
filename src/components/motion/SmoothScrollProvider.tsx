@@ -36,7 +36,7 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
         syncTouch: false,
         wheelMultiplier: 0.9,
         stopInertiaOnNavigate: true,
-        prevent: (node) => node.hasAttribute("data-lenis-prevent"),
+        prevent: (node) => Boolean(node.closest("[data-lenis-prevent]")),
       });
     };
 
