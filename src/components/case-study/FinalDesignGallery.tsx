@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
-import { X } from "lucide-react";
+import { Maximize2, X } from "lucide-react";
 import {
   CaseStudyVisualFallback,
   type CaseStudyFallbackKind,
@@ -44,6 +44,7 @@ function EsgFallbackPreview({
         compact ? "aspect-[16/10]" : "min-h-[24rem] rounded-2xl"
       }`}
     >
+      {compact ? <PreviewActionIcon /> : null}
       <div className="flex h-10 items-center gap-2 border-b border-slate-200 bg-white px-4">
         <span className="size-2 rounded-full bg-red-300" />
         <span className="size-2 rounded-full bg-amber-300" />
@@ -212,6 +213,17 @@ function EsgFallbackPreview({
   );
 }
 
+function PreviewActionIcon() {
+  return (
+    <span
+      className="pointer-events-none absolute right-3 top-3 z-10 grid size-10 place-items-center rounded-full border border-white/80 bg-white/85 text-slate-950 shadow-sm backdrop-blur-md transition-colors duration-300 group-hover:border-cyanline/30 group-hover:bg-cyanline group-hover:text-white group-focus-visible:border-cyanline/30 group-focus-visible:bg-cyanline group-focus-visible:text-white"
+      aria-hidden="true"
+    >
+      <Maximize2 className="size-4" />
+    </span>
+  );
+}
+
 function VisualPreview({
   item,
   compact = false,
@@ -230,6 +242,7 @@ function VisualPreview({
             : "aspect-[16/10] rounded-lg border border-slate-200"
         }`}
       >
+        {!inModal ? <PreviewActionIcon /> : null}
         <Image
           src={item.image}
           alt={item.title}
@@ -244,12 +257,13 @@ function VisualPreview({
   if (isProjectFallbackVisual(item.visual)) {
     return (
       <div
-        className={`overflow-hidden bg-white ${
+        className={`relative overflow-hidden bg-white ${
           inModal
             ? "min-h-[56vh] rounded-[28px]"
             : "aspect-[16/10] rounded-lg border border-slate-200"
         }`}
       >
+        {!inModal ? <PreviewActionIcon /> : null}
         <CaseStudyVisualFallback kind={item.visual} />
       </div>
     );
@@ -368,7 +382,7 @@ export function FinalDesignGallery({ items }: FinalDesignGalleryProps) {
             key={item.title}
             type="button"
             onClick={() => setSelectedItem(item)}
-            className="group rounded-lg border border-slate-200 bg-white p-4 text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_24px_60px_rgba(15,23,42,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanline focus-visible:ring-offset-2"
+            className="group flex h-full flex-col rounded-lg border border-slate-200 bg-white p-4 text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_24px_60px_rgba(15,23,42,0.12)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanline focus-visible:ring-offset-2"
           >
             <VisualPreview item={item} compact />
             <h3 className="mt-4 text-lg font-semibold text-slate-950">
@@ -377,7 +391,7 @@ export function FinalDesignGallery({ items }: FinalDesignGalleryProps) {
             <p className="mt-2 text-sm leading-7 text-slate-600">
               {item.description}
             </p>
-            <span className="mt-4 inline-flex text-sm font-semibold text-cyanline opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+            <span className="mt-auto inline-flex self-end pt-4 text-sm font-semibold text-slate-950 transition-colors duration-300 group-hover:text-cyanline group-focus-visible:text-cyanline">
               View full screen
             </span>
           </button>
