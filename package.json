@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "pnpm@11.5.1",
   "scripts": {
-    "dev": "NEXT_TEST_WASM=1 NEXT_TEST_WASM_DIR=node_modules/@next/swc-wasm-nodejs next dev --webpack",
+    "dev": "cross-env NEXT_TEST_WASM=1 NEXT_TEST_WASM_DIR=node_modules/@next/swc-wasm-nodejs next dev --webpack",
     "build": "NEXT_TEST_WASM=1 NEXT_TEST_WASM_DIR=node_modules/@next/swc-wasm-nodejs next build --webpack",
     "start": "next start",
     "typecheck": "tsc --noEmit"
@@ -23,6 +23,7 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "autoprefixer": "latest",
+    "cross-env": "^10.1.0",
     "postcss": "latest",
     "tailwindcss": "3.4.17",
     "typescript": "latest"
