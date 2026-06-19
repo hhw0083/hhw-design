@@ -28,6 +28,7 @@ import { DesignGoalsSection } from "@/components/case-study/DesignGoalsSection";
 import { CaseStudySectionLayout } from "@/components/case-study/CaseStudySectionLayout";
 import { FinalDesignGallery } from "@/components/case-study/FinalDesignGallery";
 import { InteractivePrototypeSection } from "@/components/case-study/InteractivePrototypeSection";
+import { RmicComponentExtensionBoard } from "@/components/case-study/RmicComponentExtensionBoard";
 import { TcbDesignSystemBoard } from "@/components/case-study/TcbDesignSystemBoard";
 import {
   CaseStudyVisualFallback,
@@ -816,6 +817,13 @@ function CaseStudyBlock({ block }: { block: CaseStudyContentBlock }) {
         block.items[0]?.visual === "tcb-ui-components"
       ) {
         return <TcbDesignSystemBoard />;
+      }
+
+      if (
+        block.items.length === 1 &&
+        block.items[0]?.visual === "rmic-component-extension"
+      ) {
+        return <RmicComponentExtensionBoard />;
       }
 
       const isHeroGrid = block.layout === "hero-grid";
