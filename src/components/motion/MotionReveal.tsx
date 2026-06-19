@@ -52,6 +52,13 @@ export function MotionReveal({
     let readyListener: (() => void) | undefined;
 
     const observe = () => {
+      const rect = element.getBoundingClientRect();
+
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        reveal();
+        return;
+      }
+
       observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {

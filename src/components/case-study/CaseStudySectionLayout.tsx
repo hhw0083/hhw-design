@@ -29,7 +29,7 @@ export function CaseStudySectionLayout({
   return (
     <section
       id={`case-study-${sectionNumber}`}
-      className={`border-t border-slate-200 py-20 md:py-28 ${
+      className={`border-t border-slate-200 py-14 sm:py-16 md:py-28 ${
         background === "canvas" ? "bg-canvas" : "bg-white"
       }`}
       style={
@@ -62,7 +62,7 @@ export function CaseStudySectionLayout({
           </MotionReveal>
         ) : (
           <MotionReveal className="lg:col-span-12">
-            <header className="grid grid-cols-[3.5rem_minmax(0,1fr)] gap-3 border-b border-slate-200 pb-8 md:grid-cols-[6rem_minmax(0,1fr)] md:gap-6 md:pb-10">
+            <header className="grid grid-cols-[3.5rem_minmax(0,1fr)] gap-3 border-b border-slate-200 pb-6 md:grid-cols-[6rem_minmax(0,1fr)] md:gap-6 md:pb-10">
               <p className="text-4xl font-semibold leading-none text-[var(--case-study-accent)] md:text-6xl">
                 {sectionNumber}
               </p>

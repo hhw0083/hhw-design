@@ -302,7 +302,7 @@ function ScreenMockup({
   return (
     <div
       className={`relative overflow-hidden border border-slate-200 bg-[#f7fbf8] shadow-sm ${
-        compact ? "aspect-[4/5]" : "aspect-[16/10] rounded-lg"
+        compact ? "aspect-[16/10]" : "aspect-[16/10] rounded-xl"
       }`}
     >
       <div
@@ -525,8 +525,8 @@ function GalleryVisual({
       <div
         className={`relative overflow-hidden border-slate-200 bg-white shadow-sm ${
           compact
-            ? "aspect-[4/5] border-b"
-            : "aspect-[16/10] rounded-lg border"
+            ? "aspect-[16/10] border-b"
+            : "aspect-[16/10] rounded-xl border"
         }`}
       >
         {compact ? (
@@ -561,8 +561,8 @@ function GalleryVisual({
       <div
         className={`overflow-hidden border-slate-200 bg-white shadow-sm ${
           compact
-            ? "aspect-[4/5] border-b"
-            : "aspect-[16/10] rounded-lg border"
+            ? "aspect-[16/10] border-b"
+            : "aspect-[16/10] rounded-xl border"
         }`}
       >
         <CaseStudyVisualFallback kind={visual} />
@@ -680,7 +680,7 @@ function CaseStudyBlock({ block }: { block: CaseStudyContentBlock }) {
           {block.items.map((item) => (
             <article
               key={item.title}
-              className="flex h-full flex-col overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"
+              className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white/90 shadow-[0_18px_48px_rgba(15,23,42,0.06)] transition duration-300 hover:-translate-y-1 hover:border-slate-300/80 hover:shadow-[0_28px_70px_rgba(15,23,42,0.1)]"
             >
               <GalleryVisual
                 image={item.image}
@@ -690,7 +690,7 @@ function CaseStudyBlock({ block }: { block: CaseStudyContentBlock }) {
               />
               <div className="flex flex-1 flex-col p-5">
                 {item.eyebrow ? (
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyanline">
+                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyanline">
                     {item.eyebrow}
                   </p>
                 ) : null}
@@ -819,7 +819,7 @@ function CaseStudyBlock({ block }: { block: CaseStudyContentBlock }) {
           {block.items.map((item, index) => (
             <article
               key={item.title}
-              className={`overflow-hidden rounded-lg border border-slate-200 bg-white p-3 shadow-sm sm:p-4 ${
+              className={`overflow-hidden rounded-2xl border border-slate-200/80 bg-white/90 p-3 shadow-[0_18px_48px_rgba(15,23,42,0.06)] sm:p-4 ${
                 isHeroGrid && index === 0 ? "md:col-span-2" : ""
               }`}
             >

@@ -7,6 +7,7 @@ type LoadingScreenProps = {
   isLeaving?: boolean;
   delayed?: boolean;
   delayMs?: number;
+  autoDismissMs?: number;
   label?: string;
 };
 
@@ -14,9 +15,11 @@ export function LoadingScreen({
   isLeaving = false,
   delayed = false,
   delayMs = 320,
+  autoDismissMs,
   label = "Loading HHW Portfolio",
 }: LoadingScreenProps) {
   const [shouldShow, setShouldShow] = useState(!delayed);
+  const [shouldLeave, setShouldLeave] = useState(isLeaving);
 
   useEffect(() => {
     if (!delayed) {
@@ -33,6 +36,28 @@ export function LoadingScreen({
     };
   }, [delayed, delayMs]);
 
+  useEffect(() => {
+    setShouldLeave(isLeaving);
+  }, [isLeaving]);
+
+  useEffect(() => {
+    if (!shouldShow || !autoDismissMs) {
+      return;
+    }
+
+    const leaveTimer = window.setTimeout(() => {
+      setShouldLeave(true);
+    }, autoDismissMs);
+    const removeTimer = window.setTimeout(() => {
+      setShouldShow(false);
+    }, autoDismissMs + 320);
+
+    return () => {
+      window.clearTimeout(leaveTimer);
+      window.clearTimeout(removeTimer);
+    };
+  }, [autoDismissMs, shouldShow]);
+
   if (!shouldShow) {
     return null;
   }
@@ -40,7 +65,7 @@ export function LoadingScreen({
   return (
     <div
       className={`home-loader fixed inset-0 z-[100] grid place-items-center overflow-hidden bg-[#eef3f5] ${
-        isLeaving ? "home-loader--leaving" : ""
+        shouldLeave ? "home-loader--leaving" : ""
       }`}
       role="status"
       aria-label={label}

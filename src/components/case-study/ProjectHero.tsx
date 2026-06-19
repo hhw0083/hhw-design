@@ -85,7 +85,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
 
   return (
     <section
-      className="relative isolate overflow-hidden border-b border-slate-200/80 bg-[#F4F5F6] pb-14 pt-24 text-slate-950 md:pb-20 md:pt-28"
+      className="relative isolate overflow-hidden border-b border-slate-200/80 bg-[#F4F5F6] pb-12 pt-20 text-slate-950 sm:pt-24 md:pb-20 md:pt-28"
       style={
         {
           "--project-primary": project.theme.primary,
@@ -149,7 +149,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
           </div>
         </MotionReveal>
 
-        <div className="mt-12 md:min-h-[34rem] lg:flex lg:min-h-[38rem] lg:items-center">
+        <div className="mt-9 md:mt-12 md:min-h-[34rem] lg:flex lg:min-h-[38rem] lg:items-center">
           <div className="max-w-2xl lg:w-1/2">
             <MotionReveal delay={40} distance={18}>
               <h1 className="text-4xl font-semibold leading-[1.12] text-slate-950 sm:text-5xl lg:text-[3.5rem]">
@@ -162,12 +162,12 @@ export function ProjectHero({ project }: ProjectHeroProps) {
               </p>
             </MotionReveal>
             <MotionReveal delay={160} distance={16}>
-              <p className="mt-7 max-w-xl whitespace-pre-line text-base leading-8 text-slate-600 md:text-lg md:leading-9">
+              <p className="mt-5 max-w-xl whitespace-pre-line text-base leading-8 text-slate-600 md:mt-7 md:text-lg md:leading-9">
                 {project.description}
               </p>
             </MotionReveal>
             <MotionReveal delay={220} distance={14}>
-              <div className="mt-8 flex flex-wrap gap-2.5">
+              <div className="mt-6 flex flex-wrap gap-2.5 md:mt-8">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
@@ -180,11 +180,11 @@ export function ProjectHero({ project }: ProjectHeroProps) {
             </MotionReveal>
           </div>
 
-          <div className="mt-8 md:hidden">
+          <div className="mt-7 md:hidden">
             {mobileHeroImage ? (
               <MotionReveal delay={270} distance={16}>
                 <div
-                  className="relative aspect-[4/3] w-full bg-transparent drop-shadow-[0_18px_24px_rgba(15,23,42,0.16)]"
+                  className="relative aspect-[16/11] max-h-[24rem] w-full bg-transparent drop-shadow-[0_18px_24px_rgba(15,23,42,0.16)]"
                   data-project-image={`${project.slug}:${
                     mobileHeroImage === project.heroMobileImage
                       ? "hero-mobile"
@@ -208,7 +208,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
         </div>
 
         <MotionReveal
-          className="mt-10 md:mt-14"
+          className="mt-8 md:mt-14"
           delay={300}
           distance={18}
           duration={760}

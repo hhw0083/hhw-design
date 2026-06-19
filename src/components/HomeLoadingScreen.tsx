@@ -5,19 +5,35 @@ import { LoadingScreen } from "@/components/LoadingScreen";
 
 const LOADING_SESSION_KEY = "hhw-home-loading-seen";
 
+function hasSeenHomeLoading() {
+  try {
+    return window.sessionStorage.getItem(LOADING_SESSION_KEY) === "true";
+  } catch {
+    return false;
+  }
+}
+
+function markHomeLoadingSeen() {
+  try {
+    window.sessionStorage.setItem(LOADING_SESSION_KEY, "true");
+  } catch {
+    // Storage can be unavailable in private or restricted browser contexts.
+  }
+}
+
 export function HomeLoadingScreen() {
   const [isVisible, setIsVisible] = useState(true);
   const [isLeaving, setIsLeaving] = useState(false);
 
   useEffect(() => {
-    if (window.sessionStorage.getItem(LOADING_SESSION_KEY)) {
+    if (hasSeenHomeLoading()) {
       document.documentElement.dataset.homeReady = "true";
       setIsVisible(false);
       window.dispatchEvent(new Event("hhw:home-ready"));
       return;
     }
 
-    window.sessionStorage.setItem(LOADING_SESSION_KEY, "true");
+    markHomeLoadingSeen();
     document.documentElement.dataset.homeReady = "false";
 
     const originalOverflow = document.body.style.overflow;
@@ -49,5 +65,5 @@ export function HomeLoadingScreen() {
     return null;
   }
 
-  return <LoadingScreen isLeaving={isLeaving} />;
+  return <LoadingScreen isLeaving={isLeaving} autoDismissMs={1500} />;
 }
