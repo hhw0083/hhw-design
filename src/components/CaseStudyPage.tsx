@@ -28,6 +28,7 @@ import { DesignGoalsSection } from "@/components/case-study/DesignGoalsSection";
 import { CaseStudySectionLayout } from "@/components/case-study/CaseStudySectionLayout";
 import { FinalDesignGallery } from "@/components/case-study/FinalDesignGallery";
 import { InteractivePrototypeSection } from "@/components/case-study/InteractivePrototypeSection";
+import { TcbDesignSystemBoard } from "@/components/case-study/TcbDesignSystemBoard";
 import {
   CaseStudyVisualFallback,
   type CaseStudyFallbackKind,
@@ -810,6 +811,13 @@ function CaseStudyBlock({ block }: { block: CaseStudyContentBlock }) {
       );
 
     case "visual-showcase": {
+      if (
+        block.items.length === 1 &&
+        block.items[0]?.visual === "tcb-ui-components"
+      ) {
+        return <TcbDesignSystemBoard />;
+      }
+
       const isHeroGrid = block.layout === "hero-grid";
       const columnClass =
         block.layout === "single" ? "grid-cols-1" : "md:grid-cols-2";
