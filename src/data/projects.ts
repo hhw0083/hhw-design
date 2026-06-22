@@ -1923,7 +1923,7 @@ export const profile = {
   name: "HHW",
   title: "UI/UX Designer",
   location: "Taipei / Remote",
-  email: "hello@hhw.design",
+  email: "hhwstudio0083@gmail.com",
   availability: "Open to Product Design roles",
   intro:
     "我把複雜產品拆成清楚的使用者任務、可驗證的介面流程，以及能讓工程團隊順利落地的設計系統。",
