@@ -69,7 +69,18 @@ export type CaseStudyFallbackKind =
   | "jule-mobile-rwd"
   | "jule-bootstrap-layout"
   | "jule-final-ui-01"
-  | "jule-final-ui-02";
+  | "jule-final-ui-02"
+  | "tian-liang-hero"
+  | "tian-liang-logo-exploration"
+  | "tian-liang-wordmark-exploration"
+  | "tian-liang-selected-direction"
+  | "tian-liang-visual-identity"
+  | "tian-liang-storefront"
+  | "tian-liang-awning"
+  | "tian-liang-packaging"
+  | "tian-liang-cup"
+  | "tian-liang-menu"
+  | "tian-liang-sticker";
 
 type CaseStudyVisualFallbackProps = {
   kind: CaseStudyFallbackKind;
@@ -1719,6 +1730,406 @@ function JuleBootstrapPreview() {
   );
 }
 
+function TianLiangLogoMark({ compact = false }: { compact?: boolean }) {
+  return (
+    <div
+      className={`relative grid place-items-center rounded-full border border-[#435242]/20 bg-[#F6F0E4] ${
+        compact ? "size-20" : "size-32"
+      }`}
+    >
+      <div
+        className={`absolute rounded-full border border-[#DB7F3E]/45 ${
+          compact ? "size-14" : "size-24"
+        }`}
+      />
+      <div
+        className={`absolute bottom-[24%] rounded-t-full bg-[#DB7F3E] ${
+          compact ? "h-5 w-10" : "h-8 w-16"
+        }`}
+      />
+      <div
+        className={`absolute bottom-[25%] border-l-transparent border-r-transparent ${
+          compact
+            ? "border-b-[24px] border-l-[28px] border-r-[28px]"
+            : "border-b-[42px] border-l-[48px] border-r-[48px]"
+        } border-b-[#435242]`}
+      />
+      <div className="absolute inset-x-[22%] top-1/2 h-px bg-[#F6F0E4]/75" />
+    </div>
+  );
+}
+
+function TianLiangHeroPreview() {
+  return (
+    <div className="h-full bg-[radial-gradient(circle_at_80%_20%,rgba(220,182,93,0.34),transparent_18rem),linear-gradient(135deg,#f8f3e8,#e6ddd0)] p-4 sm:p-7">
+      <div className="mx-auto grid h-full max-w-4xl overflow-hidden rounded-2xl border border-white/80 bg-[#F9F5EA] shadow-[0_30px_90px_rgba(67,82,66,0.18)] md:grid-cols-[0.9fr_1.1fr]">
+        <div className="flex flex-col justify-between p-6">
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[#DB7F3E]">
+              Brand Identity
+            </p>
+            <h3 className="mt-5 text-3xl font-semibold text-[#2E3133]">
+              天亮茶空間
+            </h3>
+            <p className="mt-2 text-xs uppercase tracking-[0.22em] text-[#435242]">
+              Tian Liang Tea Space
+            </p>
+          </div>
+          <div className="mt-8 flex gap-3">
+            {["Logo", "Signage", "Packaging"].map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-[#435242]/15 bg-white/55 px-3 py-1.5 text-[9px] font-semibold text-[#435242]"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="relative flex items-center justify-center overflow-hidden bg-[#435242] p-8">
+          <div className="absolute inset-0 bg-[linear-gradient(120deg,transparent_0_44%,rgba(220,182,93,0.12)_44%_45%,transparent_45%_100%)]" />
+          <TianLiangLogoMark />
+          <div className="absolute bottom-6 right-6 rounded-xl border border-white/15 bg-white/10 px-5 py-4 text-right text-white backdrop-blur">
+            <p className="text-2xl font-semibold">TIAN LIANG</p>
+            <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/70">
+              Tea Space
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TianLiangLogoProcessPreview({
+  variant,
+}: {
+  variant: "symbol" | "wordmark" | "selected";
+}) {
+  if (variant === "selected") {
+    return (
+      <div className="grid h-full min-h-[20rem] place-items-center bg-[#F8F3E8] p-6">
+        <div className="grid w-full max-w-4xl gap-6 rounded-[28px] border border-[#E1D8C9] bg-white/70 p-6 shadow-[0_24px_70px_rgba(67,82,66,0.12)] md:grid-cols-[0.9fr_1.1fr]">
+          <div className="grid place-items-center rounded-3xl bg-[#435242] p-8">
+            <TianLiangLogoMark />
+          </div>
+          <div className="flex flex-col justify-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#D8752D]">
+              Selected Direction
+            </p>
+            <h3 className="mt-4 text-4xl font-semibold text-[#2E3133]">
+              天亮茶空間
+            </h3>
+            <p className="mt-3 text-sm uppercase tracking-[0.28em] text-[#435242]">
+              Tian Liang Tea Space
+            </p>
+            <p className="mt-6 max-w-sm text-sm leading-7 text-[#6f716b]">
+              以日出與山形構成品牌記憶點，保留茶空間的靜謐與清晨感。
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const isWordmark = variant === "wordmark";
+  const sketches = isWordmark
+    ? ["天亮茶空間", "天亮 茶空間", "TIAN LIANG", "TEA SPACE", "天亮茶", "空間"]
+    : ["sun", "mountain", "tea", "seat", "dawn", "space"];
+
+  return (
+    <div className="h-full min-h-[20rem] bg-[#F9F5EA] p-5">
+      <div className="grid h-full gap-4 md:grid-cols-[1.2fr_0.8fr]">
+        <div className="grid grid-cols-3 gap-3">
+          {sketches.map((item, index) => {
+            const selected = index === 1 || index === 4;
+
+            return (
+              <div
+                key={`${item}-${index}`}
+                className={`grid min-h-24 place-items-center rounded-2xl border bg-white/72 p-3 ${
+                  selected
+                    ? "border-[#435242] shadow-[0_12px_32px_rgba(67,82,66,0.12)]"
+                    : "border-[#E5DDD0] opacity-45"
+                }`}
+              >
+                {isWordmark ? (
+                  <p
+                    className={`text-center font-semibold ${
+                      selected ? "text-2xl text-[#2E3133]" : "text-lg text-[#8f8c82]"
+                    }`}
+                  >
+                    {item}
+                  </p>
+                ) : (
+                  <div className="relative grid size-16 place-items-center">
+                    <span className="absolute size-12 rounded-full border border-[#DB7F3E]/70" />
+                    <span className="absolute bottom-3 h-6 w-12 rounded-t-full bg-[#DB7F3E]/80" />
+                    <span className="absolute bottom-3 h-8 w-14 rounded-t-full border-t border-[#435242]" />
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+        <div className="flex flex-col justify-between rounded-2xl border border-[#E1D8C9] bg-white p-5">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#D8752D]">
+              {isWordmark ? "Wordmark Exploration" : "Symbol Exploration"}
+            </p>
+            <h3 className="mt-3 text-2xl font-semibold text-[#2E3133]">
+              {isWordmark ? "字標比例測試" : "符號草圖收斂"}
+            </h3>
+            <p className="mt-4 text-sm leading-7 text-[#6f716b]">
+              {isWordmark
+                ? "比較字距、筆觸與中英文比例，尋找穩定且溫潤的品牌語氣。"
+                : "以淡灰呈現探索過程，並用深色框線標示進入收斂階段的方向。"}
+            </p>
+          </div>
+          <div className="mt-6 flex items-center gap-3">
+            <Check className="size-5 text-[#435242]" aria-hidden="true" />
+            <span className="text-xs font-semibold text-[#435242]">
+              selected route highlighted
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TianLiangVisualIdentityPreview() {
+  const colorGroups = [
+    {
+      name: "天亮",
+      colors: [
+        ["Mist Gray", "#BCBBB7"],
+        ["Warm Orange", "#DB7F3E"],
+      ],
+    },
+    {
+      name: "黃昏",
+      colors: [
+        ["Ink Black", "#2E3133"],
+        ["Sunset Orange", "#D8752D"],
+      ],
+    },
+    {
+      name: "拂曉",
+      colors: [
+        ["Deep Green", "#435242"],
+        ["Dawn Gold", "#DCB65D"],
+        ["Soft Green Gray", "#DCB65D"],
+      ],
+    },
+  ];
+
+  return (
+    <div className="h-full min-h-[22rem] bg-[#F8F3E8] p-5">
+      <div className="grid h-full gap-4 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="rounded-3xl border border-[#E1D8C9] bg-white/74 p-6">
+          <div className="flex items-center gap-5">
+            <TianLiangLogoMark compact />
+            <div>
+              <p className="text-3xl font-semibold text-[#2E3133]">
+                天亮茶空間
+              </p>
+              <p className="mt-2 text-xs uppercase tracking-[0.24em] text-[#435242]">
+                Tian Liang Tea Space
+              </p>
+            </div>
+          </div>
+          <div className="mt-8 rounded-2xl border border-dashed border-[#BCBBB7] p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#D8752D]">
+              Clear Space
+            </p>
+            <div className="mt-4 grid place-items-center rounded-xl bg-[#F8F3E8] p-8">
+              <TianLiangLogoMark compact />
+            </div>
+          </div>
+        </div>
+        <div className="grid gap-4">
+          <div className="rounded-3xl border border-[#E1D8C9] bg-white/74 p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#D8752D]">
+              Brand Color
+            </p>
+            <div className="mt-4 grid gap-4 md:grid-cols-3">
+              {colorGroups.map((group) => (
+                <div key={group.name}>
+                  <p className="mb-3 text-sm font-semibold text-[#2E3133]">
+                    {group.name}
+                  </p>
+                  <div className="space-y-2">
+                    {group.colors.map(([name, value]) => (
+                      <div key={name} className="flex items-center gap-3">
+                        <span
+                          className="size-9 rounded-lg border border-black/5 shadow-sm"
+                          style={{ backgroundColor: value }}
+                        />
+                        <span className="min-w-0">
+                          <span className="block text-xs font-semibold text-[#2E3133]">
+                            {name}
+                          </span>
+                          <span className="block text-[10px] text-[#8f8c82]">
+                            {value}
+                          </span>
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="rounded-3xl border border-[#E1D8C9] bg-white/74 p-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#D8752D]">
+                Typography
+              </p>
+              <p className="mt-4 text-3xl font-semibold text-[#2E3133]">
+                天亮茶空間
+              </p>
+              <p className="mt-3 text-lg uppercase tracking-[0.22em] text-[#435242]">
+                TIAN LIANG TEA SPACE
+              </p>
+              <p className="mt-4 text-xs text-[#8f8c82]">
+                Cinzel / 霞鶩文楷
+              </p>
+            </div>
+            <div className="rounded-3xl border border-[#E1D8C9] bg-[#435242] p-5 text-white">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#DCB65D]">
+                Graphic Elements
+              </p>
+              <div className="mt-6 grid grid-cols-3 gap-3">
+                {[0, 1, 2, 3, 4, 5].map((item) => (
+                  <span
+                    key={item}
+                    className="h-10 rounded-full border border-[#DCB65D]/45"
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TianLiangApplicationPreview({
+  variant,
+}: {
+  variant: "storefront" | "awning" | "packaging" | "cup" | "menu" | "sticker";
+}) {
+  const title = {
+    storefront: "Storefront",
+    awning: "Awning",
+    packaging: "Packaging",
+    cup: "Cup",
+    menu: "Menu",
+    sticker: "Sticker",
+  }[variant];
+
+  return (
+    <div className="grid h-full min-h-[20rem] place-items-center bg-[#F8F3E8] p-5">
+      <div className="relative h-full w-full overflow-hidden rounded-3xl border border-[#E1D8C9] bg-white/74 p-6 shadow-[0_24px_70px_rgba(67,82,66,0.12)]">
+        <div className="absolute right-6 top-6 rounded-full border border-[#435242]/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#435242]">
+          {title}
+        </div>
+        {variant === "storefront" || variant === "awning" ? (
+          <div className="mt-10 overflow-hidden rounded-2xl border border-[#2E3133]/10 bg-[#EFE7D8]">
+            <div className="grid h-20 place-items-center bg-[#435242] text-white">
+              <p className="text-2xl font-semibold">天亮茶空間</p>
+            </div>
+            <div
+              className={`grid h-20 place-items-center ${
+                variant === "awning" ? "bg-[#DB7F3E]" : "bg-[#F9F5EA]"
+              }`}
+            >
+              <p className="text-xs uppercase tracking-[0.26em] text-[#2E3133]">
+                Tian Liang Tea Space
+              </p>
+            </div>
+            <div className="grid h-28 grid-cols-3 gap-px bg-[#D7CEC0]">
+              {[0, 1, 2].map((item) => (
+                <div key={item} className="bg-white/65" />
+              ))}
+            </div>
+          </div>
+        ) : null}
+        {variant === "packaging" ? (
+          <div className="mt-12 grid grid-cols-3 items-end gap-5">
+            {["#435242", "#F9F5EA", "#DB7F3E"].map((color, index) => (
+              <div
+                key={color}
+                className="grid h-44 place-items-center rounded-2xl border border-[#2E3133]/10 shadow-sm"
+                style={{ backgroundColor: color }}
+              >
+                <TianLiangLogoMark compact />
+                <p
+                  className={`text-[10px] uppercase tracking-[0.2em] ${
+                    index === 1 ? "text-[#435242]" : "text-white"
+                  }`}
+                >
+                  Tea
+                </p>
+              </div>
+            ))}
+          </div>
+        ) : null}
+        {variant === "cup" ? (
+          <div className="mt-10 flex items-end justify-center gap-10">
+            <div className="h-48 w-28 rounded-b-[2rem] rounded-t-lg border border-[#E1D8C9] bg-white shadow-md">
+              <div className="grid h-full place-items-center">
+                <TianLiangLogoMark compact />
+              </div>
+            </div>
+            <div className="h-40 w-24 rounded-b-[1.75rem] rounded-t-lg bg-[#435242] shadow-md">
+              <div className="grid h-full place-items-center">
+                <p className="rotate-90 text-xs uppercase tracking-[0.18em] text-[#DCB65D]">
+                  Tian Liang
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : null}
+        {variant === "menu" ? (
+          <div className="mt-12 rounded-2xl border border-[#E1D8C9] bg-[#FFFCF5] p-6">
+            <p className="text-2xl font-semibold text-[#2E3133]">天亮茶單</p>
+            <div className="mt-5 grid gap-3">
+              {["晨光烏龍", "山霧青茶", "暖橘焙茶", "日常茶席"].map((item, index) => (
+                <div
+                  key={item}
+                  className="flex items-center justify-between border-b border-[#E1D8C9] pb-2 text-sm"
+                >
+                  <span className="text-[#435242]">{item}</span>
+                  <span className="text-[#D8752D]">{120 + index * 20}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : null}
+        {variant === "sticker" ? (
+          <div className="mt-12 grid grid-cols-4 gap-4">
+            {[0, 1, 2, 3, 4, 5, 6, 7].map((item) => (
+              <div
+                key={item}
+                className="grid aspect-square place-items-center rounded-full border border-[#E1D8C9] bg-white shadow-sm"
+              >
+                {item % 2 === 0 ? (
+                  <TianLiangLogoMark compact />
+                ) : (
+                  <Sun className="size-8 text-[#DB7F3E]" aria-hidden="true" />
+                )}
+              </div>
+            ))}
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
 export function CaseStudyVisualFallback({
   kind,
   className = "",
@@ -1726,11 +2137,18 @@ export function CaseStudyVisualFallback({
   const dark = kind === "tcb-dashboard-dark" || kind === "tcb-final-dark";
   const isRmic = kind.startsWith("rmic-");
   const isJule = kind.startsWith("jule-");
+  const isTianLiang = kind.startsWith("tian-liang-");
 
   return (
     <div
       className={`relative h-full min-h-[18rem] w-full overflow-hidden ${
-        isRmic ? "bg-[#f4f7f8]" : isJule ? "bg-[#fffaf6]" : "bg-white"
+        isRmic
+          ? "bg-[#f4f7f8]"
+          : isJule
+            ? "bg-[#fffaf6]"
+            : isTianLiang
+              ? "bg-[#F8F3E8]"
+              : "bg-white"
       } ${className}`}
       role="img"
       aria-label={`${kind.replaceAll("-", " ")} placeholder preview`}
@@ -1831,6 +2249,37 @@ export function CaseStudyVisualFallback({
       {kind === "jule-rewards-coupons" ? <JuleRewardsPreview /> : null}
       {kind === "jule-mobile-rwd" ? <JuleResponsivePreview /> : null}
       {kind === "jule-bootstrap-layout" ? <JuleBootstrapPreview /> : null}
+      {kind === "tian-liang-hero" ? <TianLiangHeroPreview /> : null}
+      {kind === "tian-liang-logo-exploration" ? (
+        <TianLiangLogoProcessPreview variant="symbol" />
+      ) : null}
+      {kind === "tian-liang-wordmark-exploration" ? (
+        <TianLiangLogoProcessPreview variant="wordmark" />
+      ) : null}
+      {kind === "tian-liang-selected-direction" ? (
+        <TianLiangLogoProcessPreview variant="selected" />
+      ) : null}
+      {kind === "tian-liang-visual-identity" ? (
+        <TianLiangVisualIdentityPreview />
+      ) : null}
+      {kind === "tian-liang-storefront" ? (
+        <TianLiangApplicationPreview variant="storefront" />
+      ) : null}
+      {kind === "tian-liang-awning" ? (
+        <TianLiangApplicationPreview variant="awning" />
+      ) : null}
+      {kind === "tian-liang-packaging" ? (
+        <TianLiangApplicationPreview variant="packaging" />
+      ) : null}
+      {kind === "tian-liang-cup" ? (
+        <TianLiangApplicationPreview variant="cup" />
+      ) : null}
+      {kind === "tian-liang-menu" ? (
+        <TianLiangApplicationPreview variant="menu" />
+      ) : null}
+      {kind === "tian-liang-sticker" ? (
+        <TianLiangApplicationPreview variant="sticker" />
+      ) : null}
     </div>
   );
 }

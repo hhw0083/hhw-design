@@ -79,7 +79,8 @@ export function ProjectVisual({
   if (
     project.visualFallback?.startsWith("tcb-") ||
     project.visualFallback?.startsWith("rmic-") ||
-    project.visualFallback?.startsWith("jule-")
+    project.visualFallback?.startsWith("jule-") ||
+    project.visualFallback?.startsWith("tian-liang-")
   ) {
     return (
       <div

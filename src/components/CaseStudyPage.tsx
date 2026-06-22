@@ -65,7 +65,8 @@ function isProjectFallbackVisual(
   return Boolean(
     visual?.startsWith("tcb-") ||
       visual?.startsWith("rmic-") ||
-      visual?.startsWith("jule-"),
+      visual?.startsWith("jule-") ||
+      visual?.startsWith("tian-liang-"),
   );
 }
 

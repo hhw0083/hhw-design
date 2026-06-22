@@ -205,6 +205,14 @@ export function ProjectHero({ project }: ProjectHeroProps) {
               <ProjectVisual project={project} />
             )}
           </div>
+
+          {!desktopHeroImage ? (
+            <div className="hidden lg:block lg:w-1/2">
+              <MotionReveal delay={260} distance={18}>
+                <ProjectVisual project={project} />
+              </MotionReveal>
+            </div>
+          ) : null}
         </div>
 
         <MotionReveal
