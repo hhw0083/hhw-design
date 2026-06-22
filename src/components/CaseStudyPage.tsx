@@ -806,6 +806,7 @@ function CaseStudyBlock({ block }: { block: CaseStudyContentBlock }) {
           items={block.items.map((item) => ({
             title: item.title,
             description: item.description,
+            eyebrow: item.eyebrow,
             image: existingPublicImage(item.image),
             visual: item.visual,
           }))}

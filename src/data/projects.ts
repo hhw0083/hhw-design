@@ -1863,10 +1863,10 @@ const tianLiangCaseStudySections: CaseStudySection[] = [
       "最終品牌應用聚焦 Logo 與品牌語氣如何落到實體接觸點，包含招牌、遮雨棚、包裝、杯身、菜單與貼紙。",
     contentBlocks: [
       {
-        type: "visual-showcase",
-        layout: "hero-grid",
+        type: "gallery",
         items: [
           {
+            eyebrow: "Brand Application",
             title: "Storefront Signage / 招牌",
             description:
               "以穩定比例呈現品牌主識別，讓街邊視覺保有清楚辨識與安定感。",
@@ -1874,6 +1874,7 @@ const tianLiangCaseStudySections: CaseStudySection[] = [
             visual: "tian-liang-storefront",
           },
           {
+            eyebrow: "Brand Application",
             title: "Awning / 遮雨棚",
             description:
               "將品牌色與 Logo 延伸至大面積材質，建立入口處的第一印象。",
@@ -1881,6 +1882,7 @@ const tianLiangCaseStudySections: CaseStudySection[] = [
             visual: "tian-liang-awning",
           },
           {
+            eyebrow: "Brand Application",
             title: "Packaging / 包裝",
             description:
               "以乾淨留白與品牌符號建立禮盒、外帶包裝與商品包裝的連貫性。",
@@ -1888,6 +1890,7 @@ const tianLiangCaseStudySections: CaseStudySection[] = [
             visual: "tian-liang-packaging",
           },
           {
+            eyebrow: "Brand Application",
             title: "Cup / 杯身",
             description:
               "杯身應用保留符號辨識度，讓日常使用情境也能形成品牌記憶。",
@@ -1895,6 +1898,7 @@ const tianLiangCaseStudySections: CaseStudySection[] = [
             visual: "tian-liang-cup",
           },
           {
+            eyebrow: "Brand Application",
             title: "Menu / 菜單",
             description:
               "以字體層級與品牌色建立菜單閱讀節奏，延續空間中的溫潤感。",
@@ -1902,6 +1906,7 @@ const tianLiangCaseStudySections: CaseStudySection[] = [
             visual: "tian-liang-menu",
           },
           {
+            eyebrow: "Brand Application",
             title: "Sticker / 貼紙",
             description:
               "將 Logo 與輔助圖形轉化為小尺寸貼紙，支援包裝封口與周邊應用。",

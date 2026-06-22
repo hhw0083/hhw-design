@@ -13,6 +13,7 @@ import type { CaseStudyVisualKind } from "@/data/projects";
 type FinalDesignGalleryItem = {
   title: string;
   description: string;
+  eyebrow?: string;
   image?: string;
   visual?: CaseStudyVisualKind;
 };
@@ -27,7 +28,8 @@ function isProjectFallbackVisual(
   return Boolean(
     visual?.startsWith("tcb-") ||
       visual?.startsWith("rmic-") ||
-      visual?.startsWith("jule-"),
+      visual?.startsWith("jule-") ||
+      visual?.startsWith("tian-liang-"),
   );
 }
 
@@ -352,7 +354,7 @@ export function FinalDesignGallery({ items }: FinalDesignGalleryProps) {
 
               <div className="pr-12 md:pr-16">
                 <p className="text-sm font-semibold text-slate-500">
-                  Final Design
+                  {selectedItem.eyebrow ?? "Final Design"}
                 </p>
                 <h3
                   id={dialogTitleId}
