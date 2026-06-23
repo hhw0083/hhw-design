@@ -73,7 +73,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
       content: (
         <>
           {project.deliverables.map((deliverable, index) => (
-            <span key={deliverable} className="whitespace-nowrap">
+            <span key={deliverable} className="break-words [overflow-wrap:anywhere]">
               {deliverable}
               {index < project.deliverables.length - 1 ? " / " : ""}
             </span>
@@ -240,7 +240,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                       />
                       {item.label}
                     </dt>
-                    <dd className="mt-4 text-sm leading-7 text-slate-600">
+                    <dd className="mt-4 min-w-0 break-words text-sm leading-7 text-slate-600 [overflow-wrap:anywhere]">
                       {item.content}
                     </dd>
                   </div>
