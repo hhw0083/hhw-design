@@ -16,11 +16,7 @@ function getExistingProjectImage(
   project: Project,
   compact: boolean,
 ): string | undefined {
-  const candidates = compact
-    ? [project.coverImage]
-    : project.heroVisualImage
-      ? [project.heroVisualImage]
-      : [project.heroImage, project.coverImage];
+  const candidates = compact ? [project.coverImage] : [project.heroVisualImage];
 
   return candidates.find((imagePath) => {
     if (!imagePath?.startsWith("/")) {
@@ -78,6 +74,10 @@ export function ProjectVisual({
         />
       </div>
     );
+  }
+
+  if (!compact && !project.heroVisualImage) {
+    return null;
   }
 
   if (isProjectFallbackVisual(project.visualFallback)) {

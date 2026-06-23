@@ -69,15 +69,29 @@ export function ProjectNavigation({
   nextProject,
 }: ProjectNavigationProps) {
   return (
-    <nav
-      aria-label="Project navigation"
-      className="grid grid-cols-2 gap-3 md:gap-6"
-    >
-      <ProjectNavigationCard
-        direction="previous"
-        project={previousProject}
-      />
-      <ProjectNavigationCard direction="next" project={nextProject} />
-    </nav>
+    <section aria-labelledby="more-projects-title">
+      <div className="mb-5 md:mb-7">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyanline">
+          More Projects
+        </p>
+        <h2
+          id="more-projects-title"
+          className="mt-2 text-xl font-semibold text-slate-950 md:text-2xl"
+        >
+          繼續探索其他專案
+        </h2>
+      </div>
+
+      <nav
+        aria-label="Project navigation"
+        className="grid grid-cols-2 gap-3 md:gap-6"
+      >
+        <ProjectNavigationCard
+          direction="previous"
+          project={previousProject}
+        />
+        <ProjectNavigationCard direction="next" project={nextProject} />
+      </nav>
+    </section>
   );
 }

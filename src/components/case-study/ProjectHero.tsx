@@ -46,12 +46,10 @@ function getExistingPublicImage(imagePath?: string): string | undefined {
 }
 
 export function ProjectHero({ project }: ProjectHeroProps) {
-  const usesInlineHeroVisual = Boolean(project.heroVisualImage);
   const inlineHeroImage = getExistingPublicImage(project.heroVisualImage);
-  const desktopHeroImage = usesInlineHeroVisual
-    ? undefined
-    : getExistingPublicImage(project.heroImage) ??
-      getExistingPublicImage(project.coverImage);
+  const desktopHeroImage =
+    getExistingPublicImage(project.heroImage) ??
+    getExistingPublicImage(project.coverImage);
   const mobileHeroImage =
     getExistingPublicImage(project.heroMobileImage) ??
     inlineHeroImage ??
@@ -210,12 +208,12 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                   />
                 </div>
               </MotionReveal>
-            ) : (
+            ) : project.heroVisualImage ? (
               <ProjectVisual project={project} />
-            )}
+            ) : null}
           </div>
 
-          {!desktopHeroImage ? (
+          {project.heroVisualImage ? (
             <div className="hidden lg:block lg:w-1/2">
               <MotionReveal delay={260} distance={18}>
                 <ProjectVisual project={project} />
