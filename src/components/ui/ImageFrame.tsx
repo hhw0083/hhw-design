@@ -10,6 +10,8 @@ type ImageFrameProps = {
   imageClassName?: string;
   sizes?: string;
   parallax?: boolean;
+  quality?: number;
+  unoptimized?: boolean;
 };
 
 export function ImageFrame({
@@ -20,6 +22,8 @@ export function ImageFrame({
   imageClassName = "object-cover",
   sizes = "100vw",
   parallax = false,
+  quality = 95,
+  unoptimized = true,
 }: ImageFrameProps) {
   const image = existingPublicImage(src);
 
@@ -41,6 +45,8 @@ export function ImageFrame({
               alt={alt}
               fill
               sizes={sizes}
+              quality={quality}
+              unoptimized={unoptimized}
               className={imageClassName}
             />
           </ParallaxLayer>
@@ -50,6 +56,8 @@ export function ImageFrame({
             alt={alt}
             fill
             sizes={sizes}
+            quality={quality}
+            unoptimized={unoptimized}
             className={imageClassName}
           />
         )}

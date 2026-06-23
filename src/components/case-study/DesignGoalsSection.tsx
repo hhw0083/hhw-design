@@ -240,7 +240,9 @@ export function DesignGoalsSection({
               src={image}
               alt={`${title}成果示意圖`}
               fill
-              sizes="(min-width: 1024px) 75vw, 100vw"
+              sizes="(min-width: 1024px) 1200px, 100vw"
+              quality={95}
+              unoptimized
               className="object-cover"
             />
           </ParallaxLayer>

@@ -422,7 +422,9 @@ export function GalleryVisual({
             src={existingImage}
             alt={title}
             fill
-            sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
+            sizes="(min-width: 1280px) 520px, (min-width: 640px) 50vw, 100vw"
+            quality={95}
+            unoptimized
             className="object-cover"
           />
         ) : (
@@ -435,7 +437,9 @@ export function GalleryVisual({
               src={existingImage}
               alt={title}
               fill
-              sizes="(min-width: 768px) 50vw, 100vw"
+              sizes="(min-width: 1024px) 1200px, 100vw"
+              quality={95}
+              unoptimized
               className="object-cover"
             />
           </ParallaxLayer>

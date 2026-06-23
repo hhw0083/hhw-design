@@ -114,6 +114,8 @@ export function ProjectHero({ project }: ProjectHeroProps) {
               fill
               priority
               sizes="100vw"
+              quality={95}
+              unoptimized
               className="object-cover object-[72%_center] drop-shadow-[0_30px_42px_rgba(15,23,42,0.28)]"
               aria-hidden="true"
             />
@@ -197,6 +199,8 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                     fill
                     priority
                     sizes="(max-width: 767px) calc(100vw - 2rem), 100vw"
+                    quality={95}
+                    unoptimized
                     className="object-contain object-center"
                   />
                 </div>

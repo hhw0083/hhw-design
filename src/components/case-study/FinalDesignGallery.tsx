@@ -236,7 +236,13 @@ function VisualPreview({
           src={item.image}
           alt={item.title}
           fill
-          sizes={inModal ? "90vw" : "(min-width: 768px) 50vw, 100vw"}
+          sizes={
+            inModal
+              ? "(min-width: 1024px) 1200px, 100vw"
+              : "(min-width: 1024px) 720px, 100vw"
+          }
+          quality={95}
+          unoptimized
           className={inModal ? "object-contain" : "object-cover"}
         />
       </div>
