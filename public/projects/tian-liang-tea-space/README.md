@@ -16,8 +16,9 @@ Reserved filenames:
 - `application-awning.webp`: awning application
 - `application-packaging.webp`: packaging application
 - `application-cup.webp`: cup application
-- `application-menu.webp`: menu application
+- `application-business-card.webp`: business card application
 - `application-sticker.webp`: sticker application
 
-Image paths are managed in `src/data/projects.ts`. Until a reserved image is
-added, the case study renders the corresponding Tailwind fallback visual.
+Image paths are managed in the project data files under `src/data/projects/`.
+Until a reserved image is added, the case study renders the corresponding
+Tailwind fallback visual.

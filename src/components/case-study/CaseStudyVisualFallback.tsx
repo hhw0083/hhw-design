@@ -79,7 +79,7 @@ export type CaseStudyFallbackKind =
   | "tian-liang-awning"
   | "tian-liang-packaging"
   | "tian-liang-cup"
-  | "tian-liang-menu"
+  | "tian-liang-business-card"
   | "tian-liang-sticker";
 
 type CaseStudyVisualFallbackProps = {
@@ -2019,14 +2019,20 @@ function TianLiangVisualIdentityPreview() {
 function TianLiangApplicationPreview({
   variant,
 }: {
-  variant: "storefront" | "awning" | "packaging" | "cup" | "menu" | "sticker";
+  variant:
+    | "storefront"
+    | "awning"
+    | "packaging"
+    | "cup"
+    | "business-card"
+    | "sticker";
 }) {
   const title = {
     storefront: "Storefront",
     awning: "Awning",
     packaging: "Packaging",
     cup: "Cup",
-    menu: "Menu",
+    "business-card": "Business Card",
     sticker: "Sticker",
   }[variant];
 
@@ -2093,19 +2099,37 @@ function TianLiangApplicationPreview({
             </div>
           </div>
         ) : null}
-        {variant === "menu" ? (
-          <div className="mt-12 rounded-2xl border border-[#E1D8C9] bg-[#FFFCF5] p-6">
-            <p className="text-2xl font-semibold text-[#2E3133]">天亮茶單</p>
-            <div className="mt-5 grid gap-3">
-              {["晨光烏龍", "山霧青茶", "暖橘焙茶", "日常茶席"].map((item, index) => (
-                <div
-                  key={item}
-                  className="flex items-center justify-between border-b border-[#E1D8C9] pb-2 text-sm"
-                >
-                  <span className="text-[#435242]">{item}</span>
-                  <span className="text-[#D8752D]">{120 + index * 20}</span>
+        {variant === "business-card" ? (
+          <div className="mt-12 grid gap-4 md:grid-cols-2">
+            <div className="flex h-36 flex-col justify-between rounded-2xl border border-[#435242]/15 bg-[#435242] p-5 text-white shadow-sm">
+              <div className="flex items-center justify-between">
+                <TianLiangLogoMark compact />
+                <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-[#DCB65D]">
+                  Tea Space
+                </span>
+              </div>
+              <div>
+                <p className="text-lg font-semibold">天亮茶空間</p>
+                <p className="mt-2 text-[10px] uppercase tracking-[0.18em] text-white/70">
+                  Tian Liang Tea Space
+                </p>
+              </div>
+            </div>
+            <div className="flex h-36 flex-col justify-between rounded-2xl border border-[#E1D8C9] bg-[#FFFCF5] p-5 text-[#2E3133] shadow-sm">
+              <div className="flex items-start justify-between">
+                <div>
+                  <p className="text-lg font-semibold">天亮茶空間</p>
+                  <p className="mt-1 text-[10px] uppercase tracking-[0.18em] text-[#435242]">
+                    Brand Identity
+                  </p>
                 </div>
-              ))}
+                <TianLiangLogoMark compact />
+              </div>
+              <div className="grid gap-1 text-[10px] leading-relaxed text-[#8f8c82]">
+                <span>hello@tianliang.space</span>
+                <span>No. 18, Morning Tea Lane</span>
+                <span>Tea / Space / Daily Stay</span>
+              </div>
             </div>
           </div>
         ) : null}
@@ -2274,8 +2298,8 @@ export function CaseStudyVisualFallback({
       {kind === "tian-liang-cup" ? (
         <TianLiangApplicationPreview variant="cup" />
       ) : null}
-      {kind === "tian-liang-menu" ? (
-        <TianLiangApplicationPreview variant="menu" />
+      {kind === "tian-liang-business-card" ? (
+        <TianLiangApplicationPreview variant="business-card" />
       ) : null}
       {kind === "tian-liang-sticker" ? (
         <TianLiangApplicationPreview variant="sticker" />

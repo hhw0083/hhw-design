@@ -125,7 +125,7 @@ export type CaseStudyVisualKind =
   | "tian-liang-awning"
   | "tian-liang-packaging"
   | "tian-liang-cup"
-  | "tian-liang-menu"
+  | "tian-liang-business-card"
   | "tian-liang-sticker";
 
 export type CaseStudyCardIcon =

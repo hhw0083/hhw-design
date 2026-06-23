@@ -88,7 +88,7 @@ export const projectImageAssets = {
       "/projects/tian-liang-tea-space/application-awning.webp",
       "/projects/tian-liang-tea-space/application-packaging.webp",
       "/projects/tian-liang-tea-space/application-cup.webp",
-      "/projects/tian-liang-tea-space/application-menu.webp",
+      "/projects/tian-liang-tea-space/application-business-card.webp",
       "/projects/tian-liang-tea-space/application-sticker.webp",
     ],
   },

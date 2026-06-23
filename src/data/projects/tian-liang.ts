@@ -38,7 +38,7 @@ const tianLiangCaseStudySections: CaseStudySection[] = [
           {
             title: "應用延伸",
             description:
-              "讓 Logo 能穩定延伸到招牌、遮雨棚、包裝、杯身、菜單與貼紙等實體接觸點。",
+              "讓 Logo 能穩定延伸到招牌、遮雨棚、包裝、杯身、名片與貼紙等實體接觸點。",
             icon: "layers",
           },
         ],
@@ -172,7 +172,7 @@ const tianLiangCaseStudySections: CaseStudySection[] = [
     subtitle: "品牌應用",
     type: "final-design",
     description:
-      "最終品牌應用聚焦 Logo 與品牌語氣如何落到實體接觸點，包含招牌、遮雨棚、包裝、杯身、菜單與貼紙。",
+      "最終品牌應用聚焦 Logo 與品牌語氣如何落到實體接觸點，包含招牌、遮雨棚、包裝、杯身、名片與貼紙。",
     contentBlocks: [
       {
         type: "gallery",
@@ -211,11 +211,11 @@ const tianLiangCaseStudySections: CaseStudySection[] = [
           },
           {
             eyebrow: "Brand Application",
-            title: "Menu / 菜單",
+            title: "Business Card / 名片",
             description:
-              "以字體層級與品牌色建立菜單閱讀節奏，延續空間中的溫潤感。",
-            image: "/projects/tian-liang-tea-space/application-menu.webp",
-            visual: "tian-liang-menu",
+              "以品牌標準字、識別符號與聯絡資訊建立名片版面，讓品牌在日常交流與實體接觸點中保持一致。",
+            image: "/projects/tian-liang-tea-space/application-business-card.webp",
+            visual: "tian-liang-business-card",
           },
           {
             eyebrow: "Brand Application",
@@ -251,7 +251,7 @@ export const tianLiangProject: Project = {
     challenge:
       "如何讓茶空間品牌在 Logo、招牌、包裝與實體應用中，維持溫潤、安定且具辨識度的視覺語氣。",
     outcome:
-      "建立以日出、山形與茶空間留白感為核心的品牌識別，並延伸到招牌、遮雨棚、包裝、杯身、菜單與貼紙等實體應用。",
+      "建立以日出、山形與茶空間留白感為核心的品牌識別，並延伸到招牌、遮雨棚、包裝、杯身、名片與貼紙等實體應用。",
     metrics: [
       { label: "Logo routes", value: "3" },
       { label: "Color groups", value: "3" },
@@ -268,7 +268,7 @@ export const tianLiangProject: Project = {
     process: [
       "從日出、山形、茶席與留白感探索品牌符號，建立可被記住的主識別方向。",
       "比較中文與英文標準字比例，尋找安定、溫潤且適合空間品牌的字標語氣。",
-      "將 Logo、品牌色、字體與輔助圖形延伸到招牌、包裝、杯身與菜單等接觸點。",
+      "將 Logo、品牌色、字體與輔助圖形延伸到招牌、包裝、杯身與名片等接觸點。",
     ],
     deliverables: [
       "Logo Design",
