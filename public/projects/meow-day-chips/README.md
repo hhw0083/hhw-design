@@ -6,8 +6,8 @@ case study in this folder.
 Reserved filenames:
 
 - `cover.webp`: portfolio project listing cover
-- `hero.webp`: project detail hero
-- `hero-mobile.webp`: optional mobile hero
+- `hero-visual.webp`: right-side case study hero visual
+- `hero-mobile.webp`: optional mobile hero visual
 - `brand-concept.webp`: corn chips and cat concept board
 - `logo-process.webp`: logo exploration and selected direction
 - `visual-identity.webp`: logo, color, typography, and graphic system

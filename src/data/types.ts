@@ -49,6 +49,7 @@ export type ProjectScreen = {
 export type ProjectImageAssets = {
   coverImage?: string;
   heroImage?: string;
+  heroVisualImage?: string;
   heroMobileImage?: string;
   galleryImages?: string[];
 };

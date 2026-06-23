@@ -18,7 +18,9 @@ function getExistingProjectImage(
 ): string | undefined {
   const candidates = compact
     ? [project.coverImage]
-    : [project.heroImage, project.coverImage];
+    : project.heroVisualImage
+      ? [project.heroVisualImage]
+      : [project.heroImage, project.coverImage];
 
   return candidates.find((imagePath) => {
     if (!imagePath?.startsWith("/")) {
@@ -39,8 +41,10 @@ export function ProjectVisual({
   const image = getExistingProjectImage(project, compact);
   const imageRole = compact
     ? "cover"
-    : image === project.heroImage
-      ? "hero"
+    : image === project.heroVisualImage
+      ? "hero-visual"
+      : image === project.heroImage
+        ? "hero"
       : "cover-fallback";
 
   if (image) {

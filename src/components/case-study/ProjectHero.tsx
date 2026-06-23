@@ -46,11 +46,16 @@ function getExistingPublicImage(imagePath?: string): string | undefined {
 }
 
 export function ProjectHero({ project }: ProjectHeroProps) {
-  const desktopHeroImage =
-    getExistingPublicImage(project.heroImage) ??
-    getExistingPublicImage(project.coverImage);
+  const usesInlineHeroVisual = Boolean(project.heroVisualImage);
+  const inlineHeroImage = getExistingPublicImage(project.heroVisualImage);
+  const desktopHeroImage = usesInlineHeroVisual
+    ? undefined
+    : getExistingPublicImage(project.heroImage) ??
+      getExistingPublicImage(project.coverImage);
   const mobileHeroImage =
-    getExistingPublicImage(project.heroMobileImage) ?? desktopHeroImage;
+    getExistingPublicImage(project.heroMobileImage) ??
+    inlineHeroImage ??
+    desktopHeroImage;
 
   const metaItems: {
     label: keyof typeof metaIcons;

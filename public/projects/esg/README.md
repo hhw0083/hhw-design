@@ -5,7 +5,7 @@ Store image assets for the ESG forest matching platform in this folder.
 Reserved filenames:
 
 - `cover.webp`: portfolio listing cover
-- `hero.webp`: project detail hero
+- `hero.webp`: desktop project detail background hero
 - `sitemap.webp`: information architecture overview
 - `design-system.webp`: color and typography board
 - `components.webp`: component showcase board
