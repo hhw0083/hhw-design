@@ -311,7 +311,6 @@ const juleCaseStudySections: CaseStudySection[] = [
 
 export const juleProject: Project = {
     slug: "jule-ecommerce",
-    isHidden: true,
     ...projectImageAssets["jule-ecommerce"],
     visualFallback: "jule-hero",
     caseStudySections: juleCaseStudySections,
