@@ -70,6 +70,25 @@ export type CaseStudyFallbackKind =
   | "jule-bootstrap-layout"
   | "jule-final-ui-01"
   | "jule-final-ui-02"
+  | "ina-hero"
+  | "ina-ui-direction"
+  | "ina-visual-extension"
+  | "ina-final-ui-01"
+  | "ina-final-ui-02"
+  | "ina-final-ui-03"
+  | "dome-hero"
+  | "dome-story-concept"
+  | "dome-visual-direction"
+  | "dome-character-design"
+  | "dome-final-visual-01"
+  | "dome-final-visual-02"
+  | "meow-hero"
+  | "meow-brand-concept"
+  | "meow-logo-process"
+  | "meow-visual-identity"
+  | "meow-application-packaging"
+  | "meow-application-storefront"
+  | "meow-application-sticker"
   | "tian-liang-hero"
   | "tian-liang-logo-exploration"
   | "tian-liang-wordmark-exploration"
@@ -1730,6 +1749,347 @@ function JuleBootstrapPreview() {
   );
 }
 
+function InaPreview({
+  variant = "hero",
+}: {
+  variant?:
+    | "hero"
+    | "ui-direction"
+    | "visual-extension"
+    | "final-ui-01"
+    | "final-ui-02"
+    | "final-ui-03";
+}) {
+  const isVisual = variant === "visual-extension";
+  const isMobile = variant === "final-ui-03";
+
+  return (
+    <div className="h-full bg-[#f7f1ed] p-4 sm:p-6">
+      <div className="mx-auto grid h-full max-w-4xl overflow-hidden rounded-3xl border border-white/80 bg-white shadow-[0_28px_80px_rgba(93,73,63,0.14)] md:grid-cols-[0.88fr_1.12fr]">
+        <div className="relative flex flex-col justify-between bg-[#7d6f66] p-6 text-white">
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#ead7c9]">
+              INA Waxing
+            </p>
+            <h3 className="mt-8 text-3xl font-semibold leading-tight">
+              Professional
+              <br />
+              Waxing Studio
+            </h3>
+            <p className="mt-4 max-w-xs text-sm leading-6 text-white/70">
+              中性、專業且安心的服務官網體驗。
+            </p>
+          </div>
+          <div className="grid grid-cols-3 gap-2 text-center text-[9px]">
+            {["Service", "Process", "Booking"].map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-white/20 px-2 py-2 text-white/75"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="min-w-0 bg-[#fbf8f5] p-5">
+          <div className="flex items-center justify-between rounded-2xl border border-[#e8ded7] bg-white px-4 py-3 text-[10px] font-semibold text-[#7d6f66]">
+            <span>INA</span>
+            <span className="text-[#b58b72]">Book Now</span>
+          </div>
+
+          {isVisual ? (
+            <div className="mt-5 grid gap-4">
+              <div className="grid grid-cols-4 gap-3">
+                {["#7D6F66", "#D7C6B8", "#F7F1ED", "#B58B72"].map((color) => (
+                  <div key={color}>
+                    <div
+                      className="aspect-square rounded-2xl border border-black/5 shadow-sm"
+                      style={{ backgroundColor: color }}
+                    />
+                    <p className="mt-2 text-[9px] font-semibold text-[#7d6f66]">
+                      {color}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className="rounded-2xl border border-[#e8ded7] bg-white p-5">
+                <p className="text-4xl font-semibold text-[#2e2a27]">Aa</p>
+                <p className="mt-3 text-xs leading-6 text-[#7d6f66]">
+                  Clean typography, warm neutral surfaces, and calm service
+                  imagery for an inclusive brand website.
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div
+              className={`mt-5 grid gap-4 ${
+                isMobile ? "grid-cols-[0.58fr_0.42fr]" : ""
+              }`}
+            >
+              <div className="overflow-hidden rounded-2xl border border-[#e8ded7] bg-white">
+                <div className="h-32 bg-[radial-gradient(circle_at_78%_20%,rgba(181,139,114,0.36),transparent_11rem),linear-gradient(135deg,#f4e4da,#d7c6b8)]" />
+                <div className="p-4">
+                  <p className="text-lg font-semibold text-[#2e2a27]">
+                    {variant === "final-ui-02"
+                      ? "Service Detail"
+                      : "Smooth, confident care."}
+                  </p>
+                  <p className="mt-2 text-xs leading-6 text-[#7d6f66]">
+                    {variant === "final-ui-02"
+                      ? "服務項目、流程與注意事項以分段資訊呈現。"
+                      : "首頁主視覺、服務重點與預約 CTA 整合。"}
+                  </p>
+                  <div className="mt-4 grid grid-cols-3 gap-2">
+                    {["Face", "Body", "Men"].map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full bg-[#f7f1ed] px-2 py-2 text-center text-[9px] font-semibold text-[#7d6f66]"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              {isMobile ? (
+                <div className="rounded-[1.75rem] border-[7px] border-[#2e2a27] bg-white p-3 shadow-xl">
+                  <div className="h-full rounded-[1.25rem] bg-[#fbf8f5] p-3">
+                    <p className="text-xs font-semibold text-[#7d6f66]">
+                      Book service
+                    </p>
+                    <div className="mt-5 space-y-2">
+                      {["選擇服務", "選擇時段", "確認預約"].map((item) => (
+                        <div
+                          key={item}
+                          className="rounded-xl border border-[#e8ded7] bg-white p-3 text-[10px] text-[#7d6f66]"
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DomePreview({
+  variant = "hero",
+}: {
+  variant?:
+    | "hero"
+    | "story-concept"
+    | "visual-direction"
+    | "character-design"
+    | "final-visual-01"
+    | "final-visual-02";
+}) {
+  const isCharacter = variant === "character-design";
+
+  return (
+    <div className="h-full bg-[#09111f] p-4 sm:p-6">
+      <div className="relative h-full overflow-hidden rounded-3xl border border-cyan-200/10 bg-[radial-gradient(circle_at_72%_18%,rgba(56,189,248,0.26),transparent_18rem),linear-gradient(135deg,#0f172a,#030712)] p-6 shadow-[0_30px_90px_rgba(2,6,23,0.45)]">
+        <div className="absolute inset-x-0 top-1/2 h-px bg-cyan-200/10" />
+        <div className="absolute left-1/2 top-0 h-full w-px bg-cyan-200/10" />
+        <div className="relative z-10 grid h-full gap-5 md:grid-cols-[0.82fr_1.18fr]">
+          <div className="flex flex-col justify-between text-white">
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-cyan-200">
+                DOME
+              </p>
+              <h3 className="mt-8 text-4xl font-semibold leading-none">
+                Memory
+                <br />
+                Machine
+              </h3>
+              <p className="mt-5 text-sm leading-7 text-slate-300">
+                情感記憶、人類演化與機器文明之間的原創動畫概念。
+              </p>
+            </div>
+            <div className="grid grid-cols-3 gap-2 text-[9px] text-slate-300">
+              {["World", "Ethics", "Human"].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-center"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid h-full gap-4">
+            {isCharacter ? (
+              <div className="grid h-full grid-cols-3 gap-4">
+                {[0, 1, 2].map((item) => (
+                  <div
+                    key={item}
+                    className="relative overflow-hidden rounded-2xl border border-cyan-200/10 bg-white/[0.04] p-4"
+                  >
+                    <div className="mx-auto h-40 w-16 rounded-full bg-gradient-to-b from-cyan-100/80 to-slate-500/20" />
+                    <div className="mt-5 space-y-2">
+                      <span className="block h-2 rounded-full bg-white/20" />
+                      <span className="block h-2 w-2/3 rounded-full bg-white/10" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="relative h-full overflow-hidden rounded-2xl border border-cyan-200/10 bg-black/20">
+                <div className="absolute inset-x-10 top-8 h-56 rounded-b-[6rem] rounded-t-full border border-cyan-200/20 bg-cyan-200/5" />
+                <div className="absolute bottom-8 left-1/2 h-32 w-20 -translate-x-1/2 rounded-full bg-gradient-to-b from-slate-200 to-slate-600 shadow-[0_0_44px_rgba(125,211,252,0.28)]" />
+                <div className="absolute inset-x-8 bottom-8 h-px bg-cyan-200/20" />
+                <div className="absolute right-6 top-6 rounded-full border border-cyan-200/15 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-cyan-100">
+                  {variant === "story-concept"
+                    ? "Story"
+                    : variant === "visual-direction"
+                      ? "Atmosphere"
+                      : "Final"}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MeowPreview({
+  variant = "hero",
+}: {
+  variant?:
+    | "hero"
+    | "brand-concept"
+    | "logo-process"
+    | "visual-identity"
+    | "application-packaging"
+    | "application-storefront"
+    | "application-sticker";
+}) {
+  const isIdentity = variant === "visual-identity";
+  const isSticker = variant === "application-sticker";
+
+  return (
+    <div className="h-full bg-[#fff6df] p-4 sm:p-6">
+      <div className="mx-auto h-full max-w-4xl overflow-hidden rounded-3xl border border-white bg-white shadow-[0_28px_80px_rgba(126,78,28,0.16)]">
+        <div className="flex h-14 items-center justify-between bg-[#2e2a25] px-5 text-white">
+          <p className="text-sm font-semibold">貓之日 Meow Day Chips</p>
+          <span className="rounded-full bg-[#f7b733] px-3 py-1 text-[10px] font-bold text-[#2e2a25]">
+            Handmade
+          </span>
+        </div>
+        <div className="grid h-[calc(100%-3.5rem)] gap-5 bg-[#fffaf0] p-5 md:grid-cols-[0.92fr_1.08fr]">
+          <div className="relative overflow-hidden rounded-2xl bg-[#f7b733] p-5 text-[#2e2a25]">
+            <div className="absolute -right-10 -top-10 size-36 rounded-full bg-white/25" />
+            <div className="relative z-10">
+              <p className="text-[10px] font-bold uppercase tracking-[0.22em]">
+                Corn Chips x Cat
+              </p>
+              <h3 className="mt-8 text-4xl font-black leading-tight">
+                Meow
+                <br />
+                Crunch
+              </h3>
+            </div>
+            <div className="absolute bottom-6 left-6 flex gap-2">
+              {[0, 1, 2].map((item) => (
+                <span
+                  key={item}
+                  className="grid size-12 place-items-center rounded-2xl bg-white/80 text-xl font-black"
+                >
+                  {item === 0 ? "△" : item === 1 ? "ᓚ" : "★"}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {isIdentity ? (
+            <div className="grid gap-4">
+              <div className="grid grid-cols-4 gap-3">
+                {["#F7B733", "#F47C3C", "#FFF6DF", "#2E2A25"].map((color) => (
+                  <div key={color}>
+                    <div
+                      className="aspect-square rounded-2xl border border-black/5 shadow-sm"
+                      style={{ backgroundColor: color }}
+                    />
+                    <p className="mt-2 text-[9px] font-semibold text-[#2e2a25]">
+                      {color}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className="rounded-2xl border border-[#f2d59d] bg-white p-5">
+                <p className="text-4xl font-black text-[#2e2a25]">貓之日</p>
+                <p className="mt-2 text-xs font-bold uppercase tracking-[0.18em] text-[#f47c3c]">
+                  Meow Day Chips
+                </p>
+              </div>
+            </div>
+          ) : isSticker ? (
+            <div className="grid grid-cols-3 gap-4">
+              {[0, 1, 2, 3, 4, 5].map((item) => (
+                <div
+                  key={item}
+                  className="grid aspect-square place-items-center rounded-full border border-[#f2d59d] bg-white text-3xl shadow-sm"
+                >
+                  {item % 2 === 0 ? "△" : "paw"}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid gap-4">
+              <div className="grid grid-cols-2 gap-4">
+                {[0, 1].map((item) => (
+                  <div
+                    key={item}
+                    className={`rounded-2xl border border-[#f2d59d] p-5 shadow-sm ${
+                      item === 0 ? "bg-white" : "bg-[#f47c3c] text-white"
+                    }`}
+                  >
+                    <Package className="size-8" aria-hidden="true" />
+                    <p className="mt-8 text-lg font-black">
+                      {variant === "logo-process"
+                        ? "Logo Process"
+                        : variant === "application-storefront"
+                          ? "Storefront"
+                          : "Chips Pack"}
+                    </p>
+                    <p className="mt-2 text-xs opacity-70">
+                      playful brand touchpoint
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className="rounded-2xl border border-[#f2d59d] bg-white p-4">
+                <div className="flex items-center gap-3">
+                  <span className="grid size-12 place-items-center rounded-full bg-[#f7b733] text-xl font-black">
+                    ᓚ
+                  </span>
+                  <div>
+                    <p className="font-black text-[#2e2a25]">
+                      貓之日品牌符號
+                    </p>
+                    <p className="text-xs text-[#8f6b3a]">
+                      玉米片形狀與貓咪趣味意象
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function TianLiangLogoMark({ compact = false }: { compact?: boolean }) {
   return (
     <div
@@ -2161,6 +2521,9 @@ export function CaseStudyVisualFallback({
   const dark = kind === "tcb-dashboard-dark" || kind === "tcb-final-dark";
   const isRmic = kind.startsWith("rmic-");
   const isJule = kind.startsWith("jule-");
+  const isIna = kind.startsWith("ina-");
+  const isDome = kind.startsWith("dome-");
+  const isMeow = kind.startsWith("meow-");
   const isTianLiang = kind.startsWith("tian-liang-");
 
   return (
@@ -2170,9 +2533,15 @@ export function CaseStudyVisualFallback({
           ? "bg-[#f4f7f8]"
           : isJule
             ? "bg-[#fffaf6]"
-            : isTianLiang
-              ? "bg-[#F8F3E8]"
-              : "bg-white"
+            : isIna
+              ? "bg-[#f7f1ed]"
+              : isDome
+                ? "bg-[#09111f]"
+                : isMeow
+                  ? "bg-[#fff6df]"
+                  : isTianLiang
+                    ? "bg-[#F8F3E8]"
+                    : "bg-white"
       } ${className}`}
       role="img"
       aria-label={`${kind.replaceAll("-", " ")} placeholder preview`}
@@ -2273,6 +2642,57 @@ export function CaseStudyVisualFallback({
       {kind === "jule-rewards-coupons" ? <JuleRewardsPreview /> : null}
       {kind === "jule-mobile-rwd" ? <JuleResponsivePreview /> : null}
       {kind === "jule-bootstrap-layout" ? <JuleBootstrapPreview /> : null}
+      {kind === "ina-hero" ? <InaPreview /> : null}
+      {kind === "ina-ui-direction" ? (
+        <InaPreview variant="ui-direction" />
+      ) : null}
+      {kind === "ina-visual-extension" ? (
+        <InaPreview variant="visual-extension" />
+      ) : null}
+      {kind === "ina-final-ui-01" ? (
+        <InaPreview variant="final-ui-01" />
+      ) : null}
+      {kind === "ina-final-ui-02" ? (
+        <InaPreview variant="final-ui-02" />
+      ) : null}
+      {kind === "ina-final-ui-03" ? (
+        <InaPreview variant="final-ui-03" />
+      ) : null}
+      {kind === "dome-hero" ? <DomePreview /> : null}
+      {kind === "dome-story-concept" ? (
+        <DomePreview variant="story-concept" />
+      ) : null}
+      {kind === "dome-visual-direction" ? (
+        <DomePreview variant="visual-direction" />
+      ) : null}
+      {kind === "dome-character-design" ? (
+        <DomePreview variant="character-design" />
+      ) : null}
+      {kind === "dome-final-visual-01" ? (
+        <DomePreview variant="final-visual-01" />
+      ) : null}
+      {kind === "dome-final-visual-02" ? (
+        <DomePreview variant="final-visual-02" />
+      ) : null}
+      {kind === "meow-hero" ? <MeowPreview /> : null}
+      {kind === "meow-brand-concept" ? (
+        <MeowPreview variant="brand-concept" />
+      ) : null}
+      {kind === "meow-logo-process" ? (
+        <MeowPreview variant="logo-process" />
+      ) : null}
+      {kind === "meow-visual-identity" ? (
+        <MeowPreview variant="visual-identity" />
+      ) : null}
+      {kind === "meow-application-packaging" ? (
+        <MeowPreview variant="application-packaging" />
+      ) : null}
+      {kind === "meow-application-storefront" ? (
+        <MeowPreview variant="application-storefront" />
+      ) : null}
+      {kind === "meow-application-sticker" ? (
+        <MeowPreview variant="application-sticker" />
+      ) : null}
       {kind === "tian-liang-hero" ? <TianLiangHeroPreview /> : null}
       {kind === "tian-liang-logo-exploration" ? (
         <TianLiangLogoProcessPreview variant="symbol" />

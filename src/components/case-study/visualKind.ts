@@ -8,6 +8,9 @@ export function isProjectFallbackVisual(
     visual?.startsWith("tcb-") ||
       visual?.startsWith("rmic-") ||
       visual?.startsWith("jule-") ||
+      visual?.startsWith("ina-") ||
+      visual?.startsWith("dome-") ||
+      visual?.startsWith("meow-") ||
       visual?.startsWith("tian-liang-"),
   );
 }
