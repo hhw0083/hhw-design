@@ -2,10 +2,8 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import {
-  CaseStudyVisualFallback,
-  type CaseStudyFallbackKind,
-} from "@/components/case-study/CaseStudyVisualFallback";
+import { CaseStudyVisualFallback } from "@/components/case-study/CaseStudyVisualFallback";
+import { isProjectFallbackVisual } from "@/components/case-study/visualKind";
 import type { Project } from "@/data/projects";
 
 type ProjectVisualProps = {
@@ -76,12 +74,7 @@ export function ProjectVisual({
     );
   }
 
-  if (
-    project.visualFallback?.startsWith("tcb-") ||
-    project.visualFallback?.startsWith("rmic-") ||
-    project.visualFallback?.startsWith("jule-") ||
-    project.visualFallback?.startsWith("tian-liang-")
-  ) {
+  if (isProjectFallbackVisual(project.visualFallback)) {
     return (
       <div
         className={`relative aspect-[16/10] overflow-hidden rounded-lg border ${
@@ -90,9 +83,7 @@ export function ProjectVisual({
             : "border-slate-200 bg-white shadow-portfolio-card"
         }`}
       >
-        <CaseStudyVisualFallback
-          kind={project.visualFallback as CaseStudyFallbackKind}
-        />
+        <CaseStudyVisualFallback kind={project.visualFallback} />
       </div>
     );
   }

@@ -1,5 +1,3 @@
-import { existsSync } from "node:fs";
-import { join } from "node:path";
 import Image from "next/image";
 import {
   Check,
@@ -10,6 +8,7 @@ import {
   Search,
 } from "lucide-react";
 import type { CSSProperties } from "react";
+import { existingPublicImage } from "@/components/case-study/publicImages";
 import { ParallaxLayer } from "@/components/motion/ParallaxLayer";
 import { CaseStudySectionLayout } from "./CaseStudySectionLayout";
 import {
@@ -39,16 +38,6 @@ const goalIcons = {
   layers: Layers3,
   check: Check,
 } satisfies Record<DesignGoalIcon, typeof Navigation>;
-
-function existingPublicImage(src?: string) {
-  if (!src?.startsWith("/")) {
-    return undefined;
-  }
-
-  return existsSync(join(process.cwd(), "public", src.replace(/^\/+/, "")))
-    ? src
-    : undefined;
-}
 
 function PlatformPreview() {
   const metrics = [

@@ -4,10 +4,8 @@ import Image from "next/image";
 import { useEffect, useId, useState } from "react";
 import { createPortal } from "react-dom";
 import { Maximize2, X } from "lucide-react";
-import {
-  CaseStudyVisualFallback,
-  type CaseStudyFallbackKind,
-} from "@/components/case-study/CaseStudyVisualFallback";
+import { CaseStudyVisualFallback } from "@/components/case-study/CaseStudyVisualFallback";
+import { isProjectFallbackVisual } from "@/components/case-study/visualKind";
 import type { CaseStudyVisualKind } from "@/data/projects";
 
 type FinalDesignGalleryItem = {
@@ -21,17 +19,6 @@ type FinalDesignGalleryItem = {
 type FinalDesignGalleryProps = {
   items: FinalDesignGalleryItem[];
 };
-
-function isProjectFallbackVisual(
-  visual?: CaseStudyVisualKind,
-): visual is CaseStudyFallbackKind {
-  return Boolean(
-    visual?.startsWith("tcb-") ||
-      visual?.startsWith("rmic-") ||
-      visual?.startsWith("jule-") ||
-      visual?.startsWith("tian-liang-"),
-  );
-}
 
 function EsgFallbackPreview({
   kind,

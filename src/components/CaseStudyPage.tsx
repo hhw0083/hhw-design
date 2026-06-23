@@ -1,5 +1,3 @@
-import { existsSync } from "node:fs";
-import { join } from "node:path";
 import Image from "next/image";
 import type { ReactNode } from "react";
 import {
@@ -28,12 +26,11 @@ import { DesignGoalsSection } from "@/components/case-study/DesignGoalsSection";
 import { CaseStudySectionLayout } from "@/components/case-study/CaseStudySectionLayout";
 import { FinalDesignGallery } from "@/components/case-study/FinalDesignGallery";
 import { InteractivePrototypeSection } from "@/components/case-study/InteractivePrototypeSection";
-import { RmicComponentExtensionBoard } from "@/components/case-study/RmicComponentExtensionBoard";
-import { TcbDesignSystemBoard } from "@/components/case-study/TcbDesignSystemBoard";
-import {
-  CaseStudyVisualFallback,
-  type CaseStudyFallbackKind,
-} from "@/components/case-study/CaseStudyVisualFallback";
+import { existingPublicImage } from "@/components/case-study/publicImages";
+import { CaseStudyVisualFallback } from "@/components/case-study/CaseStudyVisualFallback";
+import { isProjectFallbackVisual } from "@/components/case-study/visualKind";
+import { RmicComponentExtensionBoard } from "@/components/project-specific/RmicComponentExtensionBoard";
+import { TcbDesignSystemBoard } from "@/components/project-specific/TcbDesignSystemBoard";
 import type {
   CaseStudyCardIcon,
   CaseStudyContentBlock,
@@ -58,17 +55,6 @@ const cardIcons = {
   bell: Bell,
   server: Server,
 } satisfies Record<CaseStudyCardIcon, typeof Palette>;
-
-function isProjectFallbackVisual(
-  visual?: CaseStudyVisualKind,
-): visual is CaseStudyFallbackKind {
-  return Boolean(
-    visual?.startsWith("tcb-") ||
-      visual?.startsWith("rmic-") ||
-      visual?.startsWith("jule-") ||
-      visual?.startsWith("tian-liang-"),
-  );
-}
 
 function TextCard({
   title,
@@ -498,16 +484,6 @@ function CertificatePreview() {
       </div>
     </div>
   );
-}
-
-function existingPublicImage(src?: string) {
-  if (!src?.startsWith("/")) {
-    return undefined;
-  }
-
-  return existsSync(join(process.cwd(), "public", src.replace(/^\/+/, "")))
-    ? src
-    : undefined;
 }
 
 function GalleryVisual({
