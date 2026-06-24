@@ -12,6 +12,7 @@ import type {
 type ScreenKind = CaseStudyVisualKind;
 
 const aspectRatioClasses = {
+  "18/9": "aspect-[18/9]",
   "16/10": "aspect-[16/10]",
   "16/9": "aspect-video",
   "4/3": "aspect-[4/3]",

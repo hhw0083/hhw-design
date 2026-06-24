@@ -63,14 +63,21 @@ const domeCaseStudySections: CaseStudySection[] = [
               "以封閉式城市、機器管理系統與記憶保存技術建立故事背景。",
             image: "/projects/dome/story-concept.webp",
             visual: "dome-story-concept",
-            aspectRatio: "16/8",
+            aspectRatio: "18/9",
           },
           {
             title: "Core Conflict / 核心衝突",
             description:
               "角色面對科技、倫理與人性之間的取捨，故事聚焦記憶是否仍代表真正的自我。",
-            image: "/projects/dome/final-visual-01.webp",
+            image: "/projects/dome/story-01.webp",
             visual: "dome-final-visual-01",
+          },
+            {
+            title: "Core Conflict / 核心衝突",
+            description:
+              "角色面對科技、倫理與人性之間的取捨，故事聚焦記憶是否仍代表真正的自我。",
+            image: "/projects/dome/story-02.webp",
+            visual: "dome-final-visual-02",
           },
         ],
       },
@@ -94,6 +101,7 @@ const domeCaseStudySections: CaseStudySection[] = [
               "以冷灰、藍黑與系統光源建立機器文明的秩序感，並用空間尺度強化角色的孤立感。",
             image: "/projects/dome/visual-direction.webp",
             visual: "dome-visual-direction",
+              aspectRatio: "21/9",
           },
         ],
       },
@@ -154,7 +162,23 @@ const domeCaseStudySections: CaseStudySection[] = [
             description:
               "整合角色設定與場景氛圍，作為動畫概念的視覺成果展示。",
             image: "/projects/dome/final-visual-02.webp",
-            visual: "dome-final-visual-02",
+            visual: "dome-final-visual-01",
+          },
+           {
+            eyebrow: "Final Visual",
+            title: "Character & Environment",
+            description:
+              "整合角色設定與場景氛圍，作為動畫概念的視覺成果展示。",
+            image: "/projects/dome/final-visual-03.webp",
+            visual: "dome-final-visual-01",
+          },
+           {
+            eyebrow: "Final Visual",
+            title: "Character & Environment",
+            description:
+              "整合角色設定與場景氛圍，作為動畫概念的視覺成果展示。",
+            image: "/projects/dome/final-visual-04.webp",
+            visual: "dome-final-visual-01",
           },
         ],
       },

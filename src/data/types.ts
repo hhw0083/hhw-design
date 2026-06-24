@@ -179,6 +179,7 @@ export type DesignGoal = {
 };
 
 export type CaseStudyImageAspectRatio =
+  | "18/9"
   | "16/10"
   | "16/9"
   | "4/3"
