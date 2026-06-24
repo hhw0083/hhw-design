@@ -373,11 +373,18 @@ export function FinalDesignGallery({ items }: FinalDesignGalleryProps) {
     <>
       <div className="grid gap-5 md:grid-cols-2">
         {items.map((item) => (
-          <button
+          <div
             key={item.title}
-            type="button"
+            role="button"
+            tabIndex={0}
             onClick={() => setSelectedItem(item)}
-            className="group flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white/90 p-4 text-left shadow-[0_18px_48px_rgba(15,23,42,0.06)] transition duration-300 hover:-translate-y-1 hover:border-slate-300/80 hover:shadow-[0_28px_70px_rgba(15,23,42,0.1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanline focus-visible:ring-offset-2"
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setSelectedItem(item);
+              }
+            }}
+            className="group flex h-full cursor-pointer flex-col rounded-2xl border border-slate-200/80 bg-white/90 p-4 text-left shadow-[0_18px_48px_rgba(15,23,42,0.06)] transition duration-300 hover:-translate-y-1 hover:border-slate-300/80 hover:shadow-[0_28px_70px_rgba(15,23,42,0.1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanline focus-visible:ring-offset-2"
           >
             <VisualPreview item={item} compact />
             <h3 className="mt-4 text-lg font-semibold text-slate-950">
@@ -389,7 +396,7 @@ export function FinalDesignGallery({ items }: FinalDesignGalleryProps) {
             <span className="mt-auto inline-flex self-end pt-4 text-sm font-semibold text-slate-950 transition-colors duration-300 group-hover:text-cyanline group-focus-visible:text-cyanline">
               View full screen
             </span>
-          </button>
+          </div>
         ))}
       </div>
       {modal}
