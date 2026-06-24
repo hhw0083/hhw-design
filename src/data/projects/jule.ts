@@ -99,7 +99,7 @@ const juleCaseStudySections: CaseStudySection[] = [
     contentBlocks: [
       {
         type: "design-goals",
-        previewImage: "/projects/jule-ecommerce/design-goals.webp",
+        previewImage: "/projects/jule-ecommerce/goals-01.webp",
         previewVisual: "jule-homepage",
         goals: [
           {
@@ -146,14 +146,14 @@ const juleCaseStudySections: CaseStudySection[] = [
             title: "Homepage Visual",
             description:
               "整合主視覺 Banner、團購活動、熱門商品與購物 CTA，建立品牌第一印象。",
-            image: "/projects/jule-ecommerce/homepage.webp",
+            image: "/projects/jule-ecommerce/visual-01.webp",
             visual: "jule-homepage",
           },
           {
             title: "Visual Direction",
             description:
               "整理品牌色彩、促銷標籤、圓潤卡片、商品攝影框架與文字層級。",
-            image: "/projects/jule-ecommerce/visual-direction.webp",
+            image: "/projects/jule-ecommerce/visual-02.webp",
             visual: "jule-visual-direction",
           },
         ],
@@ -176,28 +176,28 @@ const juleCaseStudySections: CaseStudySection[] = [
             title: "Product List",
             description:
               "以活動標籤、價格、銷售進度與快速操作提升團購商品的掃讀效率。",
-            image: "/projects/jule-ecommerce/product-list.webp",
+            image: "/projects/jule-ecommerce/shopping-01.webp",
             visual: "jule-product-list",
           },
           {
             title: "Product Detail",
             description:
               "整合商品圖、規格選擇、數量、活動倒數與購買 CTA。",
-            image: "/projects/jule-ecommerce/product-detail.webp",
+            image: "/projects/jule-ecommerce/shopping-02.webp",
             visual: "jule-product-detail",
           },
           {
             title: "Shopping Cart",
             description:
               "集中管理商品規格、數量、小計、優惠提示與前往結帳操作。",
-            image: "/projects/jule-ecommerce/cart.webp",
+            image: "/projects/jule-ecommerce/shopping-03.webp",
             visual: "jule-cart",
           },
           {
             title: "Checkout",
             description:
               "將收件資料、付款方式、訂單明細與總金額整理為清楚的確認階段。",
-            image: "/projects/jule-ecommerce/checkout.webp",
+            image: "/projects/jule-ecommerce/shopping-04.webp",
             visual: "jule-checkout",
           },
         ],
@@ -220,14 +220,14 @@ const juleCaseStudySections: CaseStudySection[] = [
             title: "Rewards & Coupons",
             description:
               "呈現可用點數、折價券選擇、折扣套用狀態與不可使用提示。",
-            image: "/projects/jule-ecommerce/rewards-coupons.webp",
+            image: "/projects/jule-ecommerce/rewards-01.webp",
             visual: "jule-rewards-coupons",
           },
           {
             title: "Checkout Summary",
             description:
               "同步更新金額明細、優惠折抵與最終付款金額。",
-            image: "/projects/jule-ecommerce/checkout.webp",
+            image: "/projects/jule-ecommerce/rewards-02.webp",
             visual: "jule-checkout",
           },
         ],
@@ -250,14 +250,14 @@ const juleCaseStudySections: CaseStudySection[] = [
             title: "Bootstrap 5 Layout",
             description:
               "以 container、grid、utility 與元件結構支援設計稿落地與後續維護。",
-            image: "/projects/jule-ecommerce/bootstrap-layout.webp",
+            image: "/projects/jule-ecommerce/layout-01.webp",
             visual: "jule-bootstrap-layout",
           },
           {
             title: "Mobile Shopping Flow",
             description:
               "展示手機版商品瀏覽、詳情、購物車與結帳內容的響應式排列。",
-            image: "/projects/jule-ecommerce/mobile-rwd.webp",
+            image: "/projects/jule-ecommerce/layout-02.webp",
             visual: "jule-mobile-rwd",
           },
         ],
@@ -279,28 +279,28 @@ const juleCaseStudySections: CaseStudySection[] = [
             title: "Homepage & Campaign",
             description:
               "以主視覺、團購活動與熱門商品建立活潑且具導購力的首頁。",
-            image: "/projects/jule-ecommerce/final-ui-01.webp",
+            image: "/projects/jule-ecommerce/final-01.webp",
             visual: "jule-final-ui-01",
           },
           {
             title: "Shopping & Checkout",
             description:
               "將商品選購、優惠折抵與付款摘要整合為清楚的購物體驗。",
-            image: "/projects/jule-ecommerce/final-ui-02.webp",
+            image: "/projects/jule-ecommerce/final-02.webp",
             visual: "jule-final-ui-02",
           },
           {
             title: "Product Discovery",
             description:
               "透過商品分類、活動標籤與商品卡片支援快速比較。",
-            image: "/projects/jule-ecommerce/final-ui-03.webp",
+            image: "/projects/jule-ecommerce/final-03.webp",
             visual: "jule-product-list",
           },
           {
             title: "Checkout Experience",
             description:
               "清楚呈現回饋點數、折價券、運費與最終付款金額。",
-            image: "/projects/jule-ecommerce/final-ui-04.webp",
+            image: "/projects/jule-ecommerce/final-04.webp",
             visual: "jule-checkout",
           },
         ],

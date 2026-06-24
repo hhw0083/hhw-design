@@ -98,21 +98,21 @@ const inaCaseStudySections: CaseStudySection[] = [
             title: "Website Structure / 官網內容架構",
             description:
               "整理首頁主視覺、服務分類、流程說明、常見問題與預約入口，讓使用者能循序理解服務。",
-            image: "/projects/ina-waxing/ui-direction.webp",
+            image: "/projects/ina-waxing/direction-01.webp",
             visual: "ina-ui-direction",
           },
           {
             title: "Service Pages / 服務頁面",
             description:
               "以卡片、分段說明與重點提示呈現服務部位、流程與注意事項。",
-            image: "/projects/ina-waxing/final-ui-02.webp",
+            image: "/projects/ina-waxing/direction-02.webp",
             visual: "ina-final-ui-02",
           },
           {
             title: "Booking Path / 預約導向",
             description:
               "將預約 CTA 放在使用者理解服務後的關鍵位置，降低轉換路徑中的猶豫感。",
-            image: "/projects/ina-waxing/final-ui-03.webp",
+            image: "/projects/ina-waxing/direction-03.webp",
             visual: "ina-final-ui-03",
           },
         ],
@@ -135,7 +135,7 @@ const inaCaseStudySections: CaseStudySection[] = [
             title: "Brand Website Visual Language",
             description:
               "以柔和中性色、細緻留白、乾淨字級與服務情境照片建立專業且具包容性的品牌氛圍。",
-            image: "/projects/ina-waxing/visual-extension.webp",
+            image: "/projects/ina-waxing/visual-01.webp",
             visual: "ina-visual-extension",
           },
         ],
@@ -158,7 +158,7 @@ const inaCaseStudySections: CaseStudySection[] = [
             title: "Homepage",
             description:
               "以品牌主視覺、服務重點與預約入口建立官網第一印象。",
-            image: "/projects/ina-waxing/final-ui-01.webp",
+            image: "/projects/ina-waxing/final-01.webp",
             visual: "ina-final-ui-01",
           },
           {
@@ -166,7 +166,7 @@ const inaCaseStudySections: CaseStudySection[] = [
             title: "Service Detail",
             description:
               "分段呈現服務內容、流程與注意事項，降低初次瀏覽的理解成本。",
-            image: "/projects/ina-waxing/final-ui-02.webp",
+            image: "/projects/ina-waxing/final-02.webp",
             visual: "ina-final-ui-02",
           },
           {
@@ -174,7 +174,7 @@ const inaCaseStudySections: CaseStudySection[] = [
             title: "Mobile Booking Flow",
             description:
               "手機版強化服務掃讀、CTA 可見性與預約導向，支援快速決策。",
-            image: "/projects/ina-waxing/final-ui-03.webp",
+            image: "/projects/ina-waxing/final-03.webp",
             visual: "ina-final-ui-03",
           },
         ],

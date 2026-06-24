@@ -3,21 +3,34 @@
 Store final image assets for the RMIC Taoyuan Road Management Information
 Center case study in this folder.
 
-Reserved filenames:
+Global image filenames:
 
-- `cover.webp`: portfolio project listing cover
-- `hero.webp`: project detail hero
-- `platform-overview.webp`: platform overview and case metrics
-- `map-system.webp`: road map and GIS layers
-- `case-list.webp`: roadwork case table
-- `feature-extension.webp`: extended feature interface
-- `wireframe.webp`: low-fidelity wireframe board
-- `prototype.webp`: prototype validation screens
-- `component-extension.webp`: existing component extension board
-- `final-ui-01.webp`: final case management interface
-- `final-ui-02.webp`: final map-based interface
-- `final-ui-03.webp`: final map system interface
-- `final-ui-04.webp`: final feature extension interface
+- `cover.webp` or `cover.png`: portfolio project listing cover
+- `hero.webp` or `hero.png`: project detail hero background
+- `hero-mobile.webp` or `hero-mobile.png`: optional mobile hero image
+- `hero-visual.webp` or `hero-visual.png`: optional desktop right-side mockup
 
-Image paths are managed in `src/data/projects.ts`. Until a reserved image is
-added, the case study renders the corresponding Tailwind fallback visual.
+Section image naming rule:
+
+- Use the section name as the filename prefix.
+- Add a two-digit suffix for multiple images in the same section.
+- Either `.webp` or `.png` is supported with the same basename.
+
+Reserved section filenames:
+
+- `goals-01.webp`: Design Goals preview
+- `overview-01.webp`: Project Overview platform overview
+- `overview-02.webp`: Project Overview map system
+- `feature-01.webp`: Feature Extension module view
+- `feature-02.webp`: Feature Extension case list
+- `feature-03.webp`: Feature Extension map system
+- `wireframe-01.webp`: Wireframe & Prototype wireframe board
+- `wireframe-02.webp`: Wireframe & Prototype prototype validation
+- `components-01.webp`: Component Extension board
+- `final-01.webp`: Final Design gallery image
+- `final-02.webp`: Final Design gallery image
+- `final-03.webp`: Final Design gallery image
+- `final-04.webp`: Final Design gallery image
+
+Image paths are managed in the project data files under `src/data/projects/`.
+Missing image files intentionally fall back to JSX mockups.

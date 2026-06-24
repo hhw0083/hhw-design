@@ -3,22 +3,31 @@
 Store final image assets for the Tian Liang Tea Space brand identity case
 study in this folder.
 
-Reserved filenames:
+Global image filenames:
 
-- `cover.webp`: portfolio project listing cover
-- `hero.webp`: project detail hero
-- `hero-mobile.webp`: optional mobile hero
-- `logo-exploration.webp`: symbol exploration and sketch process
-- `wordmark-exploration.webp`: wordmark and typography exploration
-- `selected-direction.webp`: selected logo direction
-- `visual-identity.webp`: logo, color, typography, and graphic system
-- `application-storefront.webp`: storefront signage application
-- `application-awning.webp`: awning application
-- `application-packaging.webp`: packaging application
-- `application-cup.webp`: cup application
-- `application-business-card.webp`: business card application
-- `application-sticker.webp`: sticker application
+- `cover.webp` or `cover.png`: portfolio project listing cover
+- `hero.webp` or `hero.png`: project detail hero background
+- `hero-mobile.webp` or `hero-mobile.png`: optional mobile hero image
+- `hero-visual.webp` or `hero-visual.png`: optional desktop right-side mockup
+
+Section image naming rule:
+
+- Use the section name as the filename prefix.
+- Add a two-digit suffix for multiple images in the same section.
+- Either `.webp` or `.png` is supported with the same basename.
+
+Reserved section filenames:
+
+- `logo-01.webp`: Logo Process selected direction
+- `logo-02.webp`: Logo Process symbol exploration
+- `logo-03.webp`: Logo Process wordmark exploration
+- `identity-01.webp`: Visual Identity system
+- `applications-01.webp`: Brand Applications storefront signage
+- `applications-02.webp`: Brand Applications awning
+- `applications-03.webp`: Brand Applications packaging
+- `applications-04.webp`: Brand Applications cup
+- `applications-05.webp`: Brand Applications business card
+- `applications-06.webp`: Brand Applications sticker
 
 Image paths are managed in the project data files under `src/data/projects/`.
-Until a reserved image is added, the case study renders the corresponding
-Tailwind fallback visual.
+Missing image files intentionally fall back to JSX mockups.

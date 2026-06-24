@@ -131,7 +131,7 @@ const esgCaseStudySections: CaseStudySection[] = [
     contentBlocks: [
       {
         type: "design-goals",
-        previewImage: "/projects/esg/design-goals.webp",
+        previewImage: "/projects/esg/goals-01.webp",
         goals: [
           {
             title: "清晰瀏覽",
@@ -297,42 +297,42 @@ const esgCaseStudySections: CaseStudySection[] = [
             title: "首頁 / ESG 成果展示",
             description:
               "整合 ESG 專案摘要、精選內容與成果入口，讓使用者快速理解平台價值。",
-            image: "/projects/esg/final-ui-01.webp",
+            image: "/projects/esg/final-01.webp",
             visual: "home",
           },
           {
             title: "登入身分選擇",
             description:
               "依照使用者、管理者與一般使用者角色，建立清楚的進入路徑。",
-            image: "/projects/esg/final-ui-02.webp",
+            image: "/projects/esg/final-02.webp",
             visual: "login",
           },
           {
             title: "物件列表查詢",
             description:
               "透過列表卡片、篩選條件與排序，協助使用者比較不同 ESG 專案。",
-            image: "/projects/esg/final-ui-03.webp",
+            image: "/projects/esg/final-03.webp",
             visual: "list",
           },
           {
             title: "物件地圖查詢",
             description:
               "以地理位置補足專案查詢脈絡，讓使用者理解區域與專案分布。",
-            image: "/projects/esg/final-ui-04.webp",
+            image: "/projects/esg/final-04.webp",
             visual: "map",
           },
           {
             title: "地理圖資系統與平台後台設計",
             description:
               "地圖圖資系統視覺設計及與平台後台操作流程。",
-            image: "/projects/esg/final-ui-05.webp",
+            image: "/projects/esg/final-05.webp",
             visual: "news",
           },
           {
             title: "ESG 憑證查詢",
             description:
               "提供憑證編號、狀態與有效期限查詢，提升專案成果的可信度。",
-            image: "/projects/esg/final-ui-06.webp",
+            image: "/projects/esg/final-06.webp",
             visual: "certificate",
           },
         ],

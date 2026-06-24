@@ -3,18 +3,28 @@
 Store final image assets for the Meow Day Chips brand identity and packaging
 case study in this folder.
 
-Reserved filenames:
+Global image filenames:
 
-- `cover.webp`: portfolio project listing cover
-- `hero-visual.webp`: right-side case study hero visual
-- `hero-mobile.webp`: optional mobile hero visual
-- `brand-concept.webp`: corn chips and cat concept board
-- `logo-process.webp`: logo exploration and selected direction
-- `visual-identity.webp`: logo, color, typography, and graphic system
-- `application-packaging.webp`: packaging application
-- `application-storefront.webp`: storefront or counter application
-- `application-sticker.webp`: sticker or social application
+- `cover.webp` or `cover.png`: portfolio project listing cover
+- `hero.webp` or `hero.png`: optional project detail hero background
+- `hero-mobile.webp` or `hero-mobile.png`: optional mobile hero image
+- `hero-visual.webp` or `hero-visual.png`: desktop right-side case study hero visual
+
+Section image naming rule:
+
+- Use the section name as the filename prefix.
+- Add a two-digit suffix for multiple images in the same section.
+- Either `.webp` or `.png` is supported with the same basename.
+
+Reserved section filenames:
+
+- `concept-01.webp`: Brand Concept corn chips and cat board
+- `concept-02.webp`: Brand Concept tone and personality board
+- `logo-01.webp`: Logo Process exploration
+- `identity-01.webp`: Visual Identity system
+- `applications-01.webp`: Brand Applications packaging
+- `applications-02.webp`: Brand Applications storefront
+- `applications-03.webp`: Brand Applications sticker or social application
 
 Image paths are managed in the project data files under `src/data/projects/`.
-Until a reserved image is added, the case study renders the corresponding
-Tailwind fallback visual.
+Missing image files intentionally fall back to JSX mockups.

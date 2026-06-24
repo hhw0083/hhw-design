@@ -51,14 +51,14 @@ const rmicCaseStudySections: CaseStudySection[] = [
             title: "平台總覽",
             description:
               "以案件數據、地圖、流程狀態與待辦任務呈現道路管理工作的全貌。",
-            image: "/projects/rmic/platform-overview.webp",
+            image: "/projects/rmic/overview-01.webp",
             visual: "rmic-platform-overview",
           },
           {
             title: "地圖圖資系統",
             description:
               "結合道路圖層、案件標記與篩選工具，協助承辦人掌握施工位置與案件關係。",
-            image: "/projects/rmic/map-system.webp",
+            image: "/projects/rmic/overview-02.webp",
             visual: "rmic-map-system",
           },
         ],
@@ -119,7 +119,7 @@ const rmicCaseStudySections: CaseStudySection[] = [
     contentBlocks: [
       {
         type: "design-goals",
-        previewImage: "/projects/rmic/design-goals.webp",
+        previewImage: "/projects/rmic/goals-01.webp",
         previewVisual: "rmic-wireframe",
         goals: [
           {
@@ -160,21 +160,21 @@ const rmicCaseStudySections: CaseStudySection[] = [
   //           title: "新增功能模組",
   //           description:
   //             "整合新增入口、表單欄位、狀態切換與操作回饋，維持既有案件流程的連續性。",
-  //           image: "/projects/rmic/feature-extension.webp",
+  //           image: "/projects/rmic/feature-01.webp",
   //           visual: "rmic-feature-extension",
   //         },
   //         // {
   //         //   title: "案件列表",
   //         //   description:
   //         //     "將案件狀態、申請類型、承辦單位與常用操作整理為可快速掃讀的資料表格。",
-  //         //   image: "/projects/rmic/case-list.webp",
+  //         //   image: "/projects/rmic/feature-02.webp",
   //         //   visual: "rmic-case-list",
   //         // },
   //         // {
   //         //   title: "地圖與案件連動",
   //         //   description:
   //         //     "透過地圖標記、圖層與篩選條件，連結施工位置與案件資料。",
-  //         //   image: "/projects/rmic/map-system.webp",
+  //         //   image: "/projects/rmic/feature-03.webp",
   //         //   visual: "rmic-map-system",
   //         // },
   //       ],
@@ -197,14 +197,14 @@ const rmicCaseStudySections: CaseStudySection[] = [
             title: "Wireframe Screens",
             description:
               "以低彩度線框稿確認頁面框架、表單欄位、狀態與主要操作位置。",
-            image: "/projects/rmic/wireframe.webp",
+            image: "/projects/rmic/wireframe-01.webp",
             visual: "rmic-wireframe",
           },
           {
             title: "Prototype Validation",
             description:
               "以多畫面點擊路徑模擬彈窗、表單、狀態切換與確認頁，驗證完整操作邏輯。",
-            image: "/projects/rmic/prototype.webp",
+            image: "/projects/rmic/wireframe-02.webp",
             visual: "rmic-prototype",
           },
         ],
@@ -227,7 +227,7 @@ const rmicCaseStudySections: CaseStudySection[] = [
             title: "RMIC Component Extension",
             description:
               "展示 Table、Form、Button、Status Badge、Modal、Map Marker、Tabs、Filter、Search 與 Pagination。",
-            image: "/projects/rmic/component-extension.webp",
+            image: "/projects/rmic/components-01.webp",
             visual: "rmic-component-extension",
           },
         ],
@@ -249,28 +249,28 @@ const rmicCaseStudySections: CaseStudySection[] = [
             title: "案件管理介面",
             description:
               "將新增功能整合至既有案件管理情境，維持資料層級與操作模式的一致性。",
-            image: "/projects/rmic/final-ui-01.webp",
+            image: "/projects/rmic/final-01.webp",
             visual: "rmic-final-ui-01",
           },
           {
             title: "地圖圖資介面",
             description:
               "透過地圖圖層、案件標記與資訊面板呈現道路施工案件的空間關係。",
-            image: "/projects/rmic/final-ui-02.webp",
+            image: "/projects/rmic/final-02.webp",
             visual: "rmic-final-ui-02",
           },
           {
             title: "地圖系統",
             description:
               "整合篩選、圖層控制與案件資訊，支援道路管理與案件追蹤。",
-            image: "/projects/rmic/final-ui-03.webp",
+            image: "/projects/rmic/final-03.webp",
             visual: "rmic-map-system",
           },
           {
             title: "功能擴充頁",
             description:
               "以既有元件與流程規範承接新增功能，降低使用與開發端的轉換成本。",
-            image: "/projects/rmic/final-ui-04.webp",
+            image: "/projects/rmic/final-04.webp",
             visual: "rmic-feature-extension",
           },
         ],

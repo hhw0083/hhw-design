@@ -99,7 +99,7 @@ const tcbCaseStudySections: CaseStudySection[] = [
     contentBlocks: [
       {
         type: "design-goals",
-        previewImage: "/projects/tcb/design-goals.webp",
+        previewImage: "/projects/tcb/goals-01.webp",
         previewVisual: "tcb-dashboard-light",
         goals: [
           {
@@ -163,21 +163,21 @@ const tcbCaseStudySections: CaseStudySection[] = [
             title: "Light Theme Dashboard",
             description:
               "以明亮表面與清楚的資訊分區呈現資源用量、虛擬機狀態與常用操作。",
-            image: "/projects/tcb/dashboard-light.webp",
+            image: "/projects/tcb/dashboard-01.webp",
             visual: "tcb-dashboard-light",
           },
           {
             title: "Dark Theme Dashboard",
             description:
               "透過深藍黑背景、低透明卡片與細邊框，維持長時間監控情境的閱讀舒適度。",
-            image: "/projects/tcb/dashboard-dark.webp",
+            image: "/projects/tcb/dashboard-02.webp",
             visual: "tcb-dashboard-dark",
           },
           {
             title: "優化登入頁面並整合公告",
             description:
               "優化登入視覺，並將公告整合進登入卡片，提升重要訊息的辨識效率。",
-            image: "/projects/tcb/announcement.webp",
+            image: "/projects/tcb/dashboard-03.webp",
             visual: "tcb-announcement",
           },
         ],
@@ -234,21 +234,21 @@ const tcbCaseStudySections: CaseStudySection[] = [
             title: "虛擬機部署流程",
             description:
               "以 stepper、設定群組與即時摘要協助使用者理解建立進度。",
-            image: "/projects/tcb/deploy-flow.webp",
+            image: "/projects/tcb/improvements-01.webp",
             visual: "tcb-deploy-flow",
           },
           // {
           //   title: "公告功能",
           //   description:
           //     "依訊息重要性與閱讀狀態建立更清楚的公告層級。",
-          //   image: "/projects/tcb/announcement.webp",
+          //   image: "/projects/tcb/improvements-02.webp",
           //   visual: "tcb-announcement",
           // },
           // {
           //   title: "虛擬機列表",
           //   description:
           //     "統一狀態、資源資訊與操作入口，提升大量資料的掃讀效率。",
-          //   image: "/projects/tcb/vm-list.webp",
+          //   image: "/projects/tcb/improvements-03.webp",
           //   visual: "tcb-vm-list",
           // },
         ],
@@ -271,14 +271,14 @@ const tcbCaseStudySections: CaseStudySection[] = [
   //           title: "Light / Dark Theme",
   //           description:
   //             "以相同資訊架構對照兩種主題的背景層級、卡片透明度與文字對比。",
-  //           image: "/projects/tcb/theme-system.webp",
+  //           image: "/projects/tcb/theme-01.webp",
   //           visual: "tcb-theme-system",
   //         },
   //         {
   //           title: "Design System",
   //           description:
   //             "整理合作金庫品牌色延伸、字級、間距、狀態色與互動元件狀態。",
-  //           image: "/projects/tcb/design-system.webp",
+  //           image: "/projects/tcb/theme-02.webp",
   //           visual: "tcb-design-system",
   //         },
   //       ],
@@ -301,7 +301,7 @@ const tcbCaseStudySections: CaseStudySection[] = [
             title: "TCB Core Components",
             description:
               "以一致的狀態、間距與互動規則，支援 Dashboard、虛擬機管理與部署任務。",
-            image: "/projects/tcb/ui-components.webp",
+            image: "/projects/tcb/components-01.webp",
             visual: "tcb-ui-components",
           },
         ],
@@ -323,7 +323,7 @@ const tcbCaseStudySections: CaseStudySection[] = [
             title: "Final Dashboard / Light",
             description:
               "明亮模式強調資訊掃讀、狀態辨識與日常管理效率。",
-            image: "/projects/tcb/final-ui-03.webp",
+            image: "/projects/tcb/final-01.webp",
             visual: "tcb-final-light",
           },
 
@@ -331,21 +331,21 @@ const tcbCaseStudySections: CaseStudySection[] = [
             title: "Dashboard Overview / Light",
             description:
               "整合系統資源、公告與虛擬機狀態的亮色資訊總覽。",
-            image: "/projects/tcb/final-ui-04.webp",
+            image: "/projects/tcb/final-02.webp",
             visual: "tcb-dashboard-light",
           },
           {
             title: "Final Dashboard / Dark",
             description:
               "暗色模式以玻璃霧化層級與低刺激對比支援長時間使用。",
-            image: "/projects/tcb/final-ui-01.webp",
+            image: "/projects/tcb/final-03.webp",
             visual: "tcb-final-dark",
           },
           {
             title: "Dashboard Overview / Dark",
             description:
               "維持相同資訊架構，在暗色環境中重新校準表面與狀態對比。",
-            image: "/projects/tcb/final-ui-02.webp",
+            image: "/projects/tcb/final-04.webp",
             visual: "tcb-dashboard-dark",
           },
 

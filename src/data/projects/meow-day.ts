@@ -61,14 +61,14 @@ const meowDayCaseStudySections: CaseStudySection[] = [
             title: "Corn Chips × Cat",
             description:
               "以玉米片三角形輪廓與貓耳、表情、爪印等元素建立品牌符號的發想基礎。",
-            image: "/projects/meow-day-chips/brand-concept.webp",
+            image: "/projects/meow-day-chips/concept-01.webp",
             visual: "meow-brand-concept",
           },
           {
             title: "Tone & Personality",
             description:
               "品牌語氣比一般食品品牌更活潑，帶有角色感、手作感與社群分享友善的視覺節奏。",
-            image: "/projects/meow-day-chips/application-sticker.webp",
+            image: "/projects/meow-day-chips/concept-02.webp",
             visual: "meow-application-sticker",
           },
         ],
@@ -91,7 +91,7 @@ const meowDayCaseStudySections: CaseStudySection[] = [
             title: "Shape Exploration / 圖形探索",
             description:
               "將三角玉米片、貓耳、眼睛與爪印轉化為多種識別方向，並收斂出最具記憶點的 Logo 組合。",
-            image: "/projects/meow-day-chips/logo-process.webp",
+            image: "/projects/meow-day-chips/logo-01.webp",
             visual: "meow-logo-process",
           },
         ],
@@ -114,7 +114,7 @@ const meowDayCaseStudySections: CaseStudySection[] = [
             title: "Color / Typography / Graphic Elements",
             description:
               "以暖黃、橘色、奶油白與深墨色建立食品溫度，搭配貓咪符號與手作感圖形元素強化品牌辨識。",
-            image: "/projects/meow-day-chips/visual-identity.webp",
+            image: "/projects/meow-day-chips/identity-01.webp",
             visual: "meow-visual-identity",
           },
         ],
@@ -137,7 +137,7 @@ const meowDayCaseStudySections: CaseStudySection[] = [
             title: "Packaging / 包裝",
             description:
               "以活潑色彩、角色符號與產品形狀建立包裝上的第一記憶點。",
-            image: "/projects/meow-day-chips/application-packaging.webp",
+            image: "/projects/meow-day-chips/applications-01.webp",
             visual: "meow-application-packaging",
           },
           {
@@ -145,7 +145,7 @@ const meowDayCaseStudySections: CaseStudySection[] = [
             title: "Storefront / 店面",
             description:
               "將品牌色與貓咪符號延伸到店面與吧台視覺，提升拍照與辨識度。",
-            image: "/projects/meow-day-chips/application-storefront.webp",
+            image: "/projects/meow-day-chips/applications-02.webp",
             visual: "meow-application-storefront",
           },
           {
@@ -153,7 +153,7 @@ const meowDayCaseStudySections: CaseStudySection[] = [
             title: "Sticker / 貼紙",
             description:
               "將角色感轉化為小尺寸貼紙與社群素材，支援包裝封口與分享情境。",
-            image: "/projects/meow-day-chips/application-sticker.webp",
+            image: "/projects/meow-day-chips/applications-03.webp",
             visual: "meow-application-sticker",
           },
         ],

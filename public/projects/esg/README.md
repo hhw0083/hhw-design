@@ -2,19 +2,31 @@
 
 Store image assets for the ESG forest matching platform in this folder.
 
-Reserved filenames:
+Global image filenames:
 
-- `cover.webp`: portfolio listing cover
-- `hero.webp`: desktop project detail background hero
-- `sitemap.webp`: information architecture overview
-- `design-system.webp`: color and typography board
-- `components.webp`: component showcase board
-- `final-ui-01.webp`: final UI gallery image
-- `final-ui-02.webp`: final UI gallery image
-- `final-ui-03.webp`: final UI gallery image
-- `final-ui-04.webp`: final UI gallery image
-- `final-ui-05.webp`: final UI gallery image
-- `final-ui-06.webp`: final UI gallery image
+- `cover.webp` or `cover.png`: portfolio listing cover
+- `hero.webp` or `hero.png`: desktop project detail background hero
+- `hero-mobile.webp` or `hero-mobile.png`: optional mobile hero image
+- `hero-visual.webp` or `hero-visual.png`: optional desktop right-side mockup
 
-Image paths are managed in `src/data/projects.ts`. Missing image files are
-intentional until final assets are exported.
+Section image naming rule:
+
+- Use the section name as the filename prefix.
+- Add a two-digit suffix for multiple images in the same section.
+- Either `.webp` or `.png` is supported with the same basename.
+
+Reserved section filenames:
+
+- `goals-01.webp`: Design Goals preview
+- `architecture-01.webp`: Information Architecture overview
+- `design-system-01.webp`: Design System board
+- `components-01.webp`: UI Components board
+- `final-01.webp`: Final Design gallery image
+- `final-02.webp`: Final Design gallery image
+- `final-03.webp`: Final Design gallery image
+- `final-04.webp`: Final Design gallery image
+- `final-05.webp`: Final Design gallery image
+- `final-06.webp`: Final Design gallery image
+
+Image paths are managed in the project data files under `src/data/projects/`.
+Missing image files intentionally fall back to JSX mockups.

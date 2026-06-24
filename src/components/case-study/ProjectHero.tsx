@@ -1,5 +1,3 @@
-import { existsSync } from "node:fs";
-import { join } from "node:path";
 import type { CSSProperties, ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,6 +12,7 @@ import { MotionReveal } from "@/components/motion/MotionReveal";
 import { ParallaxLayer } from "@/components/motion/ParallaxLayer";
 import { ProjectVisual } from "@/components/ProjectVisual";
 import type { Project } from "@/data/projects";
+import { existingPublicImage } from "./publicImages";
 
 type ProjectHeroProps = {
   project: Project;
@@ -33,27 +32,14 @@ const metaDividerClasses = [
   "border-t border-slate-200/70 md:border-l lg:border-t-0",
 ];
 
-function getExistingPublicImage(imagePath?: string): string | undefined {
-  if (!imagePath?.startsWith("/")) {
-    return undefined;
-  }
-
-  return existsSync(
-    join(process.cwd(), "public", imagePath.replace(/^\/+/, "")),
-  )
-    ? imagePath
-    : undefined;
-}
-
 export function ProjectHero({ project }: ProjectHeroProps) {
-  const inlineHeroImage = getExistingPublicImage(project.heroVisualImage);
+  const inlineHeroImage = existingPublicImage(project.heroVisualImage);
   const desktopHeroImage =
-    getExistingPublicImage(project.heroImage) ??
-    getExistingPublicImage(project.coverImage);
+    existingPublicImage(project.heroImage) ??
+    existingPublicImage(project.coverImage);
+  const existingMobileHeroImage = existingPublicImage(project.heroMobileImage);
   const mobileHeroImage =
-    getExistingPublicImage(project.heroMobileImage) ??
-    inlineHeroImage ??
-    desktopHeroImage;
+    existingMobileHeroImage ?? inlineHeroImage ?? desktopHeroImage;
 
   const metaItems: {
     label: keyof typeof metaIcons;
@@ -191,9 +177,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                 <div
                   className="relative aspect-[16/11] max-h-[24rem] w-full bg-transparent drop-shadow-[0_18px_24px_rgba(15,23,42,0.16)]"
                   data-project-image={`${project.slug}:${
-                    mobileHeroImage === project.heroMobileImage
-                      ? "hero-mobile"
-                      : "hero"
+                    existingMobileHeroImage ? "hero-mobile" : "hero"
                   }`}
                 >
                   <Image

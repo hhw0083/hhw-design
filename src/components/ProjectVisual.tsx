@@ -1,8 +1,7 @@
-import { existsSync } from "node:fs";
-import { join } from "node:path";
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { CaseStudyVisualFallback } from "@/components/case-study/CaseStudyVisualFallback";
+import { existingPublicImage } from "@/components/case-study/publicImages";
 import { isProjectFallbackVisual } from "@/components/case-study/visualKind";
 import type { Project } from "@/data/projects";
 
@@ -18,15 +17,7 @@ function getExistingProjectImage(
 ): string | undefined {
   const candidates = compact ? [project.coverImage] : [project.heroVisualImage];
 
-  return candidates.find((imagePath) => {
-    if (!imagePath?.startsWith("/")) {
-      return false;
-    }
-
-    return existsSync(
-      join(process.cwd(), "public", imagePath.replace(/^\/+/, "")),
-    );
-  });
+  return candidates.map((imagePath) => existingPublicImage(imagePath)).find(Boolean);
 }
 
 export function ProjectVisual({
@@ -35,13 +26,7 @@ export function ProjectVisual({
   variant = "light",
 }: ProjectVisualProps) {
   const image = getExistingProjectImage(project, compact);
-  const imageRole = compact
-    ? "cover"
-    : image === project.heroVisualImage
-      ? "hero-visual"
-      : image === project.heroImage
-        ? "hero"
-      : "cover-fallback";
+  const imageRole = compact ? "cover" : "hero-visual";
 
   if (image) {
     return (

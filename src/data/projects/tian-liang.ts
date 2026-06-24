@@ -122,21 +122,21 @@ const tianLiangCaseStudySections: CaseStudySection[] = [
             title: "Selected Direction / 最終收斂方向",
             description:
               "將日出、山形與茶空間的留白感收斂為主要識別符號，建立品牌核心記憶點。",
-            image: "/projects/tian-liang-tea-space/selected-direction.webp",
+            image: "/projects/tian-liang-tea-space/logo-01.webp",
             visual: "tian-liang-selected-direction",
           },
           {
             title: "Symbol Exploration / 符號探索",
             description:
               "以淡灰草圖呈現多方向嘗試，並用較深框線標示進入收斂階段的方案。",
-            image: "/projects/tian-liang-tea-space/logo-exploration.webp",
+            image: "/projects/tian-liang-tea-space/logo-02.webp",
             visual: "tian-liang-logo-exploration",
           },
           {
             title: "Wordmark Exploration / 字標探索",
             description:
               "比較字距、筆觸、比例與中文品牌名稱的視覺重量，找出穩定且溫潤的字標語氣。",
-            image: "/projects/tian-liang-tea-space/wordmark-exploration.webp",
+            image: "/projects/tian-liang-tea-space/logo-03.webp",
             visual: "tian-liang-wordmark-exploration",
           },
         ],
@@ -159,7 +159,7 @@ const tianLiangCaseStudySections: CaseStudySection[] = [
             title: "Logo / Color / Typography / Pattern",
             description:
               "以米白、墨黑、茶綠、暖灰與橘色作為主要視覺基調，搭配 Cinzel 與霞鶩文楷建立東方茶感與現代識別。",
-            image: "/projects/tian-liang-tea-space/visual-identity.webp",
+            image: "/projects/tian-liang-tea-space/identity-01.webp",
             visual: "tian-liang-visual-identity",
           },
         ],
@@ -182,7 +182,7 @@ const tianLiangCaseStudySections: CaseStudySection[] = [
             title: "Storefront Signage / 招牌",
             description:
               "以穩定比例呈現品牌主識別，讓街邊視覺保有清楚辨識與安定感。",
-            image: "/projects/tian-liang-tea-space/application-storefront.webp",
+            image: "/projects/tian-liang-tea-space/applications-01.webp",
             visual: "tian-liang-storefront",
           },
           {
@@ -190,7 +190,7 @@ const tianLiangCaseStudySections: CaseStudySection[] = [
             title: "Awning / 遮雨棚",
             description:
               "將品牌色與 Logo 延伸至大面積材質，建立入口處的第一印象。",
-            image: "/projects/tian-liang-tea-space/application-awning.webp",
+            image: "/projects/tian-liang-tea-space/applications-02.webp",
             visual: "tian-liang-awning",
           },
           {
@@ -198,7 +198,7 @@ const tianLiangCaseStudySections: CaseStudySection[] = [
             title: "Packaging / 包裝",
             description:
               "以乾淨留白與品牌符號建立禮盒、外帶包裝與商品包裝的連貫性。",
-            image: "/projects/tian-liang-tea-space/application-packaging.webp",
+            image: "/projects/tian-liang-tea-space/applications-03.webp",
             visual: "tian-liang-packaging",
           },
           {
@@ -206,7 +206,7 @@ const tianLiangCaseStudySections: CaseStudySection[] = [
             title: "Cup / 杯身",
             description:
               "杯身應用保留符號辨識度，讓日常使用情境也能形成品牌記憶。",
-            image: "/projects/tian-liang-tea-space/application-cup.webp",
+            image: "/projects/tian-liang-tea-space/applications-04.webp",
             visual: "tian-liang-cup",
           },
           {
@@ -214,7 +214,7 @@ const tianLiangCaseStudySections: CaseStudySection[] = [
             title: "Business Card / 名片",
             description:
               "以品牌標準字、識別符號與聯絡資訊建立名片版面，讓品牌在日常交流與實體接觸點中保持一致。",
-            image: "/projects/tian-liang-tea-space/application-business-card.webp",
+            image: "/projects/tian-liang-tea-space/applications-05.webp",
             visual: "tian-liang-business-card",
           },
           {
@@ -222,7 +222,7 @@ const tianLiangCaseStudySections: CaseStudySection[] = [
             title: "Sticker / 貼紙",
             description:
               "將 Logo 與輔助圖形轉化為小尺寸貼紙，支援包裝封口與周邊應用。",
-            image: "/projects/tian-liang-tea-space/application-sticker.webp",
+            image: "/projects/tian-liang-tea-space/applications-06.webp",
             visual: "tian-liang-sticker",
           },
         ],

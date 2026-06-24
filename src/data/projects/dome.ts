@@ -61,7 +61,7 @@ const domeCaseStudySections: CaseStudySection[] = [
             title: "Worldbuilding / 世界觀",
             description:
               "以封閉式城市、機器管理系統與記憶保存技術建立故事背景。",
-            image: "/projects/dome/story-concept.webp",
+            image: "/projects/dome/story-01.webp",
             visual: "dome-story-concept",
             aspectRatio: "18/9",
           },
@@ -69,14 +69,14 @@ const domeCaseStudySections: CaseStudySection[] = [
             title: "Core Conflict / 核心衝突",
             description:
               "角色面對科技、倫理與人性之間的取捨，故事聚焦記憶是否仍代表真正的自我。",
-            image: "/projects/dome/story-01.webp",
+            image: "/projects/dome/story-02.webp",
             visual: "dome-final-visual-01",
           },
             {
             title: "Core Conflict / 核心衝突",
             description:
               "角色面對科技、倫理與人性之間的取捨，故事聚焦記憶是否仍代表真正的自我。",
-            image: "/projects/dome/story-02.webp",
+            image: "/projects/dome/story-03.webp",
             visual: "dome-final-visual-02",
           },
         ],
@@ -99,7 +99,7 @@ const domeCaseStudySections: CaseStudySection[] = [
             title: "Atmosphere / 場景氛圍",
             description:
               "以冷灰、藍黑與系統光源建立機器文明的秩序感，並用空間尺度強化角色的孤立感。",
-            image: "/projects/dome/visual-direction.webp",
+            image: "/projects/dome/visual-01.webp",
             visual: "dome-visual-direction",
               aspectRatio: "21/9",
           },
@@ -123,14 +123,14 @@ const domeCaseStudySections: CaseStudySection[] = [
             title: "Character Exploration",
             description:
               "透過比例、輪廓與服裝探索角色定位，區分人類與機器文明之間的視覺差異。",
-            image: "/projects/dome/character-design-01.webp",
+            image: "/projects/dome/character-01.webp",
             visual: "dome-character-design",
           },
           {
             title: "Expression & Details",
             description:
               "以表情、配件與裝備細節補強角色情緒與故事背景。",
-            image: "/projects/dome/character-design-02.webp",
+            image: "/projects/dome/character-02.webp",
             visual: "dome-character-design",
           },
         ],
@@ -153,7 +153,7 @@ const domeCaseStudySections: CaseStudySection[] = [
             title: "Key Visual",
             description:
               "以巨大機器結構與角色對比呈現世界觀壓迫感與核心命題。",
-            image: "/projects/dome/final-visual-01.webp",
+            image: "/projects/dome/final-01.webp",
             visual: "dome-final-visual-01",
           },
           {
@@ -161,7 +161,7 @@ const domeCaseStudySections: CaseStudySection[] = [
             title: "Character & Environment",
             description:
               "整合角色設定與場景氛圍，作為動畫概念的視覺成果展示。",
-            image: "/projects/dome/final-visual-02.webp",
+            image: "/projects/dome/final-02.webp",
             visual: "dome-final-visual-01",
           },
            {
@@ -169,7 +169,7 @@ const domeCaseStudySections: CaseStudySection[] = [
             title: "Character & Environment",
             description:
               "整合角色設定與場景氛圍，作為動畫概念的視覺成果展示。",
-            image: "/projects/dome/final-visual-03.webp",
+            image: "/projects/dome/final-03.webp",
             visual: "dome-final-visual-01",
           },
            {
@@ -177,7 +177,7 @@ const domeCaseStudySections: CaseStudySection[] = [
             title: "Character & Environment",
             description:
               "整合角色設定與場景氛圍，作為動畫概念的視覺成果展示。",
-            image: "/projects/dome/final-visual-04.webp",
+            image: "/projects/dome/final-04.webp",
             visual: "dome-final-visual-01",
           },
         ],
