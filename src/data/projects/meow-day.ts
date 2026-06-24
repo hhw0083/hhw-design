@@ -168,7 +168,7 @@ const meowDayCaseStudySections: CaseStudySection[] = [
             title: "Sticker / 貼紙",
             description:
               "將角色感轉化為小尺寸貼紙與社群素材，支援包裝封口與分享情境。",
-            image: "/projects/meow-day-chips/applications-03.webp",
+            image: "/projects/meow-day-chips/applications-04.webp",
             visual: "meow-application-sticker",
           },
         ],
