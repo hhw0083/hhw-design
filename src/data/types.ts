@@ -50,6 +50,7 @@ export type ProjectImageAssets = {
   coverImage?: string;
   heroImage?: string;
   heroVisualImage?: string;
+  showHeroVisualImage?: boolean;
   heroMobileImage?: string;
   galleryImages?: string[];
 };

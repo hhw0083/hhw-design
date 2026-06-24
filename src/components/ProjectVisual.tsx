@@ -15,6 +15,10 @@ function getExistingProjectImage(
   project: Project,
   compact: boolean,
 ): string | undefined {
+  if (!compact && project.showHeroVisualImage === false) {
+    return undefined;
+  }
+
   const candidates = compact ? [project.coverImage] : [project.heroVisualImage];
 
   return candidates.map((imagePath) => existingPublicImage(imagePath)).find(Boolean);
@@ -61,7 +65,10 @@ export function ProjectVisual({
     );
   }
 
-  if (!compact && !project.heroVisualImage) {
+  if (
+    !compact &&
+    (project.showHeroVisualImage === false || !project.heroVisualImage)
+  ) {
     return null;
   }
 
