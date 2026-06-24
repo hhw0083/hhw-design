@@ -71,6 +71,13 @@ const meowDayCaseStudySections: CaseStudySection[] = [
             image: "/projects/meow-day-chips/concept-02.webp",
             visual: "meow-application-sticker",
           },
+            {
+            title: "Tone & Personality",
+            description:
+              "品牌語氣比一般食品品牌更活潑，帶有角色感、手作感與社群分享友善的視覺節奏。",
+            image: "/projects/meow-day-chips/concept-02.webp",
+            visual: "meow-application-sticker",
+          },
         ],
       },
     ],
@@ -149,6 +156,14 @@ const meowDayCaseStudySections: CaseStudySection[] = [
             visual: "meow-application-storefront",
           },
           {
+            eyebrow: "Brand Application",
+            title: "Sticker / 貼紙",
+            description:
+              "將角色感轉化為小尺寸貼紙與社群素材，支援包裝封口與分享情境。",
+            image: "/projects/meow-day-chips/applications-03.webp",
+            visual: "meow-application-sticker",
+          },
+                 {
             eyebrow: "Brand Application",
             title: "Sticker / 貼紙",
             description:

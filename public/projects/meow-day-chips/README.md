@@ -20,11 +20,13 @@ Reserved section filenames:
 
 - `concept-01.webp`: Brand Concept corn chips and cat board
 - `concept-02.webp`: Brand Concept tone and personality board
+- `concept-03.webp`: Brand Concept tone and personality board
 - `logo-01.webp`: Logo Process exploration
 - `identity-01.webp`: Visual Identity system
-- `applications-01.webp`: Brand Applications packaging
-- `applications-02.webp`: Brand Applications storefront
-- `applications-03.webp`: Brand Applications sticker or social application
+- `applications-01.webp`: Brand Applications 
+- `applications-02.webp`: Brand Applications 
+- `applications-03.webp`: Brand Applications 
+- `applications-04.webp`: Brand Applications 
 
 Image paths are managed in the project data files under `src/data/projects/`.
 Missing image files intentionally fall back to JSX mockups.
