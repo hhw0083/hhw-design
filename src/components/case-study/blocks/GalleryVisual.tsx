@@ -4,9 +4,22 @@ import { CaseStudyVisualFallback } from "@/components/case-study/CaseStudyVisual
 import { existingPublicImage } from "@/components/case-study/publicImages";
 import { isProjectFallbackVisual } from "@/components/case-study/visualKind";
 import { ParallaxLayer } from "@/components/motion/ParallaxLayer";
-import type { CaseStudyVisualKind } from "@/data/projects";
+import type {
+  CaseStudyImageAspectRatio,
+  CaseStudyVisualKind,
+} from "@/data/projects";
 
 type ScreenKind = CaseStudyVisualKind;
+
+const aspectRatioClasses = {
+  "16/10": "aspect-[16/10]",
+  "16/9": "aspect-video",
+  "4/3": "aspect-[4/3]",
+  "3/2": "aspect-[3/2]",
+  "1/1": "aspect-square",
+  "21/9": "aspect-[21/9]",
+  "3/4": "aspect-[3/4]",
+} satisfies Record<CaseStudyImageAspectRatio, string>;
 
 function CompactScreenPreview({ kind }: { kind: ScreenKind }) {
   if (kind === "map") {
@@ -193,14 +206,18 @@ function CompactScreenPreview({ kind }: { kind: ScreenKind }) {
 function ScreenMockup({
   kind,
   compact = false,
+  aspectRatio = "16/10",
 }: {
   kind: ScreenKind;
   compact?: boolean;
+  aspectRatio?: CaseStudyImageAspectRatio;
 }) {
+  const aspectClass = aspectRatioClasses[aspectRatio];
+
   return (
     <div
       className={`relative overflow-hidden border border-slate-200 bg-[#f7fbf8] shadow-sm ${
-        compact ? "aspect-[16/10]" : "aspect-[16/10] rounded-xl"
+        compact ? aspectClass : `${aspectClass} rounded-xl`
       }`}
     >
       <div
@@ -400,21 +417,24 @@ export function GalleryVisual({
   visual,
   title,
   compact = false,
+  aspectRatio = "16/10",
 }: {
   image?: string;
   visual?: CaseStudyVisualKind;
   title: string;
   compact?: boolean;
+  aspectRatio?: CaseStudyImageAspectRatio;
 }) {
   const existingImage = existingPublicImage(image);
+  const aspectClass = aspectRatioClasses[aspectRatio];
 
   if (existingImage) {
     return (
       <div
         className={`relative overflow-hidden border-slate-200 bg-white shadow-sm ${
           compact
-            ? "aspect-[16/10] border-b"
-            : "aspect-[16/10] rounded-xl border"
+            ? `${aspectClass} border-b`
+            : `${aspectClass} rounded-xl border`
         }`}
       >
         {compact ? (
@@ -453,8 +473,8 @@ export function GalleryVisual({
       <div
         className={`overflow-hidden border-slate-200 bg-white shadow-sm ${
           compact
-            ? "aspect-[16/10] border-b"
-            : "aspect-[16/10] rounded-xl border"
+            ? `${aspectClass} border-b`
+            : `${aspectClass} rounded-xl border`
         }`}
       >
         <CaseStudyVisualFallback kind={visual} />
@@ -462,5 +482,7 @@ export function GalleryVisual({
     );
   }
 
-  return visual ? <ScreenMockup kind={visual} compact={compact} /> : null;
+  return visual ? (
+    <ScreenMockup kind={visual} compact={compact} aspectRatio={aspectRatio} />
+  ) : null;
 }

@@ -63,6 +63,7 @@ const domeCaseStudySections: CaseStudySection[] = [
               "以封閉式城市、機器管理系統與記憶保存技術建立故事背景。",
             image: "/projects/dome/story-concept.webp",
             visual: "dome-story-concept",
+            aspectRatio: "16/8",
           },
           {
             title: "Core Conflict / 核心衝突",

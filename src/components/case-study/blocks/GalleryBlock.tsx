@@ -21,6 +21,7 @@ export function GalleryBlock({ block }: { block: FeatureGalleryContentBlock }) {
             image={item.image}
             visual={item.visual}
             title={item.title}
+            aspectRatio={item.aspectRatio}
             compact
           />
         </GalleryCard>

@@ -44,6 +44,7 @@ export function CustomBoardBlock({
             image={item.image}
             visual={item.visual}
             title={item.title}
+            aspectRatio={item.aspectRatio}
           />
           <div className="px-1 pb-1 pt-4">
             <h3 className="text-lg font-semibold text-slate-950">
