@@ -58,23 +58,23 @@ const meowDayCaseStudySections: CaseStudySection[] = [
         layout: "hero-grid",
         items: [
           {
-            title: "Corn Chips × Cat",
+            title: "Concept Origin / 概念發想",
             description:
               "以玉米片三角形輪廓與貓耳、表情、爪印等元素建立品牌符號的發想基礎。",
             image: "/projects/meow-day-chips/concept-01.webp",
             visual: "meow-brand-concept",
           },
           {
-            title: "Tone & Personality",
+            title: "Mascot Exploration / 角色探索",
             description:
-              "品牌語氣比一般食品品牌更活潑，帶有角色感、手作感與社群分享友善的視覺節奏。",
+              "透過手繪線條、誇張表情與姿態變化，探索角色在趣味感與可愛感之間的視覺平衡。",
             image: "/projects/meow-day-chips/concept-02.webp",
             visual: "meow-application-sticker",
           },
-            {
-            title: "Tone & Personality",
+          {
+            title: "Brand Character / 品牌角色",
             description:
-              "品牌語氣比一般食品品牌更活潑，帶有角色感、手作感與社群分享友善的視覺節奏。",
+              "定調最終角色造型，讓貓咪成為包裝、店面與社群素材中可延伸的品牌記憶點。",
             image: "/projects/meow-day-chips/concept-03.webp",
             visual: "meow-application-sticker",
           },
@@ -139,38 +139,36 @@ const meowDayCaseStudySections: CaseStudySection[] = [
       {
         type: "gallery",
         items: [
+
           {
-            eyebrow: "Brand Application",
-            title: "Packaging / 包裝",
+            title: "Storefront Mockup / 店面模擬",
             description:
-              "以活潑色彩、角色符號與產品形狀建立包裝上的第一記憶點。",
+              "將 Logo、布簾與櫃台視覺整合至店面場景，模擬品牌在實體空間中的第一印象與識別效果。",
             image: "/projects/meow-day-chips/applications-01.webp",
             visual: "meow-application-packaging",
           },
           {
-            eyebrow: "Brand Application",
-            title: "Storefront / 店面",
+            title: "Counter & Facade / 櫃台與門面",
             description:
-              "將品牌色與貓咪符號延伸到店面與吧台視覺，提升拍照與辨識度。",
+              "以簡潔的櫃台配置、黃色門片與品牌圖像，建立明亮、親切且具記憶點的店面視覺。",
             image: "/projects/meow-day-chips/applications-02.webp",
-            visual: "meow-application-storefront",
+            visual: "meow-application-packaging",
           },
           {
-            eyebrow: "Brand Application",
-            title: "Sticker / 貼紙",
+            title: "Signage & Wall Graphic / 招牌與牆面圖像",
             description:
-              "將角色感轉化為小尺寸貼紙與社群素材，支援包裝封口與分享情境。",
+              "延伸貓與玉米片的品牌符號，應用於門片、牆面與識別標示，強化空間中的品牌辨識度。",
             image: "/projects/meow-day-chips/applications-03.webp",
-            visual: "meow-application-sticker",
+            visual: "meow-application-packaging",
           },
-                 {
-            eyebrow: "Brand Application",
-            title: "Sticker / 貼紙",
+          {
+            title: "Awning & Storefront / 布簾與店面應用",
             description:
-              "將角色感轉化為小尺寸貼紙與社群素材，支援包裝封口與分享情境。",
+              "將手繪貓圖像與品牌字標應用於店面布簾，讓品牌在街邊環境中更具親和力與拍照記憶點。",
             image: "/projects/meow-day-chips/applications-04.webp",
-            visual: "meow-application-sticker",
-          },
+            visual: "meow-application-packaging",
+          }
+
         ],
       },
     ],
