@@ -10,6 +10,7 @@ export type CaseStudySectionLayoutProps = {
   introChildren?: ReactNode;
   background?: "canvas" | "white";
   layout?: "narrative" | "showcase";
+  verticalAlign?: "start" | "center";
   accentColor?: string;
   style?: CSSProperties;
 };
@@ -23,9 +24,13 @@ export function CaseStudySectionLayout({
   introChildren,
   background = "white",
   layout = "showcase",
+  verticalAlign = "start",
   accentColor = "#0f766e",
   style,
 }: CaseStudySectionLayoutProps) {
+  const gridAlignmentClass =
+    verticalAlign === "center" ? "lg:items-center" : "lg:items-start";
+
   return (
     <section
       id={`case-study-${sectionNumber}`}
@@ -39,7 +44,9 @@ export function CaseStudySectionLayout({
         } as CSSProperties
       }
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-12 lg:items-start lg:gap-12 lg:px-8">
+      <div
+        className={`mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-12 ${gridAlignmentClass} lg:gap-12 lg:px-8`}
+      >
         {layout === "narrative" ? (
           <MotionReveal className="lg:col-span-3">
             <header>

@@ -44,6 +44,7 @@ export function CaseStudyPage({ project }: { project: Project }) {
               layout={
                 section.type === "user-flow" ? "narrative" : "showcase"
               }
+              verticalAlign={section.type === "user-flow" ? "center" : "start"}
               accentColor={project.theme.primary}
             >
               {section.contentBlocks.map((block, blockIndex) => (

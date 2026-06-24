@@ -195,6 +195,7 @@ export function DesignGoalsSection({
       description={description}
       background="canvas"
       layout="narrative"
+      verticalAlign="center"
       accentColor={accentColor}
       style={
         {
