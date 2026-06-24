@@ -39,7 +39,12 @@ export function ProjectHero({ project }: ProjectHeroProps) {
     existingPublicImage(project.coverImage);
   const existingMobileHeroImage = existingPublicImage(project.heroMobileImage);
   const mobileHeroImage =
-    existingMobileHeroImage ?? desktopHeroImage ?? inlineHeroImage;
+    existingMobileHeroImage ?? inlineHeroImage ?? desktopHeroImage;
+  const mobileHeroImageRole = existingMobileHeroImage
+    ? "hero-mobile"
+    : inlineHeroImage
+      ? "hero-visual"
+      : "hero";
 
   const metaItems: {
     label: keyof typeof metaIcons;
@@ -175,10 +180,8 @@ export function ProjectHero({ project }: ProjectHeroProps) {
             {mobileHeroImage ? (
               <MotionReveal delay={270} distance={16}>
                 <div
-                  className="relative aspect-[16/11] max-h-[24rem] w-full bg-transparent drop-shadow-[0_18px_24px_rgba(15,23,42,0.16)]"
-                  data-project-image={`${project.slug}:${
-                    existingMobileHeroImage ? "hero-mobile" : "hero"
-                  }`}
+                  className="relative aspect-[16/11] max-h-[24rem] w-full overflow-hidden rounded-lg bg-transparent drop-shadow-[0_18px_24px_rgba(15,23,42,0.16)]"
+                  data-project-image={`${project.slug}:${mobileHeroImageRole}`}
                 >
                   <Image
                     src={mobileHeroImage}
