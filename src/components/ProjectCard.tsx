@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/projects";
+import { getProjectCardMetrics } from "@/data/projectCardMetrics";
 import { ProjectVisual } from "./ProjectVisual";
 
 type ProjectCardProps = {
@@ -8,6 +9,8 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const metrics = getProjectCardMetrics(project);
+
   return (
     <Link
       href={`/projects/${project.slug}`}
@@ -44,7 +47,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
           <div className="flex flex-wrap items-center justify-between gap-5">
             <div className="grid grid-cols-3 gap-3">
-              {project.metrics.map((metric) => (
+              {metrics.map((metric) => (
                 <div key={metric.label}>
                   <p className="text-lg font-semibold text-slate-950">
                     {metric.value}
