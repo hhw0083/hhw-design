@@ -66,16 +66,16 @@ const domeCaseStudySections: CaseStudySection[] = [
             aspectRatio: "18/9",
           },
           {
-            title: "Core Conflict / 核心衝突",
+            title: "Memory Core / 記憶核心",
             description:
-              "角色面對科技、倫理與人性之間的取捨，故事聚焦記憶是否仍代表真正的自我。",
+              "人類記憶與意識被保存、解析與再利用的核心裝置。",
             image: "/projects/dome/story-02.webp",
             visual: "dome-final-visual-01",
           },
-            {
-            title: "Core Conflict / 核心衝突",
+          {
+            title: "Reproduction Chamber / 繁衍艙室",
             description:
-              "角色面對科技、倫理與人性之間的取捨，故事聚焦記憶是否仍代表真正的自我。",
+              "描繪未來人類繁衍被系統化管理的空間，透過艙體、排列結構與冷色光影，呈現生命誕生被科技介入後的疏離感。。",
             image: "/projects/dome/story-03.webp",
             visual: "dome-final-visual-02",
           },
@@ -101,7 +101,7 @@ const domeCaseStudySections: CaseStudySection[] = [
               "以冷灰、藍黑與系統光源建立機器文明的秩序感，並用空間尺度強化角色的孤立感。",
             image: "/projects/dome/visual-01.webp",
             visual: "dome-visual-direction",
-              aspectRatio: "21/9",
+            aspectRatio: "21/9",
           },
         ],
       },
@@ -120,16 +120,16 @@ const domeCaseStudySections: CaseStudySection[] = [
         layout: "two-column",
         items: [
           {
-            title: "Character Exploration",
+            title: "Machine Character / 機械人",
             description:
-              "透過比例、輪廓與服裝探索角色定位，區分人類與機器文明之間的視覺差異。",
+              "負責維持人工繁衍系統的機器角色，以異化的人形比例呈現科技對生命流程的控制。",
             image: "/projects/dome/character-01.webp",
             visual: "dome-character-design",
           },
           {
-            title: "Expression & Details",
+            title: "Unexpected Child / 意外之子",
             description:
-              "以表情、配件與裝備細節補強角色情緒與故事背景。",
+              "人工生殖系統中意外誕生的男孩，作為 DOME 世界裡打破秩序的生命例外。",
             image: "/projects/dome/character-02.webp",
             visual: "dome-character-design",
           },
@@ -149,34 +149,34 @@ const domeCaseStudySections: CaseStudySection[] = [
         type: "gallery",
         items: [
           {
-            eyebrow: "Final Visual",
-            title: "Key Visual",
+            eyebrow: "Future Reproduction",
+            title: "Artificial Reproductionl / 人工繁衍系統",
             description:
-              "以巨大機器結構與角色對比呈現世界觀壓迫感與核心命題。",
+              "未來人類透過機械系統進行人工受孕，生命的誕生成為被科技控制與管理的流程。",
             image: "/projects/dome/final-01.webp",
             visual: "dome-final-visual-01",
           },
           {
-            eyebrow: "Final Visual",
-            title: "Character & Environment",
+            eyebrow: "Micro Process",
+            title: "Fertilization Process / 受精過程",
             description:
-              "整合角色設定與場景氛圍，作為動畫概念的視覺成果展示。",
+              "以微觀視角呈現卵子被注入精子的瞬間，說明 DOME 世界中人類繁衍方式的科技化轉變。",
             image: "/projects/dome/final-02.webp",
             visual: "dome-final-visual-01",
           },
-           {
+          {
             eyebrow: "Final Visual",
-            title: "Character & Environment",
+            title: "Birth Chamber / 誕生艙室",
             description:
-              "整合角色設定與場景氛圍，作為動畫概念的視覺成果展示。",
+              "描繪在人工繁衍艙中誕生的瞬間，以模糊光影與濕冷質感呈現生命被系統製造出的不安感。",
             image: "/projects/dome/final-03.webp",
             visual: "dome-final-visual-01",
           },
-           {
+          {
             eyebrow: "Final Visual",
-            title: "Character & Environment",
+            title: "Anomalous Birth / 異常誕生",
             description:
-              "整合角色設定與場景氛圍，作為動畫概念的視覺成果展示。",
+              "透過異常的頭部比例、蒼白膚色與天真的表情，呈現男孩介於人類與實驗產物之間的不安存在。",
             image: "/projects/dome/final-04.webp",
             visual: "dome-final-visual-01",
           },
