@@ -39,7 +39,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
     existingPublicImage(project.coverImage);
   const existingMobileHeroImage = existingPublicImage(project.heroMobileImage);
   const mobileHeroImage =
-    existingMobileHeroImage ?? inlineHeroImage ?? desktopHeroImage;
+    existingMobileHeroImage ?? desktopHeroImage ?? inlineHeroImage;
 
   const metaItems: {
     label: keyof typeof metaIcons;
