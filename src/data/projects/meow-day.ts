@@ -88,7 +88,7 @@ const meowDayCaseStudySections: CaseStudySection[] = [
     subtitle: "Logo 發展過程",
     type: "visual-direction",
     description:
-      "Logo process 從玉米片形狀、貓意象、圖形組合與字標探索出發，讓品牌識別能從產品特色自然延伸而來。",
+      "從玉米片形狀、貓意象、圖形組合與字標探索出發，讓品牌識別能從產品特色自然延伸而來。",
     contentBlocks: [
       {
         type: "visual-showcase",
