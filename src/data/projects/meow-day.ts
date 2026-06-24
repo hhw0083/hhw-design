@@ -75,7 +75,7 @@ const meowDayCaseStudySections: CaseStudySection[] = [
             title: "Tone & Personality",
             description:
               "品牌語氣比一般食品品牌更活潑，帶有角色感、手作感與社群分享友善的視覺節奏。",
-            image: "/projects/meow-day-chips/concept-02.webp",
+            image: "/projects/meow-day-chips/concept-03.webp",
             visual: "meow-application-sticker",
           },
         ],
