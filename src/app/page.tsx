@@ -378,10 +378,10 @@ export default function Home() {
               Contact
             </p>
             <h2 className="mt-4 text-3xl font-semibold leading-tight text-white md:text-5xl">
-              Ready to discuss product design, case studies, or the next role.
+              Ready to discuss design, case studies, or new opportunities.
             </h2>
             <p className="mt-5 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">
-              積極尋求 UI/UX Designer、Product Designer 與設計系統相關工作。歡迎來信安排 portfolio review 或面試。
+              目前尋找 UI/UX Designer、Product Designer 與介面設計相關機會。歡迎來信交流作品集、合作可能，或安排面試討論。
             </p>
           </div>
 
@@ -425,7 +425,7 @@ export default function Home() {
                 />
                 <div>
                   <p className="text-slate-400">Focus</p>
-                  <p className="mt-1 font-semibold text-white">SaaS / Fintech</p>
+                  <p className="mt-1 font-semibold text-white">UI/UX Design / Web Platform</p>
                 </div>
               </div>
             </div>
