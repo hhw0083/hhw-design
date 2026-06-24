@@ -33,7 +33,10 @@ const metaDividerClasses = [
 ];
 
 export function ProjectHero({ project }: ProjectHeroProps) {
-  const inlineHeroImage = existingPublicImage(project.heroVisualImage);
+  const shouldShowHeroVisualImage = project.showHeroVisualImage !== false;
+  const inlineHeroImage = shouldShowHeroVisualImage
+    ? existingPublicImage(project.heroVisualImage)
+    : undefined;
   const desktopHeroImage =
     existingPublicImage(project.heroImage) ??
     existingPublicImage(project.coverImage);
@@ -195,12 +198,12 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                   />
                 </div>
               </MotionReveal>
-            ) : project.heroVisualImage ? (
+            ) : shouldShowHeroVisualImage && project.heroVisualImage ? (
               <ProjectVisual project={project} />
             ) : null}
           </div>
 
-          {project.heroVisualImage ? (
+          {shouldShowHeroVisualImage && project.heroVisualImage ? (
             <div className="hidden lg:block lg:w-1/2">
               <MotionReveal delay={260} distance={18}>
                 <ProjectVisual project={project} />

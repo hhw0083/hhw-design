@@ -112,6 +112,7 @@ export const projectImageAssets = {
     heroImage: "/projects/meow-day-chips/hero.webp",
     heroVisualImage: "/projects/meow-day-chips/hero-visual.webp",
     heroMobileImage: "/projects/meow-day-chips/hero-mobile.webp",
+    showHeroVisualImage: false,
     galleryImages: [
       "/projects/meow-day-chips/concept-01.webp",
       "/projects/meow-day-chips/concept-02.webp",
