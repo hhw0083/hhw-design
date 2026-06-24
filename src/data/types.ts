@@ -178,12 +178,22 @@ export type DesignGoal = {
   icon: DesignGoalIcon;
 };
 
+export type CaseStudyImageAspectRatio =
+  | "16/10"
+  | "16/9"
+  | "4/3"
+  | "3/2"
+  | "1/1"
+  | "21/9"
+  | "3/4";
+
 export type CaseStudyGalleryItem = {
   title: string;
   description: string;
   eyebrow?: string;
   image?: string;
   visual?: CaseStudyVisualKind;
+  aspectRatio?: CaseStudyImageAspectRatio;
 };
 
 export type CaseStudyContentBlock =
