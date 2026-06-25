@@ -149,63 +149,56 @@ const juleCaseStudySections: CaseStudySection[] = [
             image: "/projects/jule-ecommerce/visual-01.webp",
             visual: "jule-homepage",
           },
-          {
-            title: "Visual Direction",
-            description:
-              "整理品牌色彩、促銷標籤、圓潤卡片、商品攝影框架與文字層級。",
-            image: "/projects/jule-ecommerce/visual-02.webp",
-            visual: "jule-visual-direction",
-          },
         ],
       },
     ],
   },
+  // {
+  //   number: "05",
+  //   title: "Shopping Flow",
+  //   subtitle: "購物流程設計",
+  //   type: "shopping-experience",
+  //   description:
+  //     "購物流程依照團購與一般電商情境進行整理，讓使用者能從商品瀏覽、商品詳情、加入購物車到結帳確認，逐步完成購買任務。",
+  //   contentBlocks: [
+  //     {
+  //       type: "visual-showcase",
+  //       layout: "two-column",
+  //       items: [
+  //         {
+  //           title: "Product List",
+  //           description:
+  //             "以活動標籤、價格、銷售進度與快速操作提升團購商品的掃讀效率。",
+  //           image: "/projects/jule-ecommerce/shopping-01.webp",
+  //           visual: "jule-product-list",
+  //         },
+  //         {
+  //           title: "Product Detail",
+  //           description:
+  //             "整合商品圖、規格選擇、數量、活動倒數與購買 CTA。",
+  //           image: "/projects/jule-ecommerce/shopping-02.webp",
+  //           visual: "jule-product-detail",
+  //         },
+  //         {
+  //           title: "Shopping Cart",
+  //           description:
+  //             "集中管理商品規格、數量、小計、優惠提示與前往結帳操作。",
+  //           image: "/projects/jule-ecommerce/shopping-03.webp",
+  //           visual: "jule-cart",
+  //         },
+  //         {
+  //           title: "Checkout",
+  //           description:
+  //             "將收件資料、付款方式、訂單明細與總金額整理為清楚的確認階段。",
+  //           image: "/projects/jule-ecommerce/shopping-04.webp",
+  //           visual: "jule-checkout",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
   {
     number: "05",
-    title: "Shopping Flow",
-    subtitle: "購物流程設計",
-    type: "shopping-experience",
-    description:
-      "購物流程依照團購與一般電商情境進行整理，讓使用者能從商品瀏覽、商品詳情、加入購物車到結帳確認，逐步完成購買任務。",
-    contentBlocks: [
-      {
-        type: "visual-showcase",
-        layout: "two-column",
-        items: [
-          {
-            title: "Product List",
-            description:
-              "以活動標籤、價格、銷售進度與快速操作提升團購商品的掃讀效率。",
-            image: "/projects/jule-ecommerce/shopping-01.webp",
-            visual: "jule-product-list",
-          },
-          {
-            title: "Product Detail",
-            description:
-              "整合商品圖、規格選擇、數量、活動倒數與購買 CTA。",
-            image: "/projects/jule-ecommerce/shopping-02.webp",
-            visual: "jule-product-detail",
-          },
-          {
-            title: "Shopping Cart",
-            description:
-              "集中管理商品規格、數量、小計、優惠提示與前往結帳操作。",
-            image: "/projects/jule-ecommerce/shopping-03.webp",
-            visual: "jule-cart",
-          },
-          {
-            title: "Checkout",
-            description:
-              "將收件資料、付款方式、訂單明細與總金額整理為清楚的確認階段。",
-            image: "/projects/jule-ecommerce/shopping-04.webp",
-            visual: "jule-checkout",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    number: "06",
     title: "Rewards & Coupons",
     subtitle: "點數與折價券流程",
     type: "checkout-experience",
@@ -223,19 +216,12 @@ const juleCaseStudySections: CaseStudySection[] = [
             image: "/projects/jule-ecommerce/rewards-01.webp",
             visual: "jule-rewards-coupons",
           },
-          {
-            title: "Checkout Summary",
-            description:
-              "同步更新金額明細、優惠折抵與最終付款金額。",
-            image: "/projects/jule-ecommerce/rewards-02.webp",
-            visual: "jule-checkout",
-          },
         ],
       },
     ],
   },
   {
-    number: "07",
+    number: "06",
     title: "RWD & Bootstrap Layout",
     subtitle: "RWD 與 Bootstrap 5 切版",
     type: "frontend-layout",
@@ -265,7 +251,7 @@ const juleCaseStudySections: CaseStudySection[] = [
     ],
   },
   {
-    number: "08",
+    number: "07",
     title: "Final Design & Reflection",
     subtitle: "最終設計與反思",
     type: "reflection",
