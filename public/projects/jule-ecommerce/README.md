@@ -19,15 +19,8 @@ Section 圖片命名規則：
 
 - `goals-01.webp`：Design Goals preview
 - `visual-01.webp`：Visual Direction homepage visual
-- `visual-02.webp`：Visual Direction brand direction
-- `shopping-01.webp`：Shopping Flow product list
-- `shopping-02.webp`：Shopping Flow product detail
-- `shopping-03.webp`：Shopping Flow cart
-- `shopping-04.webp`：Shopping Flow checkout
 - `rewards-01.webp`：Rewards & Coupons overview
-- `rewards-02.webp`：Rewards & Coupons checkout summary
 - `layout-01.webp`：RWD & Bootstrap layout
-- `layout-02.webp`：Mobile shopping flow
 - `final-01.webp`：Final Design gallery image
 - `final-02.webp`：Final Design gallery image
 - `final-03.webp`：Final Design gallery image

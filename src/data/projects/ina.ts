@@ -102,20 +102,6 @@ const inaCaseStudySections: CaseStudySection[] = [
             visual: "ina-ui-direction",
             aspectRatio: "4/3",
           },
-          {
-            title: "Service Pages / 服務頁面",
-            description:
-              "以卡片、分段說明與重點提示呈現服務部位、流程與注意事項。",
-            image: "/projects/ina-waxing/direction-02.webp",
-            visual: "ina-final-ui-02",
-          },
-          {
-            title: "Booking Path / 預約導向",
-            description:
-              "將預約 CTA 放在使用者理解服務後的關鍵位置，降低轉換路徑中的猶豫感。",
-            image: "/projects/ina-waxing/direction-03.webp",
-            visual: "ina-final-ui-03",
-          },
         ],
       },
     ],
