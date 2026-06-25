@@ -227,7 +227,7 @@ export default function Home() {
                       <span className="block text-[11px] text-slate-500 sm:text-xs md:text-sm">
                         {item.title}
                       </span>
-                      
+
                     </h3>
                     <p className="mt-2 break-words text-[10px] leading-[1.65] text-slate-600 sm:text-xs md:mt-3 md:text-sm md:leading-7">
                       {item.description}
@@ -244,8 +244,8 @@ export default function Home() {
             <MotionReveal>
               <SectionHeading
                 eyebrow="Selected Work"
-                title="Projects built around measurable product outcomes."
-                description="每個 case study 都整理了問題、流程、交付項目與結果，方便招募方快速看見設計判斷與落地能力。"
+                title="作品案例"
+                description="收錄 UI/UX、品牌識別、3D 視覺與電商專案，整理我在不同設計任務中，如何釐清需求、建立方向並完成視覺與介面成果。"
               />
             </MotionReveal>
             <div className="mt-10">
@@ -386,7 +386,7 @@ export default function Home() {
                 Contact
               </p>
               <h2 className="mt-4 text-3xl font-semibold leading-tight text-white md:text-5xl">
-                Ready to discuss design, case studies, or new opportunities.
+                正在尋找下一個合適的設計機會
               </h2>
               <p className="mt-5 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">
                 目前尋找 UI/UX Designer、Product Designer 與介面設計相關機會。歡迎來信交流作品集、合作可能，或安排面試討論。

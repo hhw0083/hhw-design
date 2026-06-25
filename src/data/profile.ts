@@ -5,7 +5,7 @@ export const profile = {
   email: "hhwstudio0083@gmail.com",
   availability: "Open to Product Design roles",
   intro:
-    "我把複雜產品拆成清楚的使用者任務、可驗證的介面流程，以及能讓工程團隊順利落地的設計系統。",
+    "我專注於整理複雜產品的資訊與流程，讓使用者更容易完成任務，也讓團隊更容易推進開發。",
   bio:
     "專注於研究、資訊架構、互動原型到 Design System ，讓產品在商業目標與使用者體驗之間取得精準平衡。",
 };
