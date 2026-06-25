@@ -112,7 +112,7 @@ export default function Home() {
               />
             ) : null}
           </ParallaxLayer>
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,10,18,0.97)_0%,rgba(3,15,26,0.91)_38%,rgba(3,15,26,0.34)_68%,rgba(2,10,18,0.10)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(99deg, rgb(244 244 244 / 97%), rgb(139 139 95 / 13%) 38%, rgb(255 255 255 / 0%) 68%, rgb(255 255 255 / 0%))]" />
           <ParallaxLayer
             className="absolute -inset-6"
             speed={-0.025}
