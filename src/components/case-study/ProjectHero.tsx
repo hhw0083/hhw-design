@@ -25,12 +25,13 @@ const metaIcons = {
   Deliverables: PackageCheck,
 };
 
-const metaDividerClasses = [
-  "",
-  "border-t border-slate-200/70 md:border-l md:border-t-0",
-  "border-t border-slate-200/70 lg:border-l lg:border-t-0",
-  "border-t border-slate-200/70 md:border-l lg:border-t-0",
-];
+const metaLayoutClasses: Record<keyof typeof metaIcons, string> = {
+  Role: "",
+  Scope:
+    "border-t border-slate-200/70 md:border-l md:border-t-0 lg:border-l lg:border-t-0",
+  Timeline: "border-l border-slate-200/70",
+  Deliverables: "border-l border-t border-slate-200/70 lg:border-t-0",
+};
 
 function splitMetaValues(value: string | string[]) {
   if (Array.isArray(value)) {
@@ -78,12 +79,12 @@ export function ProjectHero({ project }: ProjectHeroProps) {
       values: splitMetaValues(project.role),
     },
     {
-      label: "Scope",
-      values: splitMetaValues(project.scope),
-    },
-    {
       label: "Timeline",
       values: splitMetaValues(project.timeline),
+    },
+    {
+      label: "Scope",
+      values: splitMetaValues(project.scope),
     },
     {
       label: "Deliverables",
@@ -194,7 +195,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
             {mobileHeroImage ? (
               <MotionReveal delay={270} distance={16}>
                 <div
-                  className="relative aspect-[16/11] max-h-[24rem] w-full overflow-hidden rounded-lg bg-transparent drop-shadow-[0_18px_24px_rgba(15,23,42,0.16)]"
+                  className="relative aspect-[16/11] max-h-[24rem] w-full overflow-hidden rounded-[28px] bg-slate-100/50 drop-shadow-[0_18px_24px_rgba(15,23,42,0.16)]"
                   data-project-image={`${project.slug}:${mobileHeroImageRole}`}
                 >
                   <Image
@@ -205,7 +206,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                     sizes="(max-width: 767px) calc(100vw - 2rem), 100vw"
                     quality={95}
                     unoptimized
-                    className="object-contain object-center"
+                    className="object-cover object-center"
                   />
                 </div>
               </MotionReveal>
@@ -232,31 +233,31 @@ export function ProjectHero({ project }: ProjectHeroProps) {
           <div className="relative overflow-hidden rounded-3xl border border-white/80 bg-white/60 shadow-[0_24px_80px_rgba(15,23,42,0.09),0_0_28px_rgba(20,184,166,0.06)] backdrop-blur-xl">
             <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(94,234,212,0.46),rgba(255,255,255,0.95),rgba(94,234,212,0.36),transparent)]" />
             <div className="pointer-events-none absolute -right-16 -top-20 size-48 rounded-full bg-white/55 blur-3xl" />
-            <dl className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            <dl className="relative grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
               {metaItems.map((item, index) => {
                 const Icon = metaIcons[item.label];
 
                 return (
                   <div
                     key={item.label}
-                    className={`min-w-0 p-6 md:p-7 ${metaDividerClasses[index]}`}
+                    className={`min-w-0 p-5 sm:p-6 md:p-7 ${metaLayoutClasses[item.label]}`}
                   >
-                    <dt className="flex items-center gap-3 text-sm font-semibold text-slate-950">
+                    <dt className="flex items-center gap-2.5 text-sm font-semibold text-slate-950 sm:gap-3">
                       <Icon
-                        className="size-5 shrink-0 text-cyanline"
+                        className="size-4 shrink-0 text-cyanline sm:size-5"
                         aria-hidden="true"
                       />
                       {item.label}
                     </dt>
-                    <dd className="mt-4 min-w-0">
+                    <dd className="mt-3 min-w-0 md:mt-4">
                       <span className="hidden break-words text-sm leading-7 text-slate-600 [overflow-wrap:anywhere] md:block">
                         {joinMetaValues(item.values)}
                       </span>
-                      <span className="flex flex-wrap gap-2 md:hidden">
+                      <span className="flex flex-wrap gap-1.5 md:hidden">
                         {item.values.map((value, valueIndex) => (
                           <span
                             key={`${item.label}-${value}-${valueIndex}`}
-                            className="rounded-full border border-slate-200 bg-white/70 px-3 py-1.5 text-xs font-medium leading-tight text-slate-600 shadow-sm"
+                            className="rounded-full border border-slate-200 bg-white/70 px-2.5 py-1 text-[11px] font-medium leading-tight text-slate-600 shadow-sm"
                           >
                             {value}
                           </span>

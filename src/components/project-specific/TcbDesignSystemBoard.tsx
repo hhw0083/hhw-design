@@ -107,11 +107,11 @@ function UiColorChip({ name, value }: { name: string; value: string }) {
 function ThemePreview({ theme }: { theme: "dark" | "light" }) {
   const isDark = theme === "dark";
   const shell = isDark
-    ? "border-[#111B20] bg-[#11161A] text-white"
+    ? "border-white/40 bg-[#11161A] text-white"
     : "border-[#E5E7EB] bg-[#FFFEF7] text-[#1A1F23]";
   const sidebar = isDark ? "bg-[#181F24]" : "bg-[#F8FBF2]";
   const card = isDark
-    ? "border-white/8 bg-white/[0.055]"
+    ? "border-white/40 bg-white/[0.055]"
     : "border-[#EEF0E8] bg-white";
   const muted = isDark ? "text-white/54" : "text-[#616B76]";
 
