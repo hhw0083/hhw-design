@@ -3,6 +3,7 @@ import { Inter, Noto_Sans_TC } from "next/font/google";
 import "@xyflow/react/dist/style.css";
 import "lenis/dist/lenis.css";
 import "./globals.css";
+import { RouteLoadingOverlay } from "@/components/RouteLoadingOverlay";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SmoothScrollProvider } from "@/components/motion/SmoothScrollProvider";
 import { profile } from "@/data/projects";
@@ -38,6 +39,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${notoSansTc.variable} font-sans antialiased`}>
         <SmoothScrollProvider>
           <SiteHeader />
+          <RouteLoadingOverlay />
           {children}
         </SmoothScrollProvider>
       </body>
