@@ -8,6 +8,24 @@ type ProjectCardProps = {
   project: Project;
 };
 
+const mobileMetricLabelMap: Record<string, string> = {
+  applications: "Apps",
+  "brand applications": "Apps",
+  "color groups": "Colors",
+  "color sets": "Colors",
+  "final visuals": "Visuals",
+  "service flows": "Flows",
+  "core pages": "Pages",
+  "rwd views": "RWD",
+  sections: "Sections",
+  components: "Comps",
+  concepts: "Concepts",
+};
+
+function getMobileMetricLabel(label: string) {
+  return mobileMetricLabelMap[label.toLowerCase()] ?? label;
+}
+
 export function ProjectCard({ project }: ProjectCardProps) {
   const metrics = getProjectCardMetrics(project);
 
@@ -30,10 +48,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
               </h3>
               <span className="text-sm text-slate-500">{project.year}</span>
             </div>
-            <p className="mt-4 max-w-2xl text-base leading-8 text-slate-600">
+            <p className="mt-4 line-clamp-2 max-w-2xl text-base leading-8 text-slate-600 md:line-clamp-none">
               {project.summary}
             </p>
-            <div className="mt-5 flex flex-wrap gap-2">
+            <div className="mt-5 hidden flex-wrap gap-2 md:flex">
               {project.tags.map((tag) => (
                 <span
                   key={tag}
@@ -45,18 +63,23 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-5">
-            <div className="grid grid-cols-3 gap-3">
+          <div className="grid gap-5 md:flex md:flex-wrap md:items-center md:justify-between">
+            <div className="grid grid-cols-3 gap-2 md:gap-3">
               {metrics.map((metric) => (
-                <div key={metric.label}>
+                <div key={metric.label} className="min-w-0">
                   <p className="text-lg font-semibold text-slate-950">
                     {metric.value}
                   </p>
-                  <p className="mt-1 text-xs text-slate-500">{metric.label}</p>
+                  <p className="mt-1 text-xs leading-tight text-slate-500 md:hidden">
+                    {getMobileMetricLabel(metric.label)}
+                  </p>
+                  <p className="mt-1 hidden text-xs text-slate-500 md:block">
+                    {metric.label}
+                  </p>
                 </div>
               ))}
             </div>
-            <span className="inline-flex h-11 items-center gap-2 rounded-full bg-slate-950 px-4 text-sm font-semibold text-white transition-colors duration-300 ease-out group-hover:bg-cyanline motion-reduce:transition-none">
+            <span className="ml-auto inline-flex h-11 w-fit items-center gap-2 rounded-full bg-slate-950 px-4 text-sm font-semibold text-white transition-colors duration-300 ease-out group-hover:bg-cyanline motion-reduce:transition-none">
               View case
               <ArrowUpRight className="size-4" aria-hidden="true" />
             </span>
