@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -32,6 +32,26 @@ const metaDividerClasses = [
   "border-t border-slate-200/70 md:border-l lg:border-t-0",
 ];
 
+function splitMetaValues(value: string | string[]) {
+  if (Array.isArray(value)) {
+    return value;
+  }
+
+  return value
+    .split("/")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+function joinMetaValues(values: string[]) {
+  return values.map((value, index) => (
+    <span key={`${value}-${index}`} className="break-words [overflow-wrap:anywhere]">
+      {value}
+      {index < values.length - 1 ? " / " : ""}
+    </span>
+  ));
+}
+
 export function ProjectHero({ project }: ProjectHeroProps) {
   const shouldShowHeroVisualImage = project.showHeroVisualImage !== false;
   const inlineHeroImage = shouldShowHeroVisualImage
@@ -51,32 +71,23 @@ export function ProjectHero({ project }: ProjectHeroProps) {
 
   const metaItems: {
     label: keyof typeof metaIcons;
-    content: ReactNode;
+    values: string[];
   }[] = [
     {
       label: "Role",
-      content: project.role,
+      values: splitMetaValues(project.role),
     },
     {
       label: "Scope",
-      content: project.scope,
+      values: splitMetaValues(project.scope),
     },
     {
       label: "Timeline",
-      content: project.timeline,
+      values: splitMetaValues(project.timeline),
     },
     {
       label: "Deliverables",
-      content: (
-        <>
-          {project.deliverables.map((deliverable, index) => (
-            <span key={deliverable} className="break-words [overflow-wrap:anywhere]">
-              {deliverable}
-              {index < project.deliverables.length - 1 ? " / " : ""}
-            </span>
-          ))}
-        </>
-      ),
+      values: splitMetaValues(project.deliverables),
     },
   ];
 
@@ -237,8 +248,20 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                       />
                       {item.label}
                     </dt>
-                    <dd className="mt-4 min-w-0 break-words text-sm leading-7 text-slate-600 [overflow-wrap:anywhere]">
-                      {item.content}
+                    <dd className="mt-4 min-w-0">
+                      <span className="hidden break-words text-sm leading-7 text-slate-600 [overflow-wrap:anywhere] md:block">
+                        {joinMetaValues(item.values)}
+                      </span>
+                      <span className="flex flex-wrap gap-2 md:hidden">
+                        {item.values.map((value, valueIndex) => (
+                          <span
+                            key={`${item.label}-${value}-${valueIndex}`}
+                            className="rounded-full border border-slate-200 bg-white/70 px-3 py-1.5 text-xs font-medium leading-tight text-slate-600 shadow-sm"
+                          >
+                            {value}
+                          </span>
+                        ))}
+                      </span>
                     </dd>
                   </div>
                 );
