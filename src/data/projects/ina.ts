@@ -100,7 +100,7 @@ const inaCaseStudySections: CaseStudySection[] = [
               "整理首頁主視覺、服務分類、流程說明、常見問題與預約入口，讓使用者能循序理解服務。",
             image: "/projects/ina-waxing/direction-01.webp",
             visual: "ina-ui-direction",
-              aspectRatio: "4/3",
+            aspectRatio: "4/3",
           },
           {
             title: "Service Pages / 服務頁面",
@@ -156,35 +156,35 @@ const inaCaseStudySections: CaseStudySection[] = [
         items: [
           {
             eyebrow: "Final Design",
-            title: "Homepage",
+            title: "Homepage / 首頁形象入口",
             description:
-              "以品牌主視覺、服務重點與預約入口建立官網第一印象。",
+              "以品牌主視覺作為首頁核心，整合服務介紹、預約入口與產品展示，建立使用者對品牌的第一印象。",
             image: "/projects/ina-waxing/final-01.webp",
             visual: "ina-final-ui-01",
           },
           {
             eyebrow: "Final Design",
-            title: "Service Detail",
+            title: "Customer Profile / 會員服務詳情",
             description:
-              "分段呈現服務內容、流程與注意事項，降低初次瀏覽的理解成本。",
+              "整合會員資料、服務紀錄與消費資訊，讓店家能快速掌握顧客狀態，提升後續服務與管理效率。",
             image: "/projects/ina-waxing/final-02.webp",
-            visual: "ina-final-ui-02",
+            visual: "ina-final-ui-01",
           },
           {
             eyebrow: "Final Design",
-            title: "Mobile Booking Flow",
+            title: "Admin Dashboard / 後台管理介面",
             description:
-              "手機版強化服務掃讀、CTA 可見性與預約導向，支援快速決策。",
+              "建立後台管理介面，整合預約、會員、訂單與營運數據，協助店家更有效率地追蹤日常營運狀況。",
             image: "/projects/ina-waxing/final-03.webp",
-            visual: "ina-final-ui-03",
+            visual: "ina-final-ui-01",
           },
-            {
+          {
             eyebrow: "Final Design",
-            title: "Mobile Booking Flow",
+            title: "LINE Rich Menu / LINE 圖文選單",
             description:
-              "手機版強化服務掃讀、CTA 可見性與預約導向，支援快速決策。",
+              "設計品牌化 LINE 圖文選單，整合預約、會員卡、服務介紹與最新消息，讓使用者能從 LINE 快速進入常用功能。",
             image: "/projects/ina-waxing/final-04.webp",
-            visual: "ina-final-ui-03",
+            visual: "ina-final-ui-01",
           },
         ],
       },

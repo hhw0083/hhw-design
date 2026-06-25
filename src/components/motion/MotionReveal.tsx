@@ -59,6 +59,9 @@ export function MotionReveal({
         return;
       }
 
+      const effectiveThreshold =
+        rect.height > window.innerHeight * 1.5 ? 0 : threshold;
+
       observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
@@ -67,7 +70,7 @@ export function MotionReveal({
           }
         },
         {
-          threshold,
+          threshold: effectiveThreshold,
           rootMargin: "0px 0px -7% 0px",
         },
       );
