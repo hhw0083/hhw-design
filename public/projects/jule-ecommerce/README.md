@@ -21,7 +21,6 @@ Section 圖片命名規則：
 - `visual-01.webp`：Visual Direction homepage visual
 - `rewards-01.webp`：Rewards & Coupons overview
 - `layout-01.webp`：RWD & Bootstrap layout
-- `layout-02.webp`：Mobile shopping flow
 - `final-01.webp`：Final Design gallery image
 - `final-02.webp`：Final Design gallery image
 - `final-03.webp`：Final Design gallery image

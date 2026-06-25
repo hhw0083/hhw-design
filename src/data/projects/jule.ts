@@ -262,28 +262,28 @@ const juleCaseStudySections: CaseStudySection[] = [
         type: "gallery",
         items: [
           {
-            title: "Homepage & Campaign",
+            title: "Product Browsing / 商品瀏覽",
             description:
-              "以主視覺、團購活動與熱門商品建立活潑且具導購力的首頁。",
+              "透過分類選單、主打商品與商品卡片，讓使用者能快速瀏覽商品並進入選購流程。",
             image: "/projects/jule-ecommerce/final-01.webp",
             visual: "jule-final-ui-01",
           },
           {
-            title: "Shopping & Checkout",
+            title: "E-commerce UI Design / 電商介面設計",
             description:
-              "將商品選購、優惠折抵與付款摘要整合為清楚的購物體驗。",
+              "延伸品牌活潑視覺，整合首頁、商品列表、商品詳情與購物流程，建立一致且具導購力的電商體驗。",
             image: "/projects/jule-ecommerce/final-02.webp",
             visual: "jule-final-ui-02",
           },
           {
-            title: "Product Discovery",
+            title: "Shopping Flow / 購物流程",
             description:
-              "透過商品分類、活動標籤與商品卡片支援快速比較。",
+              "規劃從商品選購、購物車確認到結帳完成的流程，讓使用者能順暢完成購買任務。",
             image: "/projects/jule-ecommerce/final-03.webp",
             visual: "jule-product-list",
           },
           {
-            title: "Checkout Experience",
+            title: "Rewards & Coupons / 點數與折價券",
             description:
               "清楚呈現回饋點數、折價券、運費與最終付款金額。",
             image: "/projects/jule-ecommerce/final-04.webp",
@@ -296,58 +296,58 @@ const juleCaseStudySections: CaseStudySection[] = [
 ];
 
 export const juleProject: Project = {
-    slug: "jule-ecommerce",
-    ...projectImageAssets["jule-ecommerce"],
-    visualFallback: "jule-hero",
-    caseStudySections: juleCaseStudySections,
-    title: "聚樂電商",
-    subtitle: "Group-buying E-commerce Experience",
-    eyebrow: "活潑品牌電商的視覺設計與購物流程優化",
-    description:
-      "延續歡樂活潑的品牌精神，整合商品瀏覽、購物車、優惠折抵與結帳流程，建立清楚且具導購力的響應式電商體驗。",
-    role: "UI/UX Design / Visual Design / Front-end Layout",
-    scope: "首頁 / 商品頁 / 購物車 / 結帳",
-    timeline: "Project-based",
-    year: "2026",
-    duration: "E-commerce design",
-    summary:
-      "延續「歡樂、活潑」的品牌精神，設計網站主視覺與 UI 介面，並規劃符合團購情境的購物流程，提升整體瀏覽與購買體驗。",
-    challenge:
-      "需要在活潑促銷視覺、高密度商品資訊與團購情境之間建立清楚層級，並讓回饋點數、折價券與最終付款金額在結帳時容易理解。",
-    outcome:
-      "完成品牌主視覺、商品瀏覽、購物車、結帳與優惠折抵流程，並以 Bootstrap 5 建立可開發、可維護且支援多裝置的響應式版型。",
-    metrics: [
-      { label: "Core flows", value: "4" },
-      { label: "Discount types", value: "2" },
-      { label: "Sections", value: "8" },
-    ],
-    tags: [
-      "UI/UX Design",
-      "Visual Design",
-      "E-commerce Design",
-      "Shopping Flow",
-      "Bootstrap 5 Layout",
-    ],
-    tools: ["Figma", "Photoshop", "Illustrator", "Bootstrap 5"],
-    process: [
-      "設計網站主視覺與商品展示介面，延伸歡樂、活潑的品牌視覺語言。",
-      "規劃商品瀏覽、購物車、回饋點數、折價券與結帳流程。",
-      "使用 Bootstrap 5 進行 RWD 頁面切版，協助設計落實為可維護的前端版型。",
-    ],
-    deliverables: [
-      "Visual Design",
-      "Shopping Flow",
-      "RWD",
-      "Bootstrap 5 Layout",
-    ],
-    theme: {
-      primary: "#f06449",
-      secondary: "#ffbe3d",
-      accent: "#7257d9",
-    },
-    reflection: [
-      "品牌視覺需要一路延伸到商品卡片、優惠提示與結帳回饋，才能形成完整一致的購物體驗。",
-      "點數與折價券機制若缺乏即時金額回饋，容易增加使用者在付款前的不確定感。",
-      "實際參與 Bootstrap 5 切版，有助於在設計階段更早考量 breakpoint、內容優先順序與元件維護性。",
-    ],
-  };
+  slug: "jule-ecommerce",
+  ...projectImageAssets["jule-ecommerce"],
+  visualFallback: "jule-hero",
+  caseStudySections: juleCaseStudySections,
+  title: "聚樂電商",
+  subtitle: "Group-buying E-commerce Experience",
+  eyebrow: "活潑品牌電商的視覺設計與購物流程優化",
+  description:
+    "延續歡樂活潑的品牌精神，整合商品瀏覽、購物車、優惠折抵與結帳流程，建立清楚且具導購力的響應式電商體驗。",
+  role: "UI/UX Design / Visual Design / Front-end Layout",
+  scope: "首頁 / 商品頁 / 購物車 / 結帳",
+  timeline: "Project-based",
+  year: "2026",
+  duration: "E-commerce design",
+  summary:
+    "延續「歡樂、活潑」的品牌精神，設計網站主視覺與 UI 介面，並規劃符合團購情境的購物流程，提升整體瀏覽與購買體驗。",
+  challenge:
+    "需要在活潑促銷視覺、高密度商品資訊與團購情境之間建立清楚層級，並讓回饋點數、折價券與最終付款金額在結帳時容易理解。",
+  outcome:
+    "完成品牌主視覺、商品瀏覽、購物車、結帳與優惠折抵流程，並以 Bootstrap 5 建立可開發、可維護且支援多裝置的響應式版型。",
+  metrics: [
+    { label: "Core flows", value: "4" },
+    { label: "Discount types", value: "2" },
+    { label: "Sections", value: "8" },
+  ],
+  tags: [
+    "UI/UX Design",
+    "Visual Design",
+    "E-commerce Design",
+    "Shopping Flow",
+    "Bootstrap 5 Layout",
+  ],
+  tools: ["Figma", "Photoshop", "Illustrator", "Bootstrap 5"],
+  process: [
+    "設計網站主視覺與商品展示介面，延伸歡樂、活潑的品牌視覺語言。",
+    "規劃商品瀏覽、購物車、回饋點數、折價券與結帳流程。",
+    "使用 Bootstrap 5 進行 RWD 頁面切版，協助設計落實為可維護的前端版型。",
+  ],
+  deliverables: [
+    "Visual Design",
+    "Shopping Flow",
+    "RWD",
+    "Bootstrap 5 Layout",
+  ],
+  theme: {
+    primary: "#f06449",
+    secondary: "#ffbe3d",
+    accent: "#7257d9",
+  },
+  reflection: [
+    "品牌視覺需要一路延伸到商品卡片、優惠提示與結帳回饋，才能形成完整一致的購物體驗。",
+    "點數與折價券機制若缺乏即時金額回饋，容易增加使用者在付款前的不確定感。",
+    "實際參與 Bootstrap 5 切版，有助於在設計階段更早考量 breakpoint、內容優先順序與元件維護性。",
+  ],
+};
