@@ -72,8 +72,8 @@ const heroTools = [
 ];
 
 export default function Home() {
-  const homeHeroImage = "/images/hero-uiux-studio.webp";
-  const homeHeroMobileImage = "/images/hero-uiux-studio-mobile.webp";
+  const homeHeroImage = "/images/hero-index.webp";
+  const homeHeroMobileImage = "/images/hero-index-mobile.webp";
   const hasMobileHeroImage = existsSync(
     join(
       process.cwd(),
