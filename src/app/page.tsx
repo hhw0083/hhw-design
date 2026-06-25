@@ -1,5 +1,3 @@
-import { existsSync } from "node:fs";
-import { join } from "node:path";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -29,6 +27,7 @@ import {
 import { ParallaxLayer } from "@/components/motion/ParallaxLayer";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SectionHeading } from "@/components/SectionHeading";
+import { existingPublicImage } from "@/components/case-study/publicImages";
 import {
   awards,
   experiences,
@@ -72,15 +71,12 @@ const heroTools = [
 ];
 
 export default function Home() {
-  const homeHeroImage = "/images/hero-index.webp";
-  const homeHeroMobileImage = "/images/hero-index-mobile.webp";
-  const hasMobileHeroImage = existsSync(
-    join(
-      process.cwd(),
-      "public",
-      homeHeroMobileImage.replace(/^\/+/, ""),
-    ),
+  const homeHeroImage =
+    existingPublicImage("/images/hero-index.webp") ?? "/images/hero-index.webp";
+  const homeHeroMobileImage = existingPublicImage(
+    "/images/hero-index-mobile.webp",
   );
+  const hasMobileHeroImage = Boolean(homeHeroMobileImage);
 
   return (
     <>
@@ -98,16 +94,21 @@ export default function Home() {
               fill
               priority
               sizes="100vw"
-              className={`object-cover object-center ${hasMobileHeroImage ? "hidden sm:block" : ""
-                }`}
+              unoptimized
+              className={
+                hasMobileHeroImage
+                  ? "hidden object-cover object-center sm:block"
+                  : "object-cover object-center"
+              }
             />
-            {hasMobileHeroImage ? (
+            {homeHeroMobileImage ? (
               <Image
                 src={homeHeroMobileImage}
                 alt="UI UX designer workspace with layered interface panels"
                 fill
                 priority
                 sizes="100vw"
+                unoptimized
                 className="object-cover object-center sm:hidden"
               />
             ) : null}
