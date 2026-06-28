@@ -81,8 +81,8 @@ export default function Home() {
   return (
     <>
       <HomeLoadingScreen />
-      <main className="overflow-hidden bg-canvas text-slate-950">
-        <section className="relative min-h-[86svh] overflow-hidden bg-[#04101b] pt-16">
+      <main className="overflow-hidden bg-surface-canvas text-copy-primary">
+        <section className="relative min-h-[86svh] overflow-hidden bg-surface-hero pt-16">
           <ParallaxLayer
             className="absolute -inset-y-8 inset-x-0"
             speed={0.045}
@@ -130,18 +130,18 @@ export default function Home() {
                 distance={14}
                 waitForHomeReady
               >
-                <p className="mb-5 inline-flex rounded-full border border-teal-300/30 bg-teal-300/10 px-3 py-1.5 text-sm font-medium text-teal-200 backdrop-blur">
+                <p className="mb-5 inline-flex rounded-full border border-brand-accent/30 bg-brand-accent/10 px-3 py-1.5 text-sm font-medium text-brand-accent backdrop-blur">
                   {profile.availability}
                 </p>
               </MotionReveal>
               <MotionReveal delay={90} distance={18} waitForHomeReady>
-                <h1 className="max-w-3xl text-5xl font-semibold leading-[1.05] text-white md:text-7xl">
+                <h1 className="max-w-3xl text-5xl font-semibold leading-[1.05] text-copy-inverse md:text-7xl">
                   {profile.name}
-                  <span className="block text-teal-300">{profile.title}</span>
+                  <span className="block text-brand-accent">{profile.title}</span>
                 </h1>
               </MotionReveal>
               <MotionReveal delay={160} distance={18} waitForHomeReady>
-                <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl">
+                <p className="mt-7 max-w-2xl text-lg leading-8 text-copy-inverseMuted md:text-xl">
                   {profile.intro}
                 </p>
               </MotionReveal>
@@ -149,14 +149,14 @@ export default function Home() {
                 <div className="mt-9 flex flex-wrap gap-3">
                   <Link
                     href="#projects"
-                    className="inline-flex h-12 items-center gap-2 rounded-full bg-cyanline px-5 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(15,118,110,0.28)] transition hover:bg-teal-500"
+                    className="inline-flex h-12 items-center gap-2 rounded-full bg-brand-primary px-5 text-sm font-semibold text-white shadow-brand-button transition hover:bg-brand-accent"
                   >
                     View projects
                     <ArrowRight className="size-4" aria-hidden="true" />
                   </Link>
                   <Link
                     href="#experience"
-                    className="inline-flex h-12 items-center gap-2 rounded-full border border-white/20 bg-black/20 px-5 text-sm font-semibold text-white shadow-sm backdrop-blur transition hover:border-teal-300/50 hover:bg-white/10"
+                    className="inline-flex h-12 items-center gap-2 rounded-full border border-white/20 bg-surface-dark/20 px-5 text-sm font-semibold text-white shadow-sm backdrop-blur transition hover:border-brand-accent/50 hover:bg-white/10"
                   >
                     Resume highlights
                     <Download className="size-4" aria-hidden="true" />
@@ -165,7 +165,7 @@ export default function Home() {
               </MotionReveal>
               <MotionReveal delay={300} distance={14} waitForHomeReady>
                 <div className="mt-7 max-w-2xl">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-copy-inverseSubtle">
                     Tools &amp; Skills
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -175,10 +175,10 @@ export default function Home() {
                       return (
                         <span
                           key={tool.label}
-                          className="inline-flex h-9 items-center gap-2 rounded-lg border border-white/10 bg-black/30 px-3 text-xs font-medium text-slate-200 shadow-sm backdrop-blur"
+                          className="inline-flex h-9 items-center gap-2 rounded-lg border border-white/10 bg-surface-dark/30 px-3 text-xs font-medium text-copy-inverseMuted shadow-sm backdrop-blur"
                         >
                           <Icon
-                            className="size-4 text-teal-300"
+                            className="size-4 text-brand-accent"
                             aria-hidden="true"
                           />
                           {tool.label}
@@ -194,13 +194,13 @@ export default function Home() {
           <Link
             href="#about"
             aria-label="Scroll to about section"
-            className="absolute bottom-5 left-1/2 grid size-10 -translate-x-1/2 place-items-center rounded-full border border-white/15 bg-black/30 text-slate-200 shadow-sm backdrop-blur transition hover:border-teal-300/50 hover:bg-white/10 hover:text-white"
+            className="absolute bottom-5 left-1/2 grid size-10 -translate-x-1/2 place-items-center rounded-full border border-white/15 bg-surface-dark/30 text-copy-inverseMuted shadow-sm backdrop-blur transition hover:border-brand-accent/50 hover:bg-white/10 hover:text-white"
           >
             <ArrowDown className="size-4" aria-hidden="true" />
           </Link>
         </section>
 
-        <section id="about" className="section-band bg-canvas py-20 md:py-28">
+        <section id="about" className="section-band bg-surface-canvas py-20 md:py-28">
           <MotionSection className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.8fr_1fr] lg:px-8">
             <SectionHeading
               eyebrow="About"
@@ -213,24 +213,24 @@ export default function Home() {
                 return (
                   <article
                     key={item.title}
-                    className="min-w-0 rounded-lg border border-slate-200 bg-white p-3 shadow-portfolio-card sm:p-4 md:p-6"
+                    className="min-w-0 rounded-lg border border-stroke-soft bg-surface-paper p-3 shadow-portfolio-card sm:p-4 md:p-6"
                   >
-                    <div className="mb-3 grid size-10 place-items-center rounded-lg border border-teal-100 bg-teal-50 text-cyanline md:mb-5 md:size-11">
+                    <div className="mb-3 grid size-10 place-items-center rounded-lg border border-brand-accent/20 bg-brand-accent/10 text-brand-primary md:mb-5 md:size-11">
                       <Icon
                         className="size-[18px] md:size-5"
                         aria-hidden="true"
                       />
                     </div>
-                    <h3 className="break-words font-semibold leading-5 text-slate-950">
+                    <h3 className="break-words font-semibold leading-5 text-copy-primary">
                       <span className="mt-1 block text-sm leading-6 sm:text-base md:text-lg">
                         {item.titleZh}
                       </span>
-                      <span className="block text-[11px] text-slate-500 sm:text-xs md:text-sm">
+                      <span className="block text-[11px] text-copy-muted sm:text-xs md:text-sm">
                         {item.title}
                       </span>
 
                     </h3>
-                    <p className="mt-2 break-words text-[10px] leading-[1.65] text-slate-600 sm:text-xs md:mt-3 md:text-sm md:leading-7">
+                    <p className="mt-2 break-words text-[10px] leading-[1.65] text-copy-secondary sm:text-xs md:mt-3 md:text-sm md:leading-7">
                       {item.description}
                     </p>
                   </article>
@@ -240,7 +240,7 @@ export default function Home() {
           </MotionSection>
         </section>
 
-        <section id="projects" className="section-band bg-white py-20 md:py-28">
+        <section id="projects" className="section-band bg-surface-paper py-20 md:py-28">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <MotionReveal>
               <SectionHeading
@@ -265,15 +265,15 @@ export default function Home() {
 
         <section
           id="experience"
-          className="section-band bg-canvas py-20 md:py-28"
+          className="section-band bg-surface-canvas py-20 md:py-28"
         >
           <MotionSection className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-14 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyanline">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-primary">
                   Experience
                 </p>
-                <h2 className="mt-4 max-w-xl text-3xl font-semibold leading-tight text-slate-950 md:text-5xl">
+                <h2 className="mt-4 max-w-xl text-3xl font-semibold leading-tight text-copy-primary md:text-5xl">
                   跨團隊經驗，
                   <span className="block">驅動產品價值與交付品質。</span>
                 </h2>
@@ -282,7 +282,7 @@ export default function Home() {
                   {skills.map((skill) => (
                     <span
                       key={skill}
-                      className="rounded-full border border-slate-300 bg-white/70 px-3.5 py-2 text-sm text-slate-700"
+                      className="rounded-full border border-stroke-muted bg-surface-paper/70 px-3.5 py-2 text-sm text-copy-secondary"
                     >
                       {skill}
                     </span>
@@ -294,11 +294,11 @@ export default function Home() {
                 {experiences.map((experience, index) => (
                   <article
                     key={`${experience.period}-${experience.title}`}
-                    className="grid gap-4 border-b border-slate-200 py-8 first:pt-0 last:border-b-0 last:pb-0 md:grid-cols-[8.5rem_1.25rem_minmax(0,1fr)] md:gap-5 md:py-12 md:first:pt-12 md:last:pb-12 lg:py-14 lg:first:pt-14 lg:last:pb-14"
+                    className="grid gap-4 border-b border-stroke-soft py-8 first:pt-0 last:border-b-0 last:pb-0 md:grid-cols-[8.5rem_1.25rem_minmax(0,1fr)] md:gap-5 md:py-12 md:first:pt-12 md:last:pb-12 lg:py-14 lg:first:pt-14 lg:last:pb-14"
                   >
-                    <p className="flex items-center gap-2 text-sm font-semibold text-slate-800">
+                    <p className="flex items-center gap-2 text-sm font-semibold text-copy-primary">
                       <span
-                        className="size-2 rounded-full bg-cyanline md:hidden"
+                        className="size-2 rounded-full bg-brand-primary md:hidden"
                         aria-hidden="true"
                       />
                       {experience.period}
@@ -306,19 +306,19 @@ export default function Home() {
 
                     <div className="relative hidden md:block" aria-hidden="true">
                       {index < experiences.length - 1 ? (
-                        <span className="absolute bottom-[-2rem] left-1/2 top-2 w-px -translate-x-1/2 bg-slate-200" />
+                        <span className="absolute bottom-[-2rem] left-1/2 top-2 w-px -translate-x-1/2 bg-stroke-soft" />
                       ) : null}
-                      <span className="absolute left-1/2 top-1 size-3 -translate-x-1/2 rounded-full border-[3px] border-canvas bg-cyanline ring-1 ring-slate-300" />
+                      <span className="absolute left-1/2 top-1 size-3 -translate-x-1/2 rounded-full border-[3px] border-surface-canvas bg-brand-primary ring-1 ring-stroke-muted" />
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-semibold text-slate-950 md:text-2xl">
+                      <h3 className="text-xl font-semibold text-copy-primary md:text-2xl">
                         {experience.title}
                       </h3>
-                      <p className="mt-1.5 text-sm font-medium text-cyanline">
+                      <p className="mt-1.5 text-sm font-medium text-brand-primary">
                         {experience.company}
                       </p>
-                      <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">
+                      <p className="mt-3 max-w-2xl text-sm leading-6 text-copy-secondary">
                         {experience.summary}
                       </p>
                     </div>
@@ -327,9 +327,9 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="mt-20 border-y border-slate-200 py-10 md:mt-4 md:py-12">
+            <div className="mt-20 border-y border-stroke-soft py-10 md:mt-4 md:py-12">
               <div className="grid gap-7 lg:grid-cols-12 lg:items-center lg:gap-8">
-                <p className="text-left text-xl font-semibold text-cyanline md:text-2xl lg:col-span-3">
+                <p className="text-left text-xl font-semibold text-brand-primary md:text-2xl lg:col-span-3">
                   Awards
                 </p>
 
@@ -339,15 +339,15 @@ export default function Home() {
                       key={`${award.year}-${award.title}`}
                       className="grid gap-5 sm:grid-cols-[8.5rem_minmax(0,1fr)] sm:items-center sm:gap-5"
                     >
-                      <p className="text-sm font-semibold text-slate-800">
+                      <p className="text-sm font-semibold text-copy-primary">
                         {award.year}
                       </p>
                       <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_13.75rem] md:items-center">
                         <div>
-                          <h3 className="text-lg font-semibold leading-7 text-slate-950 md:text-xl">
+                          <h3 className="text-lg font-semibold leading-7 text-copy-primary md:text-xl">
                             {award.title}
                           </h3>
-                          <p className="mt-1 text-sm text-slate-500">
+                          <p className="mt-1 text-sm text-copy-muted">
                             {award.subtitle}
                           </p>
                         </div>
@@ -366,7 +366,7 @@ export default function Home() {
 
         <section
           id="contact"
-          className="section-band relative isolate overflow-hidden bg-[#06111d] py-20 text-white md:py-28"
+          className="section-band relative isolate overflow-hidden bg-surface-contact py-20 text-white md:py-28"
         >
           <div
             className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(circle_at_76%_32%,rgba(20,184,166,0.16),transparent_27rem),radial-gradient(circle_at_12%_88%,rgba(14,116,144,0.12),transparent_24rem),linear-gradient(135deg,#06111d_0%,#081827_55%,#06111d_100%)]"
@@ -383,22 +383,22 @@ export default function Home() {
 
           <MotionSection className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_0.75fr] lg:items-center lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-300">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-accent">
                 Contact
               </p>
-              <h2 className="mt-4 text-3xl font-semibold leading-tight text-white md:text-5xl">
+              <h2 className="mt-4 text-3xl font-semibold leading-tight text-copy-inverse md:text-5xl">
                 正在尋找下一個合適的設計機會
               </h2>
-              <p className="mt-5 max-w-3xl text-base leading-8 text-slate-300 md:text-lg">
+              <p className="mt-5 max-w-3xl text-base leading-8 text-copy-inverseMuted md:text-lg">
                 目前尋找 UI/UX Designer、Product Designer 與介面設計相關機會。歡迎來信交流作品集、合作可能，或安排面試討論。
               </p>
             </div>
 
-            <div className="rounded-lg border border-white/10 bg-white/[0.06] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl">
+            <div className="rounded-lg border border-white/10 bg-white/[0.06] p-6 shadow-glass-panel backdrop-blur-xl">
               <div className="grid gap-4">
                 <Link
                   href={`mailto:${profile.email}`}
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-black px-5 text-sm font-semibold text-white transition hover:bg-cyanline"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-surface-dark px-5 text-sm font-semibold text-white transition hover:bg-brand-primary"
                 >
                   <Mail className="size-4" aria-hidden="true" />
                   <span className="truncate">{profile.email}</span>
@@ -407,7 +407,7 @@ export default function Home() {
                   href="https://www.linkedin.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 text-sm font-semibold text-white transition hover:border-teal-300/30 hover:bg-white/[0.08]"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 text-sm font-semibold text-white transition hover:border-brand-accent/30 hover:bg-white/[0.08]"
                 >
                   LinkedIn
                   <ExternalLink className="size-4" aria-hidden="true" />
@@ -417,24 +417,24 @@ export default function Home() {
               <div className="mt-6 grid gap-3 text-sm sm:grid-cols-2">
                 <div className="flex min-h-24 items-center gap-4 rounded-lg border border-white/10 bg-black/10 p-4">
                   <MapPin
-                    className="size-6 shrink-0 text-teal-300"
+                    className="size-6 shrink-0 text-brand-accent"
                     aria-hidden="true"
                   />
                   <div>
-                    <p className="text-slate-400">Location</p>
-                    <p className="mt-1 font-semibold text-white">
+                    <p className="text-copy-inverseSubtle">Location</p>
+                    <p className="mt-1 font-semibold text-copy-inverse">
                       {profile.location}
                     </p>
                   </div>
                 </div>
                 <div className="flex min-h-24 items-center gap-4 rounded-lg border border-white/10 bg-black/10 p-4">
                   <Target
-                    className="size-6 shrink-0 text-teal-300"
+                    className="size-6 shrink-0 text-brand-accent"
                     aria-hidden="true"
                   />
                   <div>
-                    <p className="text-slate-400">Focus</p>
-                    <p className="mt-1 font-semibold text-white">UI/UX Design / Web Platform</p>
+                    <p className="text-copy-inverseSubtle">Focus</p>
+                    <p className="mt-1 font-semibold text-copy-inverse">UI/UX Design / Web Platform</p>
                   </div>
                 </div>
               </div>

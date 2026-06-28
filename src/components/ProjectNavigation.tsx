@@ -24,20 +24,20 @@ function ProjectNavigationCard({
     <Link
       href={`/projects/${project.slug}`}
       aria-label={`${label}: ${project.title}`}
-      className="group block h-full rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-cyanline focus-visible:ring-offset-4"
+      className="group block h-full rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-4"
     >
-      <article className="h-full overflow-hidden rounded-lg border border-slate-200 bg-white shadow-portfolio-card transition duration-300 group-hover:-translate-y-1 group-hover:border-cyanline/35 group-hover:shadow-[0_24px_60px_rgba(15,23,42,0.12)]">
+      <article className="h-full overflow-hidden rounded-lg border border-stroke-soft bg-surface-paper shadow-portfolio-card transition duration-300 group-hover:-translate-y-1 group-hover:border-brand-primary/35 group-hover:shadow-[0_24px_60px_rgba(15,23,42,0.12)]">
         <div className="p-2.5 sm:p-3 md:p-4">
           <ProjectVisual project={project} compact />
         </div>
 
         <div
-          className={`flex min-h-36 flex-col gap-3 border-t border-slate-200 px-3 py-4 md:min-h-28 md:flex-row md:items-center md:gap-4 md:px-6 md:py-5 ${
+          className={`flex min-h-36 flex-col gap-3 border-t border-stroke-soft px-3 py-4 md:min-h-28 md:flex-row md:items-center md:gap-4 md:px-6 md:py-5 ${
             isPrevious ? "" : "text-right"
           }`}
         >
           {isPrevious && (
-            <span className="order-2 flex size-9 shrink-0 items-center justify-center self-start rounded-full border border-slate-200 bg-slate-50 text-slate-700 transition group-hover:border-cyanline/30 group-hover:bg-cyanline group-hover:text-white md:order-1 md:size-10">
+            <span className="order-2 flex size-9 shrink-0 items-center justify-center self-start rounded-full border border-stroke-soft bg-slate-50 text-copy-secondary transition group-hover:border-brand-primary/30 group-hover:bg-brand-primary group-hover:text-white md:order-1 md:size-10">
               <ArrowLeft className="size-4" aria-hidden="true" />
             </span>
           )}
@@ -45,16 +45,16 @@ function ProjectNavigationCard({
           <div
             className={`order-1 flex-1 ${isPrevious ? "" : "md:ml-auto"}`}
           >
-            <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-cyanline md:text-xs md:tracking-[0.16em]">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.08em] text-brand-primary md:text-xs md:tracking-[0.16em]">
               {label}
             </p>
-            <h2 className="mt-2 break-words text-sm font-semibold leading-snug text-slate-950 sm:text-base md:text-2xl">
+            <h2 className="mt-2 break-words text-sm font-semibold leading-snug text-copy-primary sm:text-base md:text-2xl">
               {project.title}
             </h2>
           </div>
 
           {!isPrevious && (
-            <span className="order-2 flex size-9 shrink-0 items-center justify-center self-end rounded-full border border-slate-200 bg-slate-50 text-slate-700 transition group-hover:border-cyanline/30 group-hover:bg-cyanline group-hover:text-white md:size-10">
+            <span className="order-2 flex size-9 shrink-0 items-center justify-center self-end rounded-full border border-stroke-soft bg-slate-50 text-copy-secondary transition group-hover:border-brand-primary/30 group-hover:bg-brand-primary group-hover:text-white md:size-10">
               <ArrowRight className="size-4" aria-hidden="true" />
             </span>
           )}
@@ -71,12 +71,12 @@ export function ProjectNavigation({
   return (
     <section aria-labelledby="more-projects-title">
       <div className="mb-5 md:mb-7">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyanline">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-primary">
           More Projects
         </p>
         <h2
           id="more-projects-title"
-          className="mt-2 text-xl font-semibold text-slate-950 md:text-2xl"
+          className="mt-2 text-xl font-semibold text-copy-primary md:text-2xl"
         >
           繼續探索其他專案
         </h2>

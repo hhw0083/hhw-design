@@ -24,7 +24,7 @@ export function TextCard({
       <div className="flex items-start gap-3">
         {icon ? (
           <div
-            className={`grid shrink-0 place-items-center rounded-lg border border-teal-100 bg-teal-50 text-cyanline ${
+            className={`grid shrink-0 place-items-center rounded-lg border border-brand-accent/20 bg-brand-accent/10 text-brand-primary ${
               largeIcon ? "size-16" : "size-10"
             }`}
           >
@@ -33,11 +33,11 @@ export function TextCard({
         ) : null}
         <div>
           {eyebrow ? <SectionBadge>{eyebrow}</SectionBadge> : null}
-          <h3 className={eyebrow ? "mt-2 text-lg font-semibold text-slate-950" : "text-lg font-semibold text-slate-950"}>
+          <h3 className={eyebrow ? "mt-2 text-lg font-semibold text-copy-primary" : "text-lg font-semibold text-copy-primary"}>
             {title}
           </h3>
           {description ? (
-            <p className="mt-3 text-sm leading-7 text-slate-600">
+            <p className="mt-3 text-sm leading-7 text-copy-secondary">
               {description}
             </p>
           ) : null}

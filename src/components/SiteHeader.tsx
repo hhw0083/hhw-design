@@ -33,8 +33,8 @@ export function SiteHeader() {
       <div
         className={`pointer-events-auto relative mx-auto max-w-7xl overflow-hidden rounded-2xl border transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300 ease-out md:rounded-[32px] ${
           hasElevatedSurface
-            ? "border-white/[0.12] bg-[rgba(2,6,23,0.68)] shadow-[0_14px_44px_rgba(2,8,15,0.18)] backdrop-blur-[20px]"
-            : "border-white/[0.07] bg-[rgba(2,6,23,0.22)] shadow-none backdrop-blur-md"
+            ? "border-white/[0.12] bg-surface-dark/70 shadow-[0_14px_44px_rgba(2,8,15,0.18)] backdrop-blur-[20px]"
+            : "border-white/[0.07] bg-surface-dark/25 shadow-none backdrop-blur-md"
         }`}
       >
         <div className="flex h-14 items-center justify-between px-3 sm:px-4">
@@ -55,7 +55,7 @@ export function SiteHeader() {
             <span className="truncate">HHW Portfolio</span>
           </Link>
 
-          <nav className="hidden items-center gap-1 rounded-full border border-white/[0.08] bg-black/15 p-1 text-sm text-slate-300 md:flex">
+          <nav className="hidden items-center gap-1 rounded-full border border-white/[0.08] bg-surface-dark/20 p-1 text-sm text-copy-inverseMuted md:flex">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -70,16 +70,16 @@ export function SiteHeader() {
           <Link
             href="/#contact"
             aria-label="Let's talk"
-            className="hidden h-10 items-center gap-2 rounded-full border border-teal-300/25 bg-teal-300/10 px-4 text-sm font-semibold text-white transition hover:border-teal-300/50 hover:bg-cyanline sm:inline-flex"
+            className="hidden h-10 items-center gap-2 rounded-full border border-brand-accent/25 bg-brand-accent/10 px-4 text-sm font-semibold text-white transition hover:border-brand-accent/50 hover:bg-brand-primary sm:inline-flex"
           >
-            <Mail className="size-4 text-teal-300" aria-hidden="true" />
+            <Mail className="size-4 text-brand-accent" aria-hidden="true" />
             <span>Let&apos;s Talk</span>
             <ArrowUpRight className="size-4" aria-hidden="true" />
           </Link>
 
           <button
             type="button"
-            className="grid size-10 place-items-center rounded-xl border border-white/10 bg-white/[0.06] text-white transition hover:border-teal-300/40 hover:bg-white/10 md:hidden"
+            className="grid size-10 place-items-center rounded-xl border border-white/10 bg-white/[0.06] text-white transition hover:border-brand-accent/40 hover:bg-white/10 md:hidden"
             aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((current) => !current)}

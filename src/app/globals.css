@@ -6,6 +6,18 @@
   color-scheme: light;
   --background: #f6f7f9;
   --foreground: #111827;
+  --color-brand-primary: #0f766e;
+  --color-brand-accent: #14b8a6;
+  --color-surface-canvas: #f6f7f9;
+  --color-surface-paper: #ffffff;
+  --color-surface-hero: #04101b;
+  --color-surface-contact: #06111d;
+  --color-copy-primary: #111827;
+  --color-copy-secondary: #475569;
+  --color-stroke-soft: #e5e7eb;
+  --brand-primary-rgb: 15 118 110;
+  --brand-accent-rgb: 20 184 166;
+  --surface-dark-rgb: 2 6 23;
 }
 
 * {
@@ -32,8 +44,8 @@ html.lenis body {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at top left, rgba(15, 118, 110, 0.08), transparent 30rem),
-    linear-gradient(180deg, #ffffff 0, #f6f7f9 32rem),
+    radial-gradient(circle at top left, rgb(var(--brand-primary-rgb) / 0.08), transparent 30rem),
+    linear-gradient(180deg, var(--color-surface-paper) 0, var(--color-surface-canvas) 32rem),
     var(--background);
   color: var(--foreground);
 }
@@ -44,8 +56,8 @@ a {
 }
 
 ::selection {
-  background: rgba(15, 118, 110, 0.16);
-  color: #111827;
+  background: rgb(var(--brand-primary-rgb) / 0.16);
+  color: var(--color-copy-primary);
 }
 
 .grid-lines {

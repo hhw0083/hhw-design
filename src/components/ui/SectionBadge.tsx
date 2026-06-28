@@ -14,7 +14,7 @@ export function SectionBadge({
   tone = "teal",
 }: SectionBadgeProps) {
   const Component: ElementType = as;
-  const toneClass = tone === "muted" ? "text-slate-500" : "text-cyanline";
+  const toneClass = tone === "muted" ? "text-copy-muted" : "text-brand-primary";
 
   return (
     <Component

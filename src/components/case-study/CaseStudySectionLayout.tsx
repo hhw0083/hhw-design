@@ -25,7 +25,7 @@ export function CaseStudySectionLayout({
   background = "white",
   layout = "showcase",
   verticalAlign = "start",
-  accentColor = "#0f766e",
+  accentColor = "var(--color-brand-primary)",
   style,
 }: CaseStudySectionLayoutProps) {
   const gridAlignmentClass =
@@ -34,8 +34,8 @@ export function CaseStudySectionLayout({
   return (
     <section
       id={`case-study-${sectionNumber}`}
-      className={`border-t border-slate-200 py-14 sm:py-16 md:py-28 ${
-        background === "canvas" ? "bg-canvas" : "bg-white"
+      className={`border-t border-stroke-soft py-14 sm:py-16 md:py-28 ${
+        background === "canvas" ? "bg-surface-canvas" : "bg-surface-paper"
       }`}
       style={
         {
@@ -56,11 +56,11 @@ export function CaseStudySectionLayout({
               <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--case-study-accent)]">
                 {eyebrow}
               </p>
-              <h2 className="mt-2 text-2xl font-semibold leading-tight text-slate-950 md:text-4xl">
+              <h2 className="mt-2 text-2xl font-semibold leading-tight text-copy-primary md:text-4xl">
                 {title}
               </h2>
               {description ? (
-                <p className="mt-5 text-base leading-8 text-slate-600">
+                <p className="mt-5 text-base leading-8 text-copy-secondary">
                   {description}
                 </p>
               ) : null}
@@ -69,7 +69,7 @@ export function CaseStudySectionLayout({
           </MotionReveal>
         ) : (
           <MotionReveal className="lg:col-span-12">
-            <header className="grid grid-cols-[3.5rem_minmax(0,1fr)] gap-3 border-b border-slate-200 pb-6 md:grid-cols-[6rem_minmax(0,1fr)] md:gap-6 md:pb-10">
+            <header className="grid grid-cols-[3.5rem_minmax(0,1fr)] gap-3 border-b border-stroke-soft pb-6 md:grid-cols-[6rem_minmax(0,1fr)] md:gap-6 md:pb-10">
               <p className="text-4xl font-semibold leading-none text-[var(--case-study-accent)] md:text-6xl">
                 {sectionNumber}
               </p>
@@ -77,11 +77,11 @@ export function CaseStudySectionLayout({
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--case-study-accent)]">
                   {eyebrow}
                 </p>
-                <h2 className="mt-2 text-2xl font-semibold leading-tight text-slate-950 md:text-4xl">
+                <h2 className="mt-2 text-2xl font-semibold leading-tight text-copy-primary md:text-4xl">
                   {title}
                 </h2>
                 {description ? (
-                  <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600 md:text-lg">
+                  <p className="mt-5 max-w-3xl text-base leading-8 text-copy-secondary md:text-lg">
                     {description}
                   </p>
                 ) : null}

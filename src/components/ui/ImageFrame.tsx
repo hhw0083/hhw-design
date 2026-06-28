@@ -18,7 +18,7 @@ export function ImageFrame({
   src,
   alt,
   caption,
-  className = "relative aspect-[16/10] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm",
+  className = "relative aspect-[16/10] overflow-hidden rounded-lg border border-stroke-soft bg-surface-paper shadow-sm",
   imageClassName = "object-cover",
   sizes = "100vw",
   parallax = false,
@@ -63,7 +63,7 @@ export function ImageFrame({
         )}
       </div>
       {caption ? (
-        <figcaption className="mt-3 text-sm leading-6 text-slate-500">
+        <figcaption className="mt-3 text-sm leading-6 text-copy-muted">
           {caption}
         </figcaption>
       ) : null}

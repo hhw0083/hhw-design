@@ -15,7 +15,7 @@ export function CaseStudyCardShell({
 
   return (
     <Component
-      className={`rounded-lg border border-slate-200 bg-white p-5 shadow-sm ${className}`}
+      className={`rounded-lg border border-stroke-soft bg-surface-paper p-5 shadow-sm ${className}`}
     >
       {children}
     </Component>

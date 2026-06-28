@@ -17,8 +17,8 @@ export function TagList({
       : "px-3 py-2 text-sm";
   const toneClass =
     tone === "neutral"
-      ? "border-slate-200 bg-slate-50 text-slate-700"
-      : "border-slate-200 bg-slate-50 text-slate-700";
+      ? "border-stroke-soft bg-slate-50 text-copy-secondary"
+      : "border-stroke-soft bg-slate-50 text-copy-secondary";
 
   return (
     <div className={`flex flex-wrap gap-2 ${className}`}>

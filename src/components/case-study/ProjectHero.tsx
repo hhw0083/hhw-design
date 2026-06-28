@@ -28,9 +28,9 @@ const metaIcons = {
 const metaLayoutClasses: Record<keyof typeof metaIcons, string> = {
   Role: "",
   Scope:
-    "border-t border-slate-200/70 md:border-l md:border-t-0 lg:border-l lg:border-t-0",
-  Timeline: "border-l border-slate-200/70",
-  Deliverables: "border-l border-t border-slate-200/70 lg:border-t-0",
+    "border-t border-stroke-soft/70 md:border-l md:border-t-0 lg:border-l lg:border-t-0",
+  Timeline: "border-l border-stroke-soft/70",
+  Deliverables: "border-l border-t border-stroke-soft/70 lg:border-t-0",
 };
 
 function splitMetaValues(value: string | string[]) {
@@ -94,7 +94,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
 
   return (
     <section
-      className="relative isolate overflow-hidden border-b border-slate-200/80 bg-[#F4F5F6] pb-12 pt-20 text-slate-950 sm:pt-24 md:pb-20 md:pt-28"
+      className="relative isolate overflow-hidden border-b border-stroke-soft/80 bg-surface-canvas pb-12 pt-20 text-copy-primary sm:pt-24 md:pb-20 md:pt-28"
       style={
         {
           "--project-primary": project.theme.primary,
@@ -103,9 +103,9 @@ export function ProjectHero({ project }: ProjectHeroProps) {
         } as CSSProperties
       }
     >
-      <div className="pointer-events-none absolute inset-0 -z-30 bg-[linear-gradient(135deg,#FFFFFF_0%,#F5F6F7_48%,#E9EBEE_100%)]">
+      <div className="pointer-events-none absolute inset-0 -z-30 bg-[linear-gradient(135deg,var(--color-surface-paper)_0%,#F5F6F7_48%,#E9EBEE_100%)]">
         <ParallaxLayer
-          className="absolute bottom-[8%] right-[4%] hidden h-[68%] w-[58%] rounded-[2.5rem] bg-slate-950/20 blur-3xl md:block"
+          className="absolute bottom-[8%] right-[4%] hidden h-[68%] w-[58%] rounded-[2.5rem] bg-surface-dark/20 blur-3xl md:block"
           speed={-0.02}
           maxOffset={14}
         >
@@ -137,21 +137,21 @@ export function ProjectHero({ project }: ProjectHeroProps) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <MotionReveal distance={14} duration={650}>
           <div className="grid grid-cols-[3.5rem_minmax(0,1fr)_auto] items-center gap-3 md:grid-cols-[6rem_minmax(0,1fr)_auto] md:gap-6">
-            <p className="text-4xl font-semibold leading-none text-cyanline md:text-6xl">
+            <p className="text-4xl font-semibold leading-none text-brand-primary md:text-6xl">
               01
             </p>
             <div className="min-w-0">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-cyanline md:tracking-[0.16em]">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-primary md:tracking-[0.16em]">
                 Project Overview
               </p>
-              <h2 className="mt-1.5 text-2xl font-semibold leading-tight text-slate-950 md:text-4xl">
+              <h2 className="mt-1.5 text-2xl font-semibold leading-tight text-copy-primary md:text-4xl">
                 專案概覽
               </h2>
             </div>
 
             <Link
               href="/#projects"
-              className="inline-flex h-10 shrink-0 items-center gap-2 justify-self-end rounded-lg border border-slate-300/80 bg-white/70 px-3 text-sm font-semibold text-slate-700 shadow-sm backdrop-blur-md transition-[background-color,border-color,color,box-shadow] duration-200 hover:border-slate-400 hover:bg-white hover:text-slate-950 hover:shadow-md"
+              className="inline-flex h-10 shrink-0 items-center gap-2 justify-self-end rounded-lg border border-stroke-muted/80 bg-surface-paper/70 px-3 text-sm font-semibold text-copy-secondary shadow-sm backdrop-blur-md transition-[background-color,border-color,color,box-shadow] duration-200 hover:border-copy-muted hover:bg-surface-paper hover:text-copy-primary hover:shadow-md"
             >
               <ArrowLeft className="size-4" aria-hidden="true" />
               <span className="hidden sm:inline">Back to projects</span>
@@ -163,17 +163,17 @@ export function ProjectHero({ project }: ProjectHeroProps) {
         <div className="mt-9 md:mt-12 md:min-h-[34rem] lg:flex lg:min-h-[38rem] lg:items-center">
           <div className="max-w-2xl lg:w-1/2">
             <MotionReveal delay={40} distance={18}>
-              <h1 className="text-4xl font-semibold leading-[1.12] text-slate-950 sm:text-5xl lg:text-[3.5rem]">
+              <h1 className="text-4xl font-semibold leading-[1.12] text-copy-primary sm:text-5xl lg:text-[3.5rem]">
                 {project.title}
               </h1>
             </MotionReveal>
             <MotionReveal delay={100} distance={16}>
-              <p className="mt-3 text-lg font-medium text-slate-500 md:text-xl">
+              <p className="mt-3 text-lg font-medium text-copy-muted md:text-xl">
                 {project.subtitle}
               </p>
             </MotionReveal>
             <MotionReveal delay={160} distance={16}>
-              <p className="mt-5 max-w-xl whitespace-pre-line text-base leading-8 text-slate-600 md:mt-7 md:text-lg md:leading-9">
+              <p className="mt-5 max-w-xl whitespace-pre-line text-base leading-8 text-copy-secondary md:mt-7 md:text-lg md:leading-9">
                 {project.description}
               </p>
             </MotionReveal>
@@ -182,7 +182,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-lg border border-slate-200/90 bg-white/65 px-3 py-2 text-xs font-medium text-slate-700 shadow-sm backdrop-blur-md sm:text-sm"
+                    className="rounded-lg border border-stroke-soft/90 bg-surface-paper/65 px-3 py-2 text-xs font-medium text-copy-secondary shadow-sm backdrop-blur-md sm:text-sm"
                   >
                     {tag}
                   </span>
@@ -195,7 +195,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
             {mobileHeroImage ? (
               <MotionReveal delay={270} distance={16}>
                 <div
-                  className="relative aspect-[16/11] max-h-[24rem] w-full overflow-hidden rounded-[28px] bg-slate-100/50 drop-shadow-[0_18px_24px_rgba(15,23,42,0.16)]"
+                  className="relative aspect-[16/11] max-h-[24rem] w-full overflow-hidden rounded-[28px] bg-surface-canvas/50 drop-shadow-[0_18px_24px_rgba(15,23,42,0.16)]"
                   data-project-image={`${project.slug}:${mobileHeroImageRole}`}
                 >
                   <Image
@@ -230,7 +230,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
           distance={18}
           duration={760}
         >
-          <div className="relative overflow-hidden rounded-3xl border border-white/80 bg-white/60 shadow-[0_24px_80px_rgba(15,23,42,0.09),0_0_28px_rgba(20,184,166,0.06)] backdrop-blur-xl">
+          <div className="relative overflow-hidden rounded-3xl border border-white/80 bg-surface-paper/60 shadow-[0_24px_80px_rgba(15,23,42,0.09),0_0_28px_rgba(20,184,166,0.06)] backdrop-blur-xl">
             <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(94,234,212,0.46),rgba(255,255,255,0.95),rgba(94,234,212,0.36),transparent)]" />
             <div className="pointer-events-none absolute -right-16 -top-20 size-48 rounded-full bg-white/55 blur-3xl" />
             <dl className="relative grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
@@ -242,22 +242,22 @@ export function ProjectHero({ project }: ProjectHeroProps) {
                     key={item.label}
                     className={`min-w-0 p-5 sm:p-6 md:p-7 ${metaLayoutClasses[item.label]}`}
                   >
-                    <dt className="flex items-center gap-2.5 text-sm font-semibold text-slate-950 sm:gap-3">
+                    <dt className="flex items-center gap-2.5 text-sm font-semibold text-copy-primary sm:gap-3">
                       <Icon
-                        className="size-4 shrink-0 text-cyanline sm:size-5"
+                        className="size-4 shrink-0 text-brand-primary sm:size-5"
                         aria-hidden="true"
                       />
                       {item.label}
                     </dt>
                     <dd className="mt-3 min-w-0 md:mt-4">
-                      <span className="hidden break-words text-sm leading-7 text-slate-600 [overflow-wrap:anywhere] md:block">
+                      <span className="hidden break-words text-sm leading-7 text-copy-secondary [overflow-wrap:anywhere] md:block">
                         {joinMetaValues(item.values)}
                       </span>
                       <span className="flex flex-wrap gap-1.5 md:hidden">
                         {item.values.map((value, valueIndex) => (
                           <span
                             key={`${item.label}-${value}-${valueIndex}`}
-                            className="rounded-full border border-slate-200 bg-white/70 px-2.5 py-1 text-[11px] font-medium leading-tight text-slate-600 shadow-sm"
+                            className="rounded-full border border-stroke-soft bg-surface-paper/70 px-2.5 py-1 text-[11px] font-medium leading-tight text-copy-secondary shadow-sm"
                           >
                             {value}
                           </span>
