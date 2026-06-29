@@ -27,6 +27,26 @@ export const metadata: Metadata = {
   icons: {
     icon: "/icon.svg",
   },
+  openGraph: {
+    title: `${profile.name} | UI/UX Designer Portfolio`,
+    description:
+      "Professional UI/UX designer portfolio with case studies, experience, resume highlights, and contact information.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${profile.name} Portfolio`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${profile.name} | UI/UX Designer Portfolio`,
+    description:
+      "Professional UI/UX designer portfolio with case studies, experience, resume highlights, and contact information.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
