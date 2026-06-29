@@ -7,8 +7,8 @@ import { ArrowUpRight, Mail, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const navItems = [
-  { href: "/#about", label: "About" },
   { href: "/#projects", label: "Projects" },
+  { href: "/#about", label: "About" },
   { href: "/#experience", label: "Experience" },
   { href: "/#contact", label: "Contact" },
 ];

@@ -72,17 +72,19 @@ const heroTools = [
 
 export default function Home() {
   const homeHeroImage =
-    existingPublicImage("/images/hero-index.webp") ?? "/images/hero-index.webp";
-  const homeHeroMobileImage = existingPublicImage(
-    "/images/hero-index-mobile.webp",
-  );
+    existingPublicImage("/images/hero-index.webp") ??
+    existingPublicImage("/hero-index.webp") ??
+    "/images/hero-index.webp";
+  const homeHeroMobileImage =
+    existingPublicImage("/images/hero-index-mobile.webp") ??
+    existingPublicImage("/hero-index-mobile.webp");
   const hasMobileHeroImage = Boolean(homeHeroMobileImage);
 
   return (
     <>
       <HomeLoadingScreen />
       <main className="overflow-hidden bg-surface-canvas text-copy-primary">
-        <section className="relative min-h-[86svh] overflow-hidden bg-surface-hero pt-16">
+        <section className="relative min-h-[86svh] overflow-hidden bg-surface-canvas pt-16">
           <ParallaxLayer
             className="absolute -inset-y-8 inset-x-0"
             speed={0.045}
@@ -113,14 +115,14 @@ export default function Home() {
               />
             ) : null}
           </ParallaxLayer>
-          <div className="absolute inset-0 bg-[linear-gradient(99deg, rgb(244 244 244 / 97%), rgb(139 139 95 / 13%) 38%, rgb(255 255 255 / 0%) 68%, rgb(255 255 255 / 0%))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.88)_0%,rgba(255,255,255,0.76)_34%,rgba(255,255,255,0.42)_56%,rgba(255,255,255,0.08)_78%)]" />
           <ParallaxLayer
             className="absolute -inset-6"
             speed={-0.025}
             maxOffset={16}
           >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_68%_36%,rgba(20,184,166,0.12),transparent_26rem),linear-gradient(180deg,rgba(2,8,15,0.03),rgba(2,8,15,0.36))]" />
-            <div className="absolute inset-0 grid-lines opacity-[0.08]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_64%_34%,rgb(var(--brand-accent-rgb)/0.12),transparent_26rem),linear-gradient(180deg,rgba(255,255,255,0.08),rgba(246,247,249,0.18))]" />
+            <div className="absolute inset-0 grid-lines opacity-[0.045]" />
           </ParallaxLayer>
 
           <div className="relative mx-auto flex min-h-[calc(86svh-4rem)] max-w-7xl items-center px-4 py-16 sm:px-6 lg:px-8">
@@ -130,18 +132,18 @@ export default function Home() {
                 distance={14}
                 waitForHomeReady
               >
-                <p className="mb-5 inline-flex rounded-full border border-brand-accent/30 bg-brand-accent/10 px-3 py-1.5 text-sm font-medium text-brand-accent backdrop-blur">
+                <p className="mb-5 inline-flex rounded-full border border-brand-primary/20 bg-white/55 px-3 py-1.5 text-sm font-semibold text-brand-primary shadow-sm backdrop-blur-md">
                   {profile.availability}
                 </p>
               </MotionReveal>
               <MotionReveal delay={90} distance={18} waitForHomeReady>
-                <h1 className="max-w-3xl text-5xl font-semibold leading-[1.05] text-copy-inverse md:text-7xl">
+                <h1 className="max-w-3xl text-5xl font-semibold leading-[1.05] text-copy-primary md:text-7xl">
                   {profile.name}
-                  <span className="block text-brand-accent">{profile.title}</span>
+                  <span className="block text-brand-primary">{profile.title}</span>
                 </h1>
               </MotionReveal>
               <MotionReveal delay={160} distance={18} waitForHomeReady>
-                <p className="mt-7 max-w-2xl text-lg leading-8 text-copy-inverseMuted md:text-xl">
+                <p className="mt-7 max-w-2xl text-lg leading-8 text-copy-secondary md:text-xl">
                   {profile.intro}
                 </p>
               </MotionReveal>
@@ -156,7 +158,7 @@ export default function Home() {
                   </Link>
                   <Link
                     href="#experience"
-                    className="inline-flex h-12 items-center gap-2 rounded-full border border-white/20 bg-surface-dark/20 px-5 text-sm font-semibold text-white shadow-sm backdrop-blur transition hover:border-brand-accent/50 hover:bg-white/10"
+                    className="inline-flex h-12 items-center gap-2 rounded-full border border-stroke-muted/80 bg-white/65 px-5 text-sm font-semibold text-copy-primary shadow-sm backdrop-blur-md transition hover:border-brand-primary/35 hover:bg-white"
                   >
                     Resume highlights
                     <Download className="size-4" aria-hidden="true" />
@@ -165,7 +167,7 @@ export default function Home() {
               </MotionReveal>
               <MotionReveal delay={300} distance={14} waitForHomeReady>
                 <div className="mt-7 max-w-2xl">
-                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-copy-inverseSubtle">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-copy-muted">
                     Tools &amp; Skills
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -175,10 +177,10 @@ export default function Home() {
                       return (
                         <span
                           key={tool.label}
-                          className="inline-flex h-9 items-center gap-2 rounded-lg border border-white/10 bg-surface-dark/30 px-3 text-xs font-medium text-copy-inverseMuted shadow-sm backdrop-blur"
+                          className="inline-flex h-9 items-center gap-2 rounded-lg border border-white/70 bg-white/50 px-3 text-xs font-medium text-copy-secondary shadow-sm backdrop-blur-md"
                         >
                           <Icon
-                            className="size-4 text-brand-accent"
+                            className="size-4 text-brand-primary"
                             aria-hidden="true"
                           />
                           {tool.label}
@@ -192,19 +194,42 @@ export default function Home() {
           </div>
 
           <Link
-            href="#about"
-            aria-label="Scroll to about section"
-            className="absolute bottom-5 left-1/2 grid size-10 -translate-x-1/2 place-items-center rounded-full border border-white/15 bg-surface-dark/30 text-copy-inverseMuted shadow-sm backdrop-blur transition hover:border-brand-accent/50 hover:bg-white/10 hover:text-white"
+            href="#projects"
+            aria-label="Scroll to projects section"
+            className="absolute bottom-5 left-1/2 grid size-10 -translate-x-1/2 place-items-center rounded-full border border-white/70 bg-white/55 text-copy-secondary shadow-sm backdrop-blur-md transition hover:border-brand-primary/30 hover:bg-white hover:text-brand-primary"
           >
             <ArrowDown className="size-4" aria-hidden="true" />
           </Link>
+        </section>
+
+        <section id="projects" className="section-band bg-surface-paper py-20 md:py-28">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <MotionReveal>
+              <SectionHeading
+                eyebrow="Selected Work"
+                title="作品案例"
+                description="收錄介面設計、品牌識別、3D 視覺與電商專案，從不同題目中梳理設計方向，呈現概念、流程與最終畫面的整合成果。"
+              />
+            </MotionReveal>
+            <div className="mt-10">
+              {visibleProjects.map((project, index) => (
+                <MotionReveal
+                  key={project.slug}
+                  delay={Math.min(index * 60, 180)}
+                  distance={20}
+                >
+                  <ProjectCard project={project} />
+                </MotionReveal>
+              ))}
+            </div>
+          </div>
         </section>
 
         <section id="about" className="section-band bg-surface-canvas py-20 md:py-28">
           <MotionSection className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.8fr_1fr] lg:px-8">
             <SectionHeading
               eyebrow="About"
-              title="以使用者任務為核心，讓複雜產品變得可靠、清楚、可交付。"
+              title="在介面、品牌與視覺之間，建立清楚的設計方向。"
               description={profile.bio}
             />
             <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4">
@@ -238,29 +263,6 @@ export default function Home() {
               })}
             </div>
           </MotionSection>
-        </section>
-
-        <section id="projects" className="section-band bg-surface-paper py-20 md:py-28">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <MotionReveal>
-              <SectionHeading
-                eyebrow="Selected Work"
-                title="作品案例"
-                description="收錄 UI/UX、品牌識別、3D 視覺與電商專案，整理我在不同設計任務中，如何釐清需求、建立方向並完成視覺與介面成果。"
-              />
-            </MotionReveal>
-            <div className="mt-10">
-              {visibleProjects.map((project, index) => (
-                <MotionReveal
-                  key={project.slug}
-                  delay={Math.min(index * 60, 180)}
-                  distance={20}
-                >
-                  <ProjectCard project={project} />
-                </MotionReveal>
-              ))}
-            </div>
-          </div>
         </section>
 
         <section
@@ -366,39 +368,39 @@ export default function Home() {
 
         <section
           id="contact"
-          className="section-band relative isolate overflow-hidden bg-surface-contact py-20 text-white md:py-28"
+          className="section-band relative isolate overflow-hidden bg-surface-canvas py-20 text-copy-primary md:py-28"
         >
           <div
-            className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(circle_at_76%_32%,rgba(20,184,166,0.16),transparent_27rem),radial-gradient(circle_at_12%_88%,rgba(14,116,144,0.12),transparent_24rem),linear-gradient(135deg,#06111d_0%,#081827_55%,#06111d_100%)]"
+            className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(circle_at_78%_28%,rgb(var(--brand-accent-rgb)/0.14),transparent_28rem),radial-gradient(circle_at_12%_86%,rgb(var(--brand-primary-rgb)/0.08),transparent_24rem),linear-gradient(135deg,var(--color-surface-paper)_0%,var(--color-surface-canvas)_62%,#EEF3F4_100%)]"
             aria-hidden="true"
           />
           <div
-            className="pointer-events-none absolute -right-[12%] top-[34%] -z-10 h-32 w-[76%] -rotate-[13deg] bg-[linear-gradient(90deg,transparent,rgba(45,212,191,0.08),transparent)] blur-xl"
+            className="pointer-events-none absolute -right-[12%] top-[34%] -z-10 h-32 w-[76%] -rotate-[13deg] bg-[linear-gradient(90deg,transparent,rgb(var(--brand-accent-rgb)/0.08),transparent)] blur-xl"
             aria-hidden="true"
           />
           <div
-            className="pointer-events-none absolute -left-[18%] bottom-[4%] -z-10 h-24 w-[62%] rotate-[18deg] bg-[linear-gradient(90deg,transparent,rgba(14,165,233,0.06),transparent)] blur-2xl"
+            className="pointer-events-none absolute -left-[18%] bottom-[4%] -z-10 h-24 w-[62%] rotate-[18deg] bg-[linear-gradient(90deg,transparent,rgb(var(--brand-primary-rgb)/0.07),transparent)] blur-2xl"
             aria-hidden="true"
           />
 
           <MotionSection className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_0.75fr] lg:items-center lg:px-8">
             <div className="max-w-3xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-accent">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-primary">
                 Contact
               </p>
-              <h2 className="mt-4 text-3xl font-semibold leading-tight text-copy-inverse md:text-5xl">
-                正在尋找下一個合適的設計機會
+              <h2 className="mt-4 text-3xl font-semibold leading-tight text-copy-primary md:text-5xl">
+                歡迎交流設計與合作可能
               </h2>
-              <p className="mt-5 max-w-3xl text-base leading-8 text-copy-inverseMuted md:text-lg">
-                目前尋找 UI/UX Designer、Product Designer 與介面設計相關機會。歡迎來信交流作品集、合作可能，或安排面試討論。
+              <p className="mt-5 max-w-3xl text-base leading-8 text-copy-secondary md:text-lg">
+                若你對我的作品感興趣，或有設計合作、專案交流的可能，歡迎來信與我聊聊。
               </p>
             </div>
 
-            <div className="rounded-lg border border-white/10 bg-white/[0.06] p-6 shadow-glass-panel backdrop-blur-xl">
+            <div className="rounded-[28px] border border-white/80 bg-white/62 p-6 shadow-[0_24px_80px_rgba(15,23,42,0.10),0_0_28px_rgba(20,184,166,0.08)] backdrop-blur-xl">
               <div className="grid gap-4">
                 <Link
                   href={`mailto:${profile.email}`}
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-surface-dark px-5 text-sm font-semibold text-white transition hover:bg-brand-primary"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-surface-dark px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-primary"
                 >
                   <Mail className="size-4" aria-hidden="true" />
                   <span className="truncate">{profile.email}</span>
@@ -407,7 +409,7 @@ export default function Home() {
                   href="https://www.linkedin.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 text-sm font-semibold text-white transition hover:border-brand-accent/30 hover:bg-white/[0.08]"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-stroke-muted/80 bg-white/55 px-5 text-sm font-semibold text-copy-primary shadow-sm backdrop-blur-md transition hover:border-brand-primary/35 hover:bg-white hover:text-brand-primary"
                 >
                   LinkedIn
                   <ExternalLink className="size-4" aria-hidden="true" />
@@ -415,26 +417,26 @@ export default function Home() {
               </div>
 
               <div className="mt-6 grid gap-3 text-sm sm:grid-cols-2">
-                <div className="flex min-h-24 items-center gap-4 rounded-lg border border-white/10 bg-black/10 p-4">
+                <div className="flex min-h-24 items-center gap-4 rounded-lg border border-stroke-soft/80 bg-white/45 p-4 shadow-sm backdrop-blur-md">
                   <MapPin
-                    className="size-6 shrink-0 text-brand-accent"
+                    className="size-6 shrink-0 text-brand-primary"
                     aria-hidden="true"
                   />
                   <div>
-                    <p className="text-copy-inverseSubtle">Location</p>
-                    <p className="mt-1 font-semibold text-copy-inverse">
+                    <p className="text-copy-muted">Location</p>
+                    <p className="mt-1 font-semibold text-copy-primary">
                       {profile.location}
                     </p>
                   </div>
                 </div>
-                <div className="flex min-h-24 items-center gap-4 rounded-lg border border-white/10 bg-black/10 p-4">
+                <div className="flex min-h-24 items-center gap-4 rounded-lg border border-stroke-soft/80 bg-white/45 p-4 shadow-sm backdrop-blur-md">
                   <Target
-                    className="size-6 shrink-0 text-brand-accent"
+                    className="size-6 shrink-0 text-brand-primary"
                     aria-hidden="true"
                   />
                   <div>
-                    <p className="text-copy-inverseSubtle">Focus</p>
-                    <p className="mt-1 font-semibold text-copy-inverse">UI/UX Design / Web Platform</p>
+                    <p className="text-copy-muted">Focus</p>
+                    <p className="mt-1 font-semibold text-copy-primary">UI/UX Design / Web Platform</p>
                   </div>
                 </div>
               </div>
