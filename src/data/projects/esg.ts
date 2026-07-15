@@ -383,7 +383,7 @@ export const esgProject: Project = {
     subtitle: "ESG Matching Platform",
     eyebrow: "使用者參與森林及自然碳匯 ESG 專案媒合平台",
     description:
-      "協助使用者查詢森林與自然碳匯相關 ESG 專案，整合列表、地圖與媒合流程，提升查詢效率與合作透明度。",
+      "ESG媒合平台是一個串聯企業與森林、生態保育專案的媒合平台，協助企業查找並參與造林、自然碳匯、生物多樣性及山林文化等永續計畫。 平台整合地理圖資互動、專案查詢、媒合申請與成果查詢功能，將複雜的政策資訊、土地位置與執行成果整理成清楚易懂的資訊架構，讓企業能更直觀地了解專案分布、參與方式與實際成效。",
     role: "UI/UX Design / Visual Design",
     scope: "平台 / 會員中心 / 地圖 / 專案詳情 / CMS",
     timeline: "6 月",
