@@ -28,6 +28,10 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", updateHeader);
   }, []);
 
+  if (pathname === "/") {
+    return null;
+  }
+
   return (
     <header className="pointer-events-none fixed inset-x-0 top-3 z-50 px-3 sm:px-5">
       <div
