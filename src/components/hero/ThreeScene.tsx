@@ -18,8 +18,46 @@ import styles from "./Hero.module.css";
 
 type ThreeSceneProps = {
   scrollProgress: MutableRefObject<number>;
+  pointerProgress: MutableRefObject<{ x: number; y: number }>;
   reducedMotion: boolean;
+  onReady: () => void;
 };
+
+function SceneReady({ onReady }: Pick<ThreeSceneProps, "onReady">) {
+  const { camera, gl, scene } = useThree();
+
+  useEffect(() => {
+    let cancelled = false;
+    let frame = 0;
+
+    const reveal = async () => {
+      try {
+        await gl.compileAsync(scene, camera);
+      } catch {
+        // Some WebGL implementations do not support asynchronous compilation.
+      }
+
+      if (cancelled) {
+        return;
+      }
+
+      frame = window.requestAnimationFrame(() => {
+        if (!cancelled) {
+          onReady();
+        }
+      });
+    };
+
+    void reveal();
+
+    return () => {
+      cancelled = true;
+      window.cancelAnimationFrame(frame);
+    };
+  }, [camera, gl, onReady, scene]);
+
+  return null;
+}
 
 function HeroObject() {
   if (HERO_VISUAL_MODE === "glb") {
@@ -30,13 +68,16 @@ function HeroObject() {
 }
 
 function SceneContents({
+  pointerProgress,
   scrollProgress,
   reducedMotion,
+  onReady,
 }: ThreeSceneProps) {
   const model = useRef<THREE.Group>(null);
   const keyLight = useRef<THREE.DirectionalLight>(null);
   const fog = useRef<THREE.FogExp2>(null);
   const depthOfField = useRef<DepthOfFieldEffect>(null);
+  const smoothedPointer = useRef(new THREE.Vector2(0, 0));
   const { camera } = useThree();
 
   useEffect(() => {
@@ -44,8 +85,19 @@ function SceneContents({
     camera.updateProjectionMatrix();
   }, [camera]);
 
-  useFrame(() => {
+  useFrame((state, delta) => {
     const progress = reducedMotion ? 0.62 : scrollProgress.current;
+    const pointer = reducedMotion
+      ? { x: 0, y: 0 }
+      : pointerProgress.current;
+
+    smoothedPointer.current.lerp(
+      new THREE.Vector2(pointer?.x ?? 0, pointer?.y ?? 0),
+      Math.min(1, delta * 5.5),
+    );
+    const drift = reducedMotion ? 0 : Math.sin(state.clock.elapsedTime * 0.42) * 0.018;
+    const pointerX = smoothedPointer.current.x;
+    const pointerY = smoothedPointer.current.y;
 
     if (model.current) {
       model.current.position.set(
@@ -53,12 +105,12 @@ function SceneContents({
           HERO_CONFIG.model.startPosition[0],
           HERO_CONFIG.model.endPosition[0],
           progress,
-        ),
+        ) + pointerX * 0.16,
         THREE.MathUtils.lerp(
           HERO_CONFIG.model.startPosition[1],
           HERO_CONFIG.model.endPosition[1],
           progress,
-        ),
+        ) - pointerY * 0.11 + drift,
         THREE.MathUtils.lerp(
           HERO_CONFIG.model.startPosition[2],
           HERO_CONFIG.model.endPosition[2],
@@ -70,17 +122,17 @@ function SceneContents({
           HERO_CONFIG.model.startRotation[0],
           HERO_CONFIG.model.endRotation[0],
           progress,
-        ),
+        ) + pointerY * 0.08,
         THREE.MathUtils.lerp(
           HERO_CONFIG.model.startRotation[1],
           HERO_CONFIG.model.endRotation[1],
           progress,
-        ),
+        ) + pointerX * 0.18,
         THREE.MathUtils.lerp(
           HERO_CONFIG.model.startRotation[2],
           HERO_CONFIG.model.endRotation[2],
           progress,
-        ),
+        ) + pointerX * 0.035,
       );
       const scale = THREE.MathUtils.lerp(
         HERO_CONFIG.model.startScale,
@@ -101,12 +153,12 @@ function SceneContents({
           HERO_CONFIG.lights.keyPositionStart[0],
           HERO_CONFIG.lights.keyPositionEnd[0],
           progress,
-        ),
+        ) + pointerX * 0.72,
         THREE.MathUtils.lerp(
           HERO_CONFIG.lights.keyPositionStart[1],
           HERO_CONFIG.lights.keyPositionEnd[1],
           progress,
-        ),
+        ) - pointerY * 0.42,
         THREE.MathUtils.lerp(
           HERO_CONFIG.lights.keyPositionStart[2],
           HERO_CONFIG.lights.keyPositionEnd[2],
@@ -139,7 +191,6 @@ function SceneContents({
 
   return (
     <>
-      <color attach="background" args={[HERO_CONFIG.colors.background]} />
       <fogExp2
         ref={fog}
         attach="fog"
@@ -171,6 +222,11 @@ function SceneContents({
         intensity={HERO_CONFIG.lights.rimIntensity}
         position={HERO_CONFIG.lights.rimPosition}
       />
+      <directionalLight
+        color={HERO_CONFIG.colors.fill}
+        intensity={HERO_CONFIG.lights.fillIntensity}
+        position={HERO_CONFIG.lights.fillPosition}
+      />
 
       <Environment resolution={64} frames={1}>
         <Lightformer
@@ -191,14 +247,11 @@ function SceneContents({
         />
       </Environment>
 
-      <mesh position={[0, 0, -2.35]} receiveShadow>
-        <planeGeometry args={[18, 12]} />
-        <meshStandardMaterial color={HERO_CONFIG.colors.wall} roughness={1} />
-      </mesh>
-
       <group ref={model}>
         <HeroObject />
       </group>
+
+      <SceneReady onReady={onReady} />
 
       <EffectComposer multisampling={0} resolutionScale={0.75}>
         <DepthOfField
@@ -211,8 +264,8 @@ function SceneContents({
         <Vignette
           blendFunction={BlendFunction.NORMAL}
           eskil={false}
-          offset={0.22}
-          darkness={0.58}
+          offset={0.3}
+          darkness={0.34}
         />
       </EffectComposer>
     </>
@@ -233,11 +286,12 @@ export function ThreeScene(props: ThreeSceneProps) {
       }}
       gl={{
         antialias: true,
-        alpha: false,
+        alpha: true,
         powerPreference: "high-performance",
         stencil: false,
       }}
       onCreated={({ gl }) => {
+        gl.setClearAlpha(0);
         gl.toneMapping = THREE.ACESFilmicToneMapping;
         gl.toneMappingExposure = 1.08;
         gl.shadowMap.type = THREE.PCFShadowMap;

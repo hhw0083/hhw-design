@@ -50,7 +50,7 @@ export function LoadingScreen({
     }, autoDismissMs);
     const removeTimer = window.setTimeout(() => {
       setShouldShow(false);
-    }, autoDismissMs + 320);
+    }, autoDismissMs + 440);
 
     return () => {
       window.clearTimeout(leaveTimer);

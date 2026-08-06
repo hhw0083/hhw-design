@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, type MutableRefObject } from "react";
 import { LoadingScreen } from "@/components/LoadingScreen";
 
 const ROUTE_LOADING_DELAY_MS = 280;
-const ROUTE_LOADING_EXIT_MS = 340;
+const ROUTE_LOADING_EXIT_MS = 440;
 const ROUTE_LOADING_MAX_MS = 6000;
 
 function clearTimer(timerRef: MutableRefObject<number | null>) {

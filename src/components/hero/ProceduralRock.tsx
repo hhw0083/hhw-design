@@ -79,6 +79,8 @@ function createRockGeometry() {
   const colors = new Float32Array(positions.count * 3);
   const normal = new THREE.Vector3();
   const baseColor = new THREE.Color(HERO_CONFIG.material.color);
+  const strataDirection = new THREE.Vector3(0.74, -0.18, 0.65).normalize();
+  const chipDirection = new THREE.Vector3(-0.34, 0.82, 0.46).normalize();
 
   const lobes = [
     {
@@ -129,6 +131,52 @@ function createRockGeometry() {
       normal.z * 27.5,
       config.seed + 809,
     );
+    const strataCoordinate =
+      normal.dot(strataDirection) * config.strataFrequency;
+    const strataSpacing =
+      0.84 +
+      fbm(
+        normal.x * 1.35 + 4.2,
+        normal.y * 1.35 - 1.7,
+        normal.z * 1.35 + 2.6,
+        config.seed + 211,
+      ) *
+        0.22;
+    const strataWarp =
+      fbm(
+        normal.x * 3.4 - 2.1,
+        normal.y * 3.4 + 5.3,
+        normal.z * 3.4 + 1.4,
+        config.seed + 613,
+      ) * 2.8;
+    const strataWave = Math.sin(
+      strataCoordinate * strataSpacing +
+        strataWarp +
+        Math.sin(strataCoordinate * 0.31) * 0.72,
+    );
+    const strataBreakup = THREE.MathUtils.smoothstep(
+      valueNoise3(
+        normal.x * 5.1 + 3.7,
+        normal.y * 5.1 - 2.4,
+        normal.z * 5.1 + 6.2,
+        config.seed + 977,
+      ),
+      -0.34,
+      0.54,
+    );
+    const strataGroove =
+      Math.pow(Math.max(0, 1 - Math.abs(strataWave)), 3.5) *
+      config.strataDepth *
+      (0.28 + strataBreakup * 0.72);
+    const chipNoise = Math.max(
+      0,
+      valueNoise3(
+        normal.x * config.chipFrequency + chipDirection.x,
+        normal.y * config.chipFrequency + chipDirection.y,
+        normal.z * config.chipFrequency + chipDirection.z,
+        config.seed + 1307,
+      ) - 0.16,
+    );
     const lobeDisplacement = lobes.reduce(
       (sum, lobe) =>
         sum +
@@ -149,7 +197,9 @@ function createRockGeometry() {
       1 +
       broadNoise * config.noiseAmplitude +
       microNoise * config.microAmplitude +
-      ridge * 0.085 +
+      ridge * 0.11 -
+      strataGroove +
+      chipNoise * config.chipDepth +
       lobeDisplacement;
 
     const taper = 1 - Math.max(0, normal.y) * 0.17;
@@ -170,13 +220,19 @@ function createRockGeometry() {
 
     const shade = THREE.MathUtils.clamp(
       broadNoise * 0.12 +
-        microNoise * 0.065 +
-        grainNoise * 0.07 -
+        microNoise * 0.08 +
+        grainNoise * 0.095 -
+        strataGroove * 2.2 +
+        chipNoise * 0.06 -
         normal.y * 0.018,
-      -0.2,
-      0.2,
+      -0.28,
+      0.26,
     );
-    const vertexColor = baseColor.clone().offsetHSL(0, 0, shade);
+    const vertexColor = baseColor.clone().offsetHSL(
+      strataGroove * -0.02,
+      chipNoise * -0.025,
+      shade,
+    );
     colors[index * 3] = vertexColor.r;
     colors[index * 3 + 1] = vertexColor.g;
     colors[index * 3 + 2] = vertexColor.b;
@@ -198,6 +254,7 @@ function createRockGeometry() {
 function createRockMaterial() {
   const material = new THREE.MeshStandardMaterial({
     color: HERO_CONFIG.material.color,
+    flatShading: true,
     roughness: HERO_CONFIG.material.roughness,
     metalness: HERO_CONFIG.material.metalness,
     envMapIntensity: HERO_CONFIG.material.envMapIntensity,
@@ -242,6 +299,37 @@ function createRockMaterial() {
         float nx11 = mix(n011, n111, local.x);
         return mix(mix(nx00, nx10, local.y), mix(nx01, nx11, local.y), local.z);
       }
+
+      float rockFbm(vec3 point) {
+        float total = 0.0;
+        float amplitude = 0.55;
+        float normalizer = 0.0;
+
+        for (int octave = 0; octave < 4; octave++) {
+          total += rockNoise(point) * amplitude;
+          normalizer += amplitude;
+          point = point * 2.08 + vec3(11.3, 7.1, 4.9);
+          amplitude *= 0.48;
+        }
+
+        return total / normalizer;
+      }
+
+      float rockStrata(vec3 point) {
+        vec3 direction = normalize(vec3(0.74, -0.18, 0.65));
+        float coordinate = dot(point, direction) * 19.5;
+        float spacing = 0.72 + rockFbm(point * 0.92 + vec3(4.2, -1.7, 2.6)) * 0.34;
+        float warp = (rockFbm(point * 2.75 + vec3(-2.1, 5.3, 1.4)) - 0.5) * 5.8;
+        float drift = sin(coordinate * 0.31 + rockFbm(point * 1.2) * 2.1) * 0.78;
+        float wave = sin(coordinate * spacing + warp + drift);
+        float breakup = smoothstep(
+          0.24,
+          0.76,
+          rockFbm(point * 1.75 + vec3(3.7, -2.4, 6.2))
+        );
+        return pow(max(0.0, 1.0 - abs(wave)), 4.0) * mix(0.24, 1.0, breakup);
+      }
+
     `;
 
     shader.fragmentShader = shader.fragmentShader
@@ -252,19 +340,30 @@ function createRockMaterial() {
       .replace(
         "#include <map_fragment>",
         `#include <map_fragment>
-         float rockFine = rockNoise(vRockPosition * 22.0);
-         float rockBroad = rockNoise(vRockPosition * 6.5);
-         float rockVariation = (rockFine - 0.5) * 0.34 + (rockBroad - 0.5) * 0.18;
-         diffuseColor.rgb *= 1.0 + rockVariation;`,
+         float rockFine = rockFbm(vRockPosition * 17.0);
+         float rockBroad = rockFbm(vRockPosition * 4.4);
+         float rockMineral = rockNoise(vRockPosition * 54.0 + vec3(2.0, 7.0, 13.0));
+         float rockPores = smoothstep(0.66, 0.96, rockNoise(vRockPosition * 38.0));
+         float strataLine = rockStrata(vRockPosition);
+         float darkCrack = smoothstep(0.36, 0.9, strataLine) * 0.34;
+         float brightFleck = smoothstep(0.76, 0.98, rockMineral) * 0.24;
+         float rockVariation = (rockFine - 0.5) * 0.5 + (rockBroad - 0.5) * 0.24;
+         diffuseColor.rgb *= 0.98 + rockVariation - darkCrack - rockPores * 0.12;
+         diffuseColor.rgb += vec3(0.09, 0.095, 0.084) * brightFleck;`,
       )
       .replace(
         "#include <roughnessmap_fragment>",
         `#include <roughnessmap_fragment>
-         float rockRoughness = rockNoise(vRockPosition * 18.0);
-         roughnessFactor = clamp(roughnessFactor + (rockRoughness - 0.5) * 0.28, 0.52, 1.0);`,
+         float rockRoughness = rockFbm(vRockPosition * 20.0);
+         float strataRoughness = rockStrata(vRockPosition);
+         roughnessFactor = clamp(
+           roughnessFactor + (rockRoughness - 0.5) * 0.22 + strataRoughness * 0.14,
+           0.58,
+           1.0
+         );`,
       );
   };
-  material.customProgramCacheKey = () => "procedural-rock-material-v1";
+  material.customProgramCacheKey = () => "procedural-rock-material-v5";
 
   return material;
 }

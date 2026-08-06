@@ -3,7 +3,10 @@
 import { useEffect, useState } from "react";
 import { LoadingScreen } from "@/components/LoadingScreen";
 
-const LOADING_SESSION_KEY = "hhw-home-loading-seen";
+const LOADING_SESSION_KEY = "hhw-home-loading-seen-v2";
+const FIRST_VISIT_MIN_MS = 1040;
+const LOADING_EXIT_MS = 440;
+const LOADING_MAX_MS = 7000;
 
 function hasSeenHomeLoading() {
   try {
@@ -26,14 +29,15 @@ export function HomeLoadingScreen() {
   const [isLeaving, setIsLeaving] = useState(false);
 
   useEffect(() => {
-    if (hasSeenHomeLoading()) {
-      document.documentElement.dataset.homeReady = "true";
-      setIsVisible(false);
-      window.dispatchEvent(new Event("hhw:home-ready"));
-      return;
+    const hasSeenLoading = hasSeenHomeLoading();
+    let heroReady = document.documentElement.dataset.heroReady === "true";
+    let minimumElapsed = hasSeenLoading;
+    let leaveTimer = 0;
+
+    if (!hasSeenLoading) {
+      markHomeLoadingSeen();
     }
 
-    markHomeLoadingSeen();
     document.documentElement.dataset.homeReady = "false";
 
     const originalOverflow = document.body.style.overflow;
@@ -43,20 +47,47 @@ export function HomeLoadingScreen() {
 
     document.body.style.overflow = "hidden";
 
-    const leaveTimer = window.setTimeout(
-      () => setIsLeaving(true),
-      prefersReducedMotion ? 260 : 1040,
+    const finishLoading = () => {
+      if (!heroReady || !minimumElapsed || leaveTimer) {
+        return;
+      }
+
+      setIsLeaving(true);
+      leaveTimer = window.setTimeout(() => {
+        setIsVisible(false);
+        document.body.style.overflow = originalOverflow;
+        document.documentElement.dataset.homeReady = "true";
+        window.dispatchEvent(new Event("hhw:home-ready"));
+      }, prefersReducedMotion ? 0 : LOADING_EXIT_MS);
+    };
+
+    const handleHeroReady = () => {
+      heroReady = true;
+      finishLoading();
+    };
+
+    window.addEventListener("hhw:hero-ready", handleHeroReady);
+
+    const minimumTimer = window.setTimeout(
+      () => {
+        minimumElapsed = true;
+        finishLoading();
+      },
+      hasSeenLoading || prefersReducedMotion ? 0 : FIRST_VISIT_MIN_MS,
     );
-    const removeTimer = window.setTimeout(() => {
-      setIsVisible(false);
-      document.body.style.overflow = originalOverflow;
-      document.documentElement.dataset.homeReady = "true";
-      window.dispatchEvent(new Event("hhw:home-ready"));
-    }, prefersReducedMotion ? 520 : 1320);
+    const maximumTimer = window.setTimeout(() => {
+      heroReady = true;
+      minimumElapsed = true;
+      finishLoading();
+    }, LOADING_MAX_MS);
+
+    finishLoading();
 
     return () => {
+      window.removeEventListener("hhw:hero-ready", handleHeroReady);
+      window.clearTimeout(minimumTimer);
+      window.clearTimeout(maximumTimer);
       window.clearTimeout(leaveTimer);
-      window.clearTimeout(removeTimer);
       document.body.style.overflow = originalOverflow;
     };
   }, []);
@@ -65,5 +96,5 @@ export function HomeLoadingScreen() {
     return null;
   }
 
-  return <LoadingScreen isLeaving={isLeaving} autoDismissMs={1500} />;
+  return <LoadingScreen isLeaving={isLeaving} />;
 }
