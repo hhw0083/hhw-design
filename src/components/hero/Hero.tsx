@@ -230,6 +230,7 @@ export function Hero({ children }: HeroProps) {
       <section
         ref={sectionRef}
         className={styles.hero}
+        data-hero-section
         aria-labelledby="hero-personal-identity"
         onPointerMove={handlePointerMove}
         onPointerLeave={handlePointerLeave}
@@ -268,6 +269,8 @@ export function Hero({ children }: HeroProps) {
               </a>
               <nav className={styles.quickNav} aria-label="Hero links">
                 <a href="#projects">Works</a>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
                 <a href="#contact">Contact</a>
               </nav>
             </header>
