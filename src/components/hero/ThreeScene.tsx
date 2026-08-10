@@ -8,11 +8,12 @@ import {
   Vignette,
 } from "@react-three/postprocessing";
 import { BlendFunction, DepthOfFieldEffect } from "postprocessing";
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import type { MutableRefObject } from "react";
 import * as THREE from "three";
 import { GlbRock } from "./GlbRock";
 import { HERO_CONFIG, HERO_VISUAL_MODE } from "./hero-config";
+import type { HeroRenderQuality } from "./hero-config";
 import { ProceduralRock } from "./ProceduralRock";
 import styles from "./Hero.module.css";
 
@@ -20,7 +21,12 @@ type ThreeSceneProps = {
   scrollProgress: MutableRefObject<number>;
   pointerProgress: MutableRefObject<{ x: number; y: number }>;
   reducedMotion: boolean;
+  isActive: boolean;
   onReady: () => void;
+};
+
+type SceneContentsProps = Omit<ThreeSceneProps, "isActive"> & {
+  quality: HeroRenderQuality;
 };
 
 function SceneReady({ onReady }: Pick<ThreeSceneProps, "onReady">) {
@@ -59,12 +65,12 @@ function SceneReady({ onReady }: Pick<ThreeSceneProps, "onReady">) {
   return null;
 }
 
-function HeroObject() {
+function HeroObject({ quality }: { quality: HeroRenderQuality }) {
   if (HERO_VISUAL_MODE === "glb") {
     return <GlbRock url={HERO_CONFIG.glb.url} />;
   }
 
-  return <ProceduralRock />;
+  return <ProceduralRock quality={quality} />;
 }
 
 function SceneContents({
@@ -72,7 +78,8 @@ function SceneContents({
   scrollProgress,
   reducedMotion,
   onReady,
-}: ThreeSceneProps) {
+  quality,
+}: SceneContentsProps) {
   const model = useRef<THREE.Group>(null);
   const keyLight = useRef<THREE.DirectionalLight>(null);
   const fog = useRef<THREE.FogExp2>(null);
@@ -86,7 +93,20 @@ function SceneContents({
   }, [camera]);
 
   useFrame((state, delta) => {
-    const progress = reducedMotion ? 0.62 : scrollProgress.current;
+    const timelineProgress = reducedMotion ? 0.62 : scrollProgress.current;
+    const heroProgress = THREE.MathUtils.clamp(timelineProgress, 0, 1);
+    const projectProgress = THREE.MathUtils.clamp(timelineProgress - 1, 0, 1);
+    const footerProgress = THREE.MathUtils.clamp(timelineProgress - 3, 0, 1);
+    const isFooterPhase = timelineProgress >= 3;
+    const lightingProgress = isFooterPhase
+      ? 0.78 + footerProgress * 0.22
+      : heroProgress;
+    const projectEntrance = THREE.MathUtils.smoothstep(
+      projectProgress,
+      0,
+      0.16,
+    );
+    const projectArc = Math.sin(projectProgress * Math.PI) * 0.28;
     const pointer = reducedMotion
       ? { x: 0, y: 0 }
       : pointerProgress.current;
@@ -95,74 +115,110 @@ function SceneContents({
       new THREE.Vector2(pointer?.x ?? 0, pointer?.y ?? 0),
       Math.min(1, delta * 5.5),
     );
-    const drift = reducedMotion ? 0 : Math.sin(state.clock.elapsedTime * 0.42) * 0.018;
+    const drift = reducedMotion
+      ? 0
+      : Math.sin(state.clock.elapsedTime * 0.42) * 0.018;
     const pointerX = smoothedPointer.current.x;
     const pointerY = smoothedPointer.current.y;
 
     if (model.current) {
-      model.current.position.set(
-        THREE.MathUtils.lerp(
-          HERO_CONFIG.model.startPosition[0],
-          HERO_CONFIG.model.endPosition[0],
-          progress,
-        ) + pointerX * 0.16,
-        THREE.MathUtils.lerp(
-          HERO_CONFIG.model.startPosition[1],
-          HERO_CONFIG.model.endPosition[1],
-          progress,
-        ) - pointerY * 0.11 + drift,
-        THREE.MathUtils.lerp(
-          HERO_CONFIG.model.startPosition[2],
-          HERO_CONFIG.model.endPosition[2],
-          progress,
-        ),
-      );
-      model.current.rotation.set(
-        THREE.MathUtils.lerp(
-          HERO_CONFIG.model.startRotation[0],
-          HERO_CONFIG.model.endRotation[0],
-          progress,
-        ) + pointerY * 0.08,
-        THREE.MathUtils.lerp(
-          HERO_CONFIG.model.startRotation[1],
-          HERO_CONFIG.model.endRotation[1],
-          progress,
-        ) + pointerX * 0.18,
-        THREE.MathUtils.lerp(
-          HERO_CONFIG.model.startRotation[2],
-          HERO_CONFIG.model.endRotation[2],
-          progress,
-        ) + pointerX * 0.035,
-      );
-      const scale = THREE.MathUtils.lerp(
-        HERO_CONFIG.model.startScale,
-        HERO_CONFIG.model.endScale,
-        progress,
-      );
-      model.current.scale.setScalar(scale);
+      if (isFooterPhase) {
+        const footerFloat = Math.sin(footerProgress * Math.PI) * 0.12;
+        const footerSpin = reducedMotion
+          ? 0
+          : state.clock.elapsedTime * 0.08;
+
+        model.current.position.set(
+          THREE.MathUtils.lerp(0.92, 0.34, footerProgress),
+          THREE.MathUtils.lerp(-1.62, -0.78, footerProgress) + footerFloat,
+          THREE.MathUtils.lerp(0.34, 0.12, footerProgress),
+        );
+        model.current.rotation.set(
+          THREE.MathUtils.lerp(0.08, 0.42, footerProgress),
+          2.1 + footerProgress * 3.4 + footerSpin,
+          THREE.MathUtils.lerp(-0.12, 0.08, footerProgress),
+        );
+        model.current.scale.setScalar(
+          THREE.MathUtils.lerp(1.22, 1.4, footerProgress),
+        );
+      } else {
+        model.current.position.set(
+          THREE.MathUtils.lerp(
+            HERO_CONFIG.model.startPosition[0],
+            HERO_CONFIG.model.endPosition[0],
+            heroProgress,
+          ) -
+            projectProgress * 0.22 +
+            pointerX * 0.16,
+          THREE.MathUtils.lerp(
+            HERO_CONFIG.model.startPosition[1],
+            HERO_CONFIG.model.endPosition[1],
+            heroProgress,
+          ) +
+            projectEntrance * 0.82 +
+            projectArc -
+            projectProgress * 0.08 -
+            pointerY * 0.11 +
+            drift,
+          THREE.MathUtils.lerp(
+            HERO_CONFIG.model.startPosition[2],
+            HERO_CONFIG.model.endPosition[2],
+            heroProgress,
+          ) + projectProgress * 0.16,
+        );
+        model.current.rotation.set(
+          THREE.MathUtils.lerp(
+            HERO_CONFIG.model.startRotation[0],
+            HERO_CONFIG.model.endRotation[0],
+            heroProgress,
+          ) +
+            projectProgress * 0.28 +
+            pointerY * 0.08,
+          THREE.MathUtils.lerp(
+            HERO_CONFIG.model.startRotation[1],
+            HERO_CONFIG.model.endRotation[1],
+            heroProgress,
+          ) +
+            projectProgress * 0.9 +
+            pointerX * 0.18,
+          THREE.MathUtils.lerp(
+            HERO_CONFIG.model.startRotation[2],
+            HERO_CONFIG.model.endRotation[2],
+            heroProgress,
+          ) -
+            projectProgress * 0.16 +
+            pointerX * 0.035,
+        );
+        const heroScale = THREE.MathUtils.lerp(
+          HERO_CONFIG.model.startScale,
+          HERO_CONFIG.model.endScale,
+          heroProgress,
+        );
+        model.current.scale.setScalar(heroScale - projectProgress * 0.08);
+      }
     }
 
     if (keyLight.current) {
       keyLight.current.intensity = THREE.MathUtils.lerp(
         HERO_CONFIG.lights.keyIntensityStart,
         HERO_CONFIG.lights.keyIntensityEnd,
-        progress,
+        lightingProgress,
       );
       keyLight.current.position.set(
         THREE.MathUtils.lerp(
           HERO_CONFIG.lights.keyPositionStart[0],
           HERO_CONFIG.lights.keyPositionEnd[0],
-          progress,
+          lightingProgress,
         ) + pointerX * 0.72,
         THREE.MathUtils.lerp(
           HERO_CONFIG.lights.keyPositionStart[1],
           HERO_CONFIG.lights.keyPositionEnd[1],
-          progress,
+          lightingProgress,
         ) - pointerY * 0.42,
         THREE.MathUtils.lerp(
           HERO_CONFIG.lights.keyPositionStart[2],
           HERO_CONFIG.lights.keyPositionEnd[2],
-          progress,
+          lightingProgress,
         ),
       );
     }
@@ -171,7 +227,7 @@ function SceneContents({
       fog.current.density = THREE.MathUtils.lerp(
         HERO_CONFIG.fog.startDensity,
         HERO_CONFIG.fog.endDensity,
-        progress,
+        lightingProgress,
       );
     }
 
@@ -179,12 +235,12 @@ function SceneContents({
       depthOfField.current.cocMaterial.focusDistance = THREE.MathUtils.lerp(
         HERO_CONFIG.depthOfField.startFocusDistance,
         HERO_CONFIG.depthOfField.endFocusDistance,
-        progress,
+        lightingProgress,
       );
       depthOfField.current.bokehScale = THREE.MathUtils.lerp(
         HERO_CONFIG.depthOfField.startBokehScale,
         HERO_CONFIG.depthOfField.endBokehScale,
-        progress,
+        lightingProgress,
       );
     }
   });
@@ -206,7 +262,7 @@ function SceneContents({
         color={HERO_CONFIG.colors.key}
         intensity={HERO_CONFIG.lights.keyIntensityStart}
         position={HERO_CONFIG.lights.keyPositionStart}
-        castShadow
+        castShadow={quality === "high"}
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
         shadow-camera-near={0.5}
@@ -248,36 +304,92 @@ function SceneContents({
       </Environment>
 
       <group ref={model}>
-        <HeroObject />
+        <HeroObject quality={quality} />
       </group>
 
       <SceneReady onReady={onReady} />
 
-      <EffectComposer multisampling={0} resolutionScale={0.75}>
-        <DepthOfField
-          ref={depthOfField}
-          focusDistance={HERO_CONFIG.depthOfField.startFocusDistance}
-          focusRange={HERO_CONFIG.depthOfField.focusRange}
-          bokehScale={HERO_CONFIG.depthOfField.startBokehScale}
-          resolutionScale={HERO_CONFIG.depthOfField.resolutionScale}
-        />
-        <Vignette
-          blendFunction={BlendFunction.NORMAL}
-          eskil={false}
-          offset={0.3}
-          darkness={0.34}
-        />
-      </EffectComposer>
+      {quality !== "mobile" ? (
+        <EffectComposer
+          multisampling={0}
+          resolutionScale={quality === "high" ? 0.72 : 0.58}
+        >
+          <DepthOfField
+            ref={depthOfField}
+            focusDistance={HERO_CONFIG.depthOfField.startFocusDistance}
+            focusRange={HERO_CONFIG.depthOfField.focusRange}
+            bokehScale={HERO_CONFIG.depthOfField.startBokehScale}
+            resolutionScale={
+              quality === "high"
+                ? HERO_CONFIG.depthOfField.resolutionScale
+                : 0.42
+            }
+          />
+          <Vignette
+            blendFunction={BlendFunction.NORMAL}
+            eskil={false}
+            offset={0.3}
+            darkness={0.34}
+          />
+        </EffectComposer>
+      ) : null}
     </>
   );
 }
 
+function detectRenderQuality(): HeroRenderQuality {
+  if (typeof window === "undefined") {
+    return "balanced";
+  }
+
+  const navigatorWithMemory = navigator as Navigator & {
+    deviceMemory?: number;
+  };
+  const hardwareConcurrency = navigator.hardwareConcurrency || 4;
+  const deviceMemory = navigatorWithMemory.deviceMemory;
+
+  if (window.matchMedia("(max-width: 767px)").matches) {
+    return "mobile";
+  }
+
+  const hasHighEndViewport = window.matchMedia("(min-width: 1536px)").matches;
+  const hasHighEndHardware =
+    hardwareConcurrency >= 8 && (deviceMemory === undefined || deviceMemory > 4);
+
+  return hasHighEndViewport && hasHighEndHardware ? "high" : "balanced";
+}
+
 export function ThreeScene(props: ThreeSceneProps) {
+  const [quality, setQuality] = useState<HeroRenderQuality>(detectRenderQuality);
+  const { isActive, ...sceneProps } = props;
+  const dpr: number | [number, number] =
+    quality === "mobile"
+      ? 1
+      : quality === "balanced"
+        ? [1, 1.2]
+        : [1, 1.4];
+
+  useEffect(() => {
+    const mobileQuery = window.matchMedia("(max-width: 767px)");
+    const highEndQuery = window.matchMedia("(min-width: 1536px)");
+    const updateQuality = () => setQuality(detectRenderQuality());
+
+    mobileQuery.addEventListener("change", updateQuality);
+    highEndQuery.addEventListener("change", updateQuality);
+
+    return () => {
+      mobileQuery.removeEventListener("change", updateQuality);
+      highEndQuery.removeEventListener("change", updateQuality);
+    };
+  }, []);
+
   return (
     <Canvas
       className={styles.canvas}
-      dpr={[1, 1.5]}
-      shadows
+      data-render-quality={quality}
+      dpr={dpr}
+      frameloop={isActive ? "always" : "demand"}
+      shadows={quality === "high"}
       camera={{
         fov: HERO_CONFIG.camera.fov,
         near: HERO_CONFIG.camera.near,
@@ -285,7 +397,7 @@ export function ThreeScene(props: ThreeSceneProps) {
         position: HERO_CONFIG.camera.position,
       }}
       gl={{
-        antialias: true,
+        antialias: quality !== "mobile",
         alpha: true,
         powerPreference: "high-performance",
         stencil: false,
@@ -303,7 +415,7 @@ export function ThreeScene(props: ThreeSceneProps) {
       }
     >
       <Suspense fallback={null}>
-        <SceneContents {...props} />
+        <SceneContents {...sceneProps} quality={quality} />
       </Suspense>
     </Canvas>
   );

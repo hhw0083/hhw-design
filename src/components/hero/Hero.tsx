@@ -2,66 +2,130 @@
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useLayoutEffect, useRef } from "react";
-import type { CSSProperties, PointerEvent as ReactPointerEvent } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
+import type {
+  CSSProperties,
+  PointerEvent as ReactPointerEvent,
+  ReactNode,
+} from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { profile } from "@/data/profile";
 import { HeroVisual } from "./HeroVisual";
 import styles from "./Hero.module.css";
 
-export function Hero() {
+type HeroProps = {
+  children?: ReactNode;
+};
+
+export function Hero({ children }: HeroProps) {
   const featuredProjectHref = "/projects/esg-forest-matching-platform";
+  const stageRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const scrollProgress = useRef(0);
   const pointerProgress = useRef({ x: 0, y: 0 });
   const reducedMotion = useReducedMotion();
+  const [visualEnabled, setVisualEnabled] = useState(true);
 
   useLayoutEffect(() => {
+    const stage = stageRef.current;
     const section = sectionRef.current;
 
-    if (!section) {
+    if (!stage || !section) {
+      return;
+    }
+
+    const projects = stage.querySelector<HTMLElement>("#projects");
+    const footer = stage.querySelector<HTMLElement>("#contact");
+
+    if (!projects || !footer) {
       return;
     }
 
     if (reducedMotion) {
       scrollProgress.current = 0.62;
       pointerProgress.current = { x: 0, y: 0 };
-      return;
     }
 
     gsap.registerPlugin(ScrollTrigger);
-    const state = { progress: 0 };
     const context = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: stage,
+        start: "top top",
+        endTrigger: projects,
+        end: "bottom bottom",
+        invalidateOnRefresh: true,
+        onEnter: () => setVisualEnabled(true),
+        onEnterBack: () => setVisualEnabled(true),
+        onLeave: () => setVisualEnabled(false),
+        onUpdate: (self) => {
+          if (reducedMotion) {
+            return;
+          }
+
+          const scrollDistance = Math.max(self.end - self.start, 1);
+          const heroFraction = Math.min(
+            section.offsetHeight / scrollDistance,
+            0.999,
+          );
+
+          scrollProgress.current =
+            self.progress <= heroFraction
+              ? self.progress / heroFraction
+              : 1 +
+                (self.progress - heroFraction) /
+                  Math.max(1 - heroFraction, 0.001);
+        },
+      });
+
+      ScrollTrigger.create({
+        trigger: footer,
+        start: "top bottom",
+        end: "bottom bottom",
+        invalidateOnRefresh: true,
+        onEnter: () => setVisualEnabled(true),
+        onEnterBack: () => setVisualEnabled(true),
+        onLeaveBack: () => setVisualEnabled(false),
+        onUpdate: (self) => {
+          if (reducedMotion || (!self.isActive && self.progress === 0)) {
+            return;
+          }
+
+          scrollProgress.current = 3 + self.progress;
+        },
+      });
+
+      if (reducedMotion) {
+        return;
+      }
+
       const timeline = gsap.timeline({
         defaults: { ease: "none" },
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: "bottom bottom",
-          scrub: 0.35,
+          end: "bottom top",
+          scrub: 0.18,
           invalidateOnRefresh: true,
         },
       });
 
       timeline
         .to(
-          state,
+          "[data-hero-title-top]",
           {
-            progress: 1,
-            onUpdate: () => {
-              scrollProgress.current = state.progress;
-            },
+            xPercent: -6,
+            y: () => section.clientHeight * 0.12,
+            opacity: 0.58,
           },
           0,
         )
         .to(
-          "[data-hero-title-top]",
-          { xPercent: -6, yPercent: -4, opacity: 0.58 },
-          0,
-        )
-        .to(
           "[data-hero-title-bottom]",
-          { xPercent: 4.5, yPercent: 5, opacity: 0.96 },
+          {
+            xPercent: 4.5,
+            y: () => section.clientHeight * 0.24,
+            opacity: 0.96,
+          },
           0,
         )
         .to(
@@ -71,15 +135,20 @@ export function Hero() {
         )
         .to(
           "[data-hero-panel]",
-          { clipPath: "inset(0 41% 0 0)" },
+          {
+            clipPath: () =>
+              window.matchMedia("(max-width: 767px)").matches
+                ? "inset(0 50% 0 0)"
+                : "inset(0 41% 0 0)",
+          },
           0,
         )
         .to(
           "[data-hero-marks]",
-          { opacity: 0.82, rotate: 5 },
+          { opacity: 1, rotate: 5 },
           0,
         );
-    }, section);
+    }, stage);
 
     ScrollTrigger.refresh();
 
@@ -103,8 +172,9 @@ export function Hero() {
     }
 
     const section = sectionRef.current;
+    const stage = stageRef.current;
 
-    if (!section) {
+    if (!section || !stage) {
       return;
     }
 
@@ -118,99 +188,119 @@ export function Hero() {
       x: normalizedX,
       y: normalizedY,
     };
-    section.style.setProperty("--pointer-x", `${normalizedX * 20}px`);
-    section.style.setProperty("--pointer-y", `${normalizedY * 16}px`);
-    section.style.setProperty("--pointer-light-x", `${x * 100}%`);
-    section.style.setProperty("--pointer-light-y", `${y * 100}%`);
+    stage.style.setProperty("--pointer-x", `${normalizedX * 20}px`);
+    stage.style.setProperty("--pointer-y", `${normalizedY * 16}px`);
+    stage.style.setProperty("--pointer-light-x", `${x * 100}%`);
+    stage.style.setProperty("--pointer-light-y", `${y * 100}%`);
   };
 
   const handlePointerLeave = () => {
     pointerProgress.current = { x: 0, y: 0 };
 
-    const section = sectionRef.current;
+    const stage = stageRef.current;
 
-    if (!section) {
+    if (!stage) {
       return;
     }
 
-    section.style.setProperty("--pointer-x", "0px");
-    section.style.setProperty("--pointer-y", "0px");
-    section.style.setProperty("--pointer-light-x", "58%");
-    section.style.setProperty("--pointer-light-y", "38%");
+    stage.style.setProperty("--pointer-x", "0px");
+    stage.style.setProperty("--pointer-y", "0px");
+    stage.style.setProperty("--pointer-light-x", "58%");
+    stage.style.setProperty("--pointer-light-y", "38%");
   };
 
   return (
-    <section
-      ref={sectionRef}
-      className={styles.hero}
-      aria-labelledby="hero-personal-identity"
-      onPointerMove={handlePointerMove}
-      onPointerLeave={handlePointerLeave}
+    <div
+      ref={stageRef}
+      className={styles.stage}
+      data-hero-project-stage
       style={heroPointerStyle}
     >
-      <div className={styles.stickyFrame}>
-        <div className={styles.backTitleLayer} aria-hidden="true">
-          <span className={styles.titleTop} data-hero-title-top>
-            HHW
-          </span>
+      <div className={styles.visualTrack} aria-hidden="true">
+        <div className={styles.visualViewport}>
+          <HeroVisual
+            scrollProgress={scrollProgress}
+            pointerProgress={pointerProgress}
+            reducedMotion={reducedMotion}
+            enabled={visualEnabled}
+          />
         </div>
+      </div>
 
-        <HeroVisual
-          scrollProgress={scrollProgress}
-          pointerProgress={pointerProgress}
-          reducedMotion={reducedMotion}
-        />
-
-        <div
-          className={styles.splitPanel}
-          data-hero-panel
-          aria-hidden="true"
-        />
-        <div className={styles.motionMarks} data-hero-marks aria-hidden="true">
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
-        <div className={styles.atmosphere} aria-hidden="true" />
-
-        <div className={styles.copyLayer}>
-          <header className={styles.topline}>
-            <a className={styles.brandMark} href="mailto:hhwstudio0083@gmail.com">
-              HHW<span>.design</span>
-            </a>
-            <nav className={styles.quickNav} aria-label="Hero links">
-              <a href={featuredProjectHref}>Works</a>
-              <a href="mailto:hhwstudio0083@gmail.com">Contact</a>
-            </nav>
-          </header>
-
-          <h1 id="hero-personal-identity" className={styles.srOnly}>
-            HHW UI UX Designer
-          </h1>
-
-          <p className={styles.eyebrow}>Personal image / UIUX designer</p>
-
-          <div className={styles.title} aria-hidden="true">
-            <span className={styles.titleBottom} data-hero-title-bottom>
-              DESIGNER
+      <section
+        ref={sectionRef}
+        className={styles.hero}
+        aria-labelledby="hero-personal-identity"
+        onPointerMove={handlePointerMove}
+        onPointerLeave={handlePointerLeave}
+      >
+        <div className={styles.stickyFrame}>
+          <div className={styles.backTitleLayer} aria-hidden="true">
+            <span className={styles.titleTop} data-hero-title-top>
+              HHW
             </span>
           </div>
 
-          <p className={styles.description} data-hero-copy>
-            {profile.intro}
-          </p>
+          <div
+            className={styles.splitPanel}
+            data-hero-panel
+            aria-hidden="true"
+          />
+          <div
+            className={styles.motionMarks}
+            data-hero-marks
+            aria-hidden="true"
+          >
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
+          <div className={styles.atmosphere} aria-hidden="true" />
 
-          <div className={styles.bottomRail}>
-            <a className={styles.primaryLink} href={featuredProjectHref}>
-              Explore work
-              <span aria-hidden="true">↗</span>
-            </a>
-            <span>{profile.location}</span>
-            <span>{profile.availability}</span>
+          <div className={styles.copyLayer}>
+            <header className={styles.topline}>
+              <a
+                className={styles.brandMark}
+                href="mailto:hhwstudio0083@gmail.com"
+              >
+                HHW<span>.design</span>
+              </a>
+              <nav className={styles.quickNav} aria-label="Hero links">
+                <a href="#projects">Works</a>
+                <a href="#contact">Contact</a>
+              </nav>
+            </header>
+
+            <h1 id="hero-personal-identity" className={styles.srOnly}>
+              HHW UI UX Designer
+            </h1>
+
+            <p className={styles.eyebrow}>Personal image / UIUX designer</p>
+
+            <div className={styles.title} aria-hidden="true">
+              <span className={styles.titleBottom} data-hero-title-bottom>
+                DESIGN
+              </span>
+            </div>
+
+            <p className={styles.description} data-hero-copy>
+              {profile.intro}
+            </p>
+
+            <div className={styles.bottomRail}>
+              <a className={styles.primaryLink} href={featuredProjectHref}>
+                Explore work
+                <span aria-hidden="true">↗</span>
+              </a>
+              <span>{profile.location}</span>
+              <span>{profile.availability}</span>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {children}
+    </div>
   );
 }

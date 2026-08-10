@@ -4,6 +4,7 @@ import { useEffect, useMemo } from "react";
 import * as THREE from "three";
 import { mergeVertices } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import { HERO_CONFIG } from "./hero-config";
+import type { HeroRenderQuality } from "./hero-config";
 
 const smooth = (value: number) => value * value * (3 - 2 * value);
 const mix = (a: number, b: number, amount: number) => a + (b - a) * amount;
@@ -69,11 +70,11 @@ function angularLobe(
   return strength * Math.exp(-(distance * distance) / (2 * width * width));
 }
 
-function createRockGeometry() {
+function createRockGeometry(detail: number) {
   const config = HERO_CONFIG.procedural;
   const geometry = new THREE.IcosahedronGeometry(
     config.radius,
-    config.detail,
+    detail,
   );
   const positions = geometry.attributes.position as THREE.BufferAttribute;
   const colors = new Float32Array(positions.count * 3);
@@ -251,7 +252,7 @@ function createRockGeometry() {
   return mergedGeometry;
 }
 
-function createRockMaterial() {
+function createRockMaterial(shaderOctaves: number) {
   const material = new THREE.MeshStandardMaterial({
     color: HERO_CONFIG.material.color,
     flatShading: true,
@@ -305,7 +306,7 @@ function createRockMaterial() {
         float amplitude = 0.55;
         float normalizer = 0.0;
 
-        for (int octave = 0; octave < 4; octave++) {
+        for (int octave = 0; octave < ${shaderOctaves}; octave++) {
           total += rockNoise(point) * amplitude;
           normalizer += amplitude;
           point = point * 2.08 + vec3(11.3, 7.1, 4.9);
@@ -363,14 +364,20 @@ function createRockMaterial() {
          );`,
       );
   };
-  material.customProgramCacheKey = () => "procedural-rock-material-v5";
+  material.customProgramCacheKey = () =>
+    `procedural-rock-material-v6-${shaderOctaves}`;
 
   return material;
 }
 
-export function ProceduralRock() {
-  const geometry = useMemo(() => createRockGeometry(), []);
-  const material = useMemo(() => createRockMaterial(), []);
+export function ProceduralRock({ quality }: { quality: HeroRenderQuality }) {
+  const detail = quality === "high" ? HERO_CONFIG.procedural.detail : 5;
+  const shaderOctaves = quality === "high" ? 4 : 3;
+  const geometry = useMemo(() => createRockGeometry(detail), [detail]);
+  const material = useMemo(
+    () => createRockMaterial(shaderOctaves),
+    [shaderOctaves],
+  );
 
   useEffect(
     () => () => {
@@ -381,6 +388,11 @@ export function ProceduralRock() {
   );
 
   return (
-    <mesh geometry={geometry} material={material} castShadow receiveShadow />
+    <mesh
+      geometry={geometry}
+      material={material}
+      castShadow={quality === "high"}
+      receiveShadow={quality === "high"}
+    />
   );
 }

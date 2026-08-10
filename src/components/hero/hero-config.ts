@@ -1,4 +1,5 @@
 export type HeroVisualMode = "procedural" | "glb";
+export type HeroRenderQuality = "high" | "balanced" | "mobile";
 
 export type Vector3Tuple = [number, number, number];
 
@@ -30,11 +31,11 @@ export const HERO_CONFIG = {
   },
   model: {
     startPosition: [1.28, 0.02, 0.02] as Vector3Tuple,
-    endPosition: [0.64, 0.12, 0.18] as Vector3Tuple,
+    endPosition: [0.72, -1.05, 0.24] as Vector3Tuple,
     startRotation: [-0.2, -0.34, -0.2] as Vector3Tuple,
     endRotation: [0.18, 1.22, 0.06] as Vector3Tuple,
     startScale: 1.3,
-    endScale: 1.06,
+    endScale: 1.12,
   },
   procedural: {
     seed: 1948,

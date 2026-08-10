@@ -53,8 +53,7 @@ export function ProjectVisual({
               : "(min-width: 1024px) 1200px, 100vw"
           }
           priority={!compact}
-          quality={95}
-          unoptimized
+          quality={compact ? 75 : 95}
           className={
             compact
               ? "object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.015] motion-reduce:transition-none"

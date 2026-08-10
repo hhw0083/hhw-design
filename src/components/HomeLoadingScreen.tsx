@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { LoadingScreen } from "@/components/LoadingScreen";
 
 const LOADING_SESSION_KEY = "hhw-home-loading-seen-v2";
-const FIRST_VISIT_MIN_MS = 1040;
+const FIRST_VISIT_MIN_MS = 760;
 const LOADING_EXIT_MS = 440;
-const LOADING_MAX_MS = 7000;
+const LOADING_MAX_MS = 5000;
 
 function hasSeenHomeLoading() {
   try {
