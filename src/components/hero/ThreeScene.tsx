@@ -233,16 +233,16 @@ function SceneContents({
           form="rect"
           intensity={1.35}
           color="#c8cbc6"
-          position={[-4, 2, 4]}
-          rotation={[0, Math.PI / 3, 0]}
+          position={[4, 2, 4]}
+          rotation={[0, -Math.PI / 3, 0]}
           scale={[3, 5, 1]}
         />
         <Lightformer
           form="rect"
           intensity={0.55}
           color="#8c9492"
-          position={[4, -1, -2]}
-          rotation={[0, -Math.PI / 2, 0]}
+          position={[-4, -1, -2]}
+          rotation={[0, Math.PI / 2, 0]}
           scale={[2, 4, 1]}
         />
       </Environment>

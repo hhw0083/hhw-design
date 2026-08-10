@@ -49,7 +49,7 @@
 .backTitleLayer {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 6;
   pointer-events: none;
   font-family: var(--font-inter), Inter, ui-sans-serif, system-ui;
 }
@@ -93,36 +93,19 @@
 .splitPanel {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 5;
   pointer-events: none;
   background:
-    linear-gradient(112deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.045) 37%, rgba(58, 61, 57, 0.2) 82%),
-    rgba(76, 79, 75, 0.12);
+    linear-gradient(112deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.025) 40%, rgba(58, 61, 57, 0.1) 84%),
+    rgba(76, 79, 75, 0.06);
   box-shadow:
     inset -1px 0 rgba(255, 255, 255, 0.28),
     inset -2.5rem 0 5rem rgba(255, 255, 255, 0.05),
     inset 0 1px rgba(255, 255, 255, 0.18);
-  -webkit-backdrop-filter: blur(28px) saturate(0.72) brightness(0.94);
-  backdrop-filter: blur(28px) saturate(0.72) brightness(0.94);
+  -webkit-backdrop-filter: blur(42px) saturate(0.68) brightness(0.98);
+  backdrop-filter: blur(42px) saturate(0.68) brightness(0.98);
   clip-path: inset(0 50% 0 0);
   will-change: clip-path;
-}
-
-.figureShadow {
-  position: absolute;
-  top: 26%;
-  left: 16%;
-  z-index: 3;
-  width: min(32rem, 46vw);
-  height: min(14rem, 23vh);
-  pointer-events: none;
-  background: rgba(25, 26, 24, 0.42);
-  border-radius: 46% 54% 58% 42%;
-  filter: blur(34px);
-  opacity: 0.42;
-  transform: translate3d(calc(var(--pointer-x) * -0.22), calc(var(--pointer-y) * 0.16), 0) rotate(-19deg);
-  transform-origin: 45% 50%;
-  will-change: opacity, transform;
 }
 
 .motionMarks {
@@ -294,6 +277,7 @@
   left: 1.45rem;
   color: rgba(255, 255, 255, 0.58);
   font-size: 9.2rem;
+  letter-spacing: -0.035em;
 }
 
 .titleBottom {
@@ -460,15 +444,6 @@
     clip-path: inset(0 0 48% 0);
   }
 
-  .figureShadow {
-    top: 30%;
-    left: -10%;
-    width: 92vw;
-    height: 9.5rem;
-    filter: blur(28px);
-    opacity: 0.38;
-  }
-
   .motionMarks span:nth-child(1),
   .motionMarks span:nth-child(2) {
     display: none;
@@ -551,8 +526,7 @@
 @media (prefers-reduced-motion: reduce) {
   .visual,
   .copyLayer,
-  .stickyFrame::after,
-  .figureShadow {
+  .stickyFrame::after {
     transform: none;
   }
 
@@ -564,7 +538,6 @@
   .titleBottom,
   .description,
   .splitPanel,
-  .figureShadow,
   .motionMarks {
     will-change: auto;
   }

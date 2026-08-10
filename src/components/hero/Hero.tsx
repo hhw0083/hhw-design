@@ -75,11 +75,6 @@ export function Hero() {
           0,
         )
         .to(
-          "[data-hero-shadow]",
-          { xPercent: 11, yPercent: -5, opacity: 0.36, scale: 0.92 },
-          0,
-        )
-        .to(
           "[data-hero-marks]",
           { opacity: 0.82, rotate: 5 },
           0,
@@ -169,11 +164,6 @@ export function Hero() {
         <div
           className={styles.splitPanel}
           data-hero-panel
-          aria-hidden="true"
-        />
-        <div
-          className={styles.figureShadow}
-          data-hero-shadow
           aria-hidden="true"
         />
         <div className={styles.motionMarks} data-hero-marks aria-hidden="true">
