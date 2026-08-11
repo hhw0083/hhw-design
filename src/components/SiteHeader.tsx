@@ -21,12 +21,14 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isPastHero, setIsPastHero] = useState(false);
+  const [isHomeReady, setIsHomeReady] = useState(false);
   const [isMobileViewport, setIsMobileViewport] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const hasElevatedSurface = isMobileViewport || isScrolled || isPastHero;
-  const shouldShowHeader = isMobileViewport || isPastHero;
+  const shouldShowHeader =
+    isPastHero || (isMobileViewport && isHomeReady);
 
   useLayoutEffect(() => {
     const mobileViewport = window.matchMedia("(max-width: 767px)");
@@ -46,7 +48,12 @@ export function SiteHeader() {
 
       const hero = document.querySelector<HTMLElement>("[data-hero-section]");
       const pastHero = !hero || hero.getBoundingClientRect().bottom <= 0;
+      const homeReady =
+        !hero ||
+        (document.documentElement.dataset.homeReady === "true" &&
+          !document.querySelector(".home-loader"));
       setIsPastHero(pastHero);
+      setIsHomeReady(homeReady);
 
       if (!pastHero) {
         setActiveSection(null);
@@ -125,14 +132,13 @@ export function SiteHeader() {
           ? undefined
           : {
               opacity: 0,
-              transform: "translateY(-1rem)",
               visibility: "hidden",
             }
       }
-      className={`pointer-events-none fixed inset-x-0 top-3 z-50 px-3 transition-[transform,opacity,visibility] duration-300 ease-out sm:px-5 ${
+      className={`pointer-events-none fixed inset-x-0 top-3 z-50 px-3 transition-[transform,opacity,visibility] delay-75 duration-300 ease-out sm:px-5 md:delay-0 ${
         shouldShowHeader
           ? "visible translate-y-0 opacity-100"
-          : "invisible -translate-y-4 opacity-0"
+          : "invisible translate-y-0 opacity-0 md:-translate-y-4"
       }`}
     >
       <div

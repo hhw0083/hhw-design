@@ -56,8 +56,6 @@ export function HomeLoadingScreen() {
       leaveTimer = window.setTimeout(() => {
         setIsVisible(false);
         document.body.style.overflow = originalOverflow;
-        document.documentElement.dataset.homeReady = "true";
-        window.dispatchEvent(new Event("hhw:home-ready"));
       }, prefersReducedMotion ? 0 : LOADING_EXIT_MS);
     };
 
@@ -91,6 +89,15 @@ export function HomeLoadingScreen() {
       document.body.style.overflow = originalOverflow;
     };
   }, []);
+
+  useEffect(() => {
+    if (isVisible) {
+      return;
+    }
+
+    document.documentElement.dataset.homeReady = "true";
+    window.dispatchEvent(new Event("hhw:home-ready"));
+  }, [isVisible]);
 
   if (!isVisible) {
     return null;
