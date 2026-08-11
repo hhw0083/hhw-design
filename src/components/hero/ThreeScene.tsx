@@ -85,6 +85,7 @@ function SceneContents({
   const fog = useRef<THREE.FogExp2>(null);
   const depthOfField = useRef<DepthOfFieldEffect>(null);
   const smoothedPointer = useRef(new THREE.Vector2(0, 0));
+  const targetPointer = useRef(new THREE.Vector2(0, 0));
   const { camera } = useThree();
 
   useEffect(() => {
@@ -107,12 +108,13 @@ function SceneContents({
       0.16,
     );
     const projectArc = Math.sin(projectProgress * Math.PI) * 0.28;
-    const pointer = reducedMotion
-      ? { x: 0, y: 0 }
-      : pointerProgress.current;
-
+    const pointer = pointerProgress.current;
+    targetPointer.current.set(
+      reducedMotion ? 0 : pointer.x,
+      reducedMotion ? 0 : pointer.y,
+    );
     smoothedPointer.current.lerp(
-      new THREE.Vector2(pointer?.x ?? 0, pointer?.y ?? 0),
+      targetPointer.current,
       Math.min(1, delta * 5.5),
     );
     const drift = reducedMotion
@@ -366,8 +368,8 @@ export function ThreeScene(props: ThreeSceneProps) {
     quality === "mobile"
       ? 1
       : quality === "balanced"
-        ? [1, 1.2]
-        : [1, 1.4];
+        ? [1, 1.15]
+        : [1, 1.3];
 
   useEffect(() => {
     const mobileQuery = window.matchMedia("(max-width: 767px)");

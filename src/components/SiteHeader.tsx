@@ -20,18 +20,13 @@ const contactItem = {
 export function SiteHeader() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isPastHero, setIsPastHero] = useState(pathname !== "/");
-  const [measuredPathname, setMeasuredPathname] = useState(pathname);
+  const [isPastHero, setIsPastHero] = useState(false);
   const [isMobileViewport, setIsMobileViewport] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const hasElevatedSurface =
-    isMobileViewport || isScrolled || pathname !== "/";
-  const shouldShowHeader =
-    isMobileViewport ||
-    pathname !== "/" ||
-    (measuredPathname === pathname && isPastHero);
+  const hasElevatedSurface = isMobileViewport || isScrolled || isPastHero;
+  const shouldShowHeader = isMobileViewport || isPastHero;
 
   useLayoutEffect(() => {
     const mobileViewport = window.matchMedia("(max-width: 767px)");
@@ -44,23 +39,19 @@ export function SiteHeader() {
   }, []);
 
   useLayoutEffect(() => {
+    let updateFrame = 0;
+
     const updateHeader = () => {
       setIsScrolled(window.scrollY > 24);
 
-      if (pathname !== "/") {
-        setIsPastHero(true);
-        setMeasuredPathname(pathname);
+      const hero = document.querySelector<HTMLElement>("[data-hero-section]");
+      const pastHero = !hero || hero.getBoundingClientRect().bottom <= 0;
+      setIsPastHero(pastHero);
+
+      if (!pastHero) {
         setActiveSection(null);
         return;
       }
-
-      const hero = document.querySelector<HTMLElement>("[data-hero-section]");
-      setIsPastHero(
-        hero
-          ? hero.getBoundingClientRect().bottom <= 0
-          : window.scrollY >= window.innerHeight,
-      );
-      setMeasuredPathname(pathname);
 
       const readingLine = Math.min(window.innerHeight * 0.3, 240);
       const nextSection = [...navItems, contactItem].find((item) => {
@@ -77,10 +68,28 @@ export function SiteHeader() {
       setActiveSection(nextSection?.id ?? null);
     };
 
-    updateHeader();
-    window.addEventListener("scroll", updateHeader, { passive: true });
+    const requestHeaderUpdate = () => {
+      if (updateFrame) {
+        return;
+      }
 
-    return () => window.removeEventListener("scroll", updateHeader);
+      updateFrame = window.requestAnimationFrame(() => {
+        updateFrame = 0;
+        updateHeader();
+      });
+    };
+
+    updateHeader();
+    window.addEventListener("scroll", requestHeaderUpdate, { passive: true });
+    window.addEventListener("resize", requestHeaderUpdate);
+    window.addEventListener("hhw:home-ready", requestHeaderUpdate);
+
+    return () => {
+      window.cancelAnimationFrame(updateFrame);
+      window.removeEventListener("scroll", requestHeaderUpdate);
+      window.removeEventListener("resize", requestHeaderUpdate);
+      window.removeEventListener("hhw:home-ready", requestHeaderUpdate);
+    };
   }, [pathname]);
 
   useEffect(() => {
@@ -109,6 +118,7 @@ export function SiteHeader() {
 
   return (
     <header
+      data-site-header
       aria-hidden={!shouldShowHeader}
       style={
         shouldShowHeader

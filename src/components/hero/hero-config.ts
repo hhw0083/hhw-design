@@ -39,7 +39,7 @@ export const HERO_CONFIG = {
   },
   procedural: {
     seed: 1948,
-    detail: 6,
+    detail: 5,
     radius: 1,
     noiseFrequency: 2.7,
     noiseAmplitude: 0.2,

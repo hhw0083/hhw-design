@@ -48,12 +48,21 @@ export function Hero({ children }: HeroProps) {
 
     gsap.registerPlugin(ScrollTrigger);
     const context = gsap.context(() => {
+      let heroFraction = 0.5;
+
       ScrollTrigger.create({
         trigger: stage,
         start: "top top",
         endTrigger: projects,
         end: "bottom bottom",
         invalidateOnRefresh: true,
+        onRefresh: (self) => {
+          const scrollDistance = Math.max(self.end - self.start, 1);
+          heroFraction = Math.min(
+            section.offsetHeight / scrollDistance,
+            0.999,
+          );
+        },
         onEnter: () => setVisualEnabled(true),
         onEnterBack: () => setVisualEnabled(true),
         onLeave: () => setVisualEnabled(false),
@@ -61,12 +70,6 @@ export function Hero({ children }: HeroProps) {
           if (reducedMotion) {
             return;
           }
-
-          const scrollDistance = Math.max(self.end - self.start, 1);
-          const heroFraction = Math.min(
-            section.offsetHeight / scrollDistance,
-            0.999,
-          );
 
           scrollProgress.current =
             self.progress <= heroFraction
@@ -102,7 +105,6 @@ export function Hero({ children }: HeroProps) {
           invalidateOnRefresh: true,
           onUpdate: (self) => {
             gsap.set("[data-hero-panel]", {
-              clipPath: "inset(0 50% 0 0)",
               yPercent: self.progress * -100,
             });
           },
@@ -116,7 +118,7 @@ export function Hero({ children }: HeroProps) {
           trigger: section,
           start: "top top",
           end: "bottom top",
-          scrub: 0.18,
+          scrub: true,
           invalidateOnRefresh: true,
         },
       });
@@ -148,10 +150,6 @@ export function Hero({ children }: HeroProps) {
         .to(
           "[data-hero-panel]",
           {
-            clipPath: () =>
-              window.matchMedia("(max-width: 767px)").matches
-                ? "inset(0 50% 0 0)"
-                : "inset(0 41% 0 0)",
             yPercent: -100,
           },
           0,

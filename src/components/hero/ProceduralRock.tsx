@@ -355,24 +355,22 @@ function createRockMaterial(shaderOctaves: number) {
       .replace(
         "#include <roughnessmap_fragment>",
         `#include <roughnessmap_fragment>
-         float rockRoughness = rockFbm(vRockPosition * 20.0);
-         float strataRoughness = rockStrata(vRockPosition);
          roughnessFactor = clamp(
-           roughnessFactor + (rockRoughness - 0.5) * 0.22 + strataRoughness * 0.14,
+           roughnessFactor + (rockFine - 0.5) * 0.22 + strataLine * 0.14,
            0.58,
            1.0
          );`,
       );
   };
   material.customProgramCacheKey = () =>
-    `procedural-rock-material-v6-${shaderOctaves}`;
+    `procedural-rock-material-v7-${shaderOctaves}`;
 
   return material;
 }
 
 export function ProceduralRock({ quality }: { quality: HeroRenderQuality }) {
-  const detail = quality === "high" ? HERO_CONFIG.procedural.detail : 5;
-  const shaderOctaves = quality === "high" ? 4 : 3;
+  const detail = quality === "mobile" ? 4 : HERO_CONFIG.procedural.detail;
+  const shaderOctaves = quality === "high" ? 4 : quality === "mobile" ? 2 : 3;
   const geometry = useMemo(() => createRockGeometry(detail), [detail]);
   const material = useMemo(
     () => createRockMaterial(shaderOctaves),
