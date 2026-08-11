@@ -39,6 +39,7 @@ export function HomeLoadingScreen() {
     }
 
     document.documentElement.dataset.homeReady = "false";
+    document.documentElement.dataset.homeRevealing = "false";
 
     const originalOverflow = document.body.style.overflow;
     const prefersReducedMotion = window.matchMedia(
@@ -91,11 +92,21 @@ export function HomeLoadingScreen() {
   }, []);
 
   useEffect(() => {
+    if (!isLeaving) {
+      return;
+    }
+
+    document.documentElement.dataset.homeRevealing = "true";
+    window.dispatchEvent(new Event("hhw:home-revealing"));
+  }, [isLeaving]);
+
+  useEffect(() => {
     if (isVisible) {
       return;
     }
 
     document.documentElement.dataset.homeReady = "true";
+    delete document.documentElement.dataset.homeRevealing;
     window.dispatchEvent(new Event("hhw:home-ready"));
   }, [isVisible]);
 

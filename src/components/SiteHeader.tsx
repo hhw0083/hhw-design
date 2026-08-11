@@ -50,8 +50,8 @@ export function SiteHeader() {
       const pastHero = !hero || hero.getBoundingClientRect().bottom <= 0;
       const homeReady =
         !hero ||
-        (document.documentElement.dataset.homeReady === "true" &&
-          !document.querySelector(".home-loader"));
+        document.documentElement.dataset.homeRevealing === "true" ||
+        document.documentElement.dataset.homeReady === "true";
       setIsPastHero(pastHero);
       setIsHomeReady(homeReady);
 
@@ -89,12 +89,14 @@ export function SiteHeader() {
     updateHeader();
     window.addEventListener("scroll", requestHeaderUpdate, { passive: true });
     window.addEventListener("resize", requestHeaderUpdate);
+    window.addEventListener("hhw:home-revealing", requestHeaderUpdate);
     window.addEventListener("hhw:home-ready", requestHeaderUpdate);
 
     return () => {
       window.cancelAnimationFrame(updateFrame);
       window.removeEventListener("scroll", requestHeaderUpdate);
       window.removeEventListener("resize", requestHeaderUpdate);
+      window.removeEventListener("hhw:home-revealing", requestHeaderUpdate);
       window.removeEventListener("hhw:home-ready", requestHeaderUpdate);
     };
   }, [pathname]);
@@ -135,7 +137,7 @@ export function SiteHeader() {
               visibility: "hidden",
             }
       }
-      className={`pointer-events-none fixed inset-x-0 top-3 z-50 px-3 transition-[transform,opacity,visibility] delay-75 duration-300 ease-out sm:px-5 md:delay-0 ${
+      className={`pointer-events-none fixed inset-x-0 top-3 z-50 px-3 transition-[transform,opacity,visibility] duration-0 ease-out sm:px-5 md:duration-300 ${
         shouldShowHeader
           ? "visible translate-y-0 opacity-100"
           : "invisible translate-y-0 opacity-0 md:-translate-y-4"
