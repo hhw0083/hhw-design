@@ -57,7 +57,7 @@ export default function Home() {
         <Hero>
           <section
             id="projects"
-            className="section-band relative z-10 bg-white/70 pb-20 pt-20 md:pb-28 md:pt-28"
+            className="section-band relative z-10 bg-white/70 pb-20 pt-28 md:pb-28 md:pt-36"
           >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <MotionReveal>

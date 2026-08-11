@@ -2,6 +2,7 @@
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ArrowDown } from "lucide-react";
 import { useLayoutEffect, useRef, useState } from "react";
 import type {
   CSSProperties,
@@ -18,7 +19,6 @@ type HeroProps = {
 };
 
 export function Hero({ children }: HeroProps) {
-  const featuredProjectHref = "/projects/esg-forest-matching-platform";
   const stageRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const scrollProgress = useRef(0);
@@ -95,6 +95,18 @@ export function Hero({ children }: HeroProps) {
       });
 
       if (reducedMotion) {
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top top",
+          end: "bottom top",
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            gsap.set("[data-hero-panel]", {
+              clipPath: "inset(0 50% 0 0)",
+              yPercent: self.progress * -100,
+            });
+          },
+        });
         return;
       }
 
@@ -140,12 +152,18 @@ export function Hero({ children }: HeroProps) {
               window.matchMedia("(max-width: 767px)").matches
                 ? "inset(0 50% 0 0)"
                 : "inset(0 41% 0 0)",
+            yPercent: -100,
           },
           0,
         )
         .to(
           "[data-hero-marks]",
-          { opacity: 1, rotate: 5 },
+          { opacity: 1 },
+          0,
+        )
+        .to(
+          "[data-hero-marks] span:not(:nth-child(4))",
+          { rotate: 5 },
           0,
         );
     }, stage);
@@ -224,6 +242,11 @@ export function Hero({ children }: HeroProps) {
             reducedMotion={reducedMotion}
             enabled={visualEnabled}
           />
+          <div
+            className={styles.splitPanel}
+            data-hero-panel
+            aria-hidden="true"
+          />
         </div>
       </div>
 
@@ -242,11 +265,6 @@ export function Hero({ children }: HeroProps) {
             </span>
           </div>
 
-          <div
-            className={styles.splitPanel}
-            data-hero-panel
-            aria-hidden="true"
-          />
           <div
             className={styles.motionMarks}
             data-hero-marks
@@ -292,12 +310,10 @@ export function Hero({ children }: HeroProps) {
             </p>
 
             <div className={styles.bottomRail}>
-              <a className={styles.primaryLink} href={featuredProjectHref}>
+              <span className={styles.scrollCue}>
                 Explore work
-                <span aria-hidden="true">↗</span>
-              </a>
-              <span>{profile.location}</span>
-              <span>{profile.availability}</span>
+                <ArrowDown className={styles.scrollCueIcon} aria-hidden="true" />
+              </span>
             </div>
           </div>
         </div>

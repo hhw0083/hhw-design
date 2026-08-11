@@ -29,7 +29,7 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
       lenisRef.current = new Lenis({
         autoRaf: true,
         anchors: {
-          offset: -88,
+          offset: 0,
         },
         lerp: 0.11,
         smoothWheel: true,
