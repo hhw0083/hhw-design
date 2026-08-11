@@ -21,11 +21,27 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isPastHero, setIsPastHero] = useState(pathname !== "/");
+  const [measuredPathname, setMeasuredPathname] = useState(pathname);
+  const [isMobileViewport, setIsMobileViewport] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const hasElevatedSurface = isScrolled || pathname !== "/";
-  const shouldShowHeader = pathname !== "/" || isPastHero;
+  const hasElevatedSurface =
+    isMobileViewport || isScrolled || pathname !== "/";
+  const shouldShowHeader =
+    isMobileViewport ||
+    pathname !== "/" ||
+    (measuredPathname === pathname && isPastHero);
+
+  useEffect(() => {
+    const mobileViewport = window.matchMedia("(max-width: 767px)");
+    const updateViewport = () => setIsMobileViewport(mobileViewport.matches);
+
+    updateViewport();
+    mobileViewport.addEventListener("change", updateViewport);
+
+    return () => mobileViewport.removeEventListener("change", updateViewport);
+  }, []);
 
   useEffect(() => {
     const updateHeader = () => {
@@ -33,6 +49,7 @@ export function SiteHeader() {
 
       if (pathname !== "/") {
         setIsPastHero(true);
+        setMeasuredPathname(pathname);
         setActiveSection(null);
         return;
       }
@@ -43,6 +60,7 @@ export function SiteHeader() {
           ? hero.getBoundingClientRect().bottom <= 0
           : window.scrollY >= window.innerHeight,
       );
+      setMeasuredPathname(pathname);
 
       const readingLine = Math.min(window.innerHeight * 0.3, 240);
       const nextSection = [...navItems, contactItem].find((item) => {

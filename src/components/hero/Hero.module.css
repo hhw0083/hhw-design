@@ -512,11 +512,7 @@
   }
 
   .topline {
-    top: 1.05rem;
-    right: 1rem;
-    left: 1rem;
-    gap: 0.5rem;
-    font-size: 0.875rem;
+    display: none;
   }
 
   .quickNav {
