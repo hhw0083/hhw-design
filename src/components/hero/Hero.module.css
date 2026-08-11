@@ -484,18 +484,26 @@
 
 @media (max-width: 767px) {
   .visualViewport {
+    height: 100svh;
+    min-height: 100svh;
     background:
       linear-gradient(180deg, #c3c4bf 0%, #d8d8d3 50%, #c7c8c3 100%),
       var(--hero-surface);
   }
 
   .hero {
-    height: 100vh;
-    min-height: 100vh;
+    height: 100svh;
+    min-height: 100svh;
   }
 
   .stickyFrame {
-    min-height: 100vh;
+    height: 100svh;
+    min-height: 100svh;
+  }
+
+  .splitPanel {
+    -webkit-backdrop-filter: blur(10px) saturate(0.76) brightness(1.02);
+    backdrop-filter: blur(10px) saturate(0.76) brightness(1.02);
   }
 
   .stickyFrame::before {
