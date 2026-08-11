@@ -126,7 +126,7 @@ export function Hero({ children }: HeroProps) {
           "[data-hero-title-top]",
           {
             xPercent: -6,
-            y: () => section.clientHeight * 0.12,
+            y: () => section.clientHeight * 0.5,
             opacity: 0.58,
           },
           0,

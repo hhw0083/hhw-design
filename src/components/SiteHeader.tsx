@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Mail, Menu, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const navItems = [
   { href: "/#projects", id: "projects", label: "Works" },
@@ -33,7 +33,7 @@ export function SiteHeader() {
     pathname !== "/" ||
     (measuredPathname === pathname && isPastHero);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const mobileViewport = window.matchMedia("(max-width: 767px)");
     const updateViewport = () => setIsMobileViewport(mobileViewport.matches);
 
@@ -43,7 +43,7 @@ export function SiteHeader() {
     return () => mobileViewport.removeEventListener("change", updateViewport);
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const updateHeader = () => {
       setIsScrolled(window.scrollY > 24);
 
@@ -110,6 +110,15 @@ export function SiteHeader() {
   return (
     <header
       aria-hidden={!shouldShowHeader}
+      style={
+        shouldShowHeader
+          ? undefined
+          : {
+              opacity: 0,
+              transform: "translateY(-1rem)",
+              visibility: "hidden",
+            }
+      }
       className={`pointer-events-none fixed inset-x-0 top-3 z-50 px-3 transition-[transform,opacity,visibility] duration-300 ease-out sm:px-5 ${
         shouldShowHeader
           ? "visible translate-y-0 opacity-100"
